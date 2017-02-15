@@ -6,8 +6,10 @@
     "watch": "brunch watch --stdin"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "phoenix": "file:deps/phoenix",
-    "phoenix_html": "file:deps/phoenix_html"
+    "phoenix_html": "file:deps/phoenix_html",
+    "uswds": "~0.14.0"
   },
   "devDependencies": {
     "babel-brunch": "~6.0.0",
