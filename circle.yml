@@ -1,0 +1,18 @@
+dependencies:
+  pre:
+    - script/ci/prepare.sh
+  cache_directories:
+    - ~/dependencies
+    - ~/.mix
+    - _build
+    - deps
+    - node_modules
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/test
+    - script/ci/tests.sh
+deployment:
+  production:
+    branch: master
+    commands:
+      - script/ci/deploy-prod.sh

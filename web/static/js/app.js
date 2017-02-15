@@ -15,8 +15,6 @@ import "phoenix_html"
 import 'lodash.debounce'
 import 'uswds'
 
-var $       = require( 'jquery' );
-var dt      = require( 'datatables.net' )( window, $ );
 
 // Import local files
 //

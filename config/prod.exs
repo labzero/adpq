@@ -56,6 +56,14 @@ config :logger, level: :info
 #     config :adpq, Adpq.Endpoint, server: true
 #
 
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
+# Configure your database
+config :adpq, Adpq.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("ADPQ_DB_USER"),
+  password: System.get_env("ADPQ_DB_PASS"),
+  database: System.get_env("ADPQ_DB_NAME"),
+  hostname: System.get_env("ADPQ_DB_HOST"),
+  pool_size: System.get_env("ADPQ_DB_POOL")
+
+config :adpq, Adpq.Endpoint,
+  secret_key_base: "Y8xMqKI4RKA19P9K3CG4AnaYtf1eu8GqTmZyxMlluiyV12j/3Nki+WC83S9e3XVe"

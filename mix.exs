@@ -37,6 +37,7 @@ defmodule Adpq.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
+     {:junit_formatter, "~> 1.2", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 
