@@ -13,7 +13,7 @@
   1. Install postgresql `brew install postgresql`
   1. Install elixir `brew install elixir`
   1. Install mix `mix local.hex`
-  1. Create PostgreSQL role `createuser -P -d adpq` (then enter "adpq" as password)
+  1. Create PostgreSQL role `createuser -d adpq`
 
 ### Linux
 

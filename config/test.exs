@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :adpq, Adpq.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "adpq",
-  password: "adpq",
+  password: "",
   database: "adpq_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
