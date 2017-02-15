@@ -7,6 +7,9 @@ dependencies:
     - _build
     - deps
     - node_modules
+database:
+  override:
+    - createuser -d adpq
 test:
   override:
     - mkdir -p $CIRCLE_TEST_REPORTS/test

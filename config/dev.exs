@@ -37,7 +37,7 @@ config :phoenix, :stacktrace_depth, 20
 config :adpq, Adpq.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "adpq",
-  password: "adpq",
+  password: "",
   database: "adpq_dev",
   hostname: "localhost",
   pool_size: 10
