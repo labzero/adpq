@@ -15,6 +15,12 @@ import "phoenix_html"
 import 'lodash.debounce'
 import 'uswds'
 
+import React from "react";
+import ReactDOM from "react-dom";
+
+import MainContainer from "./containers/MainContainer";
+
+ReactDOM.render(<MainContainer />, document.getElementById("index"));
 
 // Import local files
 //

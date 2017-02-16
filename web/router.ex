@@ -16,7 +16,7 @@ defmodule Adpq.Router do
   scope "/", Adpq do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/*path", PageController, :index
   end
 
   # Other scopes may use custom stacks.
