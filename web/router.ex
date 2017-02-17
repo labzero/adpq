@@ -11,8 +11,15 @@ defmodule Adpq.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+
   end
 
+  scope "/api", Adpq do
+    pipe_through :api
+    resources "/catalog_items", CatalogItemController, except: [:new, :edit]
+  end
+  
   scope "/", Adpq do
     pipe_through :browser # Use the default browser stack
 
