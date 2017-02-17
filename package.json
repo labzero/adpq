@@ -7,6 +7,7 @@
     "test": "jest --verbose"
   },
   "dependencies": {
+    "babel-preset-es2016": "^6.22.0",
     "format-currency": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
@@ -49,6 +50,7 @@
     "brunch": "2.7.4",
     "clean-css-brunch": "~2.0.0",
     "css-brunch": "~2.0.0",
+    "enzyme": "^2.7.1",
     "javascript-brunch": "~2.0.0",
     "jest": "^18.1.0",
     "jest-cli": "^18.1.0",
