@@ -9,14 +9,9 @@ export default class Homepage extends React.Component {
     this.props.fetchCatalog();
   }
 
-  pluckData(items) {
-    return map((network) => network.location, items.networks)
-  }
-
   render() {
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
-      let data = this.pluckData(this.props.catalog.items)
-      return <div> Catalog: {JSON.stringify(data)} </div>
+      return <div> Catalog: {JSON.stringify(this.props.catalog.items)} </div>
     } else {
       return <div>Loading..</div>
     }

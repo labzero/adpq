@@ -8,9 +8,9 @@ export function loginUser(user)  {
 export function fetchCatalog() {
   return dispatch => {
     dispatch(requestCatalog())
-    fetch("https://api.citybik.es/v2/networks") // todo replace placeholder data source
+    fetch('/api/catalog_items')
       .then(response => response.json()) // todo check response.ok
-      .then(json => dispatch(fetchCatalogSuccess(json)))
+      .then(json => dispatch(fetchCatalogSuccess(json.data)))
       .catch(error => dispatch(fetchCatalogError(error)))
   }
 }
