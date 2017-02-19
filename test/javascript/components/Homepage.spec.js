@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme'
 import Homepage from 'components/Homepage'
-import CatalogListItem from 'components/CatalogListItem'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
 
 describe('<Homepage/>', () => {
