@@ -54,4 +54,14 @@ defmodule Adpq.CatalogSeeds do
   end
 end
 
+defmodule Adpq.UserSeeds do
+  alias Adpq.Repo
+  alias Adpq.User
+
+  def create_admin do
+    Repo.insert!(User.changeset(%User{}, %{name: "admin", password: "admin", role: "ADMIN"}))
+  end
+end
+
 Adpq.CatalogSeeds.insertRows()
+Adpq.UserSeeds.create_admin()
