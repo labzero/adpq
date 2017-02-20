@@ -19,7 +19,7 @@ defmodule Adpq.Mixfile do
   def application do
     [mod: {Adpq, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :csv]]
+                    :phoenix_ecto, :postgrex, :csv, :corsica]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,9 @@ defmodule Adpq.Mixfile do
      {:gettext, "~> 0.11"},
      {:junit_formatter, "~> 1.2", only: :test},
      {:cowboy, "~> 1.0"},
-     {:csv, "~> 1.4"}]
+     {:csv, "~> 1.4"},
+     {:phoenix_swagger, "~> 0.4.0"},
+     {:corsica, "~> 0.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
