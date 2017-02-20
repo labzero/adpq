@@ -17,6 +17,7 @@ defmodule Adpq.Router do
   scope "/api", Adpq do
     pipe_through :api
     resources "/catalog_items", CatalogItemController, except: [:new, :edit]
+    resources "/auth", AuthController, only: [:create]
   end
 
   scope "/", Adpq do
