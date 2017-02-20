@@ -12,20 +12,20 @@ const catalog = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.REQUEST_CATALOG:
       return {
+        ...state,
         remoteDataState: RemoteDataStates.LOADING,
-        state
       }
     case ActionTypes.FETCH_CATALOG_SUCCESS:
       return {
+        ...state,
         remoteDataState: RemoteDataStates.LOADED,
         items: action.data,
-        state
       }
     case ActionTypes.FETCH_CATALOG_ERROR:
       return {
+        ...state,
         remoteDataState: RemoteDataStates.ERROR,
         error: action.error,
-        state
       }
     default:
       return state

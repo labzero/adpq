@@ -1,10 +1,19 @@
 import { connect } from 'react-redux';
 import { ItemDetail } from '../components'
+import { fetchCatalogIfNeeded } from '../actions'
+import find from 'lodash/fp/find'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    id: ownProps.params.id
+    item: find({'id': parseInt(ownProps.params.id)}, state.catalog.items),
+    catalog: state.catalog
   }
 }
 
-export default connect(mapStateToProps)(ItemDetail);
+const mapDispatchToProps = dispatch => ({
+  fetchCatalog() {
+    dispatch(fetchCatalogIfNeeded());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDetail);
