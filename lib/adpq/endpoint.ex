@@ -9,7 +9,8 @@ defmodule Adpq.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :adpq, gzip: false,
-    only: ~w(css fonts img images js favicon.ico robots.txt)
+    only: ~w(css fonts img images js favicon.ico robots.txt swagger.json),
+    headers: %{"Access-Control-Allow-Origin" => "*"}
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
