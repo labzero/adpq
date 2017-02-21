@@ -1,6 +1,6 @@
 # Technical Approach
 ## Development Process
-We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All commits should adhere to the guidelines described in our commit guide. Each feature branch is pushed to Github and a pull request is created, built and tested in CircleCI before peer-review is performed by other developers on the team. Upon final approval by the dev lead, the branch will be squash-merged back into develop.
+We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All commits should adhere to the guidelines described in our [commit guide](https://github.com/labzero/guides/blob/master/process/commit_guide.md). Each feature branch is pushed to Github and a pull request is created, built and tested in CircleCI before peer-review is performed by other developers on the team. Upon final approval by the dev lead, the branch will be squash-merged back into develop.
 
 ## CI Process
 PR phase looks for success for all of these steps:
