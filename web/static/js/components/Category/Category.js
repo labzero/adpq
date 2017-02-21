@@ -1,9 +1,9 @@
 import React from "react";
 import { IndexLink } from "react-router"
-import * as RemoteDataStates from '../constants/RemoteDataStates'
-import { CatalogListItem } from './CatalogListItem'
-import { applyFilters, applyRangeFilters } from '../lib/filters'
-import { sortBy } from '../lib/sorts'
+import * as RemoteDataStates from '../../constants/RemoteDataStates'
+import CatalogListItem from '../CatalogListItem/CatalogListItem'
+import { applyFilters, applyRangeFilters } from '../../lib/filters'
+import { sortBy } from '../../lib/sorts'
 import map from 'lodash/fp/map'
 import concat from 'lodash/fp/concat'
 import uniq from 'lodash/fp/uniq'

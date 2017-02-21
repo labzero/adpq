@@ -2,22 +2,19 @@
 import React from "react";
 import { Route, IndexRoute } from "react-router";
 import {
-  AppContainer,
+  App,
   CategoryContainer,
   LoginContainer,
+  Logout,
   ItemDetailContainer,
-  HomepageContainer } from "../containers/index"
-import {
-   Login,
-   Logout,
-   Homepage } from "../components"
+  HomepageContainer } from "../components/index"
 
 const requireAuth = (nextState, replace, callback) => {
   //check auth
   callback();
 }
 
-export default (<Route path="/" component={AppContainer}>
+export default (<Route path="/" component={App}>
   <IndexRoute component={HomepageContainer} onEnter={requireAuth}/>
   <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth}/>
   <Route path="item/:id" component={ItemDetailContainer} onEnter={requireAuth}/>

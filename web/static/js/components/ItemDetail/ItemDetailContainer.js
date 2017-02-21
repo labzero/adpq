@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { ItemDetail } from '../components'
-import { fetchCatalogIfNeeded } from '../actions'
+import ItemDetail from './ItemDetail'
+import { fetchCatalogIfNeeded } from '../../actions'
 import find from 'lodash/fp/find'
 
 const mapStateToProps = (state, ownProps) => {

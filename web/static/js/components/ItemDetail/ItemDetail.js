@@ -1,6 +1,6 @@
 import React from "react"
 import { default as formatCurrency } from "format-currency"
-import * as RemoteDataStates from '../constants/RemoteDataStates'
+import * as RemoteDataStates from '../../constants/RemoteDataStates'
 
 export default class ItemDetail extends React.Component {
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchCatalogIfNeeded } from '../actions'
-import { Category } from '../components';
-import { parseSorts, parseFilters } from '../lib/query'
+import { fetchCatalogIfNeeded } from '../../actions'
+import Category from './Category';
+import { parseSorts, parseFilters } from '../../lib/query'
 import flatten from 'lodash/fp/flatten'
 
 const mapStateToProps = (state, ownProps) => {
