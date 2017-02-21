@@ -1,11 +1,12 @@
 import React from "react";
+import Footer from '../Footer/Footer';
 
 // main layout
 export default class App extends React.Component {
   render() {
     return <div className="container">
 
-      <header className="usa-header usa-header-extended" role="banner">
+      <header className="header usa-header usa-header-extended" role="banner">
         <div className="usa-navbar">
           <button className="usa-menu-btn">Menu</button>
           <div className="usa-logo" id="logo">
@@ -14,17 +15,17 @@ export default class App extends React.Component {
             </em>
           </div>
         </div>
-        <nav role="navigation" className="usa-nav">
+        <nav role="navigation" className="nav usa-nav">
           <div className="usa-nav-inner">
             <button className="usa-nav-close">
             <img src="/images/close.svg" alt="close" />
             </button>
-            <ul className="usa-nav-primary usa-accordion">
+            <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
                 <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-1">
                   <span>Hardware</span>
                 </button>
-                <ul id="side-nav-1" className="usa-nav-submenu">
+                <ul id="side-nav-1" className="nav-submenu usa-nav-submenu">
                   <li><a href="#">Laptops</a>
                     <ul>
                       <li><a href="#">Page title 1</a></li>
@@ -55,7 +56,7 @@ export default class App extends React.Component {
                 <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-2">
                   <span>Software</span>
                 </button>
-                <ul id="side-nav-2" className="usa-nav-submenu">
+                <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
                   <li>
                     <a href="#">Page title</a>
                   </li>
@@ -71,7 +72,7 @@ export default class App extends React.Component {
                 <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-3">
                   <span>Services</span>
                 </button>
-                <ul id="side-nav-3" className="usa-nav-submenu">
+                <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
                   <li>
                     <a href="#">Page title</a>
                   </li>
@@ -99,7 +100,7 @@ export default class App extends React.Component {
                   <button className="usa-header-search-button js-search-button">Search</button>
                 </li>
                 <li>
-                  <a href="#" className="usa-header-cart-button">Cart</a>
+                  <a href="#" className="header-cart-button">Cart</a>
                 </li>
                 <li>
                   <a href="#">Account</a>
@@ -115,6 +116,7 @@ export default class App extends React.Component {
       <div className="usa-grid usa-section">
         {this.props.children}
       </div>
+      <Footer />
     </div>;
   }
 };

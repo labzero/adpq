@@ -22,6 +22,7 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
+        before: ["web/static/css/uswds.css"],
         after: ["web/static/css/app.css"] // concat app.css last
       }
     },
@@ -55,6 +56,12 @@ exports.config = {
       presets: ['es2015', 'es2016', 'es2017', 'stage-1', 'react'],
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    replacement: {
+      replacements: [{
+        files: [/\.css$/],
+        match: {find: '../img/', replace: '/images/'}
+      }]
     }
   },
 
