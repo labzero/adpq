@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme'
-import ItemDetail from 'components/ItemDetail'
+import ItemDetail from 'components/ItemDetail/ItemDetail'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
 
 const item = {

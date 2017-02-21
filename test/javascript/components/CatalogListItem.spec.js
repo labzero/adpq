@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, mount, shallow} from 'enzyme'
-import { CatalogListItem } from 'components/CatalogListItem'
+import CatalogListItem from 'components/CatalogListItem/CatalogListItem'
 
 const item = {
   id: 1,
