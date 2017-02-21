@@ -1,30 +1,29 @@
 import React from 'react';
 import {shallow} from 'enzyme'
-import Homepage from 'components/Homepage'
+import Category from 'components/Category'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
 
-describe('<Homepage/>', () => {
+describe('<Category />', () => {
   let props;
 
   let catalog = {
     remoteDataState: RemoteDataStates.LOADED,
     items: [
-      { id: 1, description: 'Laptop', manufacturer: 'Dell', list_price: 100000 },
-      { id: 2, description: 'Desktop', manufacturer: 'HP', list_price: 200000 }
+      { id: 1, description: 'Laptop', manufacturer: 'Dell', list_price: 100000, category: 'stuff' },
+      { id: 2, description: 'Desktop', manufacturer: 'HP', list_price: 200000, category: 'stuff' }
     ],
-    sorts: [],
-    filters: [],
-    rangeFilters: [],
     error: {}
   }
   beforeEach(() => {
     props = {
-      catalog: catalog
+      catalog: catalog,
+      category: 'stuff',
+      filters: []
     };
   });
 
   it('renders a catalog list item for every item in the catalog', () => {
-    const rendered = shallow(<Homepage { ...props }/>)
+    const rendered = shallow(<Category { ...props }/>)
     expect(rendered.find('CatalogListItem').length).toBe(2)
   })
 
@@ -33,9 +32,11 @@ describe('<Homepage/>', () => {
       catalog: {
         remoteDataState: RemoteDataStates.LOADING,
         catalog
-      }
+      },
+      category: 'stuff',
+      filters: []
     }
-    const rendered = shallow(<Homepage { ...loadingProps }/>)
+    const rendered = shallow(<Category { ...loadingProps }/>)
     expect(rendered.text()).toContain('Loading')
   })
 });

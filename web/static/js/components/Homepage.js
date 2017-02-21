@@ -14,27 +14,11 @@ export default class Homepage extends React.Component {
     this.props.fetchCatalog();
   }
 
-  sortedAndFilteredData() {
-    const items = this.props.catalog.items
-    return sortBy(
-      this.props.sorts,
-      applyRangeFilters(
-        this.props.rangeFilters,
-        applyFilters(
-          this.props.filters, items)))
-  }
   render() {
-    const items = this.sortedAndFilteredData()
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
       return (
         <div>
-          <IndexLink to="/?sort=list_price:desc">Price Desc</IndexLink>
-          <IndexLink to="/?sort=list_price:asc">Price Asc</IndexLink>
-          <IndexLink to="/?filter=manufacturer:dell">Dell</IndexLink>
-          <IndexLink to="/?filter=manufacturer:hp">HP</IndexLink>
-          <ul>
-            {map(item => (<li key={item.id}><CatalogListItem item={item}/></li>), items)}
-          </ul>
+          Homepage content here..
         </div>
       )
     } else {
