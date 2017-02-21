@@ -1,0 +1,96 @@
+.usa-nav .usa-nav-secondary-links .usa-header-search-button {
+  background-image: url(/images/search-alt.svg);
+}
+.usa-nav .usa-header-search-button:hover {
+  background-image: url(/images/search-alt-hover.svg);
+}
+.usa-nav .usa-search.usa-search-small [type="submit"],
+.usa-nav .usa-search.usa-search-small .usa-search-submit {
+  background-image: url(/images/search.svg);
+}
+
+.usa-header-cart-button {
+  background: url(/images/cart-alt.svg) left center no-repeat;
+  background-size: 1.8rem;
+  display: inline-block;
+  padding-left: 1.8rem;
+  width: 1px;
+  overflow: hidden;
+  top: 5px;
+  position: relative;
+}
+.usa-header-cart-button:hover {
+  background-image: url(/images/cart-alt-hover.svg);
+}
+
+.usa-nav .usa-nav-primary .usa-nav-submenu,
+.usa-nav .usa-nav-primary button[aria-expanded=true],
+.usa-nav .usa-nav-primary button[aria-expanded=true]:hover{
+  background-color: #245691;
+}
+.usa-nav .usa-nav-primary button[aria-expanded=true],
+.usa-nav .usa-nav-primary button[aria-expanded=true]:hover {
+  background-image: url(/images/angle-arrow-down-hover.svg);
+}
+.usa-nav .usa-nav-primary button[aria-expanded=false] {
+  background-image: url(/images/angle-arrow-down.svg);
+}
+.usa-nav .usa-nav-primary button[aria-expanded=false]:hover {
+  background-image: url(/images/angle-arrow-down-primary.svg);
+}
+.usa-nav .usa-nav-primary button[aria-expanded=true] span {
+  border-color: #FFF;
+}
+.usa-nav .usa-nav-primary .usa-nav-submenu {
+  width: 97%;
+  position: absolute;
+  left: 16px;
+}
+.usa-nav .usa-nav-primary .usa-nav-submenu li {
+  width: 25%;
+  display: inline-block;
+  font-weight: bold;
+}
+.usa-nav .usa-nav-primary .usa-nav-submenu li a {
+  margin: 0 15px;
+}
+.usa-nav .usa-nav-primary .usa-nav-submenu li ul {
+  padding: 0;
+  margin: 0;
+}
+.usa-nav .usa-nav-primary .usa-nav-submenu li li {
+  width: auto;
+  display: block;
+  font-weight: normal;
+}
+
+
+@media screen and (max-width: 950px) {
+  .usa-nav .usa-header-cart-button {
+    width: auto;
+    padding: 0;
+    background: none;
+  }
+  .usa-nav .usa-nav-primary button[aria-expanded=false],
+  .usa-nav .usa-nav-primary button[aria-expanded=false]:hover {
+    background-image: url(/images/plus-alt.svg);
+  }
+  .usa-nav .usa-nav-primary button[aria-expanded=true],
+  .usa-nav .usa-nav-primary button[aria-expanded=true]:hover {
+    background-image: url(/images/minus-alt.svg);
+  }
+  .usa-nav .usa-nav-primary .usa-nav-submenu,
+  .usa-nav .usa-nav-primary button[aria-expanded=true],
+  .usa-nav .usa-nav-primary button[aria-expanded=true]:hover {
+    background-color: #FFF;
+  }
+  .usa-nav .usa-nav-primary .usa-nav-submenu {
+    width: auto;
+    position: relative;
+    left: 0;
+  }
+  .usa-nav .usa-nav-primary .usa-nav-submenu li {
+    display: block;
+    width: auto;
+  }
+}
