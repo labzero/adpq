@@ -1,6 +1,13 @@
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  services:
+    - docker
 dependencies:
   pre:
     - script/ci/prepare.sh
+  post:
+    - docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-1.amazonaws.com/adpq:$CIRCLE_SHA1 .
   cache_directories:
     - ~/dependencies
     - ~/.mix
@@ -16,6 +23,6 @@ test:
     - script/ci/tests.sh
 deployment:
   production:
-    branch: master
+    branch: develop
     commands:
       - script/ci/deploy-prod.sh
