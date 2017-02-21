@@ -6,7 +6,8 @@ import * as RemoteDataStates from 'constants/RemoteDataStates'
 const item = {
   manufacturer: 'Dell',
   list_price: 10000,
-  description: 'A Laptop'
+  description: 'A Laptop',
+  sku: 'A-BCD'
 }
 
 const LOADING_INDICATOR = "Loading"
@@ -14,7 +15,8 @@ const NOT_FOUND_MESSAGE = "No such item"
 
 it('renders item information if available', () => {
   const props = {
-    item: item,
+    manufacturer: 'DELL',
+    sku: 'A-BCD',
     catalog: {
       items: [item],
     remoteDataState: RemoteDataStates.LOADED
@@ -38,6 +40,8 @@ it('renders a loading indicator if data is not yet loaded', () => {
 
 it('renders an error message if there is no item', () => {
   const props = {
+    manufacturer: 'HP',
+    sku: 'D-457',
     catalog: {
       items: [item],
     remoteDataState: RemoteDataStates.LOADED
