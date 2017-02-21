@@ -1,11 +1,15 @@
 import { connect } from 'react-redux';
 import ItemDetail from './ItemDetail'
 import { fetchCatalogIfNeeded } from '../../actions'
+import { applyFilters, filterByValue } from '../../lib/filters'
 import find from 'lodash/fp/find'
 
 const mapStateToProps = (state, ownProps) => {
+  let manufacturer, sku
+  [manufacturer, sku] = ownProps.params.id.split("|")
   return {
-    item: find({'id': parseInt(ownProps.params.id)}, state.catalog.items),
+    manufacturer: manufacturer,
+    sku: sku,
     catalog: state.catalog
   }
 }

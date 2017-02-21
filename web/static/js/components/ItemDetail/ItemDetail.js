@@ -1,6 +1,7 @@
 import React from "react"
 import { default as formatCurrency } from "format-currency"
 import * as RemoteDataStates from '../../constants/RemoteDataStates'
+import { applyFilters, filterByValue } from '../../lib/filters'
 
 export default class ItemDetail extends React.Component {
 
@@ -8,9 +9,15 @@ export default class ItemDetail extends React.Component {
     this.props.fetchCatalog();
   }
 
+  findItem() {
+    let item
+    [item] = applyFilters([["manufacturer", [this.props.manufacturer]],["sku", [this.props.sku]]], this.props.catalog.items)
+    return item
+  }
+
   render() {
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
-      const item = this.props.item
+      const item = this.findItem()
       if (item) {
         return (<div>
               <ul>
