@@ -1,8 +1,8 @@
 
 import React from "react";
 import { Route, IndexRoute } from "react-router";
-import AppContainer from "../containers/App";
 import {
+  AppContainer,
   CategoryContainer,
   LoginContainer,
   ItemDetailContainer,

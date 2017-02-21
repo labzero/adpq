@@ -1,3 +1,4 @@
+export { default as AppContainer } from './AppContainer'
 export { default as ItemDetailContainer } from './ItemDetailContainer'
 export { default as LoginContainer } from './LoginContainer'
 export { default as MainContainer } from './MainContainer'
