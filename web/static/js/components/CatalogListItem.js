@@ -10,6 +10,7 @@ export const CatalogListItem = ({ item }) => (
         </Link>
       </li>
       <li>{item.manufacturer}</li>
+      <li>{item.category}</li>
       <li>{formatCurrency(item.list_price / 100, { format: '%s%v', symbol: '$' })}</li>
     </ul>
 )
