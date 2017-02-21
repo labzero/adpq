@@ -18,6 +18,7 @@
   1. Install elixir `brew install elixir`
   1. Install mix `mix local.hex`
   1. Create PostgreSQL role `createuser -d adpq`
+  1. To add seed data to your database: `mix run priv/repo/seeds.exs`
 
 ### Linux
 
@@ -29,4 +30,3 @@
   1. Start Phoenix endpoint with `mix phoenix.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
