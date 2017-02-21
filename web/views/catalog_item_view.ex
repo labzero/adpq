@@ -13,6 +13,7 @@ defmodule Adpq.CatalogItemView do
     %{id: catalog_item.id,
       clin: catalog_item.clin,
       unspc: catalog_item.unspc,
+      name: catalog_item.name,
       manufacturer: catalog_item.manufacturer,
       sku: catalog_item.sku,
       description: catalog_item.description,
@@ -21,7 +22,7 @@ defmodule Adpq.CatalogItemView do
       list_price: catalog_item.list_price,
       contract_unit_price: catalog_item.contract_unit_price,
       contract_discount: catalog_item.contract_discount,
-      category: catalog_item.category,
-      super_category: catalog_item.super_category}
+      simple_category: catalog_item.simple_category,
+      top_level_category: catalog_item.top_level_category}
   end
 end
