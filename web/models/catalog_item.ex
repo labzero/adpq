@@ -5,6 +5,7 @@ defmodule Adpq.CatalogItem do
     field :clin, :string
     field :unspc, :string
     field :manufacturer, :string
+    field :name, :string
     field :sku, :string
     field :description, :string
     field :unit_of_measure, :string
@@ -12,8 +13,9 @@ defmodule Adpq.CatalogItem do
     field :list_price, :integer
     field :contract_unit_price, :integer
     field :contract_discount, :integer
-    field :category, :string
-    field :super_category, :string
+    field :long_category, :string
+    field :simple_category, :string
+    field :top_level_category, :string
 
     timestamps()
   end
@@ -23,7 +25,7 @@ defmodule Adpq.CatalogItem do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:clin, :unspc, :manufacturer, :sku, :description, :unit_of_measure, :quantity_in_uom, :list_price, :contract_unit_price, :contract_discount, :category, :super_category])
-    |> validate_required([:clin, :manufacturer, :sku, :description, :unit_of_measure, :quantity_in_uom, :list_price, :contract_unit_price, :contract_discount, :category])
+    |> cast(params, [:clin, :unspc, :manufacturer, :sku, :description, :unit_of_measure, :quantity_in_uom, :list_price, :contract_unit_price, :contract_discount, :name, :long_category, :simple_category, :top_level_category])
+    |> validate_required([:clin, :manufacturer, :sku, :description, :unit_of_measure, :quantity_in_uom, :list_price, :contract_unit_price, :contract_discount, :name, :long_category, :simple_category, :top_level_category])
   end
 end

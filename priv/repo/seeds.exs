@@ -22,6 +22,10 @@ defmodule Adpq.CatalogSeeds do
     |> Enum.each(&insertRow/1)
   end
 
+  def clean do
+    Adpq.Repo.delete_all(CatalogItem)
+  end
+
   defp dollarsToInt(dollars) do
     dollars
     |> String.replace("$", "")
@@ -29,16 +33,37 @@ defmodule Adpq.CatalogSeeds do
     |> String.replace(",", "")
   end
 
+  defp dollarsToInt(dollars) do
+    dollars
+    |> String.replace("$", "")
+    |> String.replace(".", "")
+    |> String.replace(",", "")
+  end
+
+  defp percentToInt(pct) do
+    String.replace(pct, "%", "")
+  end
+
   defp cleanNewlines(text) do
     String.replace(text, ~s(\n\r\n), ~s(\n))
+  end
+
+  defp cleanSku(sku) do
+    [clean] =
+      sku
+      |> String.split(",")
+      |> Enum.take(1)
+    clean
   end
 
   defp fieldMappings do
     %{
       "contract_unit_price" => &dollarsToInt/1,
+      "contract_discount" => &percentToInt/1,
       "list_price" => &dollarsToInt/1,
       "description" => &cleanNewlines/1,
-      "category" => &cleanNewlines/1
+      "long_category" => &cleanNewlines/1,
+      "sku" => &cleanSku/1
     }
   end
 
@@ -49,9 +74,12 @@ defmodule Adpq.CatalogSeeds do
   end
 
   defp insertRow(row) do
-    CatalogItem.changeset(%CatalogItem{}, row)
-    |> Adpq.Repo.insert
+    row =
+      CatalogItem.changeset(%CatalogItem{}, row)
+      |> Adpq.Repo.insert
+    inspect row
   end
+
 end
 
 defmodule Adpq.UserSeeds do
@@ -63,5 +91,6 @@ defmodule Adpq.UserSeeds do
   end
 end
 
+Adpq.CatalogSeeds.clean()
 Adpq.CatalogSeeds.insertRows()
 Adpq.UserSeeds.create_admin()
