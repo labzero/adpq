@@ -11,8 +11,9 @@
 # and so on) as they will fail if something goes wrong.
 
 defmodule Adpq.CatalogSeeds do
-  alias Ecto.Repo
+  alias Adpq.Repo
   alias Adpq.CatalogItem
+  import Ecto.Query
 
   def insertRows do
     'priv/repo/catalog.csv'
@@ -74,12 +75,17 @@ defmodule Adpq.CatalogSeeds do
   end
 
   defp insertRow(row) do
-    row =
-      CatalogItem.changeset(%CatalogItem{}, row)
-      |> Adpq.Repo.insert
-    inspect row
+    sku = row["sku"]
+    exists =
+      CatalogItem
+      |> where(sku: ^sku)
+      |> Repo.one
+    case exists do
+      %CatalogItem{} -> IO.puts("SKU #{sku} already exists. Skipping..")
+      _ -> row = Adpq.Repo.insert(CatalogItem.changeset(%CatalogItem{}, row))
+          inspect row
+    end
   end
-
 end
 
 defmodule Adpq.UserSeeds do
