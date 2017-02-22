@@ -23,22 +23,24 @@ deploy_cluster() {
         echo "Error updating service."
         return 1
     fi
-
-    # wait for older revisions to disappear
-    # not really necessary, but nice for demos
-    for attempt in {1..30}; do
-        if stale=$(aws ecs describe-services --cluster QDPQ --services adpq-web | \
-                       $JQ ".services[0].deployments | .[] | select(.taskDefinition != \"$revision\") | .taskDefinition"); then
-            echo "Waiting for stale deployments:"
-            echo "$stale"
-            sleep 5
-        else
-            echo "Deployed!"
-            return 0
-        fi
-    done
-    echo "Service update took too long."
-    return 1
+    # Skip stale version check. remove this and uncomment below if desired
+    echo "Deployed!"
+    return 0
+    # # wait for older revisions to disappear
+    # # not really necessary, but nice for demos
+    # for attempt in {1..30}; do
+    #     if stale=$(aws ecs describe-services --cluster QDPQ --services adpq-web | \
+    #                    $JQ ".services[0].deployments | .[] | select(.taskDefinition != \"$revision\") | .taskDefinition"); then
+    #         echo "Waiting for stale deployments:"
+    #         echo "$stale"
+    #         sleep 5
+    #     else
+    #         echo "Deployed!"
+    #         return 0
+    #     fi
+    # done
+    # echo "Service update took too long."
+    # return 1
 }
 
 make_task_def(){
