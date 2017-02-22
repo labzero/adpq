@@ -1,3 +1,4 @@
+export { default as AccountContainer } from "./Account/AccountContainer"
 export { default as App } from "./App/App"
 export { default as HomepageContainer } from "./Homepage/HomepageContainer"
 export { default as ItemDetailContainer } from "./ItemDetail/ItemDetailContainer"
