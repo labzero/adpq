@@ -52,6 +52,7 @@ defmodule Adpq.Web do
       import Adpq.Router.Helpers
       import Adpq.ErrorHelpers
       import Adpq.Gettext
+
     end
   end
 
