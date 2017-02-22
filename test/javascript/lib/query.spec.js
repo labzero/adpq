@@ -13,8 +13,8 @@ describe('parseFilters', () => {
   })
 
   it('parses multiple filters', () => {
-    const param = ["manufacturer:dell,hp", "category:thin client"]
-    expect(parseFilters(param)).toEqual([["manufacturer", ["dell", "hp"]], ["category", ["thin client"]]])
+    const param = ["manufacturer:dell,hp", "simple_category:thin client"]
+    expect(parseFilters(param)).toEqual([["manufacturer", ["dell", "hp"]], ["simple_category", ["thin client"]]])
   })
 
   it('does not parse filters with invalid field names', () => {

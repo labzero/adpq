@@ -29,6 +29,7 @@
     width: 25%;
     display: inline-block;
     font-weight: bold;
+    vertical-align: top;
   }
   .nav .nav-primary .nav-submenu li li {
     width: auto;
@@ -38,14 +39,5 @@
   }
   .nav .nav-primary .nav-submenu li li a {
     color: #cee5ef;
-  }
-}
-
-@media screen and (max-width: 950px) {
-  .nav .nav-primary .nav-submenu li {
-    font-weight: bold;
-  }
-  .nav .nav-primary .nav-submenu li li {
-    font-weight: normal;
   }
 }

@@ -8,8 +8,8 @@ import { DIRECTIONS } from './sorts'
 const FIELD_DELIMITER = ':'
 const VALUE_DELIMITER = ','
 
-const validSortFields = ['list_price', 'category', 'manufacturer']
-const validFilterFields = ['category', 'manufacturer']
+const validSortFields = ['list_price', 'simple_category', 'manufacturer']
+const validFilterFields = ['simple_category', 'manufacturer']
 const validRangeFields = ['list_price']
 
 const validSort = ([field, direction]) => (
