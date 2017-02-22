@@ -7,7 +7,7 @@ defmodule Adpq.User do
     field :name, :string
     field :password, :string
     field :role, :string
-
+    has_many :cart_items, Adpq.CartItem
     timestamps()
   end
 

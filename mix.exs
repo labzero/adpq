@@ -24,6 +24,7 @@ defmodule Adpq.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
+  defp elixirc_paths(:dev), do: ["lib", "web", "test/support"] # So we can have factories in iex
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   # Specifies your project dependencies.
@@ -41,7 +42,8 @@ defmodule Adpq.Mixfile do
      {:cowboy, "~> 1.0"},
      {:csv, "~> 1.4"},
      {:phoenix_swagger, "~> 0.4.0"},
-     {:corsica, "~> 0.5"}]
+     {:corsica, "~> 0.5"},
+     {:ex_machina, "~> 1.0", only: [:dev, :test]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
