@@ -65,13 +65,10 @@ const Header = () => (
             </button>
             <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
               <li>
-                <a href="#">Page title</a>
+                <a href="/category/Software?filter=simple_category:Design">Design</a>
               </li>
               <li>
-                <a href="#">Page title</a>
-              </li>
-              <li>
-                <a href="#">Page title</a>
+                <a href="/category/Software?filter=simple_category:Productivity">Productivity</a>
               </li>
             </ul>
           </li>
