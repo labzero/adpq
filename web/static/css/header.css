@@ -1,0 +1,20 @@
+.header-cart-button {
+  background: url(/images/cart-alt.svg) left center no-repeat;
+  background-size: 1.8rem;
+  padding-left: 1.8rem;
+  width: 1px;
+  overflow: hidden;
+  top: 5px;
+  position: relative;
+}
+.header-cart-button:hover {
+  background-image: url(/images/cart-alt-hover.svg);
+}
+
+@media screen and (max-width: 950px) {
+  .header .header-cart-button {
+    width: auto;
+    padding: 0;
+    background: none;
+  }
+}

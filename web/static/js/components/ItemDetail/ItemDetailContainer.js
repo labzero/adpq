@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { ItemDetail } from '../components'
-import { fetchCatalogIfNeeded } from '../actions'
-import { applyFilters, filterByValue } from '../lib/filters'
+import ItemDetail from './ItemDetail'
+import { fetchCatalogIfNeeded } from '../../actions'
+import { applyFilters, filterByValue } from '../../lib/filters'
 import find from 'lodash/fp/find'
 
 const mapStateToProps = (state, ownProps) => {

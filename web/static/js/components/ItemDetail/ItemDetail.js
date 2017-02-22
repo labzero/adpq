@@ -1,8 +1,7 @@
 import React from "react"
 import { default as formatCurrency } from "format-currency"
-import * as RemoteDataStates from '../constants/RemoteDataStates'
-import { applyFilters, filterByValue } from '../lib/filters'
-
+import * as RemoteDataStates from '../../constants/RemoteDataStates'
+import { applyFilters, filterByValue } from '../../lib/filters'
 
 export default class ItemDetail extends React.Component {
 

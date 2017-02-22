@@ -18,9 +18,9 @@ import 'uswds'
 import React from "react";
 import ReactDOM from "react-dom";
 
-import MainContainer from "./containers/MainContainer";
+import Main from "./components/Main";
 
-ReactDOM.render(<MainContainer />, document.getElementById("index"));
+ReactDOM.render(<Main />, document.getElementById("index"));
 
 // Import local files
 //

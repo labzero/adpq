@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from "../store";
 import routes from "../routes";
 
-export default class MainContainer extends React.Component {
+export default class Main extends React.Component {
   render() {
     const store = configureStore();
     const history = syncHistoryWithStore(browserHistory, store)
