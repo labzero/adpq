@@ -81,13 +81,7 @@ const Header = () => (
             </button>
             <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
               <li>
-                <a href="#">Page title</a>
-              </li>
-              <li>
-                <a href="#">Page title</a>
-              </li>
-              <li>
-                <a href="#">Page title</a>
+                <a href="/category/Services?filter=simple_category:Support">Support</a>
               </li>
             </ul>
           </li>
