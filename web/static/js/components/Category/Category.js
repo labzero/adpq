@@ -17,7 +17,7 @@ export default class Category extends React.Component {
 
   sortedAndFilteredData() {
     const items = this.props.catalog.items
-    const filters = concat([['category', [this.props.category]]], this.props.filters)
+    const filters = concat([['top_level_category', [this.props.category]]], this.props.filters)
     return sortBy(
       this.props.sorts,
       applyRangeFilters(

@@ -9,8 +9,8 @@ describe('<Category />', () => {
   let catalog = {
     remoteDataState: RemoteDataStates.LOADED,
     items: [
-      { id: 1, description: 'Laptop', manufacturer: 'Dell', list_price: 100000, category: 'stuff' },
-      { id: 2, description: 'Desktop', manufacturer: 'HP', list_price: 200000, category: 'stuff' }
+      { id: 1, description: 'Laptop', manufacturer: 'Dell', list_price: 100000, top_level_category: 'stuff' },
+      { id: 2, description: 'Desktop', manufacturer: 'HP', list_price: 200000, top_level_category: 'stuff' }
     ],
     error: {}
   }
