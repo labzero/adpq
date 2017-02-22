@@ -6,7 +6,6 @@ import flatten from 'lodash/fp/flatten'
 
 const mapStateToProps = (state, ownProps) => {
   const query = ownProps.location.query
-  console.log("param " + ownProps.params.name)
   return {
     catalog: state.catalog,
     sorts: parseSorts(asArray(query.sort)),

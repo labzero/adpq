@@ -7,8 +7,12 @@ defmodule Adpq.CartItemControllerTest do
   setup %{conn: conn} do
     user = insert(:user)
     catalog_item = insert(:catalog_item)
+    conn =
+      conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", user.name)
     %{
-      conn: put_req_header(conn, "accept", "application/json"),
+      conn: conn,
       user: user,
       items: insert_list(3, :cart_item, %{user: user, catalog_item: catalog_item}),
       catalog_item: catalog_item
@@ -53,7 +57,7 @@ defmodule Adpq.CartItemControllerTest do
   end
 
   test "it deletes the resource", %{conn: conn, user: user, items: [item | _]} do
-    conn = delete conn, user_cart_item_path(conn, :update, user.id, item.id)    
+    conn = delete conn, user_cart_item_path(conn, :update, user.id, item.id)
     assert conn.status == 204
     refute Repo.get(CartItem, item.id)
   end

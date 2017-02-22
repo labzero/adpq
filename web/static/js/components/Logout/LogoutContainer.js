@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import Login from './Login'
+import Logout from './Logout'
 import { loginUser } from '../../actions'
 
 const mapStateToProps = (state, ownProps) => {
-  const query = ownProps.location.query
   return {
-    next: query.next
+    user: state.user
   }
 }
 

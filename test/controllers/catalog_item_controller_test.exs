@@ -1,5 +1,6 @@
 defmodule Adpq.CatalogItemControllerTest do
   use Adpq.ConnCase
+  import Adpq.Factory
 
   alias Adpq.CatalogItem
   @valid_attrs %{
@@ -21,7 +22,12 @@ defmodule Adpq.CatalogItemControllerTest do
   @invalid_attrs %{}
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    user = insert(:user)
+    conn =
+      conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", user.name)
+    %{conn: put_req_header(conn, "accept", "application/json")}
   end
 
   test "lists all entries on index", %{conn: conn} do

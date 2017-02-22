@@ -3,7 +3,7 @@ defmodule Adpq.AuthController do
 
   alias Adpq.{User, Repo}
 
-  def create(conn, %{"name" => username, "password" => "user"} = params) do
+  def create(conn, %{"name" => _, "password" => "user"} = params) do
     user = User.find_or_create_by_name(Map.put(params, "role", "USER"))
     render(conn, "show.json", auth: user)
   end
