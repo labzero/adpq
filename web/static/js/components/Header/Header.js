@@ -13,7 +13,7 @@ const Header = () => (
     <nav role="navigation" className="nav usa-nav">
       <div className="usa-nav-inner">
         <button className="usa-nav-close">
-        <img src="/images/close.svg" alt="close" />
+          <img src="/images/close.svg" alt="close" />
         </button>
         <ul className="nav-primary usa-nav-primary usa-accordion">
           <li>
