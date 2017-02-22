@@ -6,9 +6,6 @@
 .nav .nav-primary button[aria-expanded=true] span {
   border-color: #FFF;
 }
-.nav .nav-primary .nav-submenu li a {
-  margin: 0 15px;
-}
 .nav .nav-primary .nav-submenu li ul {
   padding: 0;
   margin: 0;
@@ -26,7 +23,7 @@
   }
   .nav .nav-primary .nav-submenu {
     left: 16px;
-    right: 0;
+    right: 16px;
   }
   .nav .nav-primary .nav-submenu li {
     width: 25%;
@@ -36,5 +33,11 @@
   }
   .nav .nav-primary .nav-submenu li li {
     width: auto;
+  }
+  .nav .nav-primary .nav-submenu li a {
+    margin: 0 15px;
+  }
+  .nav .nav-primary .nav-submenu li li a {
+    color: #cee5ef;
   }
 }
