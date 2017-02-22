@@ -22,7 +22,7 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        before: ["web/static/css/uswds.css"],
+        before: ["web/static/css/uswds.css", "web/static/css/uswds-overrides.css"],
         after: ["web/static/css/app.css"] // concat app.css last
       }
     },
