@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # NOTE: Keep in mind that this script does not verify the shasum of the downloads.
 
