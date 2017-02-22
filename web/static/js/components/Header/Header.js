@@ -110,7 +110,7 @@ const Header = () => (
               <a href="#" className="header-cart-button">Cart</a>
             </li>
             <li>
-              <a href="#">Account</a>
+              <a href="/account">Account</a>
             </li>
             <li>
               <a href="#">Logout</a>
