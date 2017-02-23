@@ -98,7 +98,7 @@ const Header = () => (
               <button className="usa-header-search-button js-search-button">Search</button>
             </li>
             <li>
-              <a href="#" className="header-cart-button">Cart</a>
+              <a href="#" className="header-cart-button"><span>Cart</span> &nbsp; <span className="count"></span></a>
             </li>
             <li>
               <a href="/account">Account</a>

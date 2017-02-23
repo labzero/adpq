@@ -1,0 +1,77 @@
+.homepage {
+  margin-bottom: 6rem;
+}
+
+.recommendations {
+  padding: 2.35765% 0 4.5%;
+  float: left;
+  width: 100%;
+  border-top: 2px solid #d7d8db;
+}
+
+.recommendations h4 {
+  padding-top: 10px;
+}
+
+.recommendations p {
+  margin: 0;
+}
+
+.recommendation {
+  border: 1px solid #d6d7d9;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.recommendation:hover,
+.recommendation:hover .recommendation-details {
+  border-color: #0071bc;
+}
+
+.recommendation img {
+  width: 100%;
+}
+
+.recommendation-details {
+  border-top: 1px solid #d6d7d9;
+  padding: 18px;
+  font-size: 16px;
+  color: #494440;
+  min-height: 100px;
+}
+
+.recommendation-category {
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-bottom: 5px;
+  color: #323a44;
+}
+
+@media screen and (max-width:1200px) {
+  .recommendations .usa-width-one-half {
+    width: 100%;
+  }
+  .recommendations .usa-width-one-fourth {
+    margin-right: 4.5%;
+  }
+  .recommendations .usa-width-one-fourth:last-child {
+    margin-right: 0;
+  }
+  .recommendations p {
+    padding: 0 0 20px 0;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .recommendations .usa-width-one-fourth {
+    margin-right: 0;
+  }
+  .recommendations .usa-width-one-fourth {
+    margin-bottom: 4.82916%;
+    margin-top: 0;
+  }
+  .recommendation-details {
+    min-height: 1px;
+  }
+}
