@@ -26,3 +26,6 @@ deployment:
     branch: develop
     commands:
       - script/ci/deploy-prod.sh
+general:
+  artifacts:
+    - /opt/app/npm-debug.log
