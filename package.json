@@ -23,7 +23,7 @@
     "reactable": "^0.14.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "uswds": "~0.14.0"
+    "uswds": "^0.14.0"
   },
   "jest": {
     "transform": {
@@ -57,6 +57,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "replacement-brunch": "^2.0.4",
+    "sass-brunch": "^2.10.4",
     "uglify-js-brunch": "~2.0.1"
   }
 }

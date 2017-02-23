@@ -1,0 +1,41 @@
+@import 'utilities';
+@import 'variables';
+
+.logo-container {
+  float: left;
+  margin: .5rem;
+}
+
+.logo-department {
+  font-size: $h6-font-size;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logo {
+  margin-left: 0;
+
+  a {
+    color: $color-white;
+  }
+}
+
+.logo-text {
+  line-height: 1;
+}
+
+@include media($nav-width) {
+  .logo-container {
+    margin: 0;
+  }
+
+  .logo-department {
+    line-height: initial;
+    margin-top: 2rem;
+  }
+
+  .header .logo {
+    margin: 2.5rem 0 2rem;
+  }
+}

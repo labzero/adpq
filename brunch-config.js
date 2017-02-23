@@ -22,8 +22,8 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        before: ["web/static/css/uswds.css", "web/static/css/uswds-overrides.css"],
-        after: ["web/static/css/app.css"] // concat app.css last
+        before: ["node_modules/uswds/dist/css/uswds.css", "web/static/css/uswds-bugfixes.css"],
+        after: ["web/static/css/app.scss"] // concat app.css last
       }
     },
     templates: {
@@ -42,6 +42,7 @@ exports.config = {
   paths: {
     // Dependencies and current project directories to watch
     watched: [
+      "node_modules/uswds/dist/css/",
       "web/static",
       "test/static"
     ],

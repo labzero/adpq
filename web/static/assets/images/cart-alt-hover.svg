@@ -1,8 +1,0 @@
-<svg width="22px" height="21px" viewBox="127 0 22 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs></defs>
-  <g id="cart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(127.000000, 0.000000)">
-    <ellipse id="Oval" fill="#0071bc" fill-rule="nonzero" cx="7.63636364" cy="18.0952381" rx="1.90909091" ry="1.9047619"></ellipse>
-    <ellipse id="Oval" fill="#0071bc" fill-rule="nonzero" cx="17.1818182" cy="18.0952381" rx="1.90909091" ry="1.9047619"></ellipse>
-    <path d="M5.72727273,4.76190476 L4.77272727,0 L0,0 L0,1.9047619 L3.24545455,1.9047619 L5.72727273,14.2857143 L19.0909091,14.2857143 L21,4.76190476 L5.72727273,4.76190476 Z M7.25454545,12.3809524 L6.10909091,6.66666667 L18.7090909,6.66666667 L17.5636364,12.3809524 L7.25454545,12.3809524 Z" id="Shape" fill="#0071bc" fill-rule="nonzero"></path>
-  </g>
-</svg>
