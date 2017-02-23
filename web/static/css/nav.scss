@@ -1,3 +1,5 @@
+@import 'variables';
+
 .nav .nav-primary .nav-submenu,
 .nav .nav-primary button[aria-expanded=true],
 .nav .nav-primary button[aria-expanded=true]:hover {
@@ -39,5 +41,11 @@
   }
   .nav .nav-primary .nav-submenu li li a {
     color: #cee5ef;
+  }
+
+  .nav-secondary-links {
+    a {
+      color: $color-white;
+    }
   }
 }

@@ -4,10 +4,15 @@ const Header = () => (
   <header className="header usa-header usa-header-extended" role="banner">
     <div className="usa-navbar">
       <button className="usa-menu-btn">Menu</button>
-      <div className="usa-logo" id="logo">
-        <em className="usa-logo-text">
-          <a href="/" accessKey="1" title="Home" aria-label="Home">CDT Tech Shop</a>
-        </em>
+      <div className="logo-container">
+        <div className="logo-department">
+          California Department of Technology
+        </div>
+        <div className="logo usa-logo" id="logo">
+          <em className="logo-text usa-logo-text">
+            <a href="/" accessKey="1" title="Home" aria-label="Home">Tech Shop</a>
+          </em>
+        </div>
       </div>
     </div>
     <nav role="navigation" className="nav usa-nav">
@@ -84,19 +89,7 @@ const Header = () => (
           </li>
         </ul>
         <div className="usa-nav-secondary">
-          <form className="usa-search usa-search-small js-search-form">
-            <div role="search">
-              <label className="usa-sr-only" htmlFor="search-field-small">Search small</label>
-              <input id="search-field-small" type="search" name="search"/>
-              <button type="submit">
-                <span className="usa-sr-only">Search</span>
-              </button>
-            </div>
-          </form>
-          <ul className="usa-unstyled-list usa-nav-secondary-links">
-            <li className="js-search-button-container">
-              <button className="usa-header-search-button js-search-button">Search</button>
-            </li>
+          <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
             <li>
               <a href="#" className="header-cart-button">Cart</a>
             </li>

@@ -1,5 +1,0 @@
-/* Styleguide bugfixes only. */
-
-.usa-width-one-third:nth-child(3n) {
-  margin-right: 0;
-}
