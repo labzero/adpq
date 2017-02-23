@@ -7,6 +7,9 @@ dependencies:
   pre:
     - script/ci/prepare.sh
   post:
+    - if [[ ! -e sassc ]]; then git clone git@github.com:sass/sassc.git sassc; fi
+    - if [[ ! -e libsass ]]; then git clone --recursive git@github.com:sass/libsass.git && cd sassc && export SASS_LIBSASS_PATH=$(readlink -f ../libsass) && make && cd ..; fi
+    - ln -s sassc/bin/sassc ~/bin/sassc 
     - docker build --rm=false -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-1.amazonaws.com/adpq:$CIRCLE_SHA1 .
   cache_directories:
     - ~/dependencies
@@ -14,6 +17,8 @@ dependencies:
     - _build
     - deps
     - node_modules
+    - sassc
+    - libsass
 database:
   override:
     - createuser -d adpq
