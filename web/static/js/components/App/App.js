@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render() {
     return <div className="container">
       <Header />
-      <div className="usa-grid usa-section">
+      <div className="content">
         {this.props.children}
       </div>
       <Footer />

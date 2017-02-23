@@ -1,1 +1,33 @@
 /* This file is for your main application css. */
+
+h1, h2, h3, h4 {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+}
+
+h2 {
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  font-size: 40px;
+}
+
+h4 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.subsection {
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.subheading {
+  font-size: 20px;
+  margin: 0;
+}
+
+.loading {
+  padding: 20px;
+  text-align: center;
+}
