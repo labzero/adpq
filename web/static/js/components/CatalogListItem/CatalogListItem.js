@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import { default as formatCurrency } from "format-currency"
+import currencyFormatter from 'currency-formatter'
 
 const CatalogListItem = ({ item }) => (
   <ul>
@@ -11,7 +11,7 @@ const CatalogListItem = ({ item }) => (
     </li>
     <li>{item.manufacturer}</li>
     <li>{item.category}</li>
-    <li>{formatCurrency(item.list_price / 100, { format: '%s%v', symbol: '$' })}</li>
+    <li>{currencyFormatter.format(item.list_price / 100, { code: 'USD' })}</li>
   </ul>
 );
 
