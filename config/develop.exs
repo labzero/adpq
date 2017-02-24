@@ -9,21 +9,9 @@ use Mix.Config
 config :adpq, Adpq.Endpoint,
   http: [port: {:system, "PORT"}],
   debug_errors: true,
-  code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
+  cache_static_manifest: "priv/static/manifest.json"
 
-# Watch static and templates for browser reloading.
-config :adpq, Adpq.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
-      ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex)$}
-    ]
-  ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
