@@ -13,10 +13,10 @@ const RecommendedItems = ({title, subtitle, items}) => (
       items.map((item, i) => (
               <div className="usa-width-one-fourth homepage-recommendation" key={i}>
                 <Link to={`/item/${item.id}`}>
-                  <img src={`${item.image}`} />
+                  <img src={`${item.image}`} alt={item.name}/>
                   <div className="homepage-recommendation-details">
                     <div className="homepage-recommendation-category">{item.top_level_category}</div>
-                    {item.description}
+                    {item.name}
                   </div>
                 </Link>
               </div>

@@ -10,12 +10,12 @@ const example = {
     {
       id: 1,
       top_level_category: 'Laptop',
-      description: 'ZBook15',
+      name: 'ZBook15',
       image: '/images/placeholder-01.jpg'
     },{
       id: 2,
       top_level_category: 'Desktop',
-      description: 'Workstation',
+      name: 'Workstation',
       image: '/images/placeholder-01.jpg'
     }
   ]
@@ -44,7 +44,7 @@ it('renders without a title', () => {
   expect(rendered.text()).toContain('Desktop')
 })
 
-it('renders without a sutitle', () => {
+it('renders without a subtitle', () => {
 
   const rendered = render(<RecommendedItems items={example.items} />)
 

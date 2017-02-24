@@ -17,50 +17,49 @@ export default class Homepage extends React.Component {
   render() {
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
       return (
-        <div className="homepage">
+        <div className="usa-grid homepage">
           
-          <div className="usa-grid usa-section">
+          <div className="usa-section">
             <h2>Desktop or laptop?</h2>
             <p className="subheading">Options and pricing for every hardware need.</p>
           </div>
 
-          <div className="usa-grid">
+          <div>
             <h3 className="subsection">Popular Configurations</h3>
 
             <RecommendedItems
                 title="Everyday Computing"
                 subtitle="Good all-around systems for most business tasks."
                 items={[
-                  {id: 1, top_level_category: 'Laptop', description: 'HP Power Laptop 600 G2 SFF Business PC', image: '/images/products/everyday-computing-hp-laptop.jpg'},
-                  {id: 2, top_level_category: 'Desktop', description: 'Dell Optiplex 3040 MT', image: '/images/products/everyday-computing-dell-desktop.jpg'}
+                  {id: 1, top_level_category: 'Laptop', name: 'HP Power Laptop 600 G2 SFF Business PC', image: '/images/products/everyday-computing-hp-laptop.jpg'},
+                  {id: 2, top_level_category: 'Desktop', name: 'Dell Optiplex 3040 MT', image: '/images/products/everyday-computing-dell-desktop.jpg'}
                 ]} />
 
             <RecommendedItems
                 title="Powerhouse"
                 subtitle="Performance systems that can handle intensive tasks."
                 items={[
-                  {id: 3, top_level_category: 'Laptop', description: 'ZBook15 Studio Mobile Workstation', image: '/images/products/powerhouse-hp-laptop.jpg'},
-                  {id: 4, top_level_category: 'Desktop', description: 'Dell Precision T5810', image: '/images/products/powerhouse-dell-desktop.jpg'}
+                  {id: 3, top_level_category: 'Laptop', name: 'ZBook15 Studio Mobile Workstation', image: '/images/products/powerhouse-hp-laptop.jpg'},
+                  {id: 4, top_level_category: 'Desktop', name: 'Dell Precision T5810', image: '/images/products/powerhouse-dell-desktop.jpg'}
                 ]} />
 
             <RecommendedItems
                 title="Great for Travel"
                 subtitle="Lightweight, secure, premium laptop with extended warranty."
                 items={[
-                  {id: 1, top_level_category: 'Laptop', description: 'Dell Latitude E7270', image: '/images/products/travel-dell.jpg'}
+                  {id: 1, top_level_category: 'Laptop', name: 'Dell Latitude E7270', image: '/images/products/travel-dell.jpg'}
                 ]} />
 
             <RecommendedItems
                 title="Thin Client"
                 subtitle="An integrated solution combining security and easy management."
                 items={[
-                  {id: 2, top_level_category: 'Desktop', description: 'HP T620 Flexible Series', image: '/images/products/thin-client-hp.jpg'}
+                  {id: 2, top_level_category: 'Desktop', name: 'HP T620 Flexible Series', image: '/images/products/thin-client-hp.jpg'}
                 ]} />
 
-
-            <a href="#top" className="return-to-top">Return to top</a>
           </div>
 
+          <div className="return-to-top"><a href="#top">Return to top</a></div>
         </div>
       )
     } else {
