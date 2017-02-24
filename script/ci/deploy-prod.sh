@@ -6,8 +6,6 @@ JQ="jq --raw-output --exit-status"
 export MIX_ENV="prod"
 export PATH="$HOME/dependencies/erlang/bin:$HOME/dependencies/elixir/bin:$PATH"
 
-ECR_URL=$AWS_ACCOUNT_ID.dkr.ecr.us-west-1.amazonaws.com/adpq:$CIRCLE_SHA1
-
 configure_aws_cli(){
   aws --version
   aws configure set default.region us-west-1
@@ -20,7 +18,7 @@ deploy_cluster() {
 
     make_task_def
     register_definition
-    if [[ $(aws ecs update-service --cluster ADPQ --service adpq-web --task-definition $revision | \
+    if [[ $(aws ecs update-service --cluster ADPQ-PROD --service adpq-web --task-definition $revision | \
                    $JQ '.service.taskDefinition') != $revision ]]; then
         echo "Error updating service."
         return 1
@@ -49,7 +47,7 @@ make_task_def(){
   task_template='[
     {
       "name": "adpq-web",
-      "image": "%s.dkr.ecr.us-west-1.amazonaws.com/adpq-web:%s",
+      "image": "%s.dkr.ecr.us-west-1.amazonaws.com/adpq:%s",
       "essential": true,
       "memory": 200,
       "cpu": 10,
@@ -59,16 +57,25 @@ make_task_def(){
           "hostPort": 80,
           "protocol": "tcp"
         }
+      ],
+      "environment": [
+        {
+          "name": "MIX_ENV",
+          "value": "%s"
+        },
+        {
+          "name": "RDS_PASSWORD",
+          "value": "%s"
+        }
       ]
     }
   ]'
-  
-  task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1)
+  task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1 $MIX_ENV $RDS_PRODUCTION_PASSWORD)
 }
 
 push_ecr_image(){
   eval $(aws ecr get-login --region us-west-1)
-  docker push $ECR_URL
+  docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-1.amazonaws.com/adpq:$CIRCLE_SHA1
 }
 
 register_definition() {
@@ -81,8 +88,7 @@ register_definition() {
     fi
 
 }
-
-docker build --rm=false -t $ECR_URL .
 configure_aws_cli
+docker build --rm=false --build-arg MIX_ENV=prod --build-arg RDS_PASSWORD=$RDS_PRODUCTION_PASSWORD -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-1.amazonaws.com/adpq:$CIRCLE_SHA1 .
 push_ecr_image
 deploy_cluster
