@@ -11,10 +11,11 @@ defmodule Adpq.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug Corsica, origins: "*"
   end
 
   scope "/api", Adpq do
+    pipe_through :api
+    resources "/swagger_docs", SwaggerDocsController, only: [:index]
     resources "/auth", AuthController, only: [:create]
     scope "/" do # protected routes
       pipe_through [:api, Adpq.LoadUser, Adpq.EnsureUser]
@@ -32,6 +33,17 @@ defmodule Adpq.Router do
 
   def swagger_info do
     %{
+      securityDefinitions: %{
+        ApiToken: %{
+          type: "apiKey",
+          name: "Authorization",
+          in: "header",
+          description: "API Operations require a valid token."
+        }
+      },
+      security: [
+        %{ApiToken: []}
+      ],
       info: %{
         version: "0.1",
         title: "Lab Zero - ADPQ",
