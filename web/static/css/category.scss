@@ -1,0 +1,14 @@
+@import 'variables';
+
+.category-count {
+  font-style: italic;
+}
+
+.category-filter-section {
+  border-top: 1px solid $color-gray-light;
+  margin: 2rem 0 3rem;
+}
+
+.category-filter-section-heading {
+  font-size: $h4-font-size;
+}

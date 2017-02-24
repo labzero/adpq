@@ -17,8 +17,18 @@ describe('<Category />', () => {
   beforeEach(() => {
     props = {
       catalog: catalog,
-      category: 'stuff',
-      filters: []
+      category: {
+        name: 'stuff',
+        fields: {
+          simple_category: [],
+          manufacturer: []
+        }
+      },
+      fetchCatalog: () => {},
+      filters: [],
+      push: () => {},
+      rangeFilters: [],
+      sorts: []
     };
   });
 
@@ -28,15 +38,11 @@ describe('<Category />', () => {
   })
 
   it('renders a loading message if the data is not loaded yet', () => {
-    let loadingProps = {
-      catalog: {
-        remoteDataState: RemoteDataStates.LOADING,
-        catalog
-      },
-      category: 'stuff',
-      filters: []
-    }
-    const rendered = shallow(<Category { ...loadingProps }/>)
+    props.catalog = {
+      remoteDataState: RemoteDataStates.LOADING,
+      catalog
+    };
+    const rendered = shallow(<Category { ...props }/>)
     expect(rendered.text()).toContain('Loading')
   })
 });
