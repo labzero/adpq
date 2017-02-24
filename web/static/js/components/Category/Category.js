@@ -107,6 +107,7 @@ export default class Category extends Component {
               {this.renderFilterSection('Brands', 'manufacturer')}
             </aside>
             <main className="usa-width-three-fourths">
+              <div className="category-sort-section">&nbsp;</div>
               <ul className="usa-unstyled-list">
                 {items.map(item => <li className="category-item" key={item.id}><Item item={item} link={true} /></li>)}
               </ul>
