@@ -3,10 +3,6 @@
 .header {
   background: $color-gray;
   color: $color-white;
-  a:hover {
-    color: $color-white;
-    text-decoration: underline;
-  }
   .header-cart-button {
     span.count {
       display: inline;
@@ -18,6 +14,12 @@
 }
 
 @media screen and (min-width: $nav-width) {
+  .header {
+    a:hover {
+      color: $color-white;
+      text-decoration: underline;
+    }
+  }
   .header-cart-button {
     background: url(/images/cart-alt.svg) left center no-repeat;
     background-size: 1.8rem;
