@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { Link } from "react-router"
 import * as RemoteDataStates from '../../constants/RemoteDataStates'
-import CatalogListItem from '../CatalogListItem/CatalogListItem'
+import Item from '../Item/Item';
 import { applyFilters, applyRangeFilters } from '../../lib/filters'
 import { generateQuery } from '../../lib/query'
 import { sortBy } from '../../lib/sorts'
@@ -79,7 +79,7 @@ export default class Category extends Component {
 
     return (
       <div className="category-filter-section">
-        <h2 className="category-filter-section-heading">{title}</h2>
+        <h3 className="category-filter-section-heading">{title}</h3>
         <ul className="usa-fieldset-inputs usa-unstyled-list">
           {category.fields[field].map(value => (<li key={value}>
             <input id={`${field}_${value}`} type="checkbox" checked={filterValues.indexOf(value.toLowerCase()) !== -1} onChange={this.toggleFilter(field, value)} />
@@ -96,8 +96,10 @@ export default class Category extends Component {
       const items = this.sortedAndFilteredData();
       
       return (
-        <div className="usa-section">
-          <h1>{category.name}</h1>
+        <div className="usa-grid">
+          <div className="usa-section">
+            <h2>{category.name}</h2>
+          </div>
           <div className="usa-grid-full">
             <aside className="usa-width-one-fourth">
               <div className="category-count">{items.length} item{items.length === 1 ? '' : 's'}</div>
@@ -105,11 +107,13 @@ export default class Category extends Component {
               {this.renderFilterSection('Brands', 'manufacturer')}
             </aside>
             <main className="usa-width-three-fourths">
-              <ul>
-                {items.map(item => <li key={item.id}><CatalogListItem item={item}/></li>)}
+              <ul className="usa-unstyled-list">
+                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link={true} /></li>)}
               </ul>
             </main>
           </div>
+
+          <div className="return-to-top"><a href="#top">Return to top</a></div>
         </div>
       )
     } else {

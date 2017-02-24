@@ -3,22 +3,29 @@
 .header {
   background: $color-gray;
   color: $color-white;
+  .header-cart-button {
+    span.count {
+      display: inline;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
-.header-cart-button {
-  background: url(/images/cart-alt.svg) left center no-repeat;
-  background-size: 1.8rem;
-  padding-left: 1.8rem;
-  width: 1px;
-  overflow: hidden;
-  top: 5px;
-  position: relative;
-}
-
-@media screen and (max-width: 950px) {
-  .header .header-cart-button {
-    width: auto;
-    padding: 0;
-    background: none;
+@media screen and (min-width: $nav-width) {
+  .header {
+    a:hover {
+      color: $color-white;
+      text-decoration: underline;
+    }
+  }
+  .header-cart-button {
+    background: url(/images/cart-alt.svg) left center no-repeat;
+    background-size: 1.8rem;
+    padding-left: 1.8rem;
+  }
+  .header-cart-button span {
+    display: none;
   }
 }

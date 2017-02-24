@@ -5,11 +5,9 @@ import { applyFilters, filterByValue } from '../../lib/filters'
 import find from 'lodash/fp/find'
 
 const mapStateToProps = (state, ownProps) => {
-  let manufacturer, sku
-  [manufacturer, sku] = ownProps.params.id.split("|")
+  let item = state.catalog.items.find(item => item.id == ownProps.params.id);
   return {
-    manufacturer: manufacturer,
-    sku: sku,
+    item,
     catalog: state.catalog
   }
 }

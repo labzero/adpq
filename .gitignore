@@ -26,4 +26,4 @@ erl_crash.dump
 .DS_Store
 .idea/
 
-npm-debug.log
+npm-debug.log*

@@ -4,11 +4,20 @@
   font-style: italic;
 }
 
+.category-item,
 .category-filter-section {
   border-top: 1px solid $color-gray-light;
+}
+
+.category-filter-section {
   margin: 2rem 0 3rem;
+  position: relative;
 }
 
 .category-filter-section-heading {
   font-size: $h4-font-size;
+}
+
+.category-item {
+  padding: 1.5em 0;
 }

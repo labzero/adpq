@@ -1,0 +1,41 @@
+@import 'variables';
+
+.content {
+  padding-bottom: 20px;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+}
+
+h2 {
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  font-size: 40px;
+}
+
+h4 {
+  font-size: $lead-font-size;
+  margin: 0;
+}
+
+.subsection {
+  font-size: $small-font-size;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.subheading {
+  font-size: $lead-font-size;
+  margin: 0;
+}
+
+.loading {
+  padding: 20px;
+  text-align: center;
+}
+
+.return-to-top {
+  margin-top: 3em;
+}
