@@ -16,8 +16,6 @@ dependencies:
     - _build
     - deps
     - node_modules
-    - sassc
-    - libsass
 database:
   override:
     - createuser -d adpq
@@ -26,8 +24,16 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/test
     - script/ci/tests.sh
 deployment:
-  production:
+  brien:
+    branch: /.*?brien.*$/
+    commands:
+      - script/ci/deploy-develop.sh
+  develop:
     branch: develop
+    commands:
+      - script/ci/deploy-develop.sh
+  production:
+    branch: master
     commands:
       - script/ci/deploy-prod.sh
 general:

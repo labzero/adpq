@@ -1,8 +1,19 @@
 FROM bitwalker/alpine-elixir-phoenix:latest
 
+# Install dependencies
+RUN apk add --no-cache python=2.7.12-r0 make gcc g++
+
+# Build Environment
+ARG RDS_PASSWORD
+
+ARG MIX_ENV
+ENV MIX_ENV ${MIX_ENV:-prod}
+ARG RDS_PASSWORD
+ENV RDS_PASSWORD ${RDS_PASSWORD:-nopassword}
+
 # Set exposed ports
 EXPOSE 4000
-ENV PORT=4000 MIX_ENV=prod
+ENV PORT=4000
 
 # Cache elixir deps
 ADD mix.exs mix.lock ./
@@ -18,6 +29,4 @@ ADD . .
 RUN brunch build --production && \
     mix do compile, phoenix.digest
 
-USER default
-
-CMD ["mix", "phoenix.server"]
+CMD ["env", "mix", "phoenix.server"]
