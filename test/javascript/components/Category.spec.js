@@ -75,4 +75,14 @@ describe('<Category />', () => {
 
     expect(push.mock.calls[0][0]).toBe('/category/stuff')
   })
+
+  it('goes to new url with two different filters after one is toggled', () => {
+    props.filters = [['manufacturer', ['dell']]]
+
+    const instance = shallow(<Category { ...props }/>).instance();
+
+    instance.toggleFilter('simple_category', 'Ultralight')()
+
+    expect(push.mock.calls[0][0]).toBe('/category/stuff?filter=manufacturer:dell&filter=simple_category:ultralight')
+  })
 });
