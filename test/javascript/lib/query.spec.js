@@ -67,7 +67,7 @@ describe('generateQuery', () => {
     expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc')
   })
 
-  it('returns a lowercase', () => {
+  it('returns a lowercase sort', () => {
     const sorts = [['NAME', 'ASC']];
     const filters = null;
     expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc')
