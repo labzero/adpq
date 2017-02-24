@@ -91,7 +91,7 @@ const Header = () => (
         <div className="usa-nav-secondary">
           <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
             <li>
-              <a href="#" className="header-cart-button">Cart</a>
+              <a href="#" className="header-cart-button"><span>Cart</span>&nbsp;<span className="count"></span></a>
             </li>
             <li>
               <a href="/account">Account</a>

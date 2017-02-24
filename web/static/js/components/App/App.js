@@ -7,9 +7,9 @@ export default class App extends Component {
   render() {
     const { location } = this.props;
 
-    return <div className="container">
+    return <div className="container" id="top">
       <Header />
-      <div className="usa-grid usa-section">
+      <div className="content">
         {this.props.children}
       </div>
       <Footer isHomepage={location.pathname === '/'} />

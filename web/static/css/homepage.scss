@@ -1,0 +1,76 @@
+@import 'variables';
+
+.homepage-recommendations {
+  padding: 1rem 0;
+  border-top: 2px solid $color-gray-lighter;
+  @include clearfix;
+  h4 {
+    padding-top: 10px;
+  }
+  p {
+    padding: 0 0 20px 0;
+    margin: 0;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.homepage-recommendation {
+  margin-bottom: 2rem;
+  margin-top: 0;
+  a {
+    border: 1px solid $color-gray-lighter;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    &:hover,
+    &:hover .homepage-recommendation-details {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.homepage-recommendation-details {
+  border-top: 1px solid $color-gray-lighter;
+  padding: 18px;
+  font-size: $base-font-size;
+  color: $color-gray-warm-dark;
+}
+
+.homepage-recommendation-category {
+  text-transform: uppercase;
+  font-size: $small-font-size;
+  padding-bottom: 5px;
+  color: $color-gray-dark;
+}
+
+@media screen and (min-width: $medium-screen) and (max-width: 1200px) {
+  .homepage-recommendations {
+    padding: 2rem 0 3rem;
+    .homepage-recommendation {
+      margin-right: 4.5%;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .homepage-recommendations-description {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $medium-screen) {
+  .homepage-recommendation-details {
+    min-height: 105px;
+  }
+}
+
+@media screen and (min-width: $large-screen) {
+  .homepage-recommendations {
+    padding: 2.5rem 0 5.5rem;
+  }
+  .homepage-recommendation {
+    margin-bottom: 0;
+  }
+}
