@@ -27,6 +27,7 @@ export default class Category extends Component {
   sortedAndFilteredData = () => {
     const items = this.props.catalog.items
     const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters)
+    
     return sortBy(
       this.props.sorts,
       applyRangeFilters(
@@ -104,8 +105,6 @@ export default class Category extends Component {
               {this.renderFilterSection('Brands', 'manufacturer')}
             </aside>
             <main className="usa-width-three-fourths">
-              <Link to={`/category/${this.props.category}?sort=list_price:desc`}>Price Desc</Link>
-              <Link to={`/category/${this.props.category}?sort=list_price:asc`}>Price Asc</Link>
               <ul>
                 {items.map(item => <li key={item.id}><CatalogListItem item={item}/></li>)}
               </ul>

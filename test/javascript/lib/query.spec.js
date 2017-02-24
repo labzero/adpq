@@ -1,4 +1,4 @@
-import { parseSorts, parseFilters } from 'lib/query'
+import { generateQuery, parseSorts, parseFilters } from 'lib/query'
 
 describe('parseFilters', () => {
 
@@ -53,5 +53,47 @@ describe('parseSorts', () => {
   it('is case insensitive with regard to direction', () => {
     const param = ["list_price:ASC"]
     expect(parseSorts(param)).toEqual([['list_price', 'asc']])
+  })
+})
+
+describe('generateQuery', () => {
+  it('returns empty string if no sorts or filters', () => {
+    expect(generateQuery()).toEqual('')
+  })
+
+  it('returns a sort', () => {
+    const sorts = [['name', 'asc']];
+    const filters = null;
+    expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc')
+  })
+
+  it('returns a lowercase', () => {
+    const sorts = [['NAME', 'ASC']];
+    const filters = null;
+    expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc')
+  })
+
+  it('returns a lowercase filter', () => {
+    const sorts = null;
+    const filters = [['simple_category', ['Workstation']]];
+    expect(generateQuery(sorts, filters)).toEqual('?filter=simple_category:workstation')
+  })
+
+  it('returns a filter with multiple values', () => {
+    const sorts = null;
+    const filters = [['simple_category', ['workstation', 'ultralight']]];
+    expect(generateQuery(sorts, filters)).toEqual('?filter=simple_category:workstation,ultralight')
+  })
+
+  it('returns multiple filters', () => {
+    const sorts = null;
+    const filters = [['simple_category', ['workstation']], ['brand', ['dell']]]
+    expect(generateQuery(sorts, filters)).toEqual('?filter=simple_category:workstation&filter=brand:dell')
+  })
+
+  it('returns sort and filter', () => {
+    const sorts = [['name', 'asc']];
+    const filters = [['simple_category', ['workstation']]];
+    expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc&filter=simple_category:workstation')
   })
 })

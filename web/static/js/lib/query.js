@@ -39,22 +39,25 @@ export function parseFilters(param) {
   )(param)
 }
 
-export function generateFilterQueries(filters) {
-  return filters.map(([field, values]) => `filter=${field}${FIELD_DELIMITER}${values.join(VALUE_DELIMITER)}`)
-}
+const generateFilterQueries = filters => flow(
+  map(([field, values]) => [field, values.map(val => val.toLowerCase())]),
+  map(([field, values]) => [field, values.join(VALUE_DELIMITER)]),
+  map(([field, values]) => `filter=${field}${FIELD_DELIMITER}${values}`)
+)(filters)
 
-export function generateSortQueries(sorts) {
-  return sorts.map(([field, direction]) => `sort=${field}${FIELD_DELIMITER}${direction}`)
-}
+const generateSortQueries = sorts => flow(
+  map(([field, direction]) => [field.toLowerCase(), direction.toLowerCase()]),
+  map(([field, direction]) => `sort=${field}${FIELD_DELIMITER}${direction}`)
+)(sorts)
 
 export function generateQuery(sorts, filters) {
-  if (!sorts && !filters) {
+  if ((!sorts || !sorts.length) && (!filters || !filters.length)) {
     return '';
   }
 
   let queries = [];
   if (sorts && sorts.length) {
-    queries = queries.concat(generateSortQueries(sort));
+    queries = queries.concat(generateSortQueries(sorts));
   }
   if (filters && filters.length) {
     queries = queries.concat(generateFilterQueries(filters));
