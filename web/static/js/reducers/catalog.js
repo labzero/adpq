@@ -3,7 +3,7 @@ import * as RemoteDataStates from "../constants/RemoteDataStates"
 
 const initialState = {
   remoteDataState : RemoteDataStates.NOT_REQUESTED,
-  items: {},
+  items: [],
   currentItem: {},
   error: null
 }

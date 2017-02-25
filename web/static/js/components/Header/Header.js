@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = () => (
+const Header = ({ section }) => (
   <header className="header usa-header usa-header-extended" role="banner">
     <div className="usa-navbar">
       <button className="usa-menu-btn">Menu</button>
@@ -22,7 +22,7 @@ const Header = () => (
         </button>
         <ul className="nav-primary usa-nav-primary usa-accordion">
           <li>
-            <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-1">
+            <button className={`usa-accordion-button usa-nav-link ${section === 'Hardware' ? 'nav-link-current' : ''}`} aria-expanded="false" aria-controls="side-nav-1">
               <span>Hardware</span>
             </button>
             <ul id="side-nav-1" className="nav-submenu usa-nav-submenu">
@@ -65,7 +65,7 @@ const Header = () => (
             </ul>
           </li>
           <li>
-            <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-2">
+            <button className={`usa-accordion-button usa-nav-link ${section === 'Software' ? 'nav-link-current' : ''}`}aria-expanded="false" aria-controls="side-nav-2">
               <span>Software</span>
             </button>
             <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
@@ -78,7 +78,7 @@ const Header = () => (
             </ul>
           </li>
           <li>
-            <button className="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="side-nav-3">
+            <button className={`usa-accordion-button usa-nav-link ${section === 'Services' ? 'nav-link-current' : ''}`}aria-expanded="false" aria-controls="side-nav-3">
               <span>Services</span>
             </button>
             <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
