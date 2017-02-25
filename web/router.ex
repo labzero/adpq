@@ -22,6 +22,7 @@ defmodule Adpq.Router do
       resources "/catalog_items", CatalogItemController, except: [:new, :edit]
       resources "/user", UserController, only: [] do
         resources "/cart_items", CartItemController, except: [:new, :edit]
+        resources "/orders", OrderController, except: [:delete]
       end
     end
   end

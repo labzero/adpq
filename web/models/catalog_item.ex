@@ -16,6 +16,7 @@ defmodule Adpq.CatalogItem do
     field :long_category, :string
     field :simple_category, :string
     field :top_level_category, :string
+    has_many :order_items, Adpq.OrderItem
 
     timestamps()
   end
