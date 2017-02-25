@@ -26,7 +26,7 @@ defmodule Adpq.Factory do
       name: sequence("name-"),
       password: "user",
       role: "USER"
-    }    
+    }
   end
 
   def admin_user_factory do
@@ -42,6 +42,30 @@ defmodule Adpq.Factory do
       user: build(:user),
       catalog_item: build(:catalog_item),
       quantity: 1
+    }
+  end
+
+  def order_factory do
+    %Adpq.Order{
+      user: build(:user),
+      status: Adpq.Order.Status.submitted
+    }
+  end
+
+  def order_with_items_factory do
+    %Adpq.Order{
+      user: build(:user),
+      status: Adpq.Order.Status.submitted
+    }
+
+  end
+
+  def order_item_factory do
+    %Adpq.OrderItem{
+      order: build(:order),
+      catalog_item: build(:catalog_item),
+      quantity: 1,
+      price: 1000
     }
   end
 

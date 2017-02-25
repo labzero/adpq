@@ -8,6 +8,7 @@ defmodule Adpq.User do
     field :password, :string
     field :role, :string
     has_many :cart_items, Adpq.CartItem
+    has_many :orders, Adpq.Order
     timestamps()
   end
 
