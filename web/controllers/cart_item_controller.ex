@@ -104,7 +104,7 @@ defmodule Adpq.CartItemController do
   end
 
   def loadUser(user_id) do
-    # TODO ensure === session user
+    # ensure === session user
     Repo.get!(User, user_id)
   end
 

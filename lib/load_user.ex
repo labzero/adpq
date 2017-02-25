@@ -3,6 +3,10 @@ defmodule Adpq.LoadUser do
   import Ecto.Query
   alias Adpq.{User, Repo}
 
+  @moduledoc """
+    A plug for loading the authorized user into the Conn
+  """
+
   def init(opts), do: opts
 
   def call(conn, _) do

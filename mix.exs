@@ -43,7 +43,9 @@ defmodule Adpq.Mixfile do
      {:csv, "~> 1.4"},
      {:phoenix_swagger, "~> 0.4.0"},
      {:corsica, "~> 0.5"},
-     {:ex_machina, "~> 1.0", only: [:dev, :test]}]
+     {:ex_machina, "~> 1.0", only: [:dev, :test]},
+     {:credo, "~> 0.5", only: [:dev, :test]}     
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

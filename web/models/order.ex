@@ -1,6 +1,10 @@
 defmodule Adpq.Order do
   use Adpq.Web, :model
 
+  @moduledoc """
+    An individual user order
+  """
+
   schema "orders" do
     belongs_to :user, Adpq.User
     field :status, :string
@@ -19,6 +23,7 @@ defmodule Adpq.Order do
   end
 
   defmodule Status do
+    @moduledoc "valid order status values"
     def submitted, do: "SUBMITTED"
     def cancelled, do: "CANCELLED"
     def list, do: [submitted(), cancelled()]

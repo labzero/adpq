@@ -1,7 +1,11 @@
 defmodule Adpq.User do
   use Adpq.Web, :model
 
-  alias Adpq.Repo
+  alias Adpq.{Repo, User}
+
+  @moduledoc """
+    A system login, either a regular user/requester or admin
+  """
 
   schema "users" do
     field :name, :string
@@ -23,12 +27,12 @@ defmodule Adpq.User do
 
   def find_or_create_by_name(%{"name" => name, "password" => password, "role" => role} = params) do
     exists =
-      Adpq.User
+      User
       |> where(name: ^name)
       |> Repo.one
     case exists do
-      %Adpq.User{} -> exists
-      _ -> Repo.insert!(Adpq.User.changeset(%Adpq.User{}, params))
+      %User{} -> exists
+      _ -> Repo.insert!(changeset(%User{}, params))
     end
   end
 end

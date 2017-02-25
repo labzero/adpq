@@ -1,9 +1,13 @@
 defmodule Adpq.EnsureAdmin do
   import Plug.Conn
   import Ecto.Query
-  
+
   alias Adpq.AuthHelpers
   alias Adpq.User
+
+  @moduledoc """
+    A plug that checks if the authenticated user is an admin
+  """
 
   def init(opts), do: opts
 
