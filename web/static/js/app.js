@@ -13,12 +13,15 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
 import 'lodash.debounce'
-import 'uswds'
+import es6Promise from 'es6-promise'
+import 'isomorphic-fetch'
 
 import React from "react";
 import ReactDOM from "react-dom";
 
 import Main from "./components/Main";
+
+es6Promise.polyfill();
 
 ReactDOM.render(<Main />, document.getElementById("index"));
 

@@ -5,10 +5,10 @@ import Header from '../Header/Header';
 // main layout
 export default class App extends Component {
   render() {
-    const { location } = this.props;
+    const { location, section } = this.props;
 
     return <div className="container" id="top">
-      <Header />
+      <Header section={section}  />
       <div className="content">
         {this.props.children}
       </div>
