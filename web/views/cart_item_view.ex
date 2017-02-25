@@ -2,11 +2,11 @@ defmodule Adpq.CartItemView do
   use Adpq.Web, :view
 
   def render("index.json", %{cart_items: cart_items}) do
-    %{data: render_many(cart_items, Adpq.CartItemView, "cart_item.json")}
+    render_many(cart_items, Adpq.CartItemView, "cart_item.json")
   end
 
   def render("show.json", %{cart_item: cart_item}) do
-    %{data: render_one(cart_item, Adpq.CartItemView, "cart_item.json")}
+    render_one(cart_item, Adpq.CartItemView, "cart_item.json")
   end
 
   def render("cart_item.json", %{cart_item: cart_item}) do

@@ -39,5 +39,6 @@ defmodule Adpq.Endpoint do
     key: "_adpq_key",
     signing_salt: "R3qLN8KP"
 
+  plug Corsica, origins: "*", allow_headers: ["authorization", "content-type"]
   plug Adpq.Router
 end

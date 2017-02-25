@@ -7,5 +7,5 @@ it('renders the basic menu', () => {
   const rendered = shallow(<Header />)
   expect(rendered.text()).toContain('Cart')
   expect(rendered.text()).toContain('Account')
-  expect(rendered.text()).toContain('Logout')
+  expect(rendered.find('Link').props().to).toEqual('logout')
 })

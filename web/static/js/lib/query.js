@@ -9,7 +9,7 @@ const FIELD_DELIMITER = ':'
 const VALUE_DELIMITER = ','
 
 const validSortFields = ['list_price', 'simple_category', 'manufacturer']
-const validFilterFields = ['simple_category', 'manufacturer']
+export const validFilterFields = ['simple_category', 'manufacturer']
 const validRangeFields = ['list_price']
 
 const validSort = ([field, direction]) => (
@@ -37,4 +37,30 @@ export function parseFilters(param) {
     map(([field, values]) => [field, values.split(VALUE_DELIMITER)]),
     filter(validFilter)
   )(param)
+}
+
+const generateFilterQueries = filters => flow(
+  map(([field, values]) => [field, values.map(val => val.toLowerCase())]),
+  map(([field, values]) => [field, values.join(VALUE_DELIMITER)]),
+  map(([field, values]) => `filter=${field}${FIELD_DELIMITER}${values}`)
+)(filters)
+
+const generateSortQueries = sorts => flow(
+  map(([field, direction]) => [field.toLowerCase(), direction.toLowerCase()]),
+  map(([field, direction]) => `sort=${field}${FIELD_DELIMITER}${direction}`)
+)(sorts)
+
+export function generateQuery(sorts, filters) {
+  if ((!sorts || !sorts.length) && (!filters || !filters.length)) {
+    return '';
+  }
+
+  let queries = [];
+  if (sorts && sorts.length) {
+    queries = queries.concat(generateSortQueries(sorts));
+  }
+  if (filters && filters.length) {
+    queries = queries.concat(generateFilterQueries(filters));
+  }
+  return `?${queries.join('&')}`;
 }
