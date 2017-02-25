@@ -131,13 +131,13 @@ defmodule Adpq.OrderController do
         properties do
           id :string, "Order ID", required: true
           user_id :string, "User ID", required: true
-          status :string, "Order Status", required: true
+          status :string, "Order Status", required: true, enum: Order.Status.list
           items array(:OrderItem), "Items", required: true
         end
       end,
       OrderStatusUpdate: swagger_schema do
         title "Order Status Update"
-        property "status", :string, "Status (SUBMITTED/CANCELLED)", required: true
+        property "status", :string, "Status", required: true, enum: Order.Status.list
       end
     }
   end
