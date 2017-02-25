@@ -15,11 +15,13 @@ defmodule Adpq.Router do
   end
 
   scope "/api", Adpq do
-    pipe_through :api
-    resources "/catalog_items", CatalogItemController, except: [:new, :edit]
     resources "/auth", AuthController, only: [:create]
-    resources "/user", UserController, only: [] do
-      resources "/cart_items", CartItemController, except: [:new, :edit]
+    scope "/" do # protected routes
+      pipe_through [:api, Adpq.LoadUser, Adpq.EnsureUser]
+      resources "/catalog_items", CatalogItemController, except: [:new, :edit]
+      resources "/user", UserController, only: [] do
+        resources "/cart_items", CartItemController, except: [:new, :edit]
+      end
     end
   end
 

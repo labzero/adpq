@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 const Header = () => (
   <header className="header usa-header usa-header-extended" role="banner">
@@ -97,7 +98,9 @@ const Header = () => (
               <a href="/account">Account</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <Link to={'logout'}>
+                Logout
+              </Link>
             </li>
           </ul>
         </div>
