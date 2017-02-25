@@ -21,6 +21,7 @@
     "react-router-redux": "^4.0.8",
     "reactable": "^0.14.1",
     "redux": "^3.6.0",
+    "redux-form": "^6.5.0",
     "redux-thunk": "^2.2.0",
     "uswds": "^0.14.0"
   },
@@ -51,11 +52,14 @@
     "css-brunch": "~2.0.0",
     "currency-formatter": "^1.1.1",
     "enzyme": "^2.7.1",
+    "es6-promise": "^4.0.5",
+    "fetch-mock": "^5.9.4",
     "javascript-brunch": "~2.0.0",
     "jest": "^18.1.0",
     "jest-cli": "^18.1.0",
     "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
+    "redux-mock-store": "^1.2.2",
     "replacement-brunch": "^2.0.4",
     "sass-brunch": "^2.10.4",
     "uglify-js-brunch": "~2.0.1"

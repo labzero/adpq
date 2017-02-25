@@ -2,11 +2,11 @@ defmodule Adpq.CatalogItemView do
   use Adpq.Web, :view
 
   def render("index.json", %{catalog_items: catalog_items}) do
-    %{data: render_many(catalog_items, Adpq.CatalogItemView, "catalog_item.json")}
+    render_many(catalog_items, Adpq.CatalogItemView, "catalog_item.json")
   end
 
   def render("show.json", %{catalog_item: catalog_item}) do
-    %{data: render_one(catalog_item, Adpq.CatalogItemView, "catalog_item.json")}
+    render_one(catalog_item, Adpq.CatalogItemView, "catalog_item.json")
   end
 
   def render("catalog_item.json", %{catalog_item: catalog_item}) do
