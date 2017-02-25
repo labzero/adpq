@@ -2,8 +2,8 @@
 import React from "react";
 import { Route, IndexRoute } from "react-router";
 import {
-  AccountContainer,
-  App,
+  AccountContainer, 
+  AppContainer,
   CategoryContainer,
   LoginContainer,
   Logout,
@@ -28,7 +28,7 @@ export default function getRoutes(store) {
     }
   }
 
-  return (<Route path="/" component={App}>
+  return (<Route path="/" component={AppContainer}>
     <IndexRoute component={HomepageContainer} onEnter={requireAuth(store)}/>
     <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth(store)}/>
     <Route path="item/:id" component={ItemDetailContainer}/>

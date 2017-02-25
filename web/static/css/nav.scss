@@ -43,6 +43,11 @@
     color: #cee5ef;
   }
 
+  .nav .nav-primary .nav-link-current span {
+    border-bottom: 0.7rem solid #0071bc;
+    padding-bottom: 1rem;
+  }
+
   .nav-secondary-links {
     a {
       color: $color-white;
