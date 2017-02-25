@@ -13,6 +13,7 @@
 defmodule Adpq.CatalogSeeds do
   alias Adpq.Repo
   alias Adpq.CatalogItem
+  alias Adpq.User
   import Ecto.Query
 
   def insertRows do
@@ -93,10 +94,15 @@ defmodule Adpq.UserSeeds do
   alias Adpq.User
 
   def create_admin do
-    Repo.insert!(User.changeset(%User{}, %{name: "admin", password: "admin", role: "ADMIN"}))
+    User.find_or_create_by_name(%{"name" => "admin", "password" => "admin", "role" => "ADMIN"})
+  end
+
+  def create_user do
+    User.find_or_create_by_name(%{"name" => "user", "password" => "user", "role" => "USER"})
   end
 end
 
 Adpq.CatalogSeeds.clean()
 Adpq.CatalogSeeds.insertRows()
 Adpq.UserSeeds.create_admin()
+Adpq.UserSeeds.create_user()

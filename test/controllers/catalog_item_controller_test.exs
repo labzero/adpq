@@ -1,5 +1,6 @@
 defmodule Adpq.CatalogItemControllerTest do
   use Adpq.ConnCase
+  import Adpq.Factory
 
   alias Adpq.CatalogItem
   @valid_attrs %{
@@ -21,18 +22,23 @@ defmodule Adpq.CatalogItemControllerTest do
   @invalid_attrs %{}
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    user = insert(:user)
+    conn =
+      conn
+      |> put_req_header("accept", "application/json")
+      |> put_req_header("authorization", user.name)
+    %{conn: put_req_header(conn, "accept", "application/json")}
   end
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, catalog_item_path(conn, :index)
-    assert json_response(conn, 200)["data"] == []
+    assert json_response(conn, 200) == []
   end
 
   test "shows chosen resource", %{conn: conn} do
     catalog_item = Repo.insert! %CatalogItem{}
     conn = get conn, catalog_item_path(conn, :show, catalog_item)
-    assert json_response(conn, 200)["data"] == %{"id" => catalog_item.id,
+    assert json_response(conn, 200)== %{"id" => catalog_item.id,
       "clin" => catalog_item.clin,
       "unspc" => catalog_item.unspc,
       "manufacturer" => catalog_item.manufacturer,
@@ -56,7 +62,7 @@ defmodule Adpq.CatalogItemControllerTest do
 
   test "creates and renders resource when data is valid", %{conn: conn} do
     conn = post conn, catalog_item_path(conn, :create), catalog_item: @valid_attrs
-    assert json_response(conn, 201)["data"]["id"]
+    assert json_response(conn, 201)["id"]
     assert Repo.get_by(CatalogItem, @valid_attrs)
   end
 
@@ -68,8 +74,8 @@ defmodule Adpq.CatalogItemControllerTest do
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     catalog_item = Repo.insert!(CatalogItem.changeset(%CatalogItem{}, @valid_attrs))
     conn = put conn, catalog_item_path(conn, :update, catalog_item), catalog_item: Map.put(@valid_attrs, "name", "new name")
-    assert json_response(conn, 200)["data"]["name"] == "new name"
-    assert Repo.get(CatalogItem, json_response(conn, 200)["data"]["id"])
+    assert json_response(conn, 200)["name"] == "new name"
+    assert Repo.get(CatalogItem, json_response(conn, 200)["id"])
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do

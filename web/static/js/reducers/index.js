@@ -1,12 +1,16 @@
 import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 import userReducer from './user'
-import catalogReducer from './catalog'
 import categoriesReducer from './categories'
+import { reducer as formReducer } from 'redux-form'
+import { default as authReducer } from './auth'
+import { default as catalogReducer } from './catalog'
 
 export default combineReducers({
   routing: routerReducer,
   user: userReducer,
   catalog: catalogReducer,
-  categories: categoriesReducer
+  categories: categoriesReducer,
+  auth: authReducer,
+  form: formReducer
 });
