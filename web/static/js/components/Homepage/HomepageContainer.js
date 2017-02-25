@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
-import { fetchCatalogIfNeeded } from '../../actions'
+import { fetchCatalogIfNeeded } from '../../actions';
 import Homepage from './Homepage';
-import { parseSorts, parseFilters } from '../../lib/query'
-import flatten from 'lodash/fp/flatten'
+import { parseSorts, parseFilters } from '../../lib/query';
+import flatten from 'lodash/fp/flatten';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    catalog: state.catalog
-  }
-};
+const mapStateToProps = (state, ownProps) => ({
+  catalog: state.catalog
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchCatalog() {

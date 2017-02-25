@@ -1,8 +1,8 @@
-import React from 'react'
-import { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
-import { logoutUser } from '../../actions'
+import React from 'react';
+import { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { logoutUser } from '../../actions';
 
 class Logout extends React.Component {
 
@@ -12,20 +12,20 @@ class Logout extends React.Component {
   }
 
   componentWillMount() {
-    this.props.logout()
-    this.props.router.replace('/login')
+    this.props.logout();
+    this.props.router.replace('/login');
   }
 
   render() {
-    return null
+    return null;
   }
-};
+}
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   logout: () => {
     dispatch(logoutUser());
   },
   dispatch
-})
+});
 
-export default connect(null, mapDispatchToProps)(withRouter(Logout))
+export default connect(null, mapDispatchToProps)(withRouter(Logout));

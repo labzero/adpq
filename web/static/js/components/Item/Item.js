@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
-import currencyFormatter from 'currency-formatter'
-import { Link } from 'react-router'
+import React, { Component, PropTypes } from 'react';
+import currencyFormatter from 'currency-formatter';
+import { Link } from 'react-router';
 
 class Item extends Component {
   static propTypes = {
@@ -21,7 +21,7 @@ class Item extends Component {
     const { item } = this.props;
     return (
       <div className="item usa-grid-full">
-        <div className="usa-width-one-third item-image">{this.maybeLink(<img src="/images/products/everyday-computing-dell-desktop.jpg" alt={item.description}/>)}</div>
+        <div className="usa-width-one-third item-image">{this.maybeLink(<img src="/images/products/everyday-computing-dell-desktop.jpg" alt={item.description} />)}</div>
         <div className="usa-width-five-twelfths item-details">
           <h4>{this.maybeLink(item.name)}</h4>
           <p>{this.maybeLink(`${item.manufacturer} SKU: ${item.sku}`)}</p>

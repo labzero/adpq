@@ -1,6 +1,6 @@
-import React from "react"
-import * as RemoteDataStates from '../../constants/RemoteDataStates'
-import { applyFilters, filterByValue } from '../../lib/filters'
+import React from 'react';
+import * as RemoteDataStates from '../../constants/RemoteDataStates';
+import { applyFilters, filterByValue } from '../../lib/filters';
 import Item from '../Item/Item';
 
 export default class ItemDetail extends React.Component {
@@ -23,11 +23,10 @@ export default class ItemDetail extends React.Component {
 
             <div className="return-to-top"><a href="#top">Return to top</a></div>
           </div>
-      )} else {
-        return <div>No such item</div>
+        );
       }
-    } else {
-      return <div className="loading">Loading..</div> // TODO replace with loading indicator component
+      return <div>No such item</div>;
     }
+    return <div className="loading">Loading..</div>; // TODO replace with loading indicator component
   }
 }

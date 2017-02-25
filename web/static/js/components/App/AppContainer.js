@@ -2,16 +2,16 @@ import { connect } from 'react-redux';
 import App from './App';
 
 const sections = {
-  'Hardware': [
+  Hardware: [
     'Laptops',
     'Desktops',
     'Peripherals',
     'Components'
   ],
-  'Software': [
+  Software: [
     'Software'
   ],
-  'Services': [
+  Services: [
     'Services'
   ]
 };

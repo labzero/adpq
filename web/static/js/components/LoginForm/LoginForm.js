@@ -8,11 +8,11 @@ class LoginForm extends React.Component {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Username</label>
-          <Field name="name" component="input" type="text"/>
+          <Field name="name" component="input" type="text" />
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <Field name="password" component="input" type="password"/>
+          <Field name="password" component="input" type="password" />
         </div>
         <button type="submit">Submit</button>
       </form>

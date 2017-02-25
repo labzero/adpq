@@ -1,4 +1,4 @@
-import * as ActionTypes from "../constants/ActionTypes";
+import * as ActionTypes from '../constants/ActionTypes';
 import { validFilterFields } from '../lib/query';
 
 const initialState = {
@@ -10,9 +10,9 @@ const categories = (state = initialState, action) => {
     case ActionTypes.FETCH_CATALOG_SUCCESS:
       const topLevelCategories = {};
       action.data.forEach((item) => {
-        const topLevelCategory = topLevelCategories[item['top_level_category']] || {
-          name: item['top_level_category'],
-          fields: validFilterFields.reduce((acc, curr) => Object.assign({}, acc, {[curr]: []}), {})
+        const topLevelCategory = topLevelCategories[item.top_level_category] || {
+          name: item.top_level_category,
+          fields: validFilterFields.reduce((acc, curr) => Object.assign({}, acc, { [curr]: [] }), {})
         };
 
         validFilterFields.forEach((filterField) => {
@@ -21,15 +21,15 @@ const categories = (state = initialState, action) => {
           }
         });
 
-        topLevelCategories[item['top_level_category']] = topLevelCategory;
+        topLevelCategories[item.top_level_category] = topLevelCategory;
       });
 
       return {
         ...state,
         items: topLevelCategories,
-      }
+      };
     default:
-      return state
+      return state;
   }
 };
 

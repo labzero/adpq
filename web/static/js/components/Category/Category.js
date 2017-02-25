@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from "react";
-import { Link } from "react-router"
-import * as RemoteDataStates from '../../constants/RemoteDataStates'
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import * as RemoteDataStates from '../../constants/RemoteDataStates';
 import Item from '../Item/Item';
-import { applyFilters, applyRangeFilters } from '../../lib/filters'
-import { generateQuery } from '../../lib/query'
-import { sortBy } from '../../lib/sorts'
-import map from 'lodash/fp/map'
-import concat from 'lodash/fp/concat'
-import uniq from 'lodash/fp/uniq'
+import { applyFilters, applyRangeFilters } from '../../lib/filters';
+import { generateQuery } from '../../lib/query';
+import { sortBy } from '../../lib/sorts';
+import map from 'lodash/fp/map';
+import concat from 'lodash/fp/concat';
+import uniq from 'lodash/fp/uniq';
 
 export default class Category extends Component {
   static propTypes = {
@@ -25,15 +25,15 @@ export default class Category extends Component {
   }
 
   sortedAndFilteredData = () => {
-    const items = this.props.catalog.items
-    const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters)
-    
+    const items = this.props.catalog.items;
+    const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters);
+
     return sortBy(
       this.props.sorts,
       applyRangeFilters(
         this.props.rangeFilters,
         applyFilters(
-          filters, items)))
+          filters, items)));
   }
 
   toggleFilter = (field, value) => (event) => {
@@ -66,7 +66,7 @@ export default class Category extends Component {
 
   getFilterValues = (field) => {
     const { filters } = this.props;
-    let fieldFilters = filters.find(filter => filter[0] === field);
+    const fieldFilters = filters.find(filter => filter[0] === field);
     if (fieldFilters) {
       return fieldFilters[1];
     }
@@ -94,7 +94,7 @@ export default class Category extends Component {
     const { filters, category } = this.props;
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
       const items = this.sortedAndFilteredData();
-      
+
       return (
         <div className="usa-grid">
           <div className="usa-section">
@@ -109,16 +109,15 @@ export default class Category extends Component {
             <main className="usa-width-three-fourths">
               <div className="category-sort-section">&nbsp;</div>
               <ul className="usa-unstyled-list">
-                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link={true} /></li>)}
+                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link /></li>)}
               </ul>
             </main>
           </div>
 
           <div className="return-to-top"><a href="#top">Return to top</a></div>
         </div>
-      )
-    } else {
-      return <div>Loading..</div>
+      );
     }
+    return <div>Loading..</div>;
   }
-};
+}
