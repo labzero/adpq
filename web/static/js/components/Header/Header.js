@@ -1,12 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 class Header extends Component {
+
+  static propTypes = {
+    section: PropTypes.string.isRequired
+  }
+
   state = {
     openSubmenu: null
   };
 
-  toggleSubmenu = id => event => this.setState(prevState => prevState.openSubmenu === id ? { openSubmenu: null } : { openSubmenu: id });
+  toggleSubmenu = id => _event => (
+    this.setState(prevState => (
+      prevState.openSubmenu === id ? { openSubmenu: null } : { openSubmenu: id }
+    ))
+  )
 
   render() {
     const { openSubmenu } = this.state;

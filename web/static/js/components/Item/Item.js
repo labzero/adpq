@@ -8,6 +8,13 @@ class Item extends Component {
     link: PropTypes.bool
   };
 
+  counter = 0
+
+  nextKey = () => {
+    this.counter = this.counter + 1;
+    return this.counter;
+  }
+
   maybeLink = (children) => {
     const { item, link } = this.props;
 
@@ -27,8 +34,8 @@ class Item extends Component {
           <p>{this.maybeLink(`${item.manufacturer} SKU: ${item.sku}`)}</p>
           <ul>
             {item.description.split(',').length ?
-                item.description.split(',').map((description, i) => (
-                  <li key={i}>{description}</li>
+                item.description.split(',').map(description => (
+                  <li key={this.nextKey()}>{description}</li>
                     )
                 ) : ''
             }

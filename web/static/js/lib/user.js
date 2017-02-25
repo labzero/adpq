@@ -1,3 +1,4 @@
+/* global sessionStorage */
 const KEY = 'auth';
 
 export function getUserData() {

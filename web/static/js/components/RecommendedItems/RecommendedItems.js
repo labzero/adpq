@@ -10,8 +10,8 @@ const RecommendedItems = ({ title, subtitle, items }) => (
     </div>
 
     {items && items.length ?
-      items.map((item, i) => (
-        <div className="usa-width-one-fourth homepage-recommendation" key={i}>
+      items.map(item => (
+        <div className="usa-width-one-fourth homepage-recommendation" key={item.id}>
           <Link to={`/item/${item.id}`}>
             <img src={`${item.image}`} alt={item.name} />
             <div className="homepage-recommendation-details">
@@ -28,9 +28,9 @@ const RecommendedItems = ({ title, subtitle, items }) => (
 );
 
 RecommendedItems.propTypes = {
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  items: React.PropTypes.array
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  items: PropTypes.array
 };
 
 export default RecommendedItems;

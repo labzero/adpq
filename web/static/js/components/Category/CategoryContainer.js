@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import flatten from 'lodash/fp/flatten';
 import { fetchCatalogIfNeeded } from '../../actions';
 import Category from './Category';
 import { parseSorts, parseFilters } from '../../lib/query';
-import flatten from 'lodash/fp/flatten';
-import { push } from 'react-router-redux';
 
 const mapStateToProps = (state, ownProps) => {
   const query = ownProps.location.query;
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const asArray = val => val === undefined ? [] : flatten([val]);
+const asArray = val => (val === undefined ? [] : flatten([val]));
 
 const mapDispatchToProps = dispatch => ({
   fetchCatalog() {

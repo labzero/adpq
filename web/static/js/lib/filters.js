@@ -14,11 +14,11 @@ export function filterByRange(field, [lower, upper], collection) {
 }
 
 export function applyFilters(filters, data) {
-  return reduce((result, filter) => filterByValue(...filter, result), data, filters);
+  return reduce((result, aFilter) => filterByValue(...aFilter, result), data, filters);
 }
 
 export function applyRangeFilters(filters, data) {
-  return reduce((result, filter) => filterByRange(...filter, result), data, filters);
+  return reduce((result, aFilter) => filterByRange(...aFilter, result), data, filters);
 }
 
 const canonicalize = value => value.toString().toUpperCase();

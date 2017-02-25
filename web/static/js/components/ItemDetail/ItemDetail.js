@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import { applyFilters, filterByValue } from '../../lib/filters';
 import Item from '../Item/Item';
 
 export default class ItemDetail extends React.Component {
+
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    fetchCatalog: PropTypes.func.isRequired,
+    catalog: PropTypes.shape({
+      remoteDataState: PropTypes.string.isRequired
+    }).isRequired
+  }
 
   componentDidMount() {
     this.props.fetchCatalog();

@@ -9,14 +9,12 @@ import {
   Logout,
   ItemDetailContainer,
   HomepageContainer } from '../components/index';
-import { loginUser } from '../actions';
 import { getUserData } from '../lib/user';
-import * as Roles from '../constants/Roles';
 
-const hasRole = (user, role) => role ? user.role === role : true;
+const hasRole = (user, role) => (role ? user.role === role : true);
 
 export default function getRoutes(store) {
-  const requireAuth = (store, role) => (nextState, replace, callback) => {
+  const requireAuth = (_store, role) => (nextState, replace, callback) => {
     const user = getUserData();
     if (user && hasRole(user, role)) {
       callback();

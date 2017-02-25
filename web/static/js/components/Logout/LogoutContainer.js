@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Logout from './Logout';
 import { loginUser } from '../../actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, _ownProps) => ({
   user: state.user
 });
 
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
   dispatch
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Logout);

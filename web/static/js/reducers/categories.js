@@ -7,12 +7,14 @@ const initialState = {
 
 const categories = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.FETCH_CATALOG_SUCCESS:
+    case ActionTypes.FETCH_CATALOG_SUCCESS: {
       const topLevelCategories = {};
       action.data.forEach((item) => {
         const topLevelCategory = topLevelCategories[item.top_level_category] || {
           name: item.top_level_category,
-          fields: validFilterFields.reduce((acc, curr) => Object.assign({}, acc, { [curr]: [] }), {})
+          fields: validFilterFields.reduce(
+            (acc, curr) => Object.assign({}, acc, { [curr]: [] }), {}
+          )
         };
 
         validFilterFields.forEach((filterField) => {
@@ -28,6 +30,7 @@ const categories = (state = initialState, action) => {
         ...state,
         items: topLevelCategories,
       };
+    }
     default:
       return state;
   }

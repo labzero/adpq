@@ -1,14 +1,15 @@
-import React from 'react';
-import { IndexLink } from 'react-router';
+import React, { PropTypes } from 'react';
 import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import CatalogListItem from '../CatalogListItem/CatalogListItem';
 import RecommendedItems from '../RecommendedItems/RecommendedItems';
-import { applyFilters, applyRangeFilters } from '../../lib/filters';
-import { sortBy } from '../../lib/sorts';
-import map from 'lodash/fp/map';
-import uniq from 'lodash/fp/uniq';
 
 export default class Homepage extends React.Component {
+
+  static propTypes = {
+    fetchCatalog: PropTypes.func.isRequired,
+    catalog: PropTypes.shape({
+      remoteDataState: PropTypes.string.isRequired
+    }).isRequired
+  }
 
   componentDidMount() {
     this.props.fetchCatalog();

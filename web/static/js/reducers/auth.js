@@ -15,7 +15,6 @@ const auth = (state = initialState, action) => {
         remoteDataState: RemoteDataStates.LOADING
       };
     case ActionTypes.LOGIN_SUCCESS:
-      const auth = action.auth;
       return {
         ...state,
         remoteDataState: RemoteDataStates.LOADED,

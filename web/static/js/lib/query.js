@@ -19,7 +19,7 @@ const validSort = ([field, direction]) => (
 const validFilter = ([field, _values]) => includes(field, validFilterFields);
 
 const validRangeFilter = ([field, [lower, upper]]) => (
-  includes(field, validRangeFields) && parseInt(lower) && parseInt(upper)
+  includes(field, validRangeFields) && parseInt(lower, 10) && parseInt(upper, 10)
 );
 
 export function parseSorts(param) {
@@ -36,6 +36,15 @@ export function parseFilters(param) {
     map(item => item.split(FIELD_DELIMITER)),
     map(([field, values]) => [field, values.split(VALUE_DELIMITER)]),
     filter(validFilter)
+  )(param);
+}
+
+export function parseRangeFilters(param) {
+  return flow(
+    map(item => item.toLowerCase()),
+    map(item => item.split(FIELD_DELIMITER)),
+    map(([field, values]) => [field, values.split(VALUE_DELIMITER)]),
+    filter(validRangeFilter)
   )(param);
 }
 

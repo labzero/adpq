@@ -14,6 +14,11 @@
       "no-use-before-define": "off",
       "comma-dangle": "off",
       "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }] ,
-      "react/require-default-props": "off"     
+      "react/require-default-props": "off",
+      "react/prefer-stateless-function": "off",
+      "react/forbid-prop-types": "off",
+      "jsx-a11y/no-access-key": "off",
+      "jsx-a11y/href-no-hash": "off",
+      "jsx-a11y/img-has-alt": "off"      
     }
 }

@@ -16,12 +16,14 @@ const sections = {
   ]
 };
 
-const findSection = category => Object.keys(sections).find(section => sections[section].indexOf(category) !== -1);
+const findSection = category => (
+  Object.keys(sections).find(section => sections[section].indexOf(category) !== -1)
+);
 
 const mapStateToProps = (state, ownProps) => {
   let section;
   if (ownProps.params.id) {
-    const item = state.catalog.items.find(item => item.id == ownProps.params.id);
+    const item = state.catalog.items.find(it => it.id === ownProps.params.id);
     section = item && findSection(item.top_level_category);
   } else if (ownProps.params.name) {
     section = findSection(ownProps.params.name);
