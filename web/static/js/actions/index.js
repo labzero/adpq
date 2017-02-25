@@ -73,7 +73,7 @@ export function fetchCatalog() {
     dispatch(requestCatalog())
     return fetch('/api/catalog_items', requestWithAuth({}))
       .then(response => response.json()) // TODO check response.ok
-      .then(json => dispatch(fetchCatalogSuccess(json.data)))
+      .then(json => dispatch(fetchCatalogSuccess(json)))
       .catch(error => dispatch(fetchCatalogError(error))) // TODO flash message
   }
 }
