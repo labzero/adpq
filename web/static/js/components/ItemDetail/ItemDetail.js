@@ -1,9 +1,16 @@
-import React from "react"
-import * as RemoteDataStates from '../../constants/RemoteDataStates'
-import { applyFilters, filterByValue } from '../../lib/filters'
+import React, { PropTypes } from 'react';
+import * as RemoteDataStates from '../../constants/RemoteDataStates';
 import Item from '../Item/Item';
 
 export default class ItemDetail extends React.Component {
+
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    fetchCatalog: PropTypes.func.isRequired,
+    catalog: PropTypes.shape({
+      remoteDataState: PropTypes.string.isRequired
+    }).isRequired
+  }
 
   componentDidMount() {
     this.props.fetchCatalog();
@@ -23,11 +30,10 @@ export default class ItemDetail extends React.Component {
 
             <div className="return-to-top"><a href="#top">Return to top</a></div>
           </div>
-      )} else {
-        return <div>No such item</div>
+        );
       }
-    } else {
-      return <div className="loading">Loading..</div> // TODO replace with loading indicator component
+      return <div>No such item</div>;
     }
+    return <div className="loading">Loading..</div>; // TODO replace with loading indicator component
   }
 }
