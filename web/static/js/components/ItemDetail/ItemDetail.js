@@ -5,7 +5,7 @@ import Item from '../Item/Item';
 export default class ItemDetail extends React.Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired,
+    item: PropTypes.object,
     fetchCatalog: PropTypes.func.isRequired,
     catalog: PropTypes.shape({
       remoteDataState: PropTypes.string.isRequired
