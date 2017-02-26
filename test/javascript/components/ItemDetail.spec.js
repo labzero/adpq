@@ -4,6 +4,7 @@ import ItemDetail from 'components/ItemDetail/ItemDetail'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
 
 const item = {
+  id: 0,
   name: ' Dell Optiplex 3040 MT',
   manufacturer: 'DELL',
   sku: '210-AFXL',
@@ -17,18 +18,14 @@ const NOT_FOUND_MESSAGE = "No such item"
 
 it('renders item information if available', () => {
   const props = {
-    manufacturer: 'DELL',
-    sku: 'A-BCD',
+    item,
     catalog: {
       items: [item],
-    remoteDataState: RemoteDataStates.LOADED
+      remoteDataState: RemoteDataStates.LOADED
     }
   }
-  const rendered = shallow(<ItemDetail {...props}/>)
-  expect(rendered.text()).toContain('DELL')
-  expect(rendered.text()).toContain('$100')
-  expect(rendered.text()).toContain('4GB 1DIMM')
-  expect(rendered.text()).not.toContain('DDR3L, Windows') // make sure we're splitting our description
+  const rendered = shallow(<ItemDetail {...props} />)
+  expect(rendered.find('Item').length).toBe(1)
 })
 
 it('renders a loading indicator if data is not yet loaded', () => {
@@ -41,18 +38,13 @@ it('renders a loading indicator if data is not yet loaded', () => {
   expect(rendered.text()).toContain(LOADING_INDICATOR)
 })
 
-/*
-TODO: Turn this back on after the sample data is removed
 it('renders an error message if there is no item', () => {
   const props = {
-    manufacturer: 'HP',
-    sku: 'D-457',
+    item: null,
     catalog: {
-      items: [item],
-    remoteDataState: RemoteDataStates.LOADED
+      remoteDataState: RemoteDataStates.LOADED
     }
   }
   const rendered = shallow(<ItemDetail {...props}/>)
   expect(rendered.text()).toContain(NOT_FOUND_MESSAGE)
 })
-*/

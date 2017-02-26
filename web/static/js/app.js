@@ -1,3 +1,4 @@
+/* global document */
 // Brunch automatically concatenates all files in your
 // watched paths. Those paths can be configured at
 // config.paths.watched in "brunch-config.js".
@@ -11,16 +12,19 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
-import 'lodash.debounce'
-import 'uswds'
+import 'phoenix_html';
+import 'lodash.debounce';
+import es6Promise from 'es6-promise';
+import 'isomorphic-fetch';
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import Main from "./components/Main";
+import Main from './components/Main';
 
-ReactDOM.render(<Main />, document.getElementById("index"));
+es6Promise.polyfill();
+
+ReactDOM.render(<Main />, document.getElementById('index'));
 
 // Import local files
 //
