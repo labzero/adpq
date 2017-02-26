@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import currencyFormatter from 'currency-formatter'
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import currencyFormatter from 'currency-formatter';
 
 const CatalogListItem = ({ item }) => (
   <ul>
