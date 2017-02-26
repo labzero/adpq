@@ -3,7 +3,7 @@ defmodule Adpq.UserTest do
 
   alias Adpq.{User, Repo}
 
-  @valid_attrs %{name: "name", password: "pw", role: "USER"}
+  @valid_attrs %{name: "name", password: "pw", role: "USER", department: "FOO"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
@@ -25,8 +25,14 @@ defmodule Adpq.UserTest do
   end
 
   test "find or create new user" do
-    attributes = %{name: "test", password: "test", role: "USER"}
-    user = Repo.insert!(User.changeset(%User{}, attributes))
+    attributes = %{"name" => "asfg", "password" => "user", "role" => "USER"}
+    user = User.find_or_create_by_name(attributes)
     assert user.id !== nil
+  end
+
+  test "automatically assigns a department" do
+    attributes = %{"name" => "zxcv", "password" => "user", "role" => "USER"}
+    user = User.find_or_create_by_name(attributes)
+    assert user.department !== nil
   end
 end
