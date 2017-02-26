@@ -1,6 +1,10 @@
 defmodule Adpq.CartItem do
   use Adpq.Web, :model
 
+  @moduledoc """
+    A shopping cart line item
+  """
+
   schema "cart_items" do
     field :quantity, :integer
     belongs_to :user, Adpq.User
@@ -20,6 +24,6 @@ defmodule Adpq.CartItem do
   def update_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:quantity])
-    |> validate_required([:quantity]) 
+    |> validate_required([:quantity])
   end
 end

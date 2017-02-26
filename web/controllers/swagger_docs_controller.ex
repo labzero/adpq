@@ -3,7 +3,8 @@ defmodule Adpq.SwaggerDocsController do
 
   def index(conn, _) do
     swagger =
-      Application.app_dir(:adpq, "priv/swagger/swagger.json")
+      :adpq
+      |> Application.app_dir("priv/swagger/swagger.json")
       |> File.read!
       |> Poison.decode!
     conn
