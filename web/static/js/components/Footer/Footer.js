@@ -107,7 +107,7 @@ const Footer = ({ isHomepage }) => {
       </div>
     </footer>
   );
-}
+};
 
 Footer.propTypes = {
   isHomepage: PropTypes.bool.isRequired
