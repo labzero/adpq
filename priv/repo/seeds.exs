@@ -11,7 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 
 defmodule Adpq.CatalogSeeds do
-  alias Adpq.Repo
+  alias Adpq.{Repo, CatalogItem, User, CartItem, OrderItem, Order}
   alias Adpq.CatalogItem
   alias Adpq.User
   import Ecto.Query
@@ -25,6 +25,9 @@ defmodule Adpq.CatalogSeeds do
   end
 
   def clean do
+    Adpq.Repo.delete_all(OrderItem)
+    Adpq.Repo.delete_all(Order)
+    Adpq.Repo.delete_all(CartItem)
     Adpq.Repo.delete_all(CatalogItem)
   end
 

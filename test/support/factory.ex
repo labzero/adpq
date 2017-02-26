@@ -25,7 +25,8 @@ defmodule Adpq.Factory do
     %Adpq.User{
       name: sequence("name-"),
       password: "user",
-      role: "USER"
+      role: "USER",
+      department: Adpq.User.Department.random
     }
   end
 
@@ -33,7 +34,8 @@ defmodule Adpq.Factory do
     %Adpq.User{
       name: "admin",
       password: "admin",
-      role: "admin"
+      role: "admin",
+      department: Adpq.User.Department.random      
     }
   end
 
