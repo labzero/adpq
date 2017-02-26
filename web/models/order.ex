@@ -21,5 +21,6 @@ defmodule Adpq.Order do
   defmodule Status do
     def submitted, do: "SUBMITTED"
     def cancelled, do: "CANCELLED"
+    def list, do: [submitted(), cancelled()]
   end
 end
