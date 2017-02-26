@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
-const RecommendedItems = ({title, subtitle, items}) => (
+const RecommendedItems = ({ title, subtitle, items }) => (
   <div className="homepage-recommendations">
 
     <div className="usa-width-one-half homepage-recommendations-description">
@@ -10,16 +10,16 @@ const RecommendedItems = ({title, subtitle, items}) => (
     </div>
 
     {items && items.length ?
-      items.map((item, i) => (
-              <div className="usa-width-one-fourth homepage-recommendation" key={i}>
-                <Link to={`/item/${item.id}`}>
-                  <img src={`${item.image}`} alt={item.name}/>
-                  <div className="homepage-recommendation-details">
-                    <div className="homepage-recommendation-category">{item.top_level_category}</div>
-                    {item.name}
-                  </div>
-                </Link>
-              </div>
+      items.map(item => (
+        <div className="usa-width-one-fourth homepage-recommendation" key={item.id}>
+          <Link to={`/item/${item.id}`}>
+            <img src={`${item.image}`} alt={item.name} />
+            <div className="homepage-recommendation-details">
+              <div className="homepage-recommendation-category">{item.top_level_category}</div>
+              {item.name}
+            </div>
+          </Link>
+        </div>
           )
       ) : ''
     }
@@ -28,9 +28,9 @@ const RecommendedItems = ({title, subtitle, items}) => (
 );
 
 RecommendedItems.propTypes = {
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  items: React.PropTypes.array
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  items: PropTypes.array
 };
 
 export default RecommendedItems;

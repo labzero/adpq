@@ -1,13 +1,10 @@
-import React, { Component, PropTypes } from "react";
-import { Link } from "react-router"
-import * as RemoteDataStates from '../../constants/RemoteDataStates'
+import React, { Component, PropTypes } from 'react';
+import concat from 'lodash/fp/concat';
+import * as RemoteDataStates from '../../constants/RemoteDataStates';
 import Item from '../Item/Item';
-import { applyFilters, applyRangeFilters } from '../../lib/filters'
-import { generateQuery } from '../../lib/query'
-import { sortBy } from '../../lib/sorts'
-import map from 'lodash/fp/map'
-import concat from 'lodash/fp/concat'
-import uniq from 'lodash/fp/uniq'
+import { applyFilters, applyRangeFilters } from '../../lib/filters';
+import { generateQuery } from '../../lib/query';
+import { sortBy } from '../../lib/sorts';
 
 export default class Category extends Component {
   static propTypes = {
@@ -24,19 +21,16 @@ export default class Category extends Component {
     this.props.fetchCatalog();
   }
 
-  sortedAndFilteredData = () => {
-    const items = this.props.catalog.items
-    const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters)
-    
-    return sortBy(
-      this.props.sorts,
-      applyRangeFilters(
-        this.props.rangeFilters,
-        applyFilters(
-          filters, items)))
-  }
+  getFilterValues = (field) => {
+    const { filters } = this.props;
+    const fieldFilters = filters.find(filter => filter[0] === field);
+    if (fieldFilters) {
+      return fieldFilters[1];
+    }
+    return [];
+  };
 
-  toggleFilter = (field, value) => (event) => {
+  toggleFilter = (field, value) => (_event) => {
     const { category, filters, push, sorts } = this.props;
 
     let filterFound = false;
@@ -64,14 +58,18 @@ export default class Category extends Component {
     push(`/category/${category.name}${generateQuery(sorts, newFilters)}`);
   };
 
-  getFilterValues = (field) => {
-    const { filters } = this.props;
-    let fieldFilters = filters.find(filter => filter[0] === field);
-    if (fieldFilters) {
-      return fieldFilters[1];
-    }
-    return [];
+  sortedAndFilteredData = () => {
+    const items = this.props.catalog.items;
+    const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters);
+
+    return sortBy(
+      this.props.sorts,
+      applyRangeFilters(
+        this.props.rangeFilters,
+        applyFilters(
+          filters, items)));
   }
+
 
   renderFilterSection = (title, field) => {
     const { category } = this.props;
@@ -83,7 +81,7 @@ export default class Category extends Component {
         <ul className="usa-fieldset-inputs usa-unstyled-list">
           {category.fields[field].map(value => (<li key={value}>
             <input id={`${field}_${value}`} type="checkbox" checked={filterValues.indexOf(value.toLowerCase()) !== -1} onChange={this.toggleFilter(field, value)} />
-            <label htmlFor="{`${field}_${value}`}">{value}</label>
+            <label htmlFor={`${field}_${value}`}>{value}</label>
           </li>))}
         </ul>
       </div>
@@ -91,10 +89,10 @@ export default class Category extends Component {
   }
 
   render() {
-    const { filters, category } = this.props;
+    const category = this.props;
     if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
       const items = this.sortedAndFilteredData();
-      
+
       return (
         <div className="usa-grid">
           <div className="usa-section">
@@ -109,16 +107,15 @@ export default class Category extends Component {
             <main className="usa-width-three-fourths">
               <div className="category-sort-section">&nbsp;</div>
               <ul className="usa-unstyled-list">
-                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link={true} /></li>)}
+                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link /></li>)}
               </ul>
             </main>
           </div>
 
           <div className="return-to-top"><a href="#top">Return to top</a></div>
         </div>
-      )
-    } else {
-      return <div>Loading..</div>
+      );
     }
+    return <div>Loading..</div>;
   }
-};
+}
