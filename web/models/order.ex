@@ -22,6 +22,12 @@ defmodule Adpq.Order do
     |> validate_required([:user_id, :status])
   end
 
+  def status_update_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:status])
+    |> validate_required([:status])
+  end
+
   defmodule Status do
     @moduledoc "valid order status values"
     def submitted, do: "SUBMITTED"

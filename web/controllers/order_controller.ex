@@ -98,7 +98,7 @@ defmodule Adpq.OrderController do
   def update(conn, %{"user_id" => user_id, "id" => id, "status" => status}) do
     case Repo.one!(load_user_order(user_id, id)) do
       %User{orders: [order | _]} ->
-        changeset = Order.changeset(order, %{status: status})
+        changeset = Order.status_update_changeset(order, %{status: status})
         case Repo.update(changeset) do
           {:ok, order} ->
             conn
