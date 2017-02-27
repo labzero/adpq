@@ -9,7 +9,7 @@ export default class Homepage extends React.Component {
     catalog: PropTypes.shape({
       remoteDataState: PropTypes.string.isRequired
     }).isRequired,
-    recommendations: PropTypes.shape.isRequired
+    recommendations: PropTypes.array.isRequired
   }
 
   componentDidMount() {
