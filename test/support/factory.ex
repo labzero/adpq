@@ -35,7 +35,7 @@ defmodule Adpq.Factory do
       name: "admin",
       password: "admin",
       role: "admin",
-      department: Adpq.User.Department.random      
+      department: Adpq.User.Department.random
     }
   end
 
@@ -69,6 +69,12 @@ defmodule Adpq.Factory do
       quantity: 1,
       price: 1000
     }
+  end
+
+  def order_with_items(user, num_items) do
+    order = insert(:order, %{user: user})
+    insert_list(num_items, :order_item, %{order: order})
+    order
   end
 
 end
