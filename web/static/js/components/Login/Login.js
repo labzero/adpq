@@ -13,6 +13,10 @@ export default class Login extends React.Component {
   }
 
   render() {
-    return <div><LoginForm onSubmit={this.onSubmit} /></div>;
+    return (
+      <div className="usa-grid login">
+        <LoginForm onSubmit={this.onSubmit} />
+      </div>
+    );
   }
 }
