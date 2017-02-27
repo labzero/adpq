@@ -1,12 +1,14 @@
 defmodule Adpq.OrderQueries do
   import Ecto.Query
 
+  alias Adpq.{User, Order}
+
   @moduledoc """
     Ecto queries related to orders
   """
 
   def user_scope(user_id) do
-    where(Adpq.User, [users], users.id == ^user_id)
+    where(User, [users], users.id == ^user_id)
   end
 
   def load_user_order(user_id, id) do
@@ -37,4 +39,19 @@ defmodule Adpq.OrderQueries do
       )
   end
 
+  def find_with_items(id) do
+    where(orders_with_items(), [orders], orders.id == ^id)
+  end
+
+  def orders_with_items do
+    Order
+    |> join(:left, [orders], order_items in assoc(orders, :order_items))
+    |> join(:left, [orders, order_items], catalog_item in assoc(order_items, :catalog_item))
+    |> join(:left, [orders], user in assoc(orders, :user))
+    |> preload(
+        [orders, order_items, catalog_items, users],
+        [user: users, order_items: {order_items, catalog_item: catalog_items}]
+      )
+    |> order_by([orders], orders.updated_at)
+  end
 end

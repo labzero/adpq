@@ -25,6 +25,10 @@ defmodule Adpq.Router do
         resources "/orders", OrderController, except: [:delete]
       end
     end
+    scope "/admin", Admin, as: :admin do
+      pipe_through [:api, Adpq.LoadUser, Adpq.EnsureAdmin]
+      resources "/orders", OrderController, only: [:index, :show, :update]
+    end
   end
 
   scope "/", Adpq do

@@ -43,6 +43,7 @@ defmodule Adpq.User do
     """
     @departments ~w(DCSS CDE ABC PARKS)
     def random, do: Enum.random(@departments)
+    def all, do: @departments
   end
 
 end
