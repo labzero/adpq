@@ -68,6 +68,8 @@ defmodule Adpq.Admin.OrderController do
         description "An order line item"
         properties do
           id :string, "Item ID", required: true
+          category :string, "Item Category", required: true
+          sub_category :string, "Item Subcategory", required: true
           price :integer, "Total Price", required: true
           quantity :integer, "Quantity", required: true
           name :string, "Item Name", required: true
