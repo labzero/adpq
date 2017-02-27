@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
+import { fetchCart as fetchCartAction } from '../actions';
 import {
   AccountContainer,
   AppContainer,
@@ -22,12 +23,20 @@ export default function getRoutes(store) {
       replace(`/login?next=${nextState.location.pathname}${nextState.location.search}`);
       callback();
     }
+  };  
+  
+  const fetchCart = (store, role) => (_nextState, _replace, callback) => {
+    const user = getUserData();
+    if (user && hasRole(user, role)) {
+      store.dispatch(fetchCartAction());
+      callback();
+    } 
   };
 
-  return (<Route path="/" component={AppContainer}>
+  return (<Route path="/" component={AppContainer} onEnter={fetchCart(store)} onChange={fetchCart(store)}>
     <IndexRoute component={HomepageContainer} onEnter={requireAuth(store)} />
     <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth(store)} />
-    <Route path="item/:id" component={ItemDetailContainer} />
+    <Route path="item/:id" component={ItemDetailContainer} onEnter={requireAuth(store)} />
     <Route path="account" component={AccountContainer} onEnter={requireAuth(store)} />
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />

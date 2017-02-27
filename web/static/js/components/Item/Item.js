@@ -5,15 +5,13 @@ import { catalogItemImage } from '../../lib/image_urls';
 
 class Item extends Component {
   static propTypes = {
+    addToCart: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
     link: PropTypes.bool
   };
 
-  counter = 0
-
-  nextKey = () => {
-    this.counter = this.counter + 1;
-    return this.counter;
+  state = {
+    quantity: 1
   }
 
   maybeLink = (children) => {
@@ -23,6 +21,15 @@ class Item extends Component {
       return <Link to={`/item/${item.id}`}>{children}</Link>;
     }
     return children;
+  }
+
+  addToCart = (event) => {
+    event.preventDefault();
+    this.props.addToCart(this.state.quantity);
+  }
+
+  changeQuantity = (event) => {
+    this.setState({ quantity: Number(event.target.value) });
   }
 
   render() {
@@ -47,11 +54,11 @@ class Item extends Component {
           <h4>
             {currencyFormatter.format(item.list_price / 100, { code: 'USD' })}
           </h4>
-          <form className="usa-form">
-            <select name="options" id="options">
-              <option value="value1">Qty: 1</option>
+          <form className="usa-form" onSubmit={this.addToCart}>
+            <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
+              <option value="1">Qty: 1</option>
             </select>
-            <button>Add to Cart</button>
+            <button onClick={this.addToCart}>Add to Cart</button>
           </form>
         </div>
       </div>

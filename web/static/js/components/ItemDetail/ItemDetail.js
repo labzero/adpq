@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import Item from '../Item/Item';
+import ItemContainer from '../Item/ItemContainer';
 
 export default class ItemDetail extends React.Component {
 
@@ -26,7 +26,7 @@ export default class ItemDetail extends React.Component {
             <div className="usa-section">
               <h2>Product Detail</h2>
             </div>
-            <Item item={item} />
+            <ItemContainer item={item} />
 
             <div className="return-to-top"><a href="#top">Return to top</a></div>
           </div>

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import concat from 'lodash/fp/concat';
 import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import Item from '../Item/Item';
+import ItemContainer from '../Item/ItemContainer';
 import { applyFilters, applyRangeFilters } from '../../lib/filters';
 import { generateQuery } from '../../lib/query';
 import { sortBy } from '../../lib/sorts';
@@ -107,7 +107,7 @@ export default class Category extends Component {
             <main className="usa-width-three-fourths">
               <div className="category-sort-section">&nbsp;</div>
               <ul className="usa-unstyled-list">
-                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link /></li>)}
+                {items.map(item => <li className="category-item" key={item.id}><ItemContainer item={item} link /></li>)}
               </ul>
             </main>
           </div>

@@ -5,6 +5,64 @@ import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
 
+export function fetchCart() {
+  return (dispatch) => {
+    dispatch(requestCart());
+    const user = getUserData();
+    return fetch(`/api/user/${user.id}/cart_items`, requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchCartSuccess(json)))
+      .catch(error => dispatch(fetchCartError(error))); // TODO flash message
+  };
+}
+
+
+export function fetchCartSuccess(json) {
+  return { type: ActionTypes.FETCH_CART_SUCCESS, data: json };
+}
+
+export function fetchCartError(error) {
+  return { type: ActionTypes.FETCH_CART_ERROR, error };
+}
+
+export function requestCart() {
+  return { type: ActionTypes.REQUEST_CART };
+}
+
+export function requestAddToCart(id, quantity) {
+  return { type: ActionTypes.ADD_TO_CART, id, quantity };
+}
+
+export function addToCart(id, quantity) {
+  const request = {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ catalog_item_id: id, quantity })
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestAddToCart(id, quantity));
+    return fetch(`/api/user/${user.id}/cart_items`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(addToCartSuccess(json)))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(addToCartError(error))); // TODO flash message
+  };
+}
+
+export function addToCartSuccess(json) {
+  return { type: ActionTypes.ADD_TO_CART_SUCCESS, data: json };
+}
+
+export function addToCartError(error) {
+  return { type: ActionTypes.ADD_TO_CART_ERROR, error };
+}
 
 // user actions
 export function loginRequest() {
@@ -57,6 +115,8 @@ export function logoutUser() {
   return { type: ActionTypes.LOGOUT };
 }
 
+// catalog actions
+
 export function fetchCatalogIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchCatalog(getState())) {
@@ -90,6 +150,12 @@ export function fetchCatalogError(error) {
 
 export function requestCatalog() {
   return { type: ActionTypes.REQUEST_CATALOG };
+}
+
+// helpers
+
+function shouldFetchCart(state) {
+  return shouldFetch(state.cart);
 }
 
 function shouldFetchCatalog(state) {
