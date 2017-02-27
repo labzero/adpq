@@ -25,6 +25,11 @@ defmodule Adpq.Router do
         resources "/orders", OrderController, except: [:delete]
       end
     end
+    scope "/admin", Admin, as: :admin do
+      pipe_through [:api, Adpq.LoadUser, Adpq.EnsureAdmin]
+      resources "/orders", OrderController, only: [:index, :show, :update]
+      resources "/catalog_items", CatalogItemController, only: [:index, :show, :update, :create]
+    end
   end
 
   scope "/", Adpq do
@@ -47,9 +52,7 @@ defmodule Adpq.Router do
       ],
       info: %{
         version: "0.1",
-        title: "Lab Zero - ADPQ",
-        base_path: "/api",
-        produces: "application/json"
+        title: "Lab Zero - ADPQ"
       }
     }
   end
