@@ -17,7 +17,6 @@ import 'phoenix_html';
 import 'lodash.debounce';
 import es6Promise from 'es6-promise';
 import 'isomorphic-fetch';
-import 'uswds';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
