@@ -11,9 +11,7 @@ class Header extends Component {
 
   componentDidMount() {
     const accordions = select('.usa-accordion, .usa-accordion-bordered');
-    accordions.forEach(function (el) {
-      new Accordion(el);
-    });
+    accordions.forEach(el => new Accordion(el));
     navInit();
   }
 
@@ -109,7 +107,7 @@ class Header extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="#" className="header-cart-button"><span>Cart</span>&nbsp;<span className="count" /></a>
+                  <a href="/cart" className="header-cart-button"><span>Cart</span>&nbsp;<span className="count" /></a>
                 </li>
                 <li>
                   <a href="/account">Account</a>
