@@ -1,8 +1,6 @@
 defmodule Adpq.AuthView do
   use Adpq.Web, :view
 
-  alias Adpq.User
-
   def render("show.json", %{auth: user}) do
     render_one(user, Adpq.AuthView, "auth.json")
   end

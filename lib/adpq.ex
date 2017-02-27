@@ -1,7 +1,7 @@
 defmodule Adpq do
   use Application
 
-  alias Adpq.{Repo, Endpoint}
+  alias Adpq.Endpoint
   @moduledoc false
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
