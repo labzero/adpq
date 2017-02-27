@@ -6,7 +6,8 @@ import select from 'uswds/src/js/utils/select';
 
 class Header extends Component {
   static propTypes = {
-    section: PropTypes.string
+    section: PropTypes.string,
+    isAuthorized: PropTypes.bool.isRequired
   }
 
   componentDidMount() {
@@ -16,21 +17,10 @@ class Header extends Component {
   }
 
   render() {
-    return (
-      <header className="header usa-header usa-header-extended" role="banner">
-        <div className="usa-navbar">
-          <button className="usa-menu-btn">Menu</button>
-          <div className="logo-container">
-            <div className="logo-department">
-                California Department of Technology
-              </div>
-            <div className="logo usa-logo" id="logo">
-              <em className="logo-text usa-logo-text">
-                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
-              </em>
-            </div>
-          </div>
-        </div>
+    let nav;
+
+    if (this.props.isAuthorized) {
+      nav = (
         <nav role="navigation" className="nav usa-nav">
           <div className="usa-nav-inner">
             <button className="usa-nav-close">
@@ -114,13 +104,32 @@ class Header extends Component {
                 </li>
                 <li>
                   <Link to={'logout'}>
-                      Logout
-                    </Link>
+                    Logout
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
+      );
+    }
+
+    return (
+      <header className="header usa-header usa-header-extended" role="banner">
+        <div className="usa-navbar">
+          <button className="usa-menu-btn">Menu</button>
+          <div className="logo-container">
+            <div className="logo-department">
+              California Department of Technology
+            </div>
+            <div className="logo usa-logo" id="logo">
+              <em className="logo-text usa-logo-text">
+                <a href="/" accessKey="1" title="Home" aria-label="Home">Tech Shop</a>
+              </em>
+            </div>
+          </div>
+        </div>
+        {nav}
       </header>
     );
   }

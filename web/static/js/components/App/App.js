@@ -13,12 +13,14 @@ export default class App extends Component {
   render() {
     const { location, section } = this.props;
 
-    return (<div className="container" id="top">
-      <Header section={section} />
-      <div className="content">
-        {this.props.children}
+    return (
+      <div className="container" id="top">
+        <Header isAuthorized={location.pathname !== '/login'} section={section} />
+        <div className="content">
+          {this.props.children}
+        </div>
+        <Footer isAuthorized={location.pathname !== '/login'} isHomepage={location.pathname === '/'} />
       </div>
-      <Footer isHomepage={location.pathname === '/'} />
-    </div>);
+    );
   }
 }
