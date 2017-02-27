@@ -9,6 +9,7 @@
 
     <title>ADPQ</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
   </head>
 
   <body>
