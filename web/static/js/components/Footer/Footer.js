@@ -99,7 +99,7 @@ const Footer = ({ isHomepage }) => {
       <div className="footer-secondary usa-footer-secondary_section">
         <div className="usa-grid">
           <div className="footer-logo usa-footer-logo usa-width-two-thirds">
-            <img className="usa-footer-slim-logo-img" src="/images/california-technology-agency.jpg" />
+            <img className="usa-footer-slim-logo-img" src="/images/california-technology-agency.jpg" alt="" />
             <h3 className="footer-heading usa-footer-slim-logo-heading">California Department of Technology</h3>
           </div>
           <div className="footer-contact-links usa-footer-contact-links usa-width-one-third">

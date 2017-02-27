@@ -6,8 +6,8 @@ import Header from '../Header/Header';
 export default class App extends Component {
 
   static propTypes = {
-    location: PropTypes.string.isRequired,
-    section: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    section: PropTypes.string,
     children: PropTypes.node.isRequired
   }
   render() {

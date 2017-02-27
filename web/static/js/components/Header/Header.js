@@ -1,25 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import Accordion from 'uswds/src/js/components/accordion';
+import navInit from 'uswds/src/js/components/navigation';
+import select from 'uswds/src/js/utils/select';
 
 class Header extends Component {
-
   static propTypes = {
-    section: PropTypes.string.isRequired
+    section: PropTypes.string
   }
 
-  state = {
-    openSubmenu: null
-  };
-
-  toggleSubmenu = id => _event => (
-    this.setState(prevState => (
-      prevState.openSubmenu === id ? { openSubmenu: null } : { openSubmenu: id }
-    ))
-  )
+  componentDidMount() {
+    const accordions = select('.usa-accordion, .usa-accordion-bordered');
+    accordions.forEach(function (el) {
+      new Accordion(el);
+    });
+    navInit();
+  }
 
   render() {
-    const { openSubmenu } = this.state;
-
     return (
       <header className="header usa-header usa-header-extended" role="banner">
         <div className="usa-navbar">
@@ -30,7 +28,7 @@ class Header extends Component {
               </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/" accessKey="1" title="Home" aria-label="Home">Tech Shop</a>
+                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
               </em>
             </div>
           </div>
@@ -42,10 +40,10 @@ class Header extends Component {
             </button>
             <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Hardware' ? 'nav-link-current' : ''}`} aria-expanded={openSubmenu === 'side-nav-1'} aria-controls="side-nav-1" onClick={this.toggleSubmenu('side-nav-1')} >
+                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Hardware' ? 'nav-link-current' : ''}`} aria-controls="side-nav-1" >
                   <span>Hardware</span>
                 </button>
-                <ul id="side-nav-1" className="nav-submenu usa-nav-submenu" aria-hidden={openSubmenu !== 'side-nav-1'}>
+                <ul id="side-nav-1" className="nav-submenu usa-nav-submenu">
                   <li><a href="/category/Laptops">Laptops</a>
                     <ul>
                       <li><a href="/category/Laptops?filter=simple_category:Ultralight">Ultralight</a></li>
@@ -85,10 +83,10 @@ class Header extends Component {
                 </ul>
               </li>
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Software' ? 'nav-link-current' : ''}`} aria-expanded={openSubmenu === 'side-nav-2'} aria-controls="side-nav-2" onClick={this.toggleSubmenu('side-nav-2')}>
+                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Software' ? 'nav-link-current' : ''}`} aria-controls="side-nav-2">
                   <span>Software</span>
                 </button>
-                <ul id="side-nav-2" className="nav-submenu usa-nav-submenu" aria-hidden={openSubmenu !== 'side-nav-2'}>
+                <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
                   <li>
                     <a href="/category/Software?filter=simple_category:Design">Design</a>
                   </li>
@@ -98,10 +96,10 @@ class Header extends Component {
                 </ul>
               </li>
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Services' ? 'nav-link-current' : ''}`} aria-expanded={openSubmenu === 'side-nav-3'} aria-controls="side-nav-3" onClick={this.toggleSubmenu('side-nav-3')}>
+                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Services' ? 'nav-link-current' : ''}`} aria-controls="side-nav-3">
                   <span>Services</span>
                 </button>
-                <ul id="side-nav-3" className="nav-submenu usa-nav-submenu" aria-hidden={openSubmenu !== 'side-nav-3'}>
+                <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
                   <li>
                     <a href="/category/Services?filter=simple_category:Support">Support</a>
                   </li>

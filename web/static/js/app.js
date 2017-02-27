@@ -12,6 +12,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
+import 'babel-polyfill';
 import 'phoenix_html';
 import 'lodash.debounce';
 import es6Promise from 'es6-promise';
