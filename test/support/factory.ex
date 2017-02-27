@@ -4,20 +4,20 @@ defmodule Adpq.Factory do
 
   def catalog_item_factory do
     %Adpq.CatalogItem{
-      long_category: "some content",
+      long_category: "Powerful Laptops for Serious Work",
       simple_category: "Power",
       top_level_category: "Laptops",
-      clin: "some content",
-      contract_discount: 42,
-      contract_unit_price: 42,
-      description: "some content",
-      list_price: 42,
-      manufacturer: "some content",
-      name: "HP Laptop",
-      quantity_in_uom: 42,
-      sku: "some content",
-      unit_of_measure: "some content",
-      unspc: "some content"
+      clin: "B4789",
+      contract_discount: 15,
+      contract_unit_price: 100000,
+      description: "High End Dell Laptop",
+      list_price: 85000,
+      manufacturer: "DELL",
+      name: "XP-43",
+      quantity_in_uom: 1,
+      sku: "DL-1546",
+      unit_of_measure: "1",
+      unspc: "A4567"
     }
   end
 

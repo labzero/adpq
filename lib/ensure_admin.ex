@@ -1,7 +1,4 @@
 defmodule Adpq.EnsureAdmin do
-  import Plug.Conn
-  import Ecto.Query
-
   alias Adpq.AuthHelpers
   alias Adpq.User
 
