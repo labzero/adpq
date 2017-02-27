@@ -74,25 +74,4 @@ defmodule Adpq.OrderControllerTest do
      assert json_response(conn, 200)["status"] == "CANCELLED"
    end
 
-
-  #
-  # test "updates and renders chosen resource when data is valid", %{conn: conn} do
-  #   order = Repo.insert! %Order{}
-  #   conn = put conn, order_path(conn, :update, order), order: @valid_attrs
-  #   assert json_response(conn, 200)["data"]["id"]
-  #   assert Repo.get_by(Order, @valid_attrs)
-  # end
-  #
-  # test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-  #   order = Repo.insert! %Order{}
-  #   conn = put conn, order_path(conn, :update, order), order: @invalid_attrs
-  #   assert json_response(conn, 422)["errors"] != %{}
-  # end
-
-  defp order_with_items(user, num_items) do
-    order = insert(:order, %{user: user})
-    insert_list(num_items, :order_item, %{order: order})
-    order
-  end
-
 end

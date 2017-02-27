@@ -3,23 +3,6 @@ defmodule Adpq.CatalogItemControllerTest do
   import Adpq.Factory
 
   alias Adpq.CatalogItem
-  @valid_attrs %{
-      long_category: "long",
-      clin: "abcd",
-      name: "A Computer",
-      contract_discount: 42,
-      contract_unit_price: 42,
-      description: "lorem ipsum",
-      list_price: 42,
-      manufacturer: "HP",
-      quantity_in_uom: 42,
-      sku: "A-123",
-      simple_category: "simple",
-      top_level_category: "top level",
-      unit_of_measure: "some content",
-      unspc: "some content"
-    }
-  @invalid_attrs %{}
 
   setup %{conn: conn} do
     user = insert(:user)
@@ -60,34 +43,4 @@ defmodule Adpq.CatalogItemControllerTest do
     end
   end
 
-  test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, catalog_item_path(conn, :create), catalog_item: @valid_attrs
-    assert json_response(conn, 201)["id"]
-    assert Repo.get_by(CatalogItem, @valid_attrs)
-  end
-
-  test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, catalog_item_path(conn, :create), catalog_item: @invalid_attrs
-    assert json_response(conn, 422)["errors"] != %{}
-  end
-
-  test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    catalog_item = Repo.insert!(CatalogItem.changeset(%CatalogItem{}, @valid_attrs))
-    conn = put conn, catalog_item_path(conn, :update, catalog_item), catalog_item: Map.put(@valid_attrs, "name", "new name")
-    assert json_response(conn, 200)["name"] == "new name"
-    assert Repo.get(CatalogItem, json_response(conn, 200)["id"])
-  end
-
-  test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    catalog_item = Repo.insert!(CatalogItem.changeset(%CatalogItem{}, @valid_attrs))
-    conn = put conn, catalog_item_path(conn, :update, catalog_item), catalog_item: Map.put(@valid_attrs, "name", nil)
-    assert json_response(conn, 422)["errors"] != %{}
-  end
-
-  test "deletes chosen resource", %{conn: conn} do
-    catalog_item = Repo.insert!(CatalogItem.changeset(%CatalogItem{}, @valid_attrs))
-    conn = delete conn, catalog_item_path(conn, :delete, catalog_item)
-    assert response(conn, 204)
-    refute Repo.get(CatalogItem, catalog_item.id)
-  end
 end
