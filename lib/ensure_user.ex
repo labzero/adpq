@@ -1,5 +1,4 @@
 defmodule Adpq.EnsureUser do
-  import Plug.Conn
   alias Adpq.AuthHelpers
   alias Adpq.User
 
