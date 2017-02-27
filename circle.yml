@@ -27,7 +27,7 @@ deployment:
   brien:
     branch: /.*?brien.*$/
     commands:
-      - script/ci/deploy-prod.sh
+      - script/ci/deploy-develop.sh
   develop:
     branch: develop
     commands:
