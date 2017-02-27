@@ -22,7 +22,8 @@ it('renders item information if available', () => {
     catalog: {
       items: [item],
       remoteDataState: RemoteDataStates.LOADED
-    }
+    },
+    fetchCatalog: function() {}
   }
   const rendered = shallow(<ItemDetail {...props} />)
   expect(rendered.find('Item').length).toBe(1)
@@ -32,7 +33,9 @@ it('renders a loading indicator if data is not yet loaded', () => {
   const props = {
     catalog: {
       remoteDataState: RemoteDataStates.LOADING
-    }
+    },
+    item: {},
+    fetchCatalog: function() {}
   }
   const rendered = shallow(<ItemDetail {...props}/>)
   expect(rendered.text()).toContain(LOADING_INDICATOR)
@@ -43,7 +46,8 @@ it('renders an error message if there is no item', () => {
     item: null,
     catalog: {
       remoteDataState: RemoteDataStates.LOADED
-    }
+    },
+    fetchCatalog: function() {}
   }
   const rendered = shallow(<ItemDetail {...props}/>)
   expect(rendered.text()).toContain(NOT_FOUND_MESSAGE)

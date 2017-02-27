@@ -8,7 +8,8 @@ export default class Homepage extends React.Component {
     fetchCatalog: PropTypes.func.isRequired,
     catalog: PropTypes.shape({
       remoteDataState: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    recommendations: PropTypes.shape.isRequired
   }
 
   componentDidMount() {
@@ -28,39 +29,11 @@ export default class Homepage extends React.Component {
           <div>
             <h3 className="subsection">Popular Configurations</h3>
 
-            <RecommendedItems
-              title="Everyday Computing"
-              subtitle="Good all-around systems for most business tasks."
-              items={[
-                  { id: 1, top_level_category: 'Laptop', name: 'HP Power Laptop 600 G2 SFF Business PC', image: '/images/products/everyday-computing-hp-laptop.jpg' },
-                  { id: 2, top_level_category: 'Desktop', name: 'Dell Optiplex 3040 MT', image: '/images/products/everyday-computing-dell-desktop.jpg' }
-              ]}
-            />
-
-            <RecommendedItems
-              title="Powerhouse"
-              subtitle="Performance systems that can handle intensive tasks."
-              items={[
-                  { id: 3, top_level_category: 'Laptop', name: 'ZBook15 Studio Mobile Workstation', image: '/images/products/powerhouse-hp-laptop.jpg' },
-                  { id: 4, top_level_category: 'Desktop', name: 'Dell Precision T5810', image: '/images/products/powerhouse-dell-desktop.jpg' }
-              ]}
-            />
-
-            <RecommendedItems
-              title="Great for Travel"
-              subtitle="Lightweight, secure, premium laptop with extended warranty."
-              items={[
-                  { id: 1, top_level_category: 'Laptop', name: 'Dell Latitude E7270', image: '/images/products/travel-dell.jpg' }
-              ]}
-            />
-
-            <RecommendedItems
-              title="Thin Client"
-              subtitle="An integrated solution combining security and easy management."
-              items={[
-                  { id: 2, top_level_category: 'Desktop', name: 'HP T620 Flexible Series', image: '/images/products/thin-client-hp.jpg' }
-              ]}
-            />
+            {this.props.recommendations && this.props.recommendations.length ?
+              this.props.recommendations.map(recommendation => (
+                <RecommendedItems {...recommendation} />
+                )) : ''
+            }
 
           </div>
 

@@ -9,12 +9,12 @@ const example = {
   items: [
     {
       id: 1,
-      top_level_category: 'Laptop',
+      top_level_category: 'Laptops',
       name: 'ZBook15',
       image: '/images/placeholder-01.jpg'
     },{
       id: 2,
-      top_level_category: 'Desktop',
+      top_level_category: 'Desktops',
       name: 'Workstation',
       image: '/images/placeholder-01.jpg'
     }
