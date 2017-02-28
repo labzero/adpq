@@ -17,7 +17,7 @@ export default class Cart extends Component {
 
   placeOrder = (event) => {
     event.preventDefault();
-    this.props.placeOrder().then(this.props.goToThanks);
+    return this.props.placeOrder().then(this.props.goToThanks);
   }
 
   render() {

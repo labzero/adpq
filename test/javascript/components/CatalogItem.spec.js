@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme'
 import CatalogItem from 'components/CatalogItem/CatalogItem'
-import * as RemoteDataStates from 'constants/RemoteDataStates'
 
 const item = {
   id: 0,
