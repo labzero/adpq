@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const orderReport = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ActionTypes.REQUEST_ADMIN_ORDERS:
       return {
         ...state,
@@ -29,5 +29,6 @@ const orderReport = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
+
 export default orderReport;

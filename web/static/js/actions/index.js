@@ -237,13 +237,33 @@ export function requestCatalog() {
 // alerts actions
 export function alert(action, willExpire = false) {
   return { type: ActionTypes.ALERT, alert: action, willExpire };
-}
+
 
 export function expireAlerts() {
   return { type: ActionTypes.EXPIRE_ALERTS };
+
+export function fetchAdminOrders() {
+  return (dispatch) => {
+    dispatch(requestAdminOrders());
+    return fetch('api/admin/orders', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminOrdersSuccess(json)))
+      .catch(error => dispatch(fetchCatalogError(error)))
+  }
 }
 
-// helpers
+export function requestAdminOrders() {
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS }
+}
+
+export function fetchAdminOrdersSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_SUCCESS, data: json };
+}
+
+export function fetchAdminOrderError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
+}
 
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);

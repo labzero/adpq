@@ -10,6 +10,7 @@ export default class App extends Component {
     children: PropTypes.node.isRequired
   }
 
+
   render() {
     const { headerMode, footerMode, section } = this.props;
     return (
