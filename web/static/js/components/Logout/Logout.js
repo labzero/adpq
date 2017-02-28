@@ -7,7 +7,7 @@ class Logout extends React.Component {
 
   static propTypes = {
     router: PropTypes.object.isRequired,
-    logout: PropTypes.func.required
+    logout: PropTypes.func
   }
 
   componentWillMount() {

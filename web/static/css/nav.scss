@@ -1,53 +1,66 @@
 @import 'variables';
 
-.nav .nav-primary .nav-submenu,
-.nav .nav-primary button[aria-expanded=true],
-.nav .nav-primary button[aria-expanded=true]:hover {
-  background-color: #FFF;
-}
-.nav .nav-primary button[aria-expanded=true] span {
-  border-color: #FFF;
-}
-.nav .nav-primary .nav-submenu li ul {
-  padding: 0;
-  margin: 0;
-}
-.nav .nav-primary .nav-submenu li li {
-  display: block;
-  font-weight: normal;
+.nav {
+  .nav-primary {
+    .nav-submenu,
+    button[aria-expanded=true],
+    button[aria-expanded=true]:hover {
+      background-color: $color-white;
+    }
+    button[aria-expanded=true] span {
+      border-color: $color-white;
+    }
+    .nav-submenu {
+      li {
+        ul {
+          padding: 0;
+          margin: 0;
+        }
+        li {
+          display: block;
+          font-weight: normal;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 951px) {
-  .nav .nav-primary .nav-submenu,
-  .nav .nav-primary button[aria-expanded=true],
-  .nav .nav-primary button[aria-expanded=true]:hover{
-    background-color: #245691;
+  .nav {
+    .nav-primary {
+      .nav-submenu,
+      button[aria-expanded=true],
+      button[aria-expanded=true]:hover{
+        background-color: $color-primary-darker;
+      }
+      .nav-submenu {
+        left: 16px;
+        right: 16px;
+        li {
+          width: 25%;
+          display: inline-block;
+          font-weight: bold;
+          vertical-align: top;
+          li {
+            width: auto;
+          }
+          a {
+            margin: 0 15px;
+          }
+          li {
+            a {
+              color: #cee5ef;
+            }
+          }
+        }
+      }
+      .nav-submenu li
+      .nav-link-current span {
+        border-bottom: 0.7rem solid $color-primary;
+        padding-bottom: 1rem;
+      }
+    }
   }
-  .nav .nav-primary .nav-submenu {
-    left: 16px;
-    right: 16px;
-  }
-  .nav .nav-primary .nav-submenu li {
-    width: 25%;
-    display: inline-block;
-    font-weight: bold;
-    vertical-align: top;
-  }
-  .nav .nav-primary .nav-submenu li li {
-    width: auto;
-  }
-  .nav .nav-primary .nav-submenu li a {
-    margin: 0 15px;
-  }
-  .nav .nav-primary .nav-submenu li li a {
-    color: #cee5ef;
-  }
-
-  .nav .nav-primary .nav-link-current span {
-    border-bottom: 0.7rem solid #0071bc;
-    padding-bottom: 1rem;
-  }
-
   .nav-secondary-links {
     a {
       color: $color-white;
