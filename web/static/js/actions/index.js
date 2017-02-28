@@ -94,7 +94,7 @@ export function removeFromCartError(error) {
 // order actions
 export function fetchOrders() {
   return (dispatch) => {
-    dispatch(requestCart());
+    dispatch(requestOrders());
     const user = getUserData();
     return fetch(`/api/user/${user.id}/orders`, requestWithAuth({}))
       .then(checkHttpStatus)
