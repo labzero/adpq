@@ -8,10 +8,6 @@ it('renders default menu', () => {
   expect(rendered.text()).toContain('Tech Shop')
   expect(rendered.text()).toContain('Cart')
   expect(rendered.text()).toContain('Account')
-  expect(rendered.text()).toContain('Logout')
-  expect(rendered.text()).toContain('Hardware')
-  expect(rendered.text()).toContain('Software')
-  expect(rendered.text()).toContain('Services')
 })
 
 it('renders no menu when set to login', () => {

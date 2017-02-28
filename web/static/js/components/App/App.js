@@ -6,8 +6,6 @@ import Header from '../Header/Header';
 export default class App extends Component {
 
   static propTypes = {
-    headerMode: PropTypes.string.isRequired,
-    footerMode: PropTypes.string.isRequired,
     section: PropTypes.string,
     children: PropTypes.node.isRequired
   }
