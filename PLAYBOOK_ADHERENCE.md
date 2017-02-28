@@ -49,7 +49,7 @@ In addition, below are key activities and artifacts relative to the Digital Serv
 ## Play 12: User data to drive 
 * Monitoring system performance
 
-# Play 13: Default to open
+## Play 13: Default to open
 * Utilized open source
 
 
