@@ -1,10 +1,9 @@
+/* global fetch */
 import { browserHistory } from 'react-router';
 import includes from 'lodash/fp/includes';
-import fetch from 'isomorphic-fetch';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
-
 
 // user actions
 export function loginRequest() {
