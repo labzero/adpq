@@ -7,35 +7,31 @@ describe('<Footer />', () => {
 
   beforeEach(() => {
     props = {
-      isHomepage: false,
-      isAuthorized: true
+      navigationMode: 'less'
     };
   });
 
-  it('renders a slim footer by default', () => {
+  it('renders a slim footer', () => {
     const rendered = shallow(<Footer { ...props }/>);
     expect(rendered.html()).toContain('usa-footer-slim');
     expect(rendered.html()).not.toContain('footer usa-footer usa-footer-big');
   })
 
-  it('renders a big footer on the homepage', () => {
+  it('renders a big footer', () => {
     props = {
-      isHomepage: true,
-      isAuthorized: true
+      navigationMode: 'more'
     };
     const rendered = shallow(<Footer { ...props }/>);
     expect(rendered.html()).toContain('usa-footer usa-footer-big');
     expect(rendered.html()).not.toContain('footer-slim usa-footer-slim');
   })
 
-  it('renders limited footer when not logged in', () => {
+  it('renders limited footer', () => {
     props = {
-      isHomepage: true,
-      isAuthorized: false
+      navigationMode: 'none'
     };
     const rendered = shallow(<Footer { ...props }/>);
     expect(rendered.html()).not.toContain('usa-footer-nav');
   })
-
-
+  
 });

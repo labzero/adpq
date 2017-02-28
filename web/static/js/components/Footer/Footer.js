@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const Footer = ({ isAuthorized, isHomepage }) => {
+const Footer = ({ navigationMode }) => {
   let nav;
-  if (isHomepage && isAuthorized) {
+  if (navigationMode === 'more') {
     nav = (
       <div className="footer-primary usa-footer-primary-section">
         <div className="usa-grid-full footer-grid">
@@ -64,7 +64,7 @@ const Footer = ({ isAuthorized, isHomepage }) => {
         </div>
       </div>
     );
-  } else if (isAuthorized) {
+  } else if (navigationMode === 'less') {
     nav = (
       <div className="footer-primary usa-footer-primary-section">
         <div className="usa-grid footer-grid">
@@ -96,7 +96,7 @@ const Footer = ({ isAuthorized, isHomepage }) => {
   }
 
   return (
-    <footer className={`footer usa-footer ${isHomepage ? 'usa-footer-big' : 'footer-slim usa-footer-slim'}`}>
+    <footer className={`footer usa-footer ${navigationMode === 'more' ? 'usa-footer-big' : 'footer-slim usa-footer-slim'}`}>
       {nav}
       <div className="footer-secondary usa-footer-secondary_section">
         <div className="usa-grid">
@@ -114,8 +114,7 @@ const Footer = ({ isAuthorized, isHomepage }) => {
 };
 
 Footer.propTypes = {
-  isHomepage: PropTypes.bool.isRequired,
-  isAuthorized: PropTypes.bool.isRequired
+  navigationMode: PropTypes.string.isRequired
 };
 
 export default Footer;
