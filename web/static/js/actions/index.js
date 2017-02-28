@@ -73,7 +73,8 @@ export function fetchCatalog() {
   return (dispatch) => {
     dispatch(requestCatalog());
     return fetch('/api/catalog_items', requestWithAuth({}))
-      .then(response => response.json()) // TODO check response.ok
+      .then(checkHttpStatus)
+      .then(response => response.json())
       .then(json => dispatch(fetchCatalogSuccess(json)))
       .catch(error => dispatch(fetchCatalogError(error))); // TODO flash message
   };
@@ -90,6 +91,29 @@ export function fetchCatalogError(error) {
 
 export function requestCatalog() {
   return { type: ActionTypes.REQUEST_CATALOG };
+}
+
+export function fetchAdminOrders() {
+  return (dispatch) => {
+    dispatch(requestAdminOrders());
+    return fetch('api/admin/orders', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminOrdersSuccess(json)))
+      .catch(error => dispatch(fetchCatalogError(error)))
+  }
+}
+
+export function requestAdminOrders() {
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS }
+}
+
+export function fetchAdminOrdersSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_SUCCESS, data: json };
+}
+
+export function fetchAdminOrderError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
 }
 
 function shouldFetchCatalog(state) {
