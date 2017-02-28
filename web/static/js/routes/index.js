@@ -20,6 +20,7 @@ import {
   AdminContainer,
   OrderReportContainer,
   ThanksContainer
+  CatalogContainer
 } from '../components/index';
 import { getUserData } from '../lib/user';
 
@@ -66,6 +67,7 @@ export default function getRoutes(store) {
     <Route path="logout" component={Logout} />
     <Route path="admin" component={AdminContainer} onEnter={requireAuth(store)}>
       <IndexRoute component={OrderReportContainer} />
+      <Route path="catalog" component={CatalogContainer} />
     </Route>
   </Route>);
 }
