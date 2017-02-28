@@ -5,14 +5,14 @@ Lab Zero’s existing product design and development approach aligns closely wit
 In addition, below are key activities and artifacts relative to the Digital Service Plays:
 
 ## Play 1: Understand what people need
-* Drafted open-ended discovery interview scripts for key personas.
-* Interviewed representative users, documented & shared learnings. 
-* Utilize existing large scale quantitative eCommerce research through the Baymard Institute.
-* Outline Full Persona List to note all roles likely involved in the full experience.
-* Focus on and define State Agency Requester as primary persona.
-* Focus on and define Lead Purchasing Org web admin as secondary persona.
-* Capture & prioritize needs as user stories.
-* Regularly test to validate problem/solution fit.
+* Drafted open-ended discovery interview scripts for key personas
+* Interviewed representative users, documented & shared learnings 
+* Utilize existing large scale quantitative eCommerce research through the Baymard Institute
+* Outline Full Persona List to note all roles likely involved in the full experience
+* Focus on and define State Agency Requester as primary persona
+* Focus on and define Lead Purchasing Org web admin as secondary persona
+* Capture & prioritize needs as user stories
+* Regularly test to validate problem/solution fit
 
 ## Play 2: Address the whole experience, from start to finish
 * Illustrated on- & off-line touch points and align team on key points of impact & focus
