@@ -29,4 +29,4 @@ ADD . .
 RUN brunch build --production && \
     mix do compile, phoenix.digest
 
-CMD ["env", "mix", "phoenix.server"]
+CMD [“mix”, “do”, “ecto.migrate,”, “phoenix.server”]
