@@ -11,6 +11,18 @@ class Header extends Component {
   }
 
   componentDidMount() {
+    if (this.props.isAuthorized) {
+      this.initUswds();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isAuthorized && this.props.isAuthorized) {
+      this.initUswds();
+    }
+  }
+
+  initUswds = () => {
     const accordions = select('.usa-accordion, .usa-accordion-bordered');
     accordions.forEach(el => new Accordion(el));
     navInit();
