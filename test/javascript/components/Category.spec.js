@@ -36,7 +36,7 @@ describe('<Category />', () => {
 
   it('renders an item for every item in the catalog', () => {
     const rendered = shallow(<Category { ...props }/>)
-    expect(rendered.find('Item').length).toBe(2)
+    expect(rendered.find('Connect(CatalogItem)').length).toBe(2)
   })
 
   it('renders a loading message if the data is not loaded yet', () => {

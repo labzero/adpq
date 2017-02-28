@@ -9,14 +9,15 @@ const initialState = {
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.REQUEST_CART:
+    case ActionTypes.REQUEST_CART: {
       const remoteDataState =
         state.remoteDataState === RemoteDataStates.LOADED ?
           RemoteDataStates.LOADING : RemoteDataStates.UPDATING;
       return {
         ...state,
-        remoteDataState 
+        remoteDataState
       };
+    }
     case ActionTypes.FETCH_CART_SUCCESS:
       return {
         ...state,

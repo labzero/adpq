@@ -26,7 +26,7 @@ it('renders item information if available', () => {
     fetchCatalog: function() {}
   }
   const rendered = shallow(<ItemDetail {...props} />)
-  expect(rendered.find('Item').length).toBe(1)
+  expect(rendered.find('Connect(CatalogItem)').length).toBe(1)
 })
 
 it('renders a loading indicator if data is not yet loaded', () => {

@@ -31,8 +31,8 @@ class LoginForm extends React.Component {
           </div>
           <button type="submit">Sign in</button>
 
-          <p><a href="#">Forgot username?</a></p>
-          <p><a href="#">Forgot password?</a></p>
+          <p><a href="/forgot">Forgot username?</a></p>
+          <p><a href="/forgot">Forgot password?</a></p>
         </form>
       </div>
     );

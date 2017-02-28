@@ -153,11 +153,6 @@ export function requestCatalog() {
 }
 
 // helpers
-
-function shouldFetchCart(state) {
-  return shouldFetch(state.cart);
-}
-
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
 }

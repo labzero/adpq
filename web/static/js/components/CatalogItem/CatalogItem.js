@@ -3,7 +3,7 @@ import currencyFormatter from 'currency-formatter';
 import { Link } from 'react-router';
 import { catalogItemImage } from '../../lib/image_urls';
 
-class Item extends Component {
+class CatalogItem extends Component {
   static propTypes = {
     addToCart: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
@@ -54,7 +54,7 @@ class Item extends Component {
           <h4>
             {currencyFormatter.format(item.list_price / 100, { code: 'USD' })}
           </h4>
-          <form className="usa-form" onSubmit={this.addToCart}>
+          <form onSubmit={this.addToCart}>
             <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
               <option value="1">Qty: 1</option>
             </select>
@@ -66,4 +66,4 @@ class Item extends Component {
   }
 }
 
-export default Item;
+export default CatalogItem;

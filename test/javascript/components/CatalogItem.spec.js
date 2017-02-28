@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme'
-import Item from 'components/Item/Item'
+import CatalogItem from 'components/CatalogItem/CatalogItem'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
 
 const item = {
@@ -15,9 +15,10 @@ const item = {
 
 it('renders item information', () => {
   const props = {
+    addToCart: () => {},
     item
   }
-  const rendered = shallow(<Item {...props} />)
+  const rendered = shallow(<CatalogItem {...props} />)
   expect(rendered.text()).toContain('DELL')
   expect(rendered.text()).toContain('$100')
   expect(rendered.text()).toContain('4GB 1DIMM')

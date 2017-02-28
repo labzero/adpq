@@ -9,14 +9,15 @@ const initialState = {
 
 const catalog = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.REQUEST_CATALOG:
+    case ActionTypes.REQUEST_CATALOG: {
       const remoteDataState =
         state.remoteDataState === RemoteDataStates.LOADED ?
           RemoteDataStates.LOADING : RemoteDataStates.UPDATING;
       return {
         ...state,
-        remoteDataState 
+        remoteDataState
       };
+    }
     case ActionTypes.FETCH_CATALOG_SUCCESS:
       return {
         ...state,

@@ -7,10 +7,10 @@ import cart from './cart';
 import catalog from './catalog';
 
 export default combineReducers({
-  routing: routerReducer,
+  auth,
   categories: categoriesReducer,
   cart,
   catalog,
-  auth,
-  form: formReducer
+  form: formReducer,
+  routing: routerReducer
 });
