@@ -7,9 +7,9 @@ const initialState = {
   error: null
 };
 
-const cart = (state = initialState, action) => {
+const orderHistory = (state = initialState, action) => {
   switch (action.type) {
-    case ActionTypes.REQUEST_CART: {
+    case ActionTypes.REQUEST_ORDERS: {
       const remoteDataState =
         state.remoteDataState === RemoteDataStates.LOADED ?
           RemoteDataStates.LOADING : RemoteDataStates.UPDATING;
@@ -18,29 +18,29 @@ const cart = (state = initialState, action) => {
         remoteDataState
       };
     }
-    case ActionTypes.FETCH_CART_SUCCESS:
+    case ActionTypes.FETCH_ORDERS_SUCCESS:
       return {
         ...state,
         remoteDataState: RemoteDataStates.LOADED,
         items: action.data,
       };
-    case ActionTypes.FETCH_CART_ERROR:
+    case ActionTypes.FETCH_ORDERS_ERROR:
       return {
         ...state,
         remoteDataState: RemoteDataStates.ERROR,
         error: action.error,
       };
-    case ActionTypes.ADD_TO_CART:
+    case ActionTypes.CREATE_ORDER:
       return {
         ...state,
         remoteDataState: RemoteDataStates.UPDATING,
       };
-    case ActionTypes.ADD_TO_CART_SUCCESS:
+    case ActionTypes.CREATE_ORDER_SUCCESS:
       return {
         ...state,
         remoteDataState: RemoteDataStates.LOADED
       };
-    case ActionTypes.ADD_TO_CART_ERROR:
+    case ActionTypes.CREATE_ORDER_ERROR:
       return {
         ...state,
         remoteDataState: RemoteDataStates.LOADED,
@@ -51,4 +51,4 @@ const cart = (state = initialState, action) => {
   }
 };
 
-export default cart;
+export default orderHistory;

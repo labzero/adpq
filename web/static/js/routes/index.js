@@ -1,16 +1,20 @@
 
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { fetchCart as fetchCartAction } from '../actions';
+import {
+  expireAlerts as expireAlertsAction,
+  fetchCart as fetchCartAction
+} from '../actions';
 import {
   AccountContainer,
   AppContainer,
   CartContainer,
   CategoryContainer,
+  HomepageContainer,
+  ItemDetailContainer,
   LoginContainer,
   Logout,
-  ItemDetailContainer,
-  HomepageContainer } from '../components/index';
+  ThanksContainer } from '../components/index';
 import { getUserData } from '../lib/user';
 
 const hasRole = (user, role) => (role ? user.role === role : true);
@@ -34,12 +38,24 @@ export default function getRoutes(store) {
     callback();
   };
 
-  return (<Route path="/" component={AppContainer} onEnter={fetchCart()} onChange={fetchCart()}>
+  const expireAlerts = () => () => {
+    store.dispatch(expireAlertsAction());
+  };
+
+  const onChange = role => (nextState, replace, callback) => {
+    expireAlerts(role)(nextState, replace, callback);
+    fetchCart(role)(nextState, replace, callback);
+  };
+
+  return (<Route path="/" component={AppContainer} onEnter={fetchCart()} onChange={onChange()}>
     <IndexRoute component={HomepageContainer} onEnter={requireAuth()} />
     <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth()} />
     <Route path="item/:id" component={ItemDetailContainer} onEnter={requireAuth()} />
     <Route path="account" component={AccountContainer} onEnter={requireAuth()} />
     <Route path="cart" component={CartContainer} onEnter={requireAuth()} />
+    <Route path="orders" onEnter={requireAuth()}>
+      <Route path="thanks" component={ThanksContainer} />
+    </Route>
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />
   </Route>);

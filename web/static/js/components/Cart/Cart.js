@@ -8,10 +8,17 @@ export default class Cart extends Component {
     cart: PropTypes.shape({
       items: PropTypes.array.isRequired,
       remoteDataState: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    goToThanks: PropTypes.func.isRequired,
+    placeOrder: PropTypes.func.isRequired
   };
 
   totalPrice = () => this.props.cart.items.reduce((acc, item) => acc + item.price, 0);
+
+  placeOrder = (event) => {
+    event.preventDefault();
+    this.props.placeOrder().then(this.props.goToThanks);
+  }
 
   render() {
     if (shouldRender(this.props.cart.remoteDataState)) {
@@ -26,7 +33,7 @@ export default class Cart extends Component {
             <ul className="usa-unstyled-list">
               {items.map(item => <li className="cart-item" key={item.id}><CartItemContainer item={item} link /></li>)}
             </ul>
-            <form className="cart-checkout-form">
+            <form className="cart-checkout-form" onSubmit={this.placeOrder}>
               <h4>
                 Total: {currencyFormatter.format(this.totalPrice() / 100, { code: 'USD' })}
               </h4>

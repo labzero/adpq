@@ -6,3 +6,4 @@ export { default as ItemDetailContainer } from './ItemDetail/ItemDetailContainer
 export { default as CategoryContainer } from './Category/CategoryContainer';
 export { default as LoginContainer } from './Login/LoginContainer';
 export { default as Logout } from './Logout/Logout';
+export { default as ThanksContainer } from './Thanks/ThanksContainer';
