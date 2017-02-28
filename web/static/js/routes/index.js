@@ -15,7 +15,12 @@ import {
   ItemDetailContainer,
   LoginContainer,
   Logout,
-  ThanksContainer } from '../components/index';
+  ItemDetailContainer,
+  HomepageContainer,
+  AdminContainer,
+  OrderReportContainer,
+  ThanksContainer
+} from '../components/index';
 import { getUserData } from '../lib/user';
 
 const hasRole = (user, role) => (role ? user.role === role : true);
@@ -59,6 +64,8 @@ export default function getRoutes(store) {
     </Route>
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />
-    <Route path="admin" component={AdminContainer} onEnter={requireAuth("ADMIN")} />
+    <Route path="admin" component={AdminContainer} onEnter={requireAuth(store)}/>
+      <IndexRoute component={OrderReportContainer} />
+    <Route/>
   </Route>);
 }

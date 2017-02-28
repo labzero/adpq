@@ -7,6 +7,7 @@ import auth from './auth';
 import cart from './cart';
 import catalog from './catalog';
 import orderHistory from './orderHistory';
+import orderReport from './order_report'
 
 export default combineReducers({
   alerts,
@@ -14,6 +15,8 @@ export default combineReducers({
   categories: categoriesReducer,
   cart,
   catalog,
+  auth,
+  orderReport,
   form: formReducer,
   orderHistory,
   routing: routerReducer
