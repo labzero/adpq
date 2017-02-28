@@ -66,11 +66,15 @@ make_task_def(){
         {
           "name": "RDS_PASSWORD",
           "value": "%s"
+        },
+        {
+          "name": "HONEYBADGER_API_KEY",
+          "value": "%s"
         }
       ]
     }
   ]'
-  task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1 $MIX_ENV $RDS_DEVELOP_PASSWORD)
+  task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1 $MIX_ENV $RDS_DEVELOP_PASSWORD $HONEYBADGER_API_KEY)
 }
 
 push_ecr_image(){
