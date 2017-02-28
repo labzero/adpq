@@ -7,6 +7,7 @@ export default class Admin extends React.Component {
         <div className="usa-section">
           <h2>Admin</h2>
           <p className="subheading">Admin...</p>
+          {this.props.children}
         </div>
       </div>
     );
