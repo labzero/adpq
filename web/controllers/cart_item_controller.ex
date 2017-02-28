@@ -115,6 +115,8 @@ defmodule Adpq.CartItemController do
         description "Cart Item"
         properties do
           catalog_item_id :integer, "Catalog Item ID", required: true
+          manufacturer :string, "Manufacturer", required: true
+          sku :string, "SKU", required: true
           quantity :integer, "Quantity", required: true
           user_id :integer, "User ID", required: true
           name :string, "Name", required: true
