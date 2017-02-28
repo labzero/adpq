@@ -34,8 +34,8 @@ export default function getRoutes(store) {
     <Route path="account" component={AccountContainer} onEnter={requireAuth(store)} />
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />
-    <Route path="admin" component={AdminContainer} onEnter={requireAuth(store)}/>
+    <Route path="admin" component={AdminContainer} onEnter={requireAuth(store)}>
       <IndexRoute component={OrderReportContainer} />
-    <Route/>
+    </Route>
   </Route>);
 }

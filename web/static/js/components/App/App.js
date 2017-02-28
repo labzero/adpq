@@ -10,7 +10,7 @@ export default class App extends Component {
     section: PropTypes.string,
     children: PropTypes.node.isRequired
   }
-  
+
   headerNavigationMode = (location) => {
     let mode = 'default';
     if (location.pathname === '/login') {
@@ -30,7 +30,7 @@ export default class App extends Component {
     }
     return mode;
   }
-  
+
   render() {
     const { location, section } = this.props;
 

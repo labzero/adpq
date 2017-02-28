@@ -1,6 +1,11 @@
-import React, { } from 'react';
+import React, { PropTypes } from 'react';
 
 export default class Admin extends React.Component {
+
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  }
+
   render() {
     return (
       <div className="usa-grid admin">

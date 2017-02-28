@@ -100,12 +100,12 @@ export function fetchAdminOrders() {
       .then(checkHttpStatus)
       .then(response => response.json())
       .then(json => dispatch(fetchAdminOrdersSuccess(json)))
-      .catch(error => dispatch(fetchCatalogError(error)))
-  }
+      .catch(error => dispatch(fetchCatalogError(error)));
+  };
 }
 
 export function requestAdminOrders() {
-  return { type: ActionTypes.REQUEST_ADMIN_ORDERS }
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS };
 }
 
 export function fetchAdminOrdersSuccess(json) {
