@@ -9,7 +9,8 @@ defmodule Adpq.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :adpq, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts img images js favicon.ico robots.txt swagger.json),
+    headers: %{"Access-Control-Allow-Origin" => "*"}
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -38,5 +39,6 @@ defmodule Adpq.Endpoint do
     key: "_adpq_key",
     signing_salt: "R3qLN8KP"
 
+  plug Corsica, origins: "*", allow_headers: ["authorization", "content-type"]
   plug Adpq.Router
 end

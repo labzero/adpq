@@ -1,0 +1,41 @@
+machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  services:
+    - docker
+dependencies:
+  pre:
+    - script/ci/prepare.sh
+  post:
+    - if [[ ! -e sassc ]]; then git clone git@github.com:sass/sassc.git sassc; fi
+    - if [[ ! -e libsass ]]; then git clone --recursive git@github.com:sass/libsass.git && cd sassc && export SASS_LIBSASS_PATH=$(readlink -f ../libsass) && make && cd ..; fi
+    - ln -s sassc/bin/sassc ~/bin/sassc
+  cache_directories:
+    - ~/dependencies
+    - ~/.mix
+    - _build
+    - deps
+    - node_modules
+database:
+  override:
+    - createuser -d adpq
+test:
+  override:
+    - mkdir -p $CIRCLE_TEST_REPORTS/test
+    - script/ci/tests.sh
+deployment:
+  brien:
+    branch: /.*?brien.*$/
+    commands:
+      - script/ci/deploy-prod.sh
+  develop:
+    branch: develop
+    commands:
+      - script/ci/deploy-develop.sh
+  production:
+    branch: master
+    commands:
+      - script/ci/deploy-prod.sh
+general:
+  artifacts:
+    - /opt/app/npm-debug.log

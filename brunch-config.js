@@ -22,7 +22,8 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        after: ["web/static/css/app.css"] // concat app.css last
+        before: ["node_modules/uswds/dist/css/uswds.css", "web/static/css/uswds-bugfixes.css"],
+        after: ["web/static/css/app.scss"] // concat app.css last
       }
     },
     templates: {
@@ -34,13 +35,16 @@ exports.config = {
     // This option sets where we should place non-css and non-js assets in.
     // By default, we set this to "/web/static/assets". Files in this directory
     // will be copied to `paths.public`, which is "priv/static" by default.
-    assets: /^(web\/static\/assets)/
+    assets: /^(web\/static\/assets)/,
+    // Ignore uswds.min.css
+    ignored: /\.min.css$/
   },
 
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
     watched: [
+      "node_modules/uswds/dist/css/",
       "web/static",
       "test/static"
     ],
@@ -52,8 +56,15 @@ exports.config = {
   // Configure your plugins
   plugins: {
     babel: {
+      presets: ['es2015', 'es2016', 'es2017', 'stage-1', 'react'],
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    replacement: {
+      replacements: [{
+        files: [/\.css$/],
+        match: {find: '../img/', replace: '/images/'}
+      }]
     }
   },
 
