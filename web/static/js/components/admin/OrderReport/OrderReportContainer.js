@@ -12,7 +12,7 @@ const mapStateToProps = (state, _ownProps) => (
 
 const mapDispatchToProps = dispatch => ({
   fetchOrders() {
-    dispatch(fetchAdminOrders());
+    dispatch(fetchAdminOrdersIfNeeded());
   }
 });
 

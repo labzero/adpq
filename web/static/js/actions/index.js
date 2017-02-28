@@ -93,6 +93,14 @@ export function requestCatalog() {
   return { type: ActionTypes.REQUEST_CATALOG };
 }
 
+export function fetchAdminOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminOrders(getState())) {
+      return dispatch(fetchAdminOrders());
+    }
+    return Promise.resolve();
+  };
+}
 export function fetchAdminOrders() {
   return (dispatch) => {
     dispatch(requestAdminOrders());
@@ -114,6 +122,10 @@ export function fetchAdminOrdersSuccess(json) {
 
 export function fetchAdminOrderError(error) {
   return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
+}
+
+function shouldFetchAdminOrders(state) {
+  return shouldFetch(state.orderReport);
 }
 
 function shouldFetchCatalog(state) {
