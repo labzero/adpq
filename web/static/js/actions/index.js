@@ -30,10 +30,6 @@ export function requestCart() {
   return { type: ActionTypes.REQUEST_CART };
 }
 
-export function requestAddToCart(id, quantity) {
-  return { type: ActionTypes.ADD_TO_CART, id, quantity };
-}
-
 export function addToCart(id, quantity) {
   const request = {
     method: 'post',
@@ -56,12 +52,44 @@ export function addToCart(id, quantity) {
   };
 }
 
+export function requestAddToCart(id, quantity) {
+  return { type: ActionTypes.ADD_TO_CART, id, quantity };
+}
+
 export function addToCartSuccess(json) {
   return { type: ActionTypes.ADD_TO_CART_SUCCESS, data: json };
 }
 
 export function addToCartError(error) {
   return { type: ActionTypes.ADD_TO_CART_ERROR, error };
+}
+
+export function removeFromCart(id) {
+  const request = {
+    method: 'delete',
+    credentials: 'include'
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestRemoveFromCart(id));
+    return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(removeFromCartSuccess()))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(removeFromCartError(error))); // TODO flash message
+  };
+}
+
+export function requestRemoveFromCart(id) {
+  return { type: ActionTypes.REMOVE_FROM_CART, id };
+}
+
+export function removeFromCartSuccess() {
+  return { type: ActionTypes.REMOVE_FROM_CART_SUCCESS };
+}
+
+export function removeFromCartError(error) {
+  return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
 }
 
 // user actions

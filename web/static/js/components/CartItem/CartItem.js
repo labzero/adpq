@@ -6,6 +6,7 @@ import { catalogItemImage } from '../../lib/image_urls';
 class CartItem extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
+    remove: PropTypes.func.isRequired
   };
 
   state = {
@@ -14,6 +15,11 @@ class CartItem extends Component {
 
   changeQuantity = (event) => {
     this.setState({ quantity: Number(event.target.value) });
+  }
+
+  remove = (event) => {
+    event.preventDefault();
+    this.props.remove();
   }
 
   render() {

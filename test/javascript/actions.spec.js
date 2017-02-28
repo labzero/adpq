@@ -135,46 +135,131 @@ describe('Auth Actions', () => {
       quantity = 2
       store = mockStore({})
       fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
-      mockResponse = {id: 0, name: 'Computer'}
-      fetchMock.mock('/api/user/1/cart_items', mockResponse, {method: "POST"})
     })
 
-    it('dispatches requestAddToCart', (done) => {
-      const expectedActions = [
-        { type: ActionTypes.ADD_TO_CART, id, quantity }
-      ]
+    describe('success', () => {
+      beforeEach(() => {
+        mockResponse = {id: 0, name: 'Computer'}
+        fetchMock.mock('/api/user/1/cart_items', mockResponse, {method: "POST"})
+      })
 
-      store.dispatch(actions.addToCart(id, quantity)).then(() => {
-        expect(store.getActions()[0]).toEqual(expectedActions[0])
-        done();
+      it('dispatches requestAddToCart', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.ADD_TO_CART, id, quantity }
+        ]
+
+        store.dispatch(actions.addToCart(id, quantity)).then(() => {
+          expect(store.getActions()[0]).toEqual(expectedActions[0])
+          done();
+          })
+      })
+
+      it('dispatches success', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.ADD_TO_CART, id, quantity },
+          { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse }
+        ]
+        
+        store.dispatch(actions.addToCart(id, quantity)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedActions[1])
+          done();
+        })
+      })
+
+      it('dispatches fetchCart', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.ADD_TO_CART, id, quantity },
+          { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse },
+          { type: ActionTypes.REQUEST_CART }
+        ]
+        
+        store.dispatch(actions.addToCart(id, quantity)).then(() => {
+          expect(store.getActions()[2]).toEqual(expectedActions[2])
+          done();
+        })
       })
     })
 
-    it('dispatches success', (done) => {
+    it('dispatches error', (done) => {
       const expectedActions = [
         { type: ActionTypes.ADD_TO_CART, id, quantity },
-        { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse }
+        { type: ActionTypes.ADD_TO_CART_ERROR, error: 'something' }
       ]
+
+      fetchMock.mock('/api/user/1/cart_items', 409, {method: "POST"})
       
       store.dispatch(actions.addToCart(id, quantity)).then(() => {
-        expect(store.getActions()[1]).toEqual(expectedActions[1])
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
         done();
       })
     })
+  })
 
-    it('dispatches fetchCart', (done) => {
+  describe('removeFromCart', () => {
+    let id, mockResponse, store;
+    
+    beforeEach(() => {
+      id = 123;
+      mockResponse = {}
+      store = mockStore({})
+    })
+
+    describe('success', () => {
+      beforeEach(() => {
+        fetchMock.mock('/api/user/1/cart_items/123', {}, {method: "DELETE"})
+        fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
+      })
+
+      it('dispatches requestRemoveFromCart', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.REMOVE_FROM_CART, id }
+        ]
+
+        store.dispatch(actions.removeFromCart(id)).then(() => {
+          expect(store.getActions()[0]).toEqual(expectedActions[0])
+          done();
+        })
+      })
+
+      it('dispatches removeFromCartSuccess', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.REMOVE_FROM_CART, id },
+          { type: ActionTypes.REMOVE_FROM_CART_SUCCESS }
+        ]
+        
+        store.dispatch(actions.removeFromCart(id)).then(() => {
+          expect(store.getActions()[1]).toEqual(expectedActions[1])
+          done();
+        })
+      })
+
+      it('dispatches fetchCart', (done) => {
+        const expectedActions = [
+          { type: ActionTypes.REMOVE_FROM_CART, id },
+          { type: ActionTypes.REMOVE_FROM_CART_SUCCESS },
+          { type: ActionTypes.REQUEST_CART }
+        ]
+        
+        store.dispatch(actions.removeFromCart(id)).then(() => {
+          expect(store.getActions()[2]).toEqual(expectedActions[2])
+          done();
+        })
+      })
+    })
+
+    it('dispatches removeFromCartError', (done) => {
+      fetchMock.mock('/api/user/1/cart_items/123', 409, {method: "DELETE"})
+
       const expectedActions = [
-        { type: ActionTypes.ADD_TO_CART, id, quantity },
-        { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse },
-        { type: ActionTypes.REQUEST_CART }
+        { type: ActionTypes.REMOVE_FROM_CART, id },
+        { type: ActionTypes.REMOVE_FROM_CART_ERROR, error: 'something' }
       ]
       
-      store.dispatch(actions.addToCart(id, quantity)).then(() => {
-        expect(store.getActions()[2]).toEqual(expectedActions[2])
+      store.dispatch(actions.removeFromCart(id)).then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
         done();
       })
     })
-
   })
 
 })

@@ -6,6 +6,7 @@ import { catalogItemImage } from '../../lib/image_urls';
 class CatalogItem extends Component {
   static propTypes = {
     addToCart: PropTypes.func.isRequired,
+    goToCart: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired,
     link: PropTypes.bool
   };
@@ -25,7 +26,7 @@ class CatalogItem extends Component {
 
   addToCart = (event) => {
     event.preventDefault();
-    this.props.addToCart(this.state.quantity);
+    return this.props.addToCart(this.state.quantity).then(this.props.goToCart);
   }
 
   changeQuantity = (event) => {
