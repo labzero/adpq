@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAdminOrders } from '../../../actions';
+import { fetchAdminOrdersIfNeeded } from '../../../actions';
 import OrderReport from './OrderReport';
 import salesByCategoryDepartment from '../../../lib/order_report';
 
