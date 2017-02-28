@@ -29,6 +29,9 @@ describe("routes", () => {
   it("/account route is defined", (cb) => {
     match(route("/account"), exists(cb))
   })
+  it("/cart route is defined", (cb) => {
+    match(route("/cart"), exists(cb))
+  })
   it("/login route is defined", (cb) => {
     match(route("/login"), exists(cb))
   })
