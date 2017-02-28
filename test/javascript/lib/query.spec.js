@@ -21,6 +21,11 @@ describe('parseFilters', () => {
     const param = ["manufa:dell"]
     expect(parseFilters(param)).toEqual([])
   })
+
+  it('parses filters with spaces and ampersands', () => {
+    const param = ["simple_category:keyboards%20%26%20mice,desktops"]
+    expect(parseFilters(param)).toEqual([["simple_category", ["keyboards%20%26%20mice", "desktops"]]])
+  })
 })
 
 describe('parseSorts', () => {
@@ -95,5 +100,11 @@ describe('generateQuery', () => {
     const sorts = [['name', 'asc']];
     const filters = [['simple_category', ['workstation']]];
     expect(generateQuery(sorts, filters)).toEqual('?sort=name:asc&filter=simple_category:workstation')
+  })
+
+  it('returns a filter that can handle spaces and ampersands', () => {
+    const sorts = null;
+    const filters = [['simple_category', ['Keyboards & Mice', 'Thin Client']]];
+    expect(generateQuery(sorts, filters)).toEqual('?filter=simple_category:keyboards%20%26%20mice,thin%20client')
   })
 })
