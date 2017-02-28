@@ -37,5 +37,19 @@ In addition, below are key activities and artifacts relative to the Digital Serv
 ## Play 7: Bring in experienced teams
 * Assembled a team experienced building similar applications in a modern fashion
 
+## Play 8: Choose a modern technology stack
+* Modern technology stack chosen
+
+## Play 9: Deploy in a flexible hosting environment
+* Deployed in a flexible hosting environment
+
+## Play 10: Automate testing and deployments
+* Testing & deploys automated
+
+## Play 12: User data to drive 
+* Monitoring system performance
+
+# Play 13: Default to open
+* Utilized open source
 
 
