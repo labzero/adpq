@@ -214,7 +214,8 @@ export function fetchCatalog() {
   return (dispatch) => {
     dispatch(requestCatalog());
     return fetch('/api/catalog_items', requestWithAuth({}))
-      .then(response => response.json()) // TODO check response.ok
+      .then(checkHttpStatus)
+      .then(response => response.json())
       .then(json => dispatch(fetchCatalogSuccess(json)))
       .catch(error => dispatch(fetchCatalogError(error))); // TODO flash message
   };
@@ -243,6 +244,7 @@ export function expireAlerts() {
 }
 
 // helpers
+
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
 }
