@@ -15,6 +15,8 @@ defmodule Adpq.CartItemView do
       id: cart_item.id,
       user_id: cart_item.user_id,
       quantity: cart_item.quantity,
+      manufacturer: catalog_item.manufacturer,
+      sku: catalog_item.sku,
       name: catalog_item.name,
       price: catalog_item.list_price,
       manufacturer: catalog_item.manufacturer,
