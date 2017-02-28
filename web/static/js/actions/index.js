@@ -242,6 +242,17 @@ export function alert(action, willExpire = false) {
 export function expireAlerts() {
   return { type: ActionTypes.EXPIRE_ALERTS };
 
+export function fetchAdminOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminOrders(getState())) {
+      return dispatch(fetchAdminOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
+// admin orders
+
 export function fetchAdminOrders() {
   return (dispatch) => {
     dispatch(requestAdminOrders());
@@ -263,6 +274,10 @@ export function fetchAdminOrdersSuccess(json) {
 
 export function fetchAdminOrderError(error) {
   return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
+}
+
+function shouldFetchAdminOrders(state) {
+  return shouldFetch(state.orderReport);
 }
 
 function shouldFetchCatalog(state) {
