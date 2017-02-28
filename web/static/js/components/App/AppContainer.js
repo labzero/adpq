@@ -44,7 +44,8 @@ const mapStateToProps = (state, ownProps) => {
   const location = ownProps.location;
   let section;
   if (ownProps.params.id) {
-    const item = state.catalog.items.find(it => it.id === ownProps.params.id);
+    // eslint-disable-next-line eqeqeq
+    const item = state.catalog.items.find(it => it.id == ownProps.params.id);
     section = item && findSection(item.top_level_category);
   } else if (ownProps.params.name) {
     section = findSection(ownProps.params.name);
