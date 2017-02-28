@@ -1,5 +1,6 @@
 defmodule Adpq.Router do
   use Adpq.Web, :router
+  use Honeybadger.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
