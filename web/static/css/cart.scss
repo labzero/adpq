@@ -1,0 +1,15 @@
+@import 'variables';
+
+.cart-item {
+  padding: 1.5em 0;
+}
+
+.cart-checkout-form {
+  border-top: 1px solid $color-gray-lighter;
+  padding-top: 5rem;
+  text-align: right;
+
+  button {
+    margin-right: 0;
+  }
+}

@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class HeaderLogin extends Component {
-
   static propTypes = {
     section: PropTypes.string
   }
@@ -16,7 +15,7 @@ class HeaderLogin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/admin" accessKey="1" title="Admin" aria-label="Home">Tech Shop</a>
+                <a href="/admin" title="Admin" aria-label="Home">Tech Shop</a>
               </em>
             </div>
           </div>

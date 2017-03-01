@@ -5,6 +5,93 @@ import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
 
+export function fetchCart() {
+  return (dispatch) => {
+    dispatch(requestCart());
+    const user = getUserData();
+    return fetch(`/api/user/${user.id}/cart_items`, requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchCartSuccess(json)))
+      .catch(error => dispatch(fetchCartError(error))); // TODO flash message
+  };
+}
+
+
+export function fetchCartSuccess(json) {
+  return { type: ActionTypes.FETCH_CART_SUCCESS, data: json };
+}
+
+export function fetchCartError(error) {
+  return { type: ActionTypes.FETCH_CART_ERROR, error };
+}
+
+export function requestCart() {
+  return { type: ActionTypes.REQUEST_CART };
+}
+
+export function addToCart(id, quantity) {
+  const request = {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ catalog_item_id: id, quantity })
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestAddToCart(id, quantity));
+    return fetch(`/api/user/${user.id}/cart_items`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(addToCartSuccess(json)))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(addToCartError(error))); // TODO flash message
+  };
+}
+
+export function requestAddToCart(id, quantity) {
+  return { type: ActionTypes.ADD_TO_CART, id, quantity };
+}
+
+export function addToCartSuccess(json) {
+  return { type: ActionTypes.ADD_TO_CART_SUCCESS, data: json };
+}
+
+export function addToCartError(error) {
+  return { type: ActionTypes.ADD_TO_CART_ERROR, error };
+}
+
+export function removeFromCart(id) {
+  const request = {
+    method: 'delete',
+    credentials: 'include'
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestRemoveFromCart(id));
+    return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(removeFromCartSuccess()))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(removeFromCartError(error))); // TODO flash message
+  };
+}
+
+export function requestRemoveFromCart(id) {
+  return { type: ActionTypes.REMOVE_FROM_CART, id };
+}
+
+export function removeFromCartSuccess() {
+  return { type: ActionTypes.REMOVE_FROM_CART_SUCCESS };
+}
+
+export function removeFromCartError(error) {
+  return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
+}
+
 // user actions
 export function loginRequest() {
   return { type: ActionTypes.LOGIN_REQUEST };
@@ -56,6 +143,8 @@ export function logoutUser() {
   return { type: ActionTypes.LOGOUT };
 }
 
+// catalog actions
+
 export function fetchCatalogIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchCatalog(getState())) {
@@ -91,6 +180,7 @@ export function requestCatalog() {
   return { type: ActionTypes.REQUEST_CATALOG };
 }
 
+// helpers
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
 }

@@ -2,10 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 class HeaderAdmin extends Component {
-
   static propTypes = {
     section: PropTypes.string,
-
   }
 
   render() {
@@ -19,7 +17,7 @@ class HeaderAdmin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/admin" accessKey="1" title="Admin" aria-label="Home">Tech Shop Admin</a>
+                <a href="/admin" title="Admin" aria-label="Home">Tech Shop Admin</a>
               </em>
             </div>
           </div>

@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import HeaderDefault from './HeaderDefault';
-import HeaderAdmin from './HeaderAdmin';
-import HeaderLogin from './HeaderLogin';
 import Accordion from 'uswds/src/js/components/accordion';
 import navInit from 'uswds/src/js/components/navigation';
 import select from 'uswds/src/js/utils/select';
-
+import HeaderDefault from './HeaderDefault';
+import HeaderAdmin from './HeaderAdmin';
+import HeaderLogin from './HeaderLogin';
 
 class Header extends Component {
   static propTypes = {
@@ -14,13 +13,13 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    if (this.props.isAuthorized) {
+    if (this.props.headerMode !== 'login') {
       this.initUswds();
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.isAuthorized && this.props.isAuthorized) {
+    if (prevProps.headerMode === 'login' && this.props.headerMode !== 'login') {
       this.initUswds();
     }
   }

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import * as RemoteDataStates from '../../constants/RemoteDataStates';
+import { shouldRender } from '../../lib/remote_data_states';
 import RecommendedItems from '../RecommendedItems/RecommendedItems';
 
 export default class Homepage extends React.Component {
@@ -17,7 +17,7 @@ export default class Homepage extends React.Component {
   }
 
   render() {
-    if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
+    if (shouldRender(this.props.catalog.remoteDataState)) {
       return (
         <div className="usa-grid homepage">
 

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import concat from 'lodash/fp/concat';
-import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import Item from '../Item/Item';
+import CatalogItemContainer from '../CatalogItem/CatalogItemContainer';
 import { applyFilters, applyRangeFilters } from '../../lib/filters';
 import { generateQuery } from '../../lib/query';
+import { shouldRender } from '../../lib/remote_data_states';
 import { sortBy } from '../../lib/sorts';
 
 export default class Category extends Component {
@@ -90,7 +90,7 @@ export default class Category extends Component {
 
   render() {
     const category = this.props;
-    if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
+    if (shouldRender(this.props.catalog.remoteDataState)) {
       const items = this.sortedAndFilteredData();
 
       return (
@@ -107,7 +107,7 @@ export default class Category extends Component {
             <main className="usa-width-three-fourths">
               <div className="category-sort-section">&nbsp;</div>
               <ul className="usa-unstyled-list">
-                {items.map(item => <li className="category-item" key={item.id}><Item item={item} link /></li>)}
+                {items.map(item => <li className="category-item" key={item.id}><CatalogItemContainer item={item} link /></li>)}
               </ul>
             </main>
           </div>

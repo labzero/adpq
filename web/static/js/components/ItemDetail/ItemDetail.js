@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import * as RemoteDataStates from '../../constants/RemoteDataStates';
-import Item from '../Item/Item';
+import { shouldRender } from '../../lib/remote_data_states';
+import CatalogItemContainer from '../CatalogItem/CatalogItemContainer';
 
 export default class ItemDetail extends React.Component {
 
@@ -19,14 +19,14 @@ export default class ItemDetail extends React.Component {
   render() {
     const { item } = this.props;
 
-    if (this.props.catalog.remoteDataState === RemoteDataStates.LOADED) {
+    if (shouldRender(this.props.catalog.remoteDataState)) {
       if (item) {
         return (
           <div className="usa-grid item-detail">
             <div className="usa-section">
               <h2>Product Detail</h2>
             </div>
-            <Item item={item} />
+            <CatalogItemContainer item={item} />
 
             <div className="return-to-top"><a href="#top">Return to top</a></div>
           </div>
