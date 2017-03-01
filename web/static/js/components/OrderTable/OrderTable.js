@@ -31,7 +31,7 @@ class OrderTable extends Component {
             {orders.map(order => (
               <tr key={order.id}>
                 <td>{order.id}</td>
-                <td>{order.inserted_at}</td>
+                <td>{new Date(order.inserted_at).toLocaleDateString("en-us")}</td>
                 <td>{order.user_id}</td>
                 <td>{order.status}</td>
                 <td>{currencyFormatter.format(order.items.reduce((acc, order_item) => acc + (order_item.price * order_item.quantity), 0) / 100, { code: 'USD' })}</td>
