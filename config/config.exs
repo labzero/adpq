@@ -24,7 +24,9 @@ config :logger, :console,
 
 # Honeybadger
 config :honeybadger,
-  api_key: System.get_env("HONEYBADGER_API_KEY")
+  api_key: System.get_env("HONEYBADGER_API_KEY"),
+  exclude_envs: [:test, :dev],
+  environment_name: :dev
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
