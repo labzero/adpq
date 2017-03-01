@@ -18,7 +18,7 @@ export default class OrderReport extends Component {
 
   render() {
     if (shouldRender(this.props.orderReport.remoteDataState)) {
-      return <OrderTable items={this.props.orderReport.items} />;
+      return <OrderTable orders={this.props.orderReport.items} />;
     }
     return <div>Loading..</div>;
   }

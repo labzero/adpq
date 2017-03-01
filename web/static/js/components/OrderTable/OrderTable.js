@@ -2,18 +2,18 @@ import React, { Component, PropTypes } from 'react';
 
 class OrderTable extends Component {
   static propTypes = {
-    items: PropTypes.array.isRequired
+    orders: PropTypes.array.isRequired
   };
 
   render() {
-    const { items } = this.props;
+    const { orders } = this.props;
 
     return (
       <div>
         <h3>All Orders</h3>
         <div>
           <div>
-            {items.length} order{items.length === 1 ? '' : 's'}
+            {orders.length} order{orders.length === 1 ? '' : 's'}
           </div>
         </div>
         <table>
@@ -27,13 +27,13 @@ class OrderTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {items.map(item => (
+            {orders.map(order => (
               <tr>
-                <td>{item.id}</td>
-                <td />
-                <td>{item.user_id}</td>
-                <td>{item.status}</td>
-                <td />
+                <td>{order.id}</td>
+                <td>{order.inserted_at}</td>
+                <td>{order.user_id}</td>
+                <td>{order.status}</td>
+                <td>{order.items.reduce((acc, order_item) => acc + (order_item.price * order_item.quantity), 0)}</td>
               </tr>
             ))}
           </tbody>
