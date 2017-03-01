@@ -8,8 +8,7 @@ export default class OrderReport extends Component {
     orderReport: PropTypes.shape({
       items: PropTypes.array.isRequired,
       remoteDataState: PropTypes.string.isRequired
-    }).isRequired,
-    byCategoryDepartment: PropTypes.object.isRequired
+    }).isRequired
   };
 
   componentDidMount() {

@@ -12,12 +12,15 @@ class OrderTable extends Component {
     return (
       <div>
         <h3>All Orders</h3>
-        <div>
+        <div className="order-table-stats">
           <div>
             {orders.length} order{orders.length === 1 ? '' : 's'}
           </div>
+          <div>
+            {currencyFormatter.format(orders.reduce((acc, order) => acc.concat(order.items), []).reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })} spent
+          </div>
         </div>
-        <table>
+        <table className="usa-table-borderless">
           <thead>
             <tr>
               <th>Order #</th>
@@ -31,10 +34,10 @@ class OrderTable extends Component {
             {orders.map(order => (
               <tr key={order.id}>
                 <td>{order.id}</td>
-                <td>{new Date(order.inserted_at).toLocaleDateString("en-us")}</td>
+                <td>{new Date(order.inserted_at * 1000).toLocaleDateString('en-us')}</td>
                 <td>{order.user_id}</td>
                 <td>{order.status}</td>
-                <td>{currencyFormatter.format(order.items.reduce((acc, order_item) => acc + (order_item.price * order_item.quantity), 0) / 100, { code: 'USD' })}</td>
+                <td>{currencyFormatter.format(order.items.reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })}</td>
               </tr>
             ))}
           </tbody>
