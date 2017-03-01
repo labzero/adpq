@@ -13,7 +13,10 @@ export default class Cart extends Component {
     placeOrder: PropTypes.func.isRequired
   };
 
-  totalPrice = () => this.props.cart.items.reduce((acc, item) => acc + item.price, 0);
+  totalPrice = () => this.props.cart.items.reduce(
+    (acc, item) => acc + (item.price * item.quantity),
+    0
+  );
 
   placeOrder = (event) => {
     event.preventDefault();

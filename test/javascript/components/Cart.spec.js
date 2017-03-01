@@ -9,6 +9,15 @@ const items = [{
   manufacturer: 'DELL',
   sku: '210-AFXL',
   price: 10000,
+  quantity: 2
+},
+{
+  id: 1,
+  name: 'Dell Somethingelse',
+  manufacturer: 'DELL',
+  sku: '311-ABCD',
+  price: 20000,
+  quantity: 1
 }]
 
 describe('Cart', () => {
@@ -23,6 +32,12 @@ describe('Cart', () => {
         remoteDataState: RemoteDataStates.LOADED
       }
     }
+  })
+
+  it('displays total price', () => {
+    const rendered = shallow(<Cart {...props} />)
+    
+    expect(rendered.text()).toContain('Total: $400.00')
   })
 
   it('places order', (done) => {
