@@ -18,6 +18,7 @@
   1. Install elixir `brew install elixir`
   1. Install mix `mix local.hex`
   1. Create PostgreSQL role `createuser -d adpq`
+  1. Create and migrate schema `mix ecto.create && mix ecto.migrate`
   1. To add seed data to your database: `mix run priv/repo/seeds.exs`
 
 ### Linux
@@ -25,7 +26,6 @@
 ## Starting the application
 
   1. Install dependencies with `mix deps.get`
-  1. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   1. Install Node.js dependencies with `npm install`
   1. Start Phoenix endpoint with `mix phoenix.server`
 

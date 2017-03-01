@@ -177,7 +177,7 @@ const doLoginUser = (name, password, redirect) => {
       .then(response => response.json())
       .then((json) => {
         dispatch(loginSuccess(json));
-        browserHistory.push(redirect); // hmm
+        browserHistory.push(redirectOrDefault(redirect));
       })
       .catch(error => dispatch(loginError(error)));
   };
@@ -262,6 +262,13 @@ function checkHttpStatus(response) {
   const error = new Error(response.statusText);
   error.response = response;
   throw error;
+}
+
+function redirectOrDefault(redirect) {
+  if (getUserData().role === 'ADMIN' && redirect === '/') {
+    return '/admin';
+  }
+  return redirect;
 }
 
 function requestWithAuth(request) {
