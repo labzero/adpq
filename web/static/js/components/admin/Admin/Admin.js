@@ -10,7 +10,7 @@ export default class Admin extends Component {
     return (
       <div className="usa-grid admin">
         <div className="usa-section">
-          <h2>Admin</h2>
+          <h2>Orders Report</h2>
           {this.props.children}
         </div>
       </div>

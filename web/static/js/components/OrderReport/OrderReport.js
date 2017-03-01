@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { shouldRender } from '../../../lib/remote_data_states';
-import OrderTable from '../../OrderTable/OrderTable';
+import { shouldRender } from '../../lib/remote_data_states';
+import OrderTable from '../OrderTable/OrderTable';
 
 export default class OrderReport extends Component {
   static propTypes = {
