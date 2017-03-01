@@ -29,7 +29,7 @@ class OrderTable extends Component {
           </thead>
           <tbody>
             {orders.map(order => (
-              <tr>
+              <tr key={order.id}>
                 <td>{order.id}</td>
                 <td>{order.inserted_at}</td>
                 <td>{order.user_id}</td>
