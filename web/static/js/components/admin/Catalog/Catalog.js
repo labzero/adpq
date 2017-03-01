@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import map from 'lodash/fp/map';
 import * as RemoteDataStates from '../../../constants/RemoteDataStates';
 import { sortBy } from '../../../lib/sorts';
@@ -15,21 +16,21 @@ export default class Catalog extends Component {
   };
 
   state = {
-    sort: ['clin', 'desc']
+    sort: ['updated_at', 'desc']
   }
 
   componentDidMount() {
     this.props.fetchCatalog();
   }
 
-  toggleSort = () => {
-    const [field, direction] = this.state.sort;
-    return [field, direction === 'asc' ? 'desc' : 'asc'];
-  }
-
   changeSort = (field) => {
-    const [currentField, _currentDirection] = this.state.sort;
-    const newState = (currentField === field) ? this.toggleSort() : [field, 'asc'];
+    const [currentField, currentDir] = this.state.sort;
+    let newState;
+    if (currentField === field) {
+      newState = [currentField, toggleDirection(currentDir)];
+    } else {
+      newState = [field, 'asc'];
+    }
     this.setState({ sort: newState });
   }
 
@@ -40,14 +41,30 @@ export default class Catalog extends Component {
 
   renderTableHeader = () => (
     <tr key="header">
-      <th onClick={() => this.changeSort('clin')}>CLIN</th>
-      <th onClick={() => this.changeSort('updated_at')}>Date Added</th>
-      <th onClick={() => this.changeSort('name')}>Item Name</th>
-      <th onClick={() => this.changeSort('manufacturer')}>Manufacturer</th>
-      <th onClick={() => this.changeSort('sku')}>SKU</th>
-      <th onClick={() => this.changeSort('contract_unit_price')}>Contract Price</th>
-      <th onClick={() => this.changeSort('top_level_category')}>Top Level</th>
-      <th onClick={() => this.changeSort('simple_category')}>Sub-Category</th>
+      <th>
+        <button onClick={() => this.changeSort('clin')} className="usa-button-unstyled">CLIN</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('updated_at')} className="usa-button-unstyled">Date Added</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('name')} className="usa-button-unstyled">Item Name</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('manufacturer')} className="usa-button-unstyled">Manufacturer</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('sku')} className="usa-button-unstyled">SKU</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('contract_unit_price')} className="usa-button-unstyled">Contract Price</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('top_level_category')} className="usa-button-unstyled">Top Level</button>
+      </th>
+      <th>
+        <button onClick={() => this.changeSort('simple_category')} className="usa-button-unstyled">Sub-Category</button>
+      </th>
     </tr>
   )
 
@@ -55,7 +72,7 @@ export default class Catalog extends Component {
     <tr key={item.id}>
       <td>{item.clin}</td>
       <td>{new Date(item.updated_at * 1000).toLocaleString()}</td>
-      <td>{item.name}</td>
+      <td><Link to={`/item/${item.id}`}>{item.name}</Link></td>
       <td>{item.manufacturer}</td>
       <td>{item.sku}</td>
       <td>{item.contract_unit_price}</td>
@@ -84,3 +101,5 @@ export default class Catalog extends Component {
     return <div>Loading..</div>;
   }
 }
+
+const toggleDirection = direction => (direction === 'asc' ? 'desc' : 'asc');

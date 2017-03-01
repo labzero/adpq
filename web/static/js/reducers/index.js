@@ -6,20 +6,19 @@ import alerts from './alerts';
 import auth from './auth';
 import cart from './cart';
 import catalog from './catalog';
-import orderReport from './order_report';
+import orderReport from './admin/orderReport';
 import orderHistory from './orderHistory';
 import adminCatalog from './admin/catalog';
 
 export default combineReducers({
+  adminCatalog,
   alerts,
   auth,
   categories: categoriesReducer,
   cart,
   catalog,
-  auth,
-  orderReport,
-  adminCatalog,
   form: formReducer,
   orderHistory,
+  orderReport,
   routing: routerReducer
 });

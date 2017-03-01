@@ -237,10 +237,13 @@ export function requestCatalog() {
 // alerts actions
 export function alert(action, willExpire = false) {
   return { type: ActionTypes.ALERT, alert: action, willExpire };
-
+}
 
 export function expireAlerts() {
   return { type: ActionTypes.EXPIRE_ALERTS };
+}
+
+// admin orders
 
 export function fetchAdminOrdersIfNeeded() {
   return (dispatch, getState) => {
@@ -250,8 +253,6 @@ export function fetchAdminOrdersIfNeeded() {
     return Promise.resolve();
   };
 }
-
-// admin orders
 
 export function fetchAdminOrders() {
   return (dispatch) => {
@@ -265,7 +266,7 @@ export function fetchAdminOrders() {
 }
 
 export function requestAdminOrders() {
-  return { type: ActionTypes.REQUEST_ADMIN_ORDERS }
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS };
 }
 
 export function fetchAdminOrdersSuccess(json) {
