@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import currencyFormatter from 'currency-formatter';
 import { Link } from 'react-router';
 import { catalogItemImage } from '../../lib/image_urls';
+import { catalogItemPath } from '../../lib/paths';
 
 class CatalogItem extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class CatalogItem extends Component {
     const { item, link } = this.props;
 
     if (link) {
-      return <Link to={`/item/${item.id}`}>{children}</Link>;
+      return <Link to={catalogItemPath(item)}>{children}</Link>;
     }
     return children;
   }

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import currencyFormatter from 'currency-formatter';
 import { Link } from 'react-router';
 import { catalogItemImage } from '../../lib/image_urls';
+import { catalogItemPath } from '../../lib/paths';
 
 class CartItem extends Component {
   static propTypes = {
@@ -27,11 +28,13 @@ class CartItem extends Component {
     return (
       <div className="item usa-grid-full">
         <div className="usa-width-one-third item-image">
-          <Link to={`/item/${item.id}`}><img src={catalogItemImage(item)} alt={item.description} /></Link>
+          <Link to={catalogItemPath(item)}>
+            <img src={catalogItemImage(item)} alt={item.description} />
+          </Link>
         </div>
         <div className="usa-width-five-twelfths item-details">
-          <h4><Link to={`/item/${item.id}`}>{item.name}</Link></h4>
-          <p><Link to={`/item/${item.id}`}>{item.manufacturer} SKU: {item.sku}</Link></p>
+          <h4><Link to={catalogItemPath(item)}>{item.name}</Link></h4>
+          <p><Link to={catalogItemPath(item)}>{item.manufacturer} SKU: {item.sku}</Link></p>
         </div>
         <div className="usa-width-one-fourth item-cart">
           <h4>

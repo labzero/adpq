@@ -51,7 +51,7 @@ export default function getRoutes(store) {
   return (<Route path="/" component={AppContainer} onEnter={fetchCart()} onChange={onChange()}>
     <IndexRoute component={HomepageContainer} onEnter={requireAuth()} />
     <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth()} />
-    <Route path="item/:id" component={ItemDetailContainer} onEnter={requireAuth()} />
+    <Route path="item/:manufacturer_sku" component={ItemDetailContainer} onEnter={requireAuth()} />
     <Route path="account" component={AccountContainer} onEnter={requireAuth()} />
     <Route path="cart" component={CartContainer} onEnter={requireAuth()} />
     <Route path="orders" onEnter={requireAuth()}>
