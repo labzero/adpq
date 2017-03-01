@@ -9,4 +9,5 @@ export { default as ItemDetailContainer } from './ItemDetail/ItemDetailContainer
 export { default as LoginContainer } from './Login/LoginContainer';
 export { default as Logout } from './Logout/Logout';
 export { default as OrderReportContainer } from './admin/OrderReport/OrderReportContainer';
+export { default as OrderContainer } from './Order/OrderContainer';
 export { default as ThanksContainer } from './Thanks/ThanksContainer';

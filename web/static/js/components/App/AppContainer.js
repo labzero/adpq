@@ -24,7 +24,7 @@ const findHeaderMode = (location) => {
   let mode = 'default';
   if (location.pathname === '/login') {
     mode = 'login';
-  } else if (location.pathname === '/admin') {
+  } else if (location.pathname.indexOf('/admin') !== -1) {
     mode = 'admin';
   }
   return mode;
@@ -32,7 +32,7 @@ const findHeaderMode = (location) => {
 
 const findFooterMode = (location) => {
   let mode = 'less';
-  if (location.pathname === '/login' || location.pathname === '/admin') {
+  if (location.pathname === '/login' || location.pathname.indexOf('/admin') !== -1) {
     mode = 'login';
   } else if (location.pathname === '/') {
     mode = 'more';
@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
   const headerMode = findHeaderMode(location);
   const footerMode = findFooterMode(location);
 
-  return { section, headerMode, footerMode, ...ownProps };
+  return { location, section, headerMode, footerMode, ...ownProps };
 };
 
 export default connect(

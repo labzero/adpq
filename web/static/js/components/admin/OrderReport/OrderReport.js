@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import * as RemoteDataStates from '../../../constants/RemoteDataStates';
+import Loading from '../../Loading/Loading';
 
 export default class OrderReport extends Component {
   static propTypes = {
-    fetchOrders: PropTypes.func.isRequired,
+    fetchOrder: PropTypes.func.isRequired,
     orderReport: PropTypes.shape(
       {
         items: PropTypes.array.isRequired,
@@ -13,7 +14,7 @@ export default class OrderReport extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchOrders();
+    this.props.fetchOrder();
   }
 
   render() {
@@ -22,6 +23,6 @@ export default class OrderReport extends Component {
         {JSON.stringify(this.props.byCategoryDepartment)}
       </div>);
     }
-    return <div>Loading..</div>;
+    return <Loading />;
   }
 }
