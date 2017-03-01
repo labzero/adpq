@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchAdminOrdersIfNeeded } from '../../../actions';
-import OrderReport from '../../OrderReport/OrderReport'; // TODO use own component if necessary
+import AdminOrderReport from './AdminOrderReport';
 import salesByCategoryDepartment from '../../../lib/order_report';
 
 const mapStateToProps = (state, _ownProps) => (
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderReport);
+)(AdminOrderReport);

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { shouldRender } from '../../lib/remote_data_states';
-import OrderTable from '../OrderTable/OrderTable';
-import Loading from '../Loading/Loading';
+import { shouldRender } from '../../../lib/remote_data_states';
+import OrderTable from '../../OrderTable/OrderTable';
+import Loading from '../../Loading/Loading';
 
-export default class OrderReport extends Component {
+export default class AdminOrderReport extends Component {
   static propTypes = {
     fetchOrders: PropTypes.func.isRequired,
     orderReport: PropTypes.shape({
@@ -19,9 +19,11 @@ export default class OrderReport extends Component {
   render() {
     if (shouldRender(this.props.orderReport.remoteDataState)) {
       return (
-        <div className="usa-section">
-          <h2>Account Orders</h2>
-          <OrderTable orders={this.props.orderReport.items} />
+        <div className="usa-grid">
+          <div className="usa-section">
+            <h2>Orders Report</h2>
+            <OrderTable orders={this.props.orderReport.items} />
+          </div>
         </div>
       );
     }

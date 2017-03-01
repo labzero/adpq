@@ -8,7 +8,7 @@ export default class Admin extends Component {
 
   render() {
     return (
-      <div className="admin">
+      <div className="usa-grid admin">
         {this.props.children}
       </div>
     );
