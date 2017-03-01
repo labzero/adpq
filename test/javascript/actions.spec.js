@@ -136,45 +136,194 @@ describe('Auth Actions', () => {
       store = mockStore({})
       fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
       mockResponse = {id: 0, name: 'Computer'}
-      fetchMock.mock('/api/user/1/cart_items', mockResponse, {method: "POST"})
     })
 
-    it('dispatches requestAddToCart', (done) => {
-      const expectedActions = [
-        { type: ActionTypes.ADD_TO_CART, id, quantity }
-      ]
+    describe('success', () => {
+      let expectedActions;
+      beforeEach((done) => {
+        expectedActions = [
+          { type: ActionTypes.ADD_TO_CART, id, quantity },
+          { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse },
+          { type: ActionTypes.REQUEST_CART }
+        ]
+        fetchMock.mock('/api/user/1/cart_items', mockResponse, {method: "POST"})
+        store.dispatch(actions.addToCart(id, quantity)).then(done);
+      })
 
-      store.dispatch(actions.addToCart(id, quantity)).then(() => {
+      it('dispatches requestAddToCart', () => {
         expect(store.getActions()[0]).toEqual(expectedActions[0])
-        done();
       })
-    })
 
-    it('dispatches success', (done) => {
-      const expectedActions = [
-        { type: ActionTypes.ADD_TO_CART, id, quantity },
-        { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse }
-      ]
-      
-      store.dispatch(actions.addToCart(id, quantity)).then(() => {
+      it('dispatches success', () => {
         expect(store.getActions()[1]).toEqual(expectedActions[1])
-        done();
+      })
+
+      it('dispatches fetchCart', () => {
+        expect(store.getActions()[2]).toEqual(expectedActions[2])
       })
     })
 
-    it('dispatches fetchCart', (done) => {
+    it('dispatches error', (done) => {
       const expectedActions = [
         { type: ActionTypes.ADD_TO_CART, id, quantity },
-        { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse },
-        { type: ActionTypes.REQUEST_CART }
+        { type: ActionTypes.ADD_TO_CART_ERROR, error: 'something' }
       ]
+
+      fetchMock.mock('/api/user/1/cart_items', 409, {method: "POST"})
       
       store.dispatch(actions.addToCart(id, quantity)).then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
+        done();
+      })
+    })
+  })
+
+  describe('removeFromCart', () => {
+    let id, mockResponse, store;
+    
+    beforeEach(() => {
+      id = 123;
+      mockResponse = {}
+      store = mockStore({})
+    })
+
+    describe('success', () => {
+      let expectedActions;
+
+      beforeEach((done) => {
+        expectedActions = [
+          { type: ActionTypes.REMOVE_FROM_CART, id },
+          { type: ActionTypes.REMOVE_FROM_CART_SUCCESS },
+          { type: ActionTypes.REQUEST_CART }
+        ]
+
+        fetchMock.mock('/api/user/1/cart_items/123', {}, {method: "DELETE"})
+        fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
+
+        store.dispatch(actions.removeFromCart(id)).then(done);
+      })
+
+      it('dispatches requestRemoveFromCart', () => {
+        expect(store.getActions()[0]).toEqual(expectedActions[0])
+      })
+
+      it('dispatches removeFromCartSuccess', () => {
+        expect(store.getActions()[1]).toEqual(expectedActions[1])
+      })
+
+      it('dispatches fetchCart', () => {
         expect(store.getActions()[2]).toEqual(expectedActions[2])
+      })
+    })
+
+    it('dispatches removeFromCartError', (done) => {
+      const expectedActions = [
+        { type: ActionTypes.REMOVE_FROM_CART, id },
+        { type: ActionTypes.REMOVE_FROM_CART_ERROR, error: 'something' }
+      ]
+
+      fetchMock.mock('/api/user/1/cart_items/123', 409, {method: "DELETE"})
+      
+      store.dispatch(actions.removeFromCart(id)).then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
         done();
       })
     })
 
   })
 
+  describe('createOrder', () => {
+    let store, mockResponse
+
+    beforeEach(() => {
+      store = mockStore({})
+      fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
+      fetchMock.mock('/api/user/1/orders', {}, {method: "GET"})
+    })
+
+    describe('success', () => {
+      let expectedActions;
+
+      beforeEach((done) => {
+        mockResponse = [{id: 0, name: 'Computer'}]
+        fetchMock.mock('/api/user/1/orders', mockResponse, {method: "POST"})
+        expectedActions = [
+          { type: ActionTypes.CREATE_ORDER },
+          { type: ActionTypes.CREATE_ORDER_SUCCESS },
+          { type: ActionTypes.ALERT, alert: { type: ActionTypes.CREATE_ORDER_SUCCESS }, willExpire: false },
+          { type: ActionTypes.REQUEST_CART },
+          { type: ActionTypes.FETCH_CART_SUCCESS, data: {} },
+          { type: ActionTypes.REQUEST_ORDERS },
+          { type: ActionTypes.FETCH_ORDERS_SUCCESS, data: {} },
+
+        ]
+        store.dispatch(actions.createOrder()).then(done);
+      })
+
+      it('dispatches requestCreateOrder', () => {
+        expect(store.getActions()[0]).toEqual(expectedActions[0])
+      })
+
+      it('dispatches success', () => {
+        expect(store.getActions()[1]).toEqual(expectedActions[1])
+      })
+
+      it('dispatches alert', () => {
+        expect(store.getActions()[2]).toEqual(expectedActions[2])
+      })
+
+      it('dispatches fetchCart', () => {
+        expect(store.getActions()[3]).toEqual(expectedActions[3])
+      })
+
+      it('dispatches fetchOrders', () => {
+        expect(store.getActions()[5]).toEqual(expectedActions[5])
+      })
+    })
+
+    it('dispatches error', (done) => {
+      const expectedActions = [
+        { type: ActionTypes.CREATE_ORDER },
+        { type: ActionTypes.CREATE_ORDER_ERROR, error: 'something' }
+      ]
+
+      fetchMock.mock('/api/user/1/orders', 409, {method: "POST"})
+      
+      store.dispatch(actions.createOrder()).then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
+        done();
+      })
+    })
+  })
+
+  describe('alert', () => {
+    let store, action
+
+    beforeEach(() => {
+      action = { type: 'WOO_HOO' }
+      store = mockStore({})
+    })
+
+    it('dispatches alert with action', () => {
+      store.dispatch(actions.alert(action))
+      expect(store.getActions()).toEqual([
+        { 
+          type: 'ALERT',
+          alert: action,
+          willExpire: false
+        }
+      ])
+    })
+
+    it('dispatches immediately expiring alert', () => {
+      store.dispatch(actions.alert(action, true))
+      expect(store.getActions()).toEqual([
+        { 
+          type: 'ALERT',
+          alert: action,
+          willExpire: true
+        }
+      ])
+    })
+  })
 })

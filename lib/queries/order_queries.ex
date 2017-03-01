@@ -23,6 +23,7 @@ defmodule Adpq.OrderQueries do
     |> join(:left, [users], orders in assoc(users, :orders))
     |> join(:left, [users, orders], order_items in assoc(orders, :order_items))
     |> join(:left, [users, orders, order_items], catalog_item in assoc(order_items, :catalog_item))
+    |> order_by([users, orders], desc: orders.inserted_at)
     |> preload(
         [users, orders, order_items, catalog_items],
         [orders: {orders, order_items: {order_items, catalog_item: catalog_items}}]

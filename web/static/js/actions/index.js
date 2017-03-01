@@ -17,7 +17,6 @@ export function fetchCart() {
   };
 }
 
-
 export function fetchCartSuccess(json) {
   return { type: ActionTypes.FETCH_CART_SUCCESS, data: json };
 }
@@ -92,6 +91,61 @@ export function removeFromCartError(error) {
   return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
 }
 
+// order actions
+export function fetchOrders() {
+  return (dispatch) => {
+    dispatch(requestOrders());
+    const user = getUserData();
+    return fetch(`/api/user/${user.id}/orders`, requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchOrdersSuccess(json)))
+      .catch(error => dispatch(fetchOrdersError(error))); // TODO flash message
+  };
+}
+
+export function fetchOrdersSuccess(json) {
+  return { type: ActionTypes.FETCH_ORDERS_SUCCESS, data: json };
+}
+
+export function fetchOrdersError(error) {
+  return { type: ActionTypes.FETCH_ORDERS_ERROR, error };
+}
+
+export function requestOrders() {
+  return { type: ActionTypes.REQUEST_ORDERS };
+}
+
+export function createOrder() {
+  const request = {
+    method: 'post',
+    credentials: 'include'
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestCreateOrder());
+    return fetch(`/api/user/${user.id}/orders`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(createOrderSuccess()))
+      .then(() => dispatch(alert(createOrderSuccess())))
+      .then(() => dispatch(fetchCart()))
+      .then(() => dispatch(fetchOrders()))
+      .catch(error => dispatch(createOrderError(error))); // TODO flash message
+  };
+}
+
+export function requestCreateOrder() {
+  return { type: ActionTypes.CREATE_ORDER };
+}
+
+export function createOrderSuccess() {
+  return { type: ActionTypes.CREATE_ORDER_SUCCESS };
+}
+
+export function createOrderError(error) {
+  return { type: ActionTypes.CREATE_ORDER_ERROR, error };
+}
+
 // user actions
 export function loginRequest() {
   return { type: ActionTypes.LOGIN_REQUEST };
@@ -144,7 +198,6 @@ export function logoutUser() {
 }
 
 // catalog actions
-
 export function fetchCatalogIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchCatalog(getState())) {
@@ -178,6 +231,15 @@ export function fetchCatalogError(error) {
 
 export function requestCatalog() {
   return { type: ActionTypes.REQUEST_CATALOG };
+}
+
+// alerts actions
+export function alert(action, willExpire = false) {
+  return { type: ActionTypes.ALERT, alert: action, willExpire };
+}
+
+export function expireAlerts() {
+  return { type: ActionTypes.EXPIRE_ALERTS };
 }
 
 // helpers
