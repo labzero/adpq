@@ -1,15 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-import * as RemoteDataStates from '../../../constants/RemoteDataStates';
+import { shouldRender } from '../../../lib/remote_data_states';
+import OrderTable from '../../OrderTable/OrderTable';
 
 export default class OrderReport extends Component {
   static propTypes = {
     fetchOrders: PropTypes.func.isRequired,
-    orderReport: PropTypes.shape(
-      {
-        items: PropTypes.array.isRequired,
-        remoteDataState: PropTypes.string.isRequired
-      }),
-    byCategoryDepartment: PropTypes.object.isRequired
+    orderReport: PropTypes.shape({
+      items: PropTypes.array.isRequired,
+      remoteDataState: PropTypes.string.isRequired
+    }).isRequired
   };
 
   componentDidMount() {
@@ -17,10 +16,8 @@ export default class OrderReport extends Component {
   }
 
   render() {
-    if (this.props.orderReport.remoteDataState === RemoteDataStates.LOADED) {
-      return (<div>{JSON.stringify(this.props.orderReport.items)} |
-        {JSON.stringify(this.props.byCategoryDepartment)}
-      </div>);
+    if (shouldRender(this.props.orderReport.remoteDataState)) {
+      return <OrderTable orders={this.props.orderReport.items} />;
     }
     return <div>Loading..</div>;
   }
