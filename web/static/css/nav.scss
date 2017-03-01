@@ -5,7 +5,7 @@
     .nav-submenu,
     button[aria-expanded=true],
     button[aria-expanded=true]:hover {
-      background-color: $color-white;
+      background-color: $color-white;		      
     }
     button[aria-expanded=true] span {
       border-color: $color-white;

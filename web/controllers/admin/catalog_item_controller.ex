@@ -98,6 +98,7 @@ defmodule Adpq.Admin.CatalogItemController do
             quantity_in_uom :integer, "Quantity per item", required: true
             category :string, "Item category", required: true
             super_category :string, "Rollup category", required: true
+            updated_at :string, "Last Modified Date", required: true
             sku :string, "SKU / OEM part number", required: true
             manufacturer :string, "Manufacturer name", required: true
             list_price :integer, "List price in cents", required: true

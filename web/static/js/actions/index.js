@@ -214,7 +214,8 @@ export function fetchCatalog() {
   return (dispatch) => {
     dispatch(requestCatalog());
     return fetch('/api/catalog_items', requestWithAuth({}))
-      .then(response => response.json()) // TODO check response.ok
+      .then(checkHttpStatus)
+      .then(response => response.json())
       .then(json => dispatch(fetchCatalogSuccess(json)))
       .catch(error => dispatch(fetchCatalogError(error))); // TODO flash message
   };
@@ -242,7 +243,79 @@ export function expireAlerts() {
   return { type: ActionTypes.EXPIRE_ALERTS };
 }
 
-// helpers
+// admin orders
+
+export function fetchAdminOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminOrders(getState())) {
+      return dispatch(fetchAdminOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
+export function fetchAdminOrders() {
+  return (dispatch) => {
+    dispatch(requestAdminOrders());
+    return fetch('/api/admin/orders', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminOrdersSuccess(json)))
+      .catch(error => dispatch(fetchAdminOrdersError(error)));
+  };
+}
+
+export function requestAdminOrders() {
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS };
+}
+
+export function fetchAdminOrdersSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_SUCCESS, data: json };
+}
+
+export function fetchAdminOrdersError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
+}
+
+export function fetchAdminCatalogIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminCatalog(getState())) {
+      return dispatch(fetchAdminCatalog());
+    }
+    return Promise.resolve();
+  };
+}
+export function fetchAdminCatalog() {
+  return (dispatch) => {
+    dispatch(requestAdminCatalog());
+    return fetch('/api/admin/catalog_items', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminCatalogSuccess(json)))
+      .catch(error => dispatch(fetchAdminCatalogError(error)));
+  };
+}
+
+export function requestAdminCatalog() {
+  return { type: ActionTypes.REQUEST_ADMIN_CATALOG };
+}
+
+export function fetchAdminCatalogSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_CATALOG_SUCCESS, data: json };
+}
+
+export function fetchAdminCatalogError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_CATALOG_ERROR, data: error };
+}
+
+function shouldFetchAdminOrders(state) {
+  return shouldFetch(state.orderReport);
+}
+
+function shouldFetchAdminCatalog(state) {
+  return shouldFetch(state.adminCatalog);
+}
+
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
 }

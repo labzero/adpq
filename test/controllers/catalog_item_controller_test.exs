@@ -21,20 +21,7 @@ defmodule Adpq.CatalogItemControllerTest do
   test "shows chosen resource", %{conn: conn} do
     catalog_item = Repo.insert! %CatalogItem{}
     conn = get conn, catalog_item_path(conn, :show, catalog_item)
-    assert json_response(conn, 200)== %{"id" => catalog_item.id,
-      "clin" => catalog_item.clin,
-      "unspc" => catalog_item.unspc,
-      "manufacturer" => catalog_item.manufacturer,
-      "sku" => catalog_item.sku,
-      "description" => catalog_item.description,
-      "unit_of_measure" => catalog_item.unit_of_measure,
-      "quantity_in_uom" => catalog_item.quantity_in_uom,
-      "list_price" => catalog_item.list_price,
-      "contract_unit_price" => catalog_item.contract_unit_price,
-      "contract_discount" => catalog_item.contract_discount,
-      "simple_category" => catalog_item.simple_category,
-      "name" => catalog_item.name,
-      "top_level_category" => catalog_item.top_level_category}
+    assert json_response(conn, 200)["sku"] == catalog_item.sku
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
