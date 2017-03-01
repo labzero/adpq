@@ -1,5 +1,5 @@
 import * as ActionTypes from '../../constants/ActionTypes';
-import * as RemoteDataStates from './../constants/RemoteDataStates';
+import * as RemoteDataStates from '../../constants/RemoteDataStates';
 
 const initialState = {
   remoteDataState: RemoteDataStates.NOT_REQUESTED,

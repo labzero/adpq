@@ -11,4 +11,4 @@ export { default as AdminContainer } from './Admin/AdminContainer';
 export { default as ThanksContainer } from './Thanks/ThanksContainer';
 export { default as AdminContainer } from './admin/Admin/AdminContainer';
 export { default as OrderReportContainer } from './admin/OrderReport/OrderReportContainer';
-export { default as CatalogContainer } from './admin/Catalog/Catalog';
+export { default as CatalogContainer } from './admin/Catalog/CatalogContainer';

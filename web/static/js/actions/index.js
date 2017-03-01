@@ -256,7 +256,7 @@ export function fetchAdminOrdersIfNeeded() {
 export function fetchAdminOrders() {
   return (dispatch) => {
     dispatch(requestAdminOrders());
-    return fetch('api/admin/orders', requestWithAuth({}))
+    return fetch('/api/admin/orders', requestWithAuth({}))
       .then(checkHttpStatus)
       .then(response => response.json())
       .then(json => dispatch(fetchAdminOrdersSuccess(json)))
@@ -287,7 +287,7 @@ export function fetchAdminCatalogIfNeeded() {
 export function fetchAdminCatalog() {
   return (dispatch) => {
     dispatch(requestAdminCatalog());
-    return fetch('api/admin/catalog_items', requestWithAuth({}))
+    return fetch('/api/admin/catalog_items', requestWithAuth({}))
       .then(checkHttpStatus)
       .then(response => response.json())
       .then(json => dispatch(fetchAdminCatalogSuccess(json)))
