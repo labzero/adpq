@@ -114,9 +114,9 @@ function checkHttpStatus(response) {
 
 function redirectOrDefault(redirect) {
   if (getUserData().role === 'ADMIN' && redirect === '/') {
-    return '/admin'
+    return '/admin';
   }
-  return redirect
+  return redirect;
 }
 
 function requestWithAuth(request) {
