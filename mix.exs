@@ -44,7 +44,8 @@ defmodule Adpq.Mixfile do
      {:phoenix_swagger, "~> 0.4.0"},
      {:corsica, "~> 0.5"},
      {:ex_machina, "~> 1.0", only: [:dev, :test]},
-     {:credo, "~> 0.5", only: [:dev, :test]}     
+     {:credo, "~> 0.5", only: [:dev, :test]},
+     {:honeybadger, "~> 0.1"}
     ]
   end
 

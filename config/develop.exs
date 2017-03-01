@@ -27,3 +27,7 @@ config :adpq, Adpq.Repo,
 
 config :adpq, Adpq.Endpoint,
   secret_key_base: "Y8xMqKI4RKA19P9K3CG4AnaYtf1eu8GqTmZyxMlluiyV12j/3Nki+WC83S9e3XVe"
+
+# Honeybadger
+config :honeybadger,
+  environment_name: :staging

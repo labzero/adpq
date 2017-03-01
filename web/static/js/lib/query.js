@@ -49,7 +49,7 @@ export function parseRangeFilters(param) {
 }
 
 const generateFilterQueries = filters => flow(
-  map(([field, values]) => [field, values.map(val => val.toLowerCase())]),
+  map(([field, values]) => [field, values.map(val => encodeURIComponent(val.toLowerCase()))]),
   map(([field, values]) => [field, values.join(VALUE_DELIMITER)]),
   map(([field, values]) => `filter=${field}${FIELD_DELIMITER}${values}`)
 )(filters);
