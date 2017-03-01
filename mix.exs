@@ -19,7 +19,7 @@ defmodule Adpq.Mixfile do
   def application do
     [mod: {Adpq, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :csv, :corsica]]
+                    :phoenix_ecto, :postgrex, :csv, :corsica, :honeybadger]]
   end
 
   # Specifies which paths to compile per environment.

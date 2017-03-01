@@ -13,8 +13,16 @@
   }
 }
 
+.header-login .menu-btn {
+  display: none;
+}
+
+.header-admin .nav-primary {
+  margin-top: 58px;
+}
+
 @media screen and (min-width: $nav-width) {
-  .header {
+  .nav-secondary-links {
     a:hover {
       color: $color-white;
       text-decoration: underline;

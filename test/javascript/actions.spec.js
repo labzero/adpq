@@ -135,6 +135,7 @@ describe('Auth Actions', () => {
       quantity = 2
       store = mockStore({})
       fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
+      mockResponse = {id: 0, name: 'Computer'}
     })
 
     describe('success', () => {
@@ -145,7 +146,6 @@ describe('Auth Actions', () => {
           { type: ActionTypes.ADD_TO_CART_SUCCESS, data: mockResponse },
           { type: ActionTypes.REQUEST_CART }
         ]
-        mockResponse = {id: 0, name: 'Computer'}
         fetchMock.mock('/api/user/1/cart_items', mockResponse, {method: "POST"})
         store.dispatch(actions.addToCart(id, quantity)).then(done);
       })
@@ -217,18 +217,19 @@ describe('Auth Actions', () => {
     })
 
     it('dispatches removeFromCartError', (done) => {
-      fetchMock.mock('/api/user/1/cart_items/123', 409, {method: "DELETE"})
-
       const expectedActions = [
         { type: ActionTypes.REMOVE_FROM_CART, id },
         { type: ActionTypes.REMOVE_FROM_CART_ERROR, error: 'something' }
       ]
+
+      fetchMock.mock('/api/user/1/cart_items/123', 409, {method: "DELETE"})
       
       store.dispatch(actions.removeFromCart(id)).then(() => {
         expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
         done();
       })
     })
+
   })
 
   describe('createOrder', () => {

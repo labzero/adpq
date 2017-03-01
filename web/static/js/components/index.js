@@ -1,4 +1,5 @@
 export { default as AccountContainer } from './Account/AccountContainer';
+export { default as AdminContainer } from './Admin/AdminContainer';
 export { default as AppContainer } from './App/AppContainer';
 export { default as CartContainer } from './Cart/CartContainer';
 export { default as HomepageContainer } from './Homepage/HomepageContainer';
