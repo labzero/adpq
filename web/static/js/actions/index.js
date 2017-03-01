@@ -92,6 +92,15 @@ export function removeFromCartError(error) {
 }
 
 // order actions
+export function fetchOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchOrders(getState())) {
+      return dispatch(fetchOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(requestOrders());
@@ -244,7 +253,6 @@ export function expireAlerts() {
 }
 
 // admin orders
-
 export function fetchAdminOrdersIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchAdminOrders(getState())) {
@@ -318,6 +326,10 @@ function shouldFetchAdminCatalog(state) {
 
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
+}
+
+function shouldFetchOrders(state) {
+  return shouldFetch(state.orderHistory);
 }
 
 function shouldFetchAuth(state) {

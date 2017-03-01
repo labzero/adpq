@@ -75,6 +75,7 @@ defmodule Adpq.Admin.OrderController do
           name :string, "Item Name", required: true
           sku :string, "SKU / OEM part number", required: true
           manufacturer :string, "Manufacturer Name", required: true
+          inserted_at :string, "Created Date", required: true
         end
       end,
       Order: swagger_schema do
