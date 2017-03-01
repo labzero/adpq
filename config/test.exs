@@ -12,8 +12,18 @@ config :logger, level: :warn
 # Configure your database
 config :adpq, Adpq.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "adpq",
+  password: "",
   database: "adpq_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+report_path = case System.get_env("CIRCLE_TEST_REPORTS") do
+  nil  -> "_build"
+  path -> path
+end
+
+# Honeybadger
+config :honeybadger, environment_name: :test
+
+config :junit_formatter, report_dir: "#{report_path}/test"
