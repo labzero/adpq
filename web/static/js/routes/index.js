@@ -8,6 +8,7 @@ import {
 import {
   AccountContainer,
   AdminContainer,
+  AdminOrderReportContainer,
   AppContainer,
   CartContainer,
   CatalogContainer,
@@ -57,7 +58,9 @@ export default function getRoutes(store) {
     <IndexRoute component={HomepageContainer} onEnter={requireAuth()} />
     <Route path="category/:name" component={CategoryContainer} onEnter={requireAuth()} />
     <Route path="item/:manufacturer_sku" component={ItemDetailContainer} onEnter={requireAuth()} />
-    <Route path="account" component={AccountContainer} onEnter={requireAuth()} />
+    <Route path="account" component={AccountContainer} onEnter={requireAuth()} >
+      <IndexRoute component={OrderReportContainer} />
+    </Route>
     <Route path="cart" component={CartContainer} onEnter={requireAuth()} />
     <Route path="orders" onEnter={requireAuth()}>
       <Route path="thanks" component={ThanksContainer} />
@@ -66,7 +69,7 @@ export default function getRoutes(store) {
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />
     <Route path="admin" component={AdminContainer} onEnter={requireAuth('ADMIN')}>
-      <IndexRoute component={OrderReportContainer} />
+      <IndexRoute component={AdminOrderReportContainer} />
       <Route path="catalog" component={CatalogContainer} />
       <Route path="orders/:id" component={OrderContainer} />
     </Route>

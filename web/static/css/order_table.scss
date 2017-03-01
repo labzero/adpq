@@ -1,0 +1,10 @@
+@import 'variables';
+
+.order-table-stats {
+  @include clearfix;
+
+  > * {
+    float: left;
+    margin-right: 4rem;
+  }
+}

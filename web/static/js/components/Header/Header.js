@@ -13,13 +13,11 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    if (this.props.headerMode !== 'login') {
-      this.initUswds();
-    }
+    this.initUswds();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.headerMode === 'login' && this.props.headerMode !== 'login') {
+    if (prevProps.headerMode !== this.props.headerMode) {
       this.initUswds();
     }
   }

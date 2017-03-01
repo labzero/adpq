@@ -24,7 +24,7 @@ const findHeaderMode = (location) => {
   let mode = 'default';
   if (location.pathname === '/login') {
     mode = 'login';
-  } else if (location.pathname.indexOf('/admin') !== -1) {
+  } else if (location.pathname.match(/^\/admin/)) {
     mode = 'admin';
   }
   return mode;
@@ -32,7 +32,7 @@ const findHeaderMode = (location) => {
 
 const findFooterMode = (location) => {
   let mode = 'less';
-  if (location.pathname === '/login' || location.pathname.indexOf('/admin') !== -1) {
+  if (location.pathname === '/login' || location.pathname.match(/^\/admin/)) {
     mode = 'login';
   } else if (location.pathname === '/') {
     mode = 'more';
