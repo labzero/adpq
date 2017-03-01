@@ -5,6 +5,17 @@ const initialState = [];
 const alerts = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.ALERT: {
+      if (state.find(alert => alert.type === action.alert.type)) {
+        return state.map((alert) => {
+          if (alert.type === action.alert.type) {
+            return {
+              ...alert,
+              willExpire: !!action.willExpire
+            };
+          }
+          return alert;
+        });
+      }
       return [
         ...state,
         {

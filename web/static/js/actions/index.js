@@ -179,7 +179,10 @@ const doLoginUser = (name, password, redirect) => {
         dispatch(loginSuccess(json));
         browserHistory.push(redirectOrDefault(redirect));
       })
-      .catch(error => dispatch(loginError(error)));
+      .catch((error) => {
+        dispatch(loginError(error));
+        dispatch(alert(loginError(error), true));
+      });
   };
 };
 

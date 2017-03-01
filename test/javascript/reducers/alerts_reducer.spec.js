@@ -7,6 +7,18 @@ describe('AlertsReducer', () => {
     expect(state).toEqual([{ type: 'HELLO', willExpire: false }])
   })
 
+  it('un-expires existing alert', () => {
+    const beforeState = [
+      {
+        type: 'HELLO',
+        willExpire: true
+      }
+    ];
+
+    const state = AlertsReducer(beforeState, { type: ActionTypes.ALERT, alert: { type: 'HELLO', willExpire: false }})
+    expect(state).toEqual([{ type: 'HELLO', willExpire: false }])
+  })
+
   it('expires willExpire alerts', () => {
     const beforeState = [
       {
