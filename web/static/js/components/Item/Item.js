@@ -37,7 +37,7 @@ class Item extends Component {
             {item.description.split(',').length ?
               item.description.split(',').map(description => (
                 description.length ? (
-                  <li key={`${item.id}-${description}`}>{description}</li>
+                  <li key={description}>{description}</li>
                 ) : ''
               )) : ''
             }

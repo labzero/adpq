@@ -3,12 +3,24 @@ import thunk from 'redux-thunk'
 import * as actions from 'actions'
 import * as ActionTypes from 'constants/ActionTypes'
 import * as RemoteDataStates from 'constants/RemoteDataStates'
-
+import * as reactRouter from 'react-router';
+import * as user from 'lib/user'
 import fetchMock from 'fetch-mock'
+
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 describe('Auth Actions', () => {
+  beforeEach(function() {
+    user.getUserData = jest.genMockFunction().mockReturnValue({name: 'Joe', role: 'USER', id: 11})
+    global.sessionStorage = jest.genMockFunction();
+    global.sessionStorage.setItem = jest.genMockFunction();
+    global.sessionStorage.getItem = jest.genMockFunction().mockReturnValue(null);
+    reactRouter.browserHistory = {
+      push: jest.genMockFunction()
+    };
+  })
+
   afterEach(fetchMock.restore)
 
   it('loginRequest creates a LOGIN_REQUEST action', () => {
@@ -27,7 +39,7 @@ describe('Auth Actions', () => {
     expect(store.getActions()).toEqual([])
   })
 
-  it('loginUser dispatches a login request and handles the response data', () => {
+  it('loginUser dispatches a login request and handles the response data', (done) => {
     const store = mockStore({auth: {remoteDataState: RemoteDataStates.NOT_REQUESTED}})
     const mockResponse = {id: 0, name: 'Joe', role: 'ADMIN'}
     const expectedActions = [
@@ -39,20 +51,23 @@ describe('Auth Actions', () => {
     store.dispatch(actions.loginUser()).then(() => {
       expect(fetchMock.called('/api/auth')).toBe(true)
       expect(store.getActions()).toEqual(expectedActions)
+      done();
     })
   })
 
-  it('loginUser dispatches a login request and handles any error', () => {
+  it('loginUser dispatches a login request and handles any error', (done) => {
     const store = mockStore({auth: {remoteDataState: RemoteDataStates.NOT_REQUESTED}})
     const expectedActions = [
       { type: ActionTypes.LOGIN_REQUEST },
-      { type: ActionTypes.LOGIN_ERROR, error: 409 }
+      { type: ActionTypes.LOGIN_ERROR, error: 'something' }
     ]
     fetchMock.mock('/api/auth', 409, {method: "POST"})
 
     store.dispatch(actions.loginUser()).then(() => {
       expect(fetchMock.called('/api/auth')).toBe(true)
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()[0]).toEqual(expectedActions[0])
+      expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
+      done();
     })
   })
 

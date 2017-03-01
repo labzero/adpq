@@ -2,13 +2,33 @@ import React, { Component, PropTypes } from 'react';
 import HeaderDefault from './HeaderDefault';
 import HeaderAdmin from './HeaderAdmin';
 import HeaderLogin from './HeaderLogin';
+import Accordion from 'uswds/src/js/components/accordion';
+import navInit from 'uswds/src/js/components/navigation';
+import select from 'uswds/src/js/utils/select';
 
 
 class Header extends Component {
-
   static propTypes = {
     section: PropTypes.string,
     headerMode: PropTypes.string.isRequired
+  }
+
+  componentDidMount() {
+    if (this.props.isAuthorized) {
+      this.initUswds();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isAuthorized && this.props.isAuthorized) {
+      this.initUswds();
+    }
+  }
+
+  initUswds = () => {
+    const accordions = select('.usa-accordion, .usa-accordion-bordered');
+    accordions.forEach(el => new Accordion(el));
+    navInit();
   }
 
   render() {
