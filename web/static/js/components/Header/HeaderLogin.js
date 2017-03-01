@@ -15,7 +15,7 @@ class HeaderLogin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/admin" title="Admin" aria-label="Home">Tech Shop</a>
+                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
               </em>
             </div>
           </div>
