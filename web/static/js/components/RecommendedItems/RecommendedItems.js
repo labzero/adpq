@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { catalogItemImage } from '../../lib/image_urls';
 import { singleCategory } from '../../lib/category_item';
+import { catalogItemPath } from '../../lib/paths';
 
 const RecommendedItems = ({ title, subtitle, items }) => (
   <div className="homepage-recommendations">
@@ -14,8 +15,8 @@ const RecommendedItems = ({ title, subtitle, items }) => (
     {items && items.length ?
       items.map(item => (
         <div className="usa-width-one-fourth homepage-recommendation" key={item.id}>
-          <Link to={`/item/${item.id}`}>
-            <img src={`${catalogItemImage(item)}`} alt={item.name} />
+          <Link to={catalogItemPath(item)}>
+            <img src={catalogItemImage(item)} alt={item.name} />
             <div className="homepage-recommendation-details">
               <div className="homepage-recommendation-category">{singleCategory(item.top_level_category)}</div>
               {item.name}
