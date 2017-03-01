@@ -2,10 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 class HeaderAdmin extends Component {
-
   static propTypes = {
     section: PropTypes.string,
-
   }
 
   render() {

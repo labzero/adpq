@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
 class HeaderLogin extends Component {
-
   static propTypes = {
     section: PropTypes.string
   }
