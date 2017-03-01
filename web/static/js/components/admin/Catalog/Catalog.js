@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import map from 'lodash/fp/map';
 import * as RemoteDataStates from '../../../constants/RemoteDataStates';
 import { sortBy } from '../../../lib/sorts';
+import AlertsContainer from '../../Alerts/AlertsContainer';
 
 
 export default class Catalog extends Component {
@@ -87,6 +88,7 @@ export default class Catalog extends Component {
       const tableRows = map(item => this.renderTableRow(item), data);
       return (
         <div>
+          <AlertsContainer />
           <table>
             <thead>
               {this.renderTableHeader()}

@@ -63,9 +63,7 @@ defmodule Adpq.CatalogItem do
       :quantity_in_uom,
       :list_price,
       :contract_unit_price,
-      :contract_discount,
       :name,
-      :long_category,
       :simple_category,
       :top_level_category
     ]

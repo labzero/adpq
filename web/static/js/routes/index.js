@@ -13,6 +13,8 @@ import {
   CartContainer,
   CatalogContainer,
   CategoryContainer,
+  CreateItem,
+  EditItemContainer,
   HomepageContainer,
   ItemDetailContainer,
   LoginContainer,
@@ -72,6 +74,8 @@ export default function getRoutes(store) {
       <IndexRoute component={AdminOrderReportContainer} />
       <Route path="catalog" component={CatalogContainer} />
       <Route path="orders/:id" component={OrderContainer} />
+      <Route path="item" component={CreateItem} />
+      <Route path="item/:manufacturer_sku" component={EditItemContainer} />
     </Route>
   </Route>);
 }
