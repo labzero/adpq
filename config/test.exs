@@ -23,4 +23,7 @@ report_path = case System.get_env("CIRCLE_TEST_REPORTS") do
   path -> path
 end
 
+# Honeybadger
+config :honeybadger, environment_name: :test
+
 config :junit_formatter, report_dir: "#{report_path}/test"

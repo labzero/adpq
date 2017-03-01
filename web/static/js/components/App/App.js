@@ -6,20 +6,21 @@ import Header from '../Header/Header';
 export default class App extends Component {
 
   static propTypes = {
-    location: PropTypes.object.isRequired,
+    headerMode: PropTypes.string.isRequired,
+    footerMode: PropTypes.string.isRequired,
     section: PropTypes.string,
     children: PropTypes.node.isRequired
   }
-  render() {
-    const { location, section } = this.props;
 
+  render() {
+    const { headerMode, footerMode, section } = this.props;
     return (
       <div className="container" id="top">
-        <Header isAuthorized={location.pathname !== '/login'} section={section} />
+        <Header headerMode={headerMode} section={section} />
         <div className="content">
           {this.props.children}
         </div>
-        <Footer isAuthorized={location.pathname !== '/login'} isHomepage={location.pathname === '/'} />
+        <Footer footerMode={footerMode} />
       </div>
     );
   }

@@ -3,7 +3,7 @@ defmodule Adpq.OrderController do
   use PhoenixSwagger
 
   import Adpq.OrderQueries
-  alias Adpq.{Order, OrderItem, User, ErrorView, Order.Status}
+  alias Adpq.{Order, OrderItem, CartItem, User, ErrorView, Order.Status}
 
   swagger_path :index do
     get "/api/user/{user_id}/orders"
@@ -54,6 +54,7 @@ defmodule Adpq.OrderController do
         Enum.map(user.cart_items, fn ci -> Repo.insert!(OrderItem.from_cart_item(order, ci)) end)
         # reload and render
         order = Repo.preload(order, [{:order_items, [:catalog_item]}])
+        Repo.delete_all(from c in CartItem, where: c.user_id == ^user.id)
         conn
         |> put_status(:created)
         |> put_resp_header("location", user_order_path(conn, :show, user.id, order))

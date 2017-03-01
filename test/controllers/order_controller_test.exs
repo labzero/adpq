@@ -2,7 +2,7 @@ defmodule Adpq.OrderControllerTest do
   use Adpq.ConnCase
   import Adpq.Factory
 
-  alias Adpq.Order
+  alias Adpq.{Order, CartItem}
 
   setup %{conn: conn} do
     user = insert(:user)
@@ -59,6 +59,19 @@ defmodule Adpq.OrderControllerTest do
      response = json_response(conn, 201)
      assert response["items"] |> Enum.count == 2
      assert Repo.get(Order, response["id"])
+   end
+
+   test "removes cart items when creating an order", %{conn: conn} do
+     user = insert(:user)
+     _cart_items = insert_list(2, :cart_item, %{user: user})
+     conn = post conn, user_order_path(conn, :create, user)
+     response = json_response(conn, 201)
+     assert response["items"] |> Enum.count == 2
+     remaining_items =
+       CartItem
+       |> where([c], c.user_id == ^user.id)
+       |> Repo.all
+      assert Enum.count(remaining_items) == 0
    end
 
    test "it will not create an empty order", %{conn: conn} do
