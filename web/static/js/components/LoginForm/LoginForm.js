@@ -8,12 +8,19 @@ class LoginForm extends React.Component {
   }
 
   state = {
-    passwordInput: 'password'
+    passwordToggleLink: {
+      input: 'password',
+      text: 'Show Password'
+    }
   }
 
-  togglePassword = _event => (
-      this.setState(prevState => ({ passwordInput: (prevState.passwordInput === 'password' ? 'text' : 'password') }))
-  )
+  togglePasswordVisibility = (_event) => {
+    if (this.state.passwordToggleLink.input === 'text') {
+      this.setState({ passwordToggleLink: { text: 'Show Password', input: 'password' } });
+    } else {
+      this.setState({ passwordToggleLink: { text: 'Hide Password', input: 'text' } });
+    }
+  };
 
   render() {
     const { handleSubmit } = this.props;
@@ -22,13 +29,13 @@ class LoginForm extends React.Component {
         <h2>Sign in</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Username or email address</label>
+            <label htmlFor="name">Username</label>
             <Field name="name" component="input" type="text" autoCorrect="off" autoCapitalize="off" />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <Field name="password" component="input" type={this.state.passwordInput} />
-            <div className="login-show-password"><a href="#show-password" onClick={this.togglePassword}>Show password</a></div>
+            <Field name="password" component="input" type={this.state.passwordToggleLink.input} />
+            <div className="login-show-password"><a href="#show-password" onClick={this.togglePasswordVisibility}>{this.state.passwordToggleLink.text}</a></div>
           </div>
           <button type="submit">Sign in</button>
 
