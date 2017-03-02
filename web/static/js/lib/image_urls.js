@@ -34,7 +34,10 @@ const categoryImages = {
   'Peripherals-Docking Stations': true,
   'Peripherals-Headsets Microphones & Speakers': true,
   'Peripherals-Keyboards & Mice': true,
-  'Peripherals-Mounting': true
+  'Peripherals-Mounting': true,
+  'Software-Design': true,
+  'Software-Productivity': true,
+  'Services-Support': true
 };
 
 export function catalogItemImage(item) {
