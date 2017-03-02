@@ -30,6 +30,13 @@ defmodule Adpq.UserTest do
     assert user.id !== nil
   end
 
+  test "rejects duplicate name" do
+    attributes = %{"name" => "asfg", "password" => "user", "role" => "USER", "department" => "foo"}
+    User.find_or_create_by_name(attributes)
+    assert {:error, changeset} = Repo.insert(User.changeset(%User{}, attributes))
+    assert changeset.errors[:name] == {"has already been taken", []}
+  end
+
   test "automatically assigns a department" do
     attributes = %{"name" => "zxcv", "password" => "user", "role" => "USER"}
     user = User.find_or_create_by_name(attributes)
