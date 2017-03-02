@@ -20,7 +20,8 @@ defmodule Adpq.CartItemView do
       name: catalog_item.name,
       price: catalog_item.list_price,
       manufacturer: catalog_item.manufacturer,
-      sku: catalog_item.sku
+      simple_category: catalog_item.simple_category,
+      top_level_category: catalog_item.top_level_category
     }
   end
 end
