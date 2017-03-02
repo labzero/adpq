@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
 import map from 'lodash/fp/map';
 import { Link } from 'react-router';
+import { formatMoney } from 'accounting';
 
 export default class ItemForm extends React.Component {
 
@@ -86,11 +87,11 @@ export default class ItemForm extends React.Component {
             </div>
             <div>
               <label className="usa-input-required" htmlFor="list_price">List Price/MSRP ($)</label>
-              <Field name="list_price" component="input" type="text" required />
+              <Field name="list_price" component="input" type="text" normalize={v => v * 100} required format={v => formatMoney(v / 100, '', 2, '', '.')} />
             </div>
             <div>
               <label className="usa-input-required" htmlFor="contract_unit_price">Contract Unit Price ($)</label>
-              <Field name="contract_unit_price" component="input" type="text" required />
+              <Field name="contract_unit_price" component="input" type="text" normalize={v => v * 100} format={v => formatMoney(v / 100, '', 2, '', '.')} required />
             </div>
           </fieldset>
 
