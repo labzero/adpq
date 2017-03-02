@@ -34,8 +34,6 @@ class LoginForm extends React.Component {
 
           <AlertsContainer />
 
-          <p><a href="/forgot">Forgot username?</a></p>
-          <p><a href="/forgot">Forgot password?</a></p>
         </form>
       </div>
     );
