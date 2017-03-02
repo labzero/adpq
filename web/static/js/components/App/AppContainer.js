@@ -13,6 +13,12 @@ const sections = {
   ],
   Services: [
     'Services'
+  ],
+  Orders: [
+    '/admin'
+  ],
+  Catalog: [
+    '/admin/catalog'
   ]
 };
 
@@ -44,11 +50,12 @@ const mapStateToProps = (state, ownProps) => {
   const location = ownProps.location;
   let section;
   if (ownProps.params.id) {
-    // eslint-disable-next-line eqeqeq
-    const item = state.catalog.items.find(it => it.id == ownProps.params.id);
+    const item = state.catalog.items.find(it => `${it.id}` === ownProps.params.id);
     section = item && findSection(item.top_level_category);
   } else if (ownProps.params.name) {
     section = findSection(ownProps.params.name);
+  } else { // try to find sections by pathname
+    section = findSection(ownProps.location.pathname);
   }
   const headerMode = findHeaderMode(location);
   const footerMode = findFooterMode(location);
