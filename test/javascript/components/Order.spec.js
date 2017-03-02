@@ -15,7 +15,7 @@ describe('<Order />', () => {
   beforeEach(() => {
     props = {
       fetchOrder: function() {},
-      orderReport: {
+      orders: {
         items: [],
         remoteDataState: 'LOADED'
       },
