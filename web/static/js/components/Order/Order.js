@@ -28,7 +28,6 @@ export default class Order extends Component {
       return (
         <div className="usa-grid order">
           <div className="usa-section">
-
             <h2>Order Detail</h2>
 
             <div className="order-details">
@@ -49,7 +48,7 @@ export default class Order extends Component {
                   </tr>
                   <tr>
                     <th>Requester</th>
-                    <td>User #{order.user_id}</td>
+                    <td>{order.username}</td>
                   </tr>
                 </tbody>
               </table>
