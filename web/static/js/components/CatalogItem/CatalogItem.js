@@ -54,7 +54,7 @@ class CatalogItem extends Component {
         </div>
         <div className="usa-width-one-fourth item-cart">
           <h4>
-            {currencyFormatter.format(item.list_price / 100, { code: 'USD' })}
+            {currencyFormatter.format(item.contract_unit_price / 100, { code: 'USD' })}
           </h4>
           <form onSubmit={this.addToCart}>
             <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
