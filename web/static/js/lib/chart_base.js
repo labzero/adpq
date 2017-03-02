@@ -8,6 +8,7 @@ export default {
     },
     y: {
       tick: {
+        count: 6,
         format: d => currencyFormatter.format(d / 100, { code: 'USD', precision: 0 })
       }
     }
