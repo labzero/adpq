@@ -122,7 +122,6 @@ defmodule Adpq.CartItemController do
           name :string, "Name", required: true
           price :integer, "Price", required: true
           manufacturer :string, "Manufacturer", required: true
-          sku :string, "SKU", required: true
         end
       end,
       CartItemBody: swagger_schema do
