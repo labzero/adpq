@@ -29,12 +29,10 @@
   }
   table {
     margin-top: 0;
-    font-size: 11px;
-    td, th {
-      padding: 1rem 0.5rem;
-      &:first-child {
-        max-width: 7rem;
-      }
+  }
+  td, th {
+    &:first-child {
+      max-width: 7rem;
     }
   }
 }
@@ -55,13 +53,9 @@
     }
   }
   .order-items {
-    table {
-      font-size: $base-font-size;
-      td, th {
-        padding: 1.5rem;
-        &:first-child {
-          max-width: 15rem;
-        }
+    td, th {
+      &:first-child {
+        max-width: 15rem;
       }
     }
   }

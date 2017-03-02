@@ -38,7 +38,7 @@ export default class Order extends Component {
                 <tbody>
                   <tr>
                     <th>Order Date</th>
-                    <td>{new Date(order.inserted_at).toLocaleDateString('en-us')}</td>
+                    <td>{new Date(order.inserted_at * 1000).toLocaleDateString('en-us')}</td>
                   </tr>
                   <tr>
                     <th>Status</th>
@@ -58,7 +58,7 @@ export default class Order extends Component {
 
             <div className="order-items">
               <h3 className="subsection">Order Items</h3>
-              <table className="usa-table-borderless">
+              <table className="table usa-table-borderless">
                 <thead>
                   <tr>
                     <th>Name</th>

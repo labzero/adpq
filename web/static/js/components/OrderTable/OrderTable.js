@@ -20,7 +20,7 @@ class OrderTable extends Component {
             {currencyFormatter.format(orders.reduce((acc, order) => acc.concat(order.items), []).reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })} spent
           </div>
         </div>
-        <table className="usa-table-borderless">
+        <table className="table usa-table-borderless">
           <thead>
             <tr>
               <th>Order #</th>
