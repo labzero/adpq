@@ -9,7 +9,7 @@ import AlertsContainer from '../Alerts/AlertsContainer';
 export default class Order extends Component {
   static propTypes = {
     fetchOrder: PropTypes.func.isRequired,
-    orderReport: PropTypes.shape(
+    orders: PropTypes.shape(
       {
         items: PropTypes.array.isRequired,
         remoteDataState: PropTypes.string.isRequired
@@ -20,11 +20,11 @@ export default class Order extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchOrder();
+    this.props.fetchOrder(this.props.isAdmin);
   }
 
   render() {
-    if (shouldRender(this.props.orderReport.remoteDataState)) {
+    if (shouldRender(this.props.orders.remoteDataState)) {
       const { order, isAdmin, cancelOrder } = this.props;
 
       return (

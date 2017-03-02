@@ -242,4 +242,4 @@ The table below also highlights key activities and artifacts relative to the Dig
 > Please see the Setup section in this document or the SETUP.md file in root directory of this repository. All engineers used these steps to set up their development environments. 
 
 **t. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge**
-> All systems used to create and run the prototype are open source and free of charge for use. Our prototype carries an MIT license as well.
+> All systems used to create and run the prototype are [open source and free of charge for use](docs/Open%20Source%20Technology%20Audit.xlsx). Our prototype carries an [MIT license](LICENSE.md) as well.

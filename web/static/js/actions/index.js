@@ -129,6 +129,10 @@ export function updateCartItemError(error) {
 }
 
 // order actions
+export function fetchRequiredOrders(admin = false) {
+  return (admin ? fetchAdminOrdersIfNeeded() : fetchOrdersIfNeeded());
+}
+
 export function fetchOrdersIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchOrders(getState())) {
