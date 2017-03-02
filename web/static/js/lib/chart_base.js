@@ -13,7 +13,7 @@ export default {
     }
   },
   color: {
-    pattern: ['#e31c3d', '#4aa564', '#02bfe7', '#f9c642']
+    pattern: ['#e31c3d', '#4aa564', '#02bfe7', '#f9c642', '#2e8540', '#205493', '#981b1e', '#4c2c92']
   },
   data: {
     type: 'bar'
