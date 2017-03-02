@@ -1,20 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-class HeaderDefault extends Component {
+export default class HeaderDefault extends Component {
   static propTypes = {
-    section: PropTypes.string
-  }
+    section: PropTypes.string,
+    cartCount: PropTypes.number
+  };
 
   render() {
+    const { section, cartCount } = this.props;
     return (
       <header className={'header header-default usa-header usa-header-extended'} role="banner">
         <div className="usa-navbar">
           <button className="menu-btn  usa-menu-btn">Menu</button>
           <div className="logo-container">
             <div className="logo-department">
-              California Department of Technology
-            </div>
+                California Department of Technology
+              </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
                 <a href="/" title="Home" aria-label="Home">Tech Shop</a>
@@ -29,7 +31,7 @@ class HeaderDefault extends Component {
             </button>
             <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Hardware' ? 'nav-link-current' : ''}`} aria-controls="side-nav-1">
+                <button className={`usa-accordion-button usa-nav-link ${section === 'Hardware' ? 'nav-link-current' : ''}`} aria-controls="side-nav-1">
                   <span>Hardware</span>
                 </button>
                 <ul id="side-nav-1" className="nav-submenu usa-nav-submenu usa-unstyled-list">
@@ -72,7 +74,7 @@ class HeaderDefault extends Component {
                 </ul>
               </li>
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Software' ? 'nav-link-current' : ''}`} aria-controls="side-nav-2">
+                <button className={`usa-accordion-button usa-nav-link ${section === 'Software' ? 'nav-link-current' : ''}`} aria-controls="side-nav-2">
                   <span>Software</span>
                 </button>
                 <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
@@ -85,7 +87,7 @@ class HeaderDefault extends Component {
                 </ul>
               </li>
               <li>
-                <button className={`usa-accordion-button usa-nav-link ${this.props.section === 'Services' ? 'nav-link-current' : ''}`} aria-controls="side-nav-3">
+                <button className={`usa-accordion-button usa-nav-link ${section === 'Services' ? 'nav-link-current' : ''}`} aria-controls="side-nav-3">
                   <span>Services</span>
                 </button>
                 <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
@@ -98,15 +100,24 @@ class HeaderDefault extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="/cart" className="header-cart-button"><span>Cart</span>&nbsp;<span className="count" /></a>
+                  <a href="/cart" className="header-cart-button" aria-label="Cart">
+                    <span>Cart</span> &nbsp;
+                    {cartCount !== 0 ? (
+                      <span
+                        className="count usa-label"
+                        title={`${cartCount} ${cartCount === 1 ? 'item' : 'items'} in your cart`}
+                      >
+                        {cartCount}</span>
+                      ) : ''}
+                  </a>
                 </li>
                 <li>
                   <a href="/account">Account</a>
                 </li>
                 <li>
                   <Link to={'logout'}>
-                    Logout
-                  </Link>
+                      Logout
+                    </Link>
                 </li>
               </ul>
             </div>
@@ -116,5 +127,3 @@ class HeaderDefault extends Component {
     );
   }
 }
-
-export default HeaderDefault;
