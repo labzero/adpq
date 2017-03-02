@@ -6,6 +6,7 @@ describe('OrderTable', () => {
   let props;
   beforeEach(() => {
     props = {
+      orderLink: () => "link",
       orders: [
         {
           id: 0,
@@ -32,13 +33,13 @@ describe('OrderTable', () => {
       ]
     }
   })
-  
+
   it('displays total spent', () => {
     const rendered = shallow(<OrderTable {...props} />);
 
     expect(rendered.text()).toContain('$2,157.00 spent')
   })
-  
+
   it('displays total price per order', () => {
     const rendered = shallow(<OrderTable {...props} />);
 

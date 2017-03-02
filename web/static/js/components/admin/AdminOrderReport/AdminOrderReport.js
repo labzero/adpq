@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import { shouldRender } from '../../../lib/remote_data_states';
 import AdminOrderChart from '../AdminOrderChart/AdminOrderChart';
 import OrderTable from '../../OrderTable/OrderTable';
@@ -18,6 +19,9 @@ export default class AdminOrderReport extends Component {
     this.props.fetchOrders();
   }
 
+  orderLink = order => <Link to={`/admin/orders/${order.id}`}>{order.id}</Link>
+
+
   render() {
     if (shouldRender(this.props.orderReport.remoteDataState)) {
       return (
@@ -25,7 +29,7 @@ export default class AdminOrderReport extends Component {
           <div className="usa-section">
             <h2>Orders Report</h2>
             <AdminOrderChart orders={this.props.byCategoryDepartment} />
-            <OrderTable orders={this.props.orderReport.items} />
+            <OrderTable orders={this.props.orderReport.items} orderLink={this.orderLink} />
           </div>
         </div>
       );
