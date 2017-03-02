@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAdminOrdersIfNeeded } from '../../actions';
+import { fetchAdminOrdersIfNeeded, cancelOrder } from '../../actions';
 import Order from './Order';
 
 const isAdmin = location => (location.pathname.indexOf('/admin') !== -1);
@@ -17,6 +17,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchOrder() {
     dispatch(fetchAdminOrdersIfNeeded());
+  },
+  cancelOrder: (order, admin) => {
+    dispatch(cancelOrder(order, admin))
   }
 });
 

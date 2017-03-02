@@ -4,12 +4,16 @@ import CreateItemSuccess from './AlertContents/CreateItemSuccess';
 import CreateOrderSuccess from './AlertContents/CreateOrderSuccess';
 import LoginError from './AlertContents/LoginError';
 import UpdateItemSuccess from './AlertContents/UpdateItemSuccess';
+import CancelOrderSuccess from './AlertContents/CancelOrderSuccess';
+
 
 const contentMap = {
   [ActionTypes.CREATE_ITEM_SUCCESS]: CreateItemSuccess,
   [ActionTypes.CREATE_ORDER_SUCCESS]: CreateOrderSuccess,
   [ActionTypes.LOGIN_ERROR]: LoginError,
-  [ActionTypes.UPDATE_ITEM_SUCCESS]: UpdateItemSuccess
+  [ActionTypes.UPDATE_ITEM_SUCCESS]: UpdateItemSuccess,
+  [ActionTypes.ADMIN_CANCEL_ORDER_SUCCESS]: CancelOrderSuccess,
+  [ActionTypes.CANCEL_ORDER_SUCCESS]: CancelOrderSuccess,
 };
 
 const renderAlert = (alert) => {
