@@ -4,7 +4,7 @@ import sumBy from 'lodash/fp/sumBy'
 import flow from 'lodash/fp/flow'
 import flatMap from 'lodash/fp/flatMap'
 
-import salesByCategoryDepartment from 'lib/order_report'
+import { salesByCategory, salesByCategoryDepartment } from 'lib/order_report'
 
 const data = [
   {"user_id":20,"status":"SUBMITTED","items":[],"id":2,"department":"CDE"},
@@ -20,7 +20,14 @@ const data = [
 
   describe("salesByCategoryDepartment", () => {
 
-    test("it roll up the sales data by category and department", () => {
+    it("rolls up the sales data by category and department", () => {
       expect(salesByCategoryDepartment(data)).toEqual({"CDE":{}, "PARKS": {"Laptops": 9000}})
+    })
+  })
+
+  describe("salesByCategory", () => {
+
+    it("rolls up the sales data by category", () => {
+      expect(salesByCategory(data)).toEqual({"Laptops": 9000})
     })
   })

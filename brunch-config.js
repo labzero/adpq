@@ -22,7 +22,7 @@ exports.config = {
     stylesheets: {
       joinTo: "css/app.css",
       order: {
-        before: ["node_modules/uswds/dist/css/uswds.css", "web/static/css/uswds-bugfixes.css"],
+        before: ["node_modules/uswds/dist/css/uswds.css", "node_modules/c3/c3.css", "web/static/css/uswds-bugfixes.css"],
         after: ["web/static/css/app.scss"] // concat app.css last
       }
     },
@@ -45,6 +45,7 @@ exports.config = {
     // Dependencies and current project directories to watch
     watched: [
       "node_modules/uswds/dist/css/",
+      "node_modules/c3/c3.css",
       "web/static",
       "test/static"
     ],

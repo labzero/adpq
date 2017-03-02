@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchAdminOrdersIfNeeded } from '../../../actions';
 import AdminOrderReport from './AdminOrderReport';
-import salesByCategoryDepartment from '../../../lib/order_report';
+import { salesByCategoryDepartment } from '../../../lib/order_report';
 
 const mapStateToProps = (state, _ownProps) => (
   {
