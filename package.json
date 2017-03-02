@@ -4,7 +4,7 @@
   "scripts": {
     "deploy": "brunch build --production",
     "watch": "brunch watch --stdin",
-    "test": "jest --verbose",
+    "test": "jest --verbose --maxWorkers=5",
     "lint": "./node_modules/.bin/eslint web/static/js/**"
   },
   "dependencies": {
