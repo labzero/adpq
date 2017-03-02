@@ -26,9 +26,6 @@ export default {
       show: true
     }
   },
-  legend: {
-    show: false
-  },
   tooltip: {
     show: false
   }

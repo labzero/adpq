@@ -7,13 +7,14 @@ const OrderChart = ({ orders }) => {
 
   const chartProps = chartBase;
   chartProps.axis.x.categories = keys;
-  chartProps.data.columns = [
-    ...keys.map((key, i) => [
-      key,
-      ...keys.map((subkey, j) => (i === j ? orders[subkey] : 0))
-    ])
-  ];
+  chartProps.data.columns = keys.map((key, i) => [
+    key,
+    ...keys.map((subkey, j) => (i === j ? orders[subkey] : 0))
+  ]);
   chartProps.data.groups = [keys];
+  chartProps.legend = {
+    show: false
+  };
 
   return (
     <div>
