@@ -5,6 +5,8 @@ export { default as AppContainer } from './App/AppContainer';
 export { default as CartContainer } from './Cart/CartContainer';
 export { default as CatalogContainer } from './admin/Catalog/CatalogContainer';
 export { default as CategoryContainer } from './Category/CategoryContainer';
+export { default as CreateItem } from './admin/CreateItem/CreateItem';
+export { default as EditItemContainer } from './admin/EditItem/EditItemContainer';
 export { default as HomepageContainer } from './Homepage/HomepageContainer';
 export { default as ItemDetailContainer } from './ItemDetail/ItemDetailContainer';
 export { default as LoginContainer } from './Login/LoginContainer';
