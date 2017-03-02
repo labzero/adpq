@@ -23,20 +23,30 @@
   padding: 1.5em 0;
 }
 
-.category-filter-sections-hidden {
+.category-filter-sections-hidden,
+.category-item-details-hidden ul {
   display: none;
 }
+.category-toggle-details {
+  margin-top: 1rem;
+}
 
-.category-show-filters:before {
-  content: " - ";
-  position: relative;
+.category-toggle-filters {
+  font-style: normal;
+  &:before {
+    content: " - ";
+    position: relative;
+  }
 }
 
 @include media($large-screen) {
-  .category-show-filters {
+  .category-toggle-filters {
     display: none;
   }
   .category-filter-sections-hidden {
     display: block;
+  }
+  .category-toggle-details {
+    margin-top: 0;
   }
 }
