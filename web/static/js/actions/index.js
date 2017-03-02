@@ -348,8 +348,6 @@ export function createItemError(error) {
   return { type: ActionTypes.CREATE_ITEM_SUCCESS, data: error };
 }
 
-// foo
-
 export function updateItem(item) {
   const request = {
     method: 'put',
@@ -376,8 +374,35 @@ export function updateItemError(error) {
   return { type: ActionTypes.UPDATE_ITEM_ERROR, data: error };
 }
 
-// foo
+export function cancelOrder(order, admin = false) {
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ status: 'CANCELLED' })
+  };
+  const url = admin ? `/api/admin/orders/${order.id}` : `/api/orders/${order.id}`;
+  const refresh = admin ? fetchAdminOrders : fetchOrders;
+  return dispatch => fetch(url, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(cancelOrderSuccess(admin)))
+      .then(() => dispatch(alert(cancelOrderSuccess(admin))))
+      .then(() => dispatch(refresh()))
+      .catch(error => dispatch(cancelOrderError(admin, error))); // TODO flash message
+}
 
+export function cancelOrderSuccess(admin = false) {
+  const type = admin ? ActionTypes.ADMIN_CANCEL_ORDER_SUCCESS : ActionTypes.CANCEL_ORDER_SUCCESS;
+  return { type };
+}
+
+export function cancelOrderError(admin = false, error) {
+  const type = admin ? ActionTypes.ADMIN_CANCEL_ORDER_ERROR : ActionTypes.CANCEL_ORDER_ERROR;
+  return { type, error };
+}
 
 function shouldFetchAdminOrders(state) {
   return shouldFetch(state.orderReport);

@@ -4,6 +4,7 @@ import currencyFormatter from 'currency-formatter';
 import Loading from '../Loading/Loading';
 import { catalogItemPath } from '../../lib/paths';
 import { shouldRender } from '../../lib/remote_data_states';
+import AlertsContainer from '../Alerts/AlertsContainer';
 
 export default class Order extends Component {
   static propTypes = {
@@ -14,7 +15,8 @@ export default class Order extends Component {
         remoteDataState: PropTypes.string.isRequired
       }),
     isAdmin: PropTypes.bool.isRequired,
-    order: PropTypes.object
+    order: PropTypes.object,
+    cancelOrder: PropTypes.func.isRequired
   };
 
   componentDidMount() {
@@ -23,13 +25,13 @@ export default class Order extends Component {
 
   render() {
     if (shouldRender(this.props.orderReport.remoteDataState)) {
-      const { order, isAdmin } = this.props;
+      const { order, isAdmin, cancelOrder } = this.props;
 
       return (
         <div className="usa-grid order">
           <div className="usa-section">
             <h2>Order Detail</h2>
-
+            <AlertsContainer />
             <div className="order-details">
               <h3>Order #{order.id}</h3>
               <table>
@@ -85,7 +87,7 @@ export default class Order extends Component {
 
             <div className="order-total">
               <h3>Order Total: {currencyFormatter.format(order.items.reduce((acc, orderItem) => acc + (orderItem.price * orderItem.quantity), 0) / 100, { code: 'USD' })}</h3>
-              <button className="usa-button-outline button-secondary-outline">Cancel</button>
+              <button onClick={() => cancelOrder(order, isAdmin)} className="usa-button-outline button-secondary-outline">Cancel</button>
             </div>
 
           </div>
