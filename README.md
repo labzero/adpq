@@ -194,17 +194,17 @@ The table below also highlights key activities and artifacts relative to the Dig
 * [Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
 
 **j. Used an iterative approach, where feedback informed subsequent work or versions of the prototype**
-> We began by clarifying the business case and target outcomes without proposing solutions. This empowers each team member to bring their expertise and creativity into the solutions which are iteratively built and tested. Learnings from test are fed back into subsequent iterations.
+> We began by clarifying the business case and target outcomes without proposing solutions. This sets the stage for each activity to be oriented around learning and empowers each team member to bring their expertise and creativity into the solutions which are iteratively built and tested. Learnings from each activity are fed back into subsequent iterations, cross-functionally.
 * Product Owner led goal-oriented kickoff and drafted a first version of the “Speclet” to align and hold the team accountable to high-level key outcomes and measurements. 
 * Key learnings from user interviews informed the project summary, goals, and measurements and allowed us to apply improvements to our designs and development.
 * Team story time for formal technical review of prioritized backlog. Development feedback assisted in clarifying prototype behavior and story decomposition.
 * Validated design concepts through clickable prototypes with people outside the team. User feedback informed backlog grooming and design iterations. 
 * Presented design, development, and product ideas to the full team frequently to inform final deliverables through daily standups and conversations.
 * Utilized Scrum framework for frequent and agile inspection and adaptation
-  * Product Owner managed a prioritized backlog of tasks for Design & Development
+  * Product Owner managed a prioritized backlog of tasks for [Design](https://github.com/labzero/adpq/projects/2) & [Development](https://github.com/labzero/adpq/projects/1)
   * Peers review and accept work
   * Daily standup
-  * Weekly sprints: team performed demos and retrospectives
+  * [Sprints](https://github.com/labzero/adpq/tree/develop/docs/10-RetrospectiveNotes): team performed demos and retrospectives
 
 **k. Created a prototype that works on multiple devices, and presents a responsive design**
 > Our prototype has been designed, developed and tested to work on desktop browsers, iOS and Android phones as well as screen readers.
