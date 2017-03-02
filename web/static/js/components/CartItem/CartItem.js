@@ -44,7 +44,7 @@ class CartItem extends Component {
             <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
               <option value="1">Qty: 1</option>
             </select>
-            <button onClick={this.remove}>Remove</button>
+            <button className="usa-button-outline" onClick={this.remove}>Remove</button>
           </form>
         </div>
       </div>
