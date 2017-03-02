@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     categories: keys(categories),
     subCategories: categories[selector(state, 'top_level_category')] || [],
     heading: 'Item Detail',
-    subHeading: selector(state, 'name'),
+    subHeading: selector(state, 'name') || '',
     initialValues: ownProps.item
   };
 };

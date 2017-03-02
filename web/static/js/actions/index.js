@@ -361,6 +361,11 @@ export function fetchAdminCatalogError(error) {
 }
 
 export function createItem(item) {
+  const values = {
+    ...item,
+    list_price: item.list_price * 100,
+    contract_unit_price: item.contract_unit_price * 100
+  };
   const request = {
     method: 'post',
     credentials: 'include',
@@ -368,7 +373,7 @@ export function createItem(item) {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(item)
+    body: JSON.stringify(values)
   };
   return dispatch => fetch('/api/admin/catalog_items', requestWithAuth(request))
       .then(checkHttpStatus)
@@ -387,6 +392,11 @@ export function createItemError(error) {
 }
 
 export function updateItem(item) {
+  const values = {
+    ...item,
+    list_price: item.list_price * 100,
+    contract_unit_price: item.contract_unit_price * 100
+  };
   const request = {
     method: 'put',
     credentials: 'include',
@@ -394,7 +404,7 @@ export function updateItem(item) {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(omit('id', item))
+    body: JSON.stringify(omit('id', values))
   };
   return dispatch => fetch(`/api/admin/catalog_items/${item.id}`, requestWithAuth(request))
       .then(checkHttpStatus)
