@@ -54,7 +54,8 @@ defmodule Adpq.Router do
       info: %{
         version: "0.1",
         title: "Lab Zero - ADPQ"
-      }
+      },
+      host: Application.get_env(:adpq, :swagger_host)
     }
   end
 end
