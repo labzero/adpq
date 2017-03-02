@@ -7,15 +7,27 @@ import { catalogItemPath } from '../../lib/paths';
 class CartItem extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
-    remove: PropTypes.func.isRequired
+    remove: PropTypes.func.isRequired,
+    updateQuantity: PropTypes.func.isRequired
   };
 
-  state = {
-    quantity: 1
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: props.item.quantity
+    };
   }
 
   changeQuantity = (event) => {
-    this.setState({ quantity: Number(event.target.value) });
+    this.setState({ quantity: Number(event.target.value) || 0 });
+  }
+
+  updateQuantity = () => {
+    if (this.state.quantity) {
+      this.props.updateQuantity(this.state.quantity);
+    } else {
+      this.props.remove();
+    }
   }
 
   remove = (event) => {
@@ -41,9 +53,10 @@ class CartItem extends Component {
             {currencyFormatter.format(item.price / 100, { code: 'USD' })}
           </h4>
           <form onSubmit={this.remove}>
-            <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
-              <option value="1">Qty: 1</option>
-            </select>
+            <div className="usa-grid-full">
+              <label className="item-quantity-label" htmlFor={`category_item_${item.manufacturer}-${item.sku}_quantity`}>Qty:</label>
+              <input className="item-quantity" id={`category_item_${item.manufacturer}-${item.sku}_quantity`} value={this.state.quantity} onChange={this.changeQuantity} onBlur={this.updateQuantity} required />
+            </div>
             <button className="usa-button-outline" onClick={this.remove}>Remove</button>
           </form>
         </div>
