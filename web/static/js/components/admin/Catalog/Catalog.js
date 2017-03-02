@@ -99,7 +99,7 @@ export default class Catalog extends Component {
             </h3>
             <Link to="/admin/item/new" className="usa-button catalog-add-button">Add Item</Link>
           </div>
-          <table className="usa-table-borderless">
+          <table className="table usa-table-borderless">
             <thead>
               {this.renderTableHeader()}
             </thead>

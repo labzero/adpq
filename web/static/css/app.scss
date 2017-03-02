@@ -29,6 +29,13 @@ h4 {
   margin: 0;
 }
 
+.table {
+  font-size: 11px;
+  td, th {
+    padding: 1rem 0.5rem;
+  }
+}
+
 .subsection {
   font-size: $small-font-size;
   font-weight: normal;
@@ -63,5 +70,15 @@ button.button-secondary-outline {
   }
   &:focus {
     box-shadow: $button-stroke $color-secondary-darkest, $focus-shadow;
+  }
+}
+
+
+@media (min-width: $medium-screen) {
+  .table {
+    font-size: $base-font-size;
+    td, th {
+      padding: 1.5rem;
+    }
   }
 }
