@@ -85,4 +85,24 @@ describe('<Category />', () => {
 
     expect(push.mock.calls[0][0]).toBe('/category/stuff?filter=manufacturer:dell&filter=simple_category:ultralight')
   })
+
+  it('changes sort', () => {
+    props.sorts = [['list_price', 'asc']]
+
+    const instance = shallow(<Category {...props} />).instance();
+
+    instance.changeSort({ target: { value: 'manufacturer:desc' }});
+
+    expect(push.mock.calls[0][0]).toBe('/category/stuff?sort=manufacturer:desc')
+  })
+
+  it('removes sort', () => {
+    props.sorts = [['list_price', 'asc']]
+
+    const instance = shallow(<Category {...props} />).instance();
+
+    instance.changeSort({ target: { value: '' }});
+
+    expect(push.mock.calls[0][0]).toBe('/category/stuff')
+  })
 });

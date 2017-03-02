@@ -70,6 +70,19 @@ export default class Category extends Component {
     push(`/category/${category.name}${generateQuery(sorts, newFilters)}`);
   };
 
+  changeSort = (event) => {
+    const { category, filters, push } = this.props;
+
+    const value = event.target.value;
+    const newSorts = [];
+    if (value) {
+      const parts = value.split(':');
+      newSorts.push(parts);
+    }
+
+    push(`/category/${category.name}${generateQuery(newSorts, filters)}`);
+  }
+
   toggleFilterVisibility = (_event) => {
     if (this.state.toggleFiltersLink.visibility === 'hidden') {
       this.setState({ toggleFiltersLink: { text: 'Hide Filters', visibility: 'show' } });
@@ -116,8 +129,9 @@ export default class Category extends Component {
   }
 
   render() {
-    const category = this.props;
-    if (shouldRender(this.props.catalog.remoteDataState)) {
+    const { category, catalog, sorts } = this.props;
+
+    if (shouldRender(catalog.remoteDataState)) {
       const items = this.sortedAndFilteredData();
 
       return (
@@ -139,8 +153,26 @@ export default class Category extends Component {
               </div>
             </aside>
             <main className="usa-width-three-fourths">
-              <div className="category-sort-section">
-                <div className="category-toggle-details"><a href="#show-details" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</a></div>
+              <div className="category-sort-section usa-grid-full">
+                <div className="usa-width-seven-twelfths category-toggle-details">
+                  <a href="#show-details" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</a>
+                </div>
+                <div className="category-sort usa-width-five-twelfths usa-grid-full">
+                  <div className="usa-width-one-fourth category-sort-label">
+                    Sort by:
+                  </div>
+                  <div className="usa-width-three-fourths">
+                    <select onChange={this.changeSort} value={sorts.length ? `${sorts[0][0]}:${sorts[0][1]}` : undefined}>
+                      <option />
+                      <option value="list_price:asc">Price (lowest to highest)</option>
+                      <option value="list_price:desc">Price (highest to lowest)</option>
+                      <option value="manufacturer:asc">Manufacturer (A-Z)</option>
+                      <option value="manufacturer:desc">Manufacturer (Z-A)</option>
+                      <option value="simple_category:asc">Category (A-Z)</option>
+                      <option value="simple_category:desc">Category (Z-A)</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <ul className={`usa-unstyled-list category-item-details-${this.state.toggleDetailsLink.visibility}`}>
                 {items.map(item => <li className="category-item" key={item.id}><CatalogItemContainer item={item} link /></li>)}
