@@ -1,6 +1,8 @@
 defmodule Adpq.CatalogItemView do
   use Adpq.Web, :view
 
+  alias Adpq.ViewHelpers
+
   def render("index.json", %{catalog_items: catalog_items}) do
     render_many(catalog_items, Adpq.CatalogItemView, "catalog_item.json")
   end
@@ -15,7 +17,7 @@ defmodule Adpq.CatalogItemView do
       unspc: catalog_item.unspc,
       name: catalog_item.name,
       manufacturer: catalog_item.manufacturer,
-      updated_at: Adpq.ViewHelpers.unix_timestamp(catalog_item.updated_at),
+      updated_at: ViewHelpers.unix_timestamp(catalog_item.updated_at),
       sku: catalog_item.sku,
       description: catalog_item.description,
       unit_of_measure: catalog_item.unit_of_measure,
