@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field } from 'redux-form';
 import map from 'lodash/fp/map';
+import { Link } from 'react-router';
 
 export default class ItemForm extends React.Component {
 
@@ -15,74 +16,90 @@ export default class ItemForm extends React.Component {
   render() {
     const { handleSubmit, heading, subHeading, categories, subCategories } = this.props;
     return (
-      <div className="usa-section">
-        <h1>
-          {heading}
-        </h1>
-        <h2>
-          {subHeading}
-        </h2>
+      <div>
+        <div className="usa-section">
+          <h2>
+            {heading}
+          </h2>
+        </div>
         <form onSubmit={handleSubmit}>
-          <div>Category</div>
-          <div>
-            <label htmlFor="top_level_category">Top-Level</label>
-            <Field name="top_level_category" component="select" required>
-              <option />
-              {map(opt => (<option key={opt} value={opt}>{opt}</option>), categories)}
-            </Field>
+          <div className="item-form-subheading-section">
+            <h3 className="item-form-subheading">
+              {subHeading}
+            </h3>
+            <div className="item-form-actions">
+              <Link to="/admin/catalog" className="usa-button usa-button-outline">Cancel</Link>
+              <button>Save</button>
+            </div>
           </div>
+          <fieldset className="item-form-fieldset">
+            <legend className="subsection item-form-legend">Category</legend>
+            <div>
+              <label className="usa-input-required" htmlFor="top_level_category">Top-Level</label>
+              <Field name="top_level_category" component="select" required>
+                <option />
+                {map(opt => (<option key={opt} value={opt}>{opt}</option>), categories)}
+              </Field>
+            </div>
 
-          <div>
-            <label htmlFor="simple_category">Subcategory</label>
-            <Field name="simple_category" component="select" required>
-              <option />
-              {map(opt => (<option key={opt} value={opt}>{opt}</option>), subCategories)}
-            </Field>
-          </div>
-          <div>Item Information</div>
-          <div>
-            <label htmlFor="name">Item Name</label>
-            <Field name="name" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="description">Item Description</label>
-            <Field name="description" component="textarea" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="sku">SKU</label>
-            <Field name="sku" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="clin">CLIN</label>
-            <Field name="clin" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="unspc">UNSPS C Code</label>
-            <Field name="unspc" component="input" type="text" />
-          </div>
-          <div>
-            <label htmlFor="manufacturer">Manufacturer (OEM)</label>
-            <Field name="manufacturer" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="unit_of_measure">Unit of Measure</label>
-            <Field name="unit_of_measure" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="quantity_in_uom">Qty in Unit of Measure</label>
-            <Field name="quantity_in_uom" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="list_price">List Price/MSRP ($)</label>
-            <Field name="list_price" component="input" type="text" required />
-          </div>
-          <div>
-            <label htmlFor="contract_unit_price">Contract Unit Price ($)</label>
-            <Field name="contract_unit_price" component="input" type="text" required />
-          </div>
+            <div>
+              <label className="usa-input-required" htmlFor="simple_category">Subcategory</label>
+              <Field name="simple_category" component="select" required>
+                <option />
+                {map(opt => (<option key={opt} value={opt}>{opt}</option>), subCategories)}
+              </Field>
+            </div>
+          </fieldset>
+          <fieldset className="item-form-fieldset">
+            <legend className="subsection item-form-legend">Item Information</legend>
+            <div>
+              <label className="usa-input-required" htmlFor="name">Item Name</label>
+              <Field name="name" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="description">Item Description</label>
+              <Field name="description" component="textarea" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="sku">SKU</label>
+              <Field name="sku" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="clin">CLIN</label>
+              <Field name="clin" component="input" type="text" required />
+            </div>
+            <div>
+              <label htmlFor="unspc">UNSPS C Code</label>
+              <Field name="unspc" component="input" type="text" />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="manufacturer">Manufacturer (OEM)</label>
+              <Field name="manufacturer" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="unit_of_measure">Unit of Measure</label>
+              <Field name="unit_of_measure" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="quantity_in_uom">Qty in Unit of Measure</label>
+              <Field name="quantity_in_uom" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="list_price">List Price/MSRP ($)</label>
+              <Field name="list_price" component="input" type="text" required />
+            </div>
+            <div>
+              <label className="usa-input-required" htmlFor="contract_unit_price">Contract Unit Price ($)</label>
+              <Field name="contract_unit_price" component="input" type="text" required />
+            </div>
+          </fieldset>
 
-          <button type="reset">Cancel</button>
-          <button type="submit">Save</button>
+          <div className="item-form-actions-bottom">
+            <div className="item-form-actions">
+              <Link to="/admin/catalog" className="usa-button usa-button-outline">Cancel</Link>
+              <button>Save</button>
+            </div>
+          </div>
 
         </form>
       </div>
