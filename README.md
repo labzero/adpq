@@ -29,7 +29,7 @@ https://adpq.labzero.com/
   * Node.js 7.5.0
   * React 15.4.2
 
-### MacOS
+### MacOS dev environment
   1. Install Homebrew if not already installed `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
   1. Update Homebrew `brew update`
   1. Install postgresql `brew install postgresql`
@@ -39,8 +39,6 @@ https://adpq.labzero.com/
   1. Create PostgreSQL role `createuser -d adpq`
   1. Create and migrate schema `mix ecto.create && mix ecto.migrate`
   1. To add seed data to your database: `mix run priv/repo/seeds.exs`
-
-### Linux
 
 ## Starting the application
 
