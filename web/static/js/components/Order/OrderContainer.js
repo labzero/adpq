@@ -1,25 +1,30 @@
 import { connect } from 'react-redux';
-import { fetchAdminOrdersIfNeeded, cancelOrder } from '../../actions';
+import { fetchRequiredOrders, cancelOrder } from '../../actions';
 import Order from './Order';
 
 const isAdmin = location => (location.pathname.indexOf('/admin') !== -1);
 
 const mapStateToProps = (state, ownProps) => {
-  const order = state.orderReport.items.find(it => `${it.id}` === ownProps.params.id);
+  const admin = isAdmin(ownProps.location);
+  const orders = getOrders(admin, state);
+  const order = findOrder(orders, ownProps.params.id);
   return {
-    orderReport: state.orderReport,
+    orders,
     order,
-    isAdmin: isAdmin(ownProps.location),
+    isAdmin: admin,
     orderId: ownProps.params.id
   };
 };
 
+const getOrders = (admin, state) => (admin ? state.orderReport : state.orderHistory);
+const findOrder = (orders, id) => orders.items.find(it => `${it.id}` === id);
+
 const mapDispatchToProps = dispatch => ({
-  fetchOrder() {
-    dispatch(fetchAdminOrdersIfNeeded());
+  fetchOrder: (admin) => {
+    dispatch(fetchRequiredOrders(admin));
   },
   cancelOrder: (order, admin) => {
-    dispatch(cancelOrder(order, admin))
+    dispatch(cancelOrder(order, admin));
   }
 });
 
