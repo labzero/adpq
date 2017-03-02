@@ -1,6 +1,7 @@
 /* global fetch */
 import { browserHistory } from 'react-router';
 import includes from 'lodash/fp/includes';
+import omit from 'lodash/fp/omit';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
@@ -92,6 +93,15 @@ export function removeFromCartError(error) {
 }
 
 // order actions
+export function fetchOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchOrders(getState())) {
+      return dispatch(fetchOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(requestOrders());
@@ -247,7 +257,6 @@ export function expireAlerts() {
 }
 
 // admin orders
-
 export function fetchAdminOrdersIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchAdminOrders(getState())) {
@@ -311,6 +320,63 @@ export function fetchAdminCatalogError(error) {
   return { type: ActionTypes.FETCH_ADMIN_CATALOG_ERROR, data: error };
 }
 
+export function createItem(item) {
+  const request = {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(item)
+  };
+  return dispatch => fetch('/api/admin/catalog_items', requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(createItemSuccess()))
+      .then(() => dispatch(alert(createItemSuccess())))
+      .then(() => dispatch(fetchAdminCatalog()))
+      .catch(error => dispatch(createItemError(error))); // TODO flash message
+}
+
+export function createItemSuccess() {
+  return { type: ActionTypes.CREATE_ITEM_SUCCESS };
+}
+
+export function createItemError(error) {
+  return { type: ActionTypes.CREATE_ITEM_SUCCESS, data: error };
+}
+
+// foo
+
+export function updateItem(item) {
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(omit('id', item))
+  };
+  return dispatch => fetch(`/api/admin/catalog_items/${item.id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(updateItemSuccess()))
+      .then(() => dispatch(alert(updateItemSuccess())))
+      .then(() => dispatch(fetchAdminCatalog()))
+      .catch(error => dispatch(updateItemError(error))); // TODO flash message
+}
+
+export function updateItemSuccess() {
+  return { type: ActionTypes.UPDATE_ITEM_SUCCESS };
+}
+
+export function updateItemError(error) {
+  return { type: ActionTypes.UPDATE_ITEM_ERROR, data: error };
+}
+
+// foo
+
+
 function shouldFetchAdminOrders(state) {
   return shouldFetch(state.orderReport);
 }
@@ -321,6 +387,10 @@ function shouldFetchAdminCatalog(state) {
 
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
+}
+
+function shouldFetchOrders(state) {
+  return shouldFetch(state.orderHistory);
 }
 
 function shouldFetchAuth(state) {

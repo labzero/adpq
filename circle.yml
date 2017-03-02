@@ -36,6 +36,3 @@ deployment:
     branch: master
     commands:
       - script/ci/deploy-prod.sh
-general:
-  artifacts:
-    - /opt/app/npm-debug.log

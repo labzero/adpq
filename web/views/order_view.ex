@@ -13,6 +13,7 @@ defmodule Adpq.OrderView do
     %{id: order.id,
       user_id: order.user_id,
       status: order.status,
+      inserted_at: Adpq.ViewHelpers.unix_timestamp(order.inserted_at),
       items: render_many(order.order_items, Adpq.OrderItemView, "order_item.json")
     }
   end

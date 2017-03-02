@@ -1,11 +1,15 @@
 import React, { PropTypes } from 'react';
 import * as ActionTypes from '../../constants/ActionTypes';
+import CreateItemSuccess from './AlertContents/CreateItemSuccess';
 import CreateOrderSuccess from './AlertContents/CreateOrderSuccess';
 import LoginError from './AlertContents/LoginError';
+import UpdateItemSuccess from './AlertContents/UpdateItemSuccess';
 
 const contentMap = {
+  [ActionTypes.CREATE_ITEM_SUCCESS]: CreateItemSuccess,
   [ActionTypes.CREATE_ORDER_SUCCESS]: CreateOrderSuccess,
-  [ActionTypes.LOGIN_ERROR]: LoginError
+  [ActionTypes.LOGIN_ERROR]: LoginError,
+  [ActionTypes.UPDATE_ITEM_SUCCESS]: UpdateItemSuccess
 };
 
 const renderAlert = (alert) => {

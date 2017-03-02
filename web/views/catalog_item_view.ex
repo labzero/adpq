@@ -15,7 +15,7 @@ defmodule Adpq.CatalogItemView do
       unspc: catalog_item.unspc,
       name: catalog_item.name,
       manufacturer: catalog_item.manufacturer,
-      updated_at: unix_timestamp(catalog_item.updated_at),
+      updated_at: Adpq.ViewHelpers.unix_timestamp(catalog_item.updated_at),
       sku: catalog_item.sku,
       description: catalog_item.description,
       unit_of_measure: catalog_item.unit_of_measure,
@@ -25,12 +25,5 @@ defmodule Adpq.CatalogItemView do
       contract_discount: catalog_item.contract_discount,
       simple_category: catalog_item.simple_category,
       top_level_category: catalog_item.top_level_category}
-  end
-
-  defp unix_timestamp(datetime) do
-    datetime
-    |> NaiveDateTime.to_erl
-    |> :calendar.datetime_to_gregorian_seconds
-    |> Kernel.-(62_167_219_200) # unix epoch
   end
 end

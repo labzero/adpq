@@ -26,7 +26,7 @@ written in Elixir using the Phoenix framework and talking to a Postgres database
 but ultimately decided to build the prototype from scratch so that we could demonstrate our ability to write good custom
  software with usable user interfaces that was designed after speaking with real users.
  
-![Cloud Architecture](docs/ADPQ-PrototypeA-Architecture.png)
+![Cloud Architecture](docs/11-ADPQ-PrototypeA-Architecture.png)
 
 ## Infrastructure Approach
 This application will be built in a cloud-first manner on AWS, but will be deployed as a Docker container in order to 
