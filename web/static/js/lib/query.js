@@ -8,9 +8,9 @@ import { DIRECTIONS } from './sorts';
 const FIELD_DELIMITER = ':';
 const VALUE_DELIMITER = ',';
 
-const validSortFields = ['list_price', 'simple_category', 'manufacturer'];
+const validSortFields = ['contract_unit_price', 'list_price', 'simple_category', 'manufacturer'];
 export const validFilterFields = ['simple_category', 'manufacturer'];
-const validRangeFields = ['list_price'];
+const validRangeFields = ['contract_unit_price', 'list_price'];
 
 const validSort = ([field, direction]) => (
   includes(field, validSortFields) && includes(direction.toUpperCase(), keys(DIRECTIONS))

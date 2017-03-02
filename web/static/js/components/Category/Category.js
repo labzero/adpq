@@ -164,8 +164,8 @@ export default class Category extends Component {
                   <div className="usa-width-three-fourths">
                     <select onChange={this.changeSort} value={sorts.length ? `${sorts[0][0]}:${sorts[0][1]}` : undefined}>
                       <option />
-                      <option value="list_price:asc">Price (lowest to highest)</option>
-                      <option value="list_price:desc">Price (highest to lowest)</option>
+                      <option value="contract_unit_price:asc">Price (lowest to highest)</option>
+                      <option value="contract_unit_price:desc">Price (highest to lowest)</option>
                       <option value="manufacturer:asc">Manufacturer (A-Z)</option>
                       <option value="manufacturer:desc">Manufacturer (Z-A)</option>
                       <option value="simple_category:asc">Category (A-Z)</option>
