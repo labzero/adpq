@@ -1,0 +1,46 @@
+@import 'utilities';
+@import 'variables';
+
+.item-form-subheading-section {
+  @include clearfix;
+  margin-bottom: 4rem;
+}
+
+.item-form-subheading {
+  line-height: .7;
+  margin: .5em 0;
+  padding: 1rem 0;
+}
+
+.item-form-actions {
+  > :last-child {
+    margin-right: 0;
+  }
+}
+
+.item-form-actions-bottom {
+  @include clearfix;
+  border-top: 2px solid $color-gray-lighter;
+  padding: 5rem 0;
+}
+
+.item-form-fieldset {
+  padding-bottom: 7rem;
+}
+
+.item-form-legend.subsection {
+  border-bottom: 2px solid $color-gray-lighter;
+  margin: 0;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+@include media($small-screen) {
+  .item-form-subheading {
+    float: left;
+  }
+
+  .item-form-actions {
+    float: right;
+  }
+}
