@@ -44,28 +44,28 @@ export default class Catalog extends Component {
   renderTableHeader = () => (
     <tr key="header">
       <th>
-        <button onClick={() => this.changeSort('clin')} className="usa-button-unstyled catalog-header-button">CLIN</button>
+        <button onClick={() => this.changeSort('clin')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'clin' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>CLIN</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('updated_at')} className="usa-button-unstyled catalog-header-button">Date Added</button>
+        <button onClick={() => this.changeSort('updated_at')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'updated_at' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Date Added</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('name')} className="usa-button-unstyled catalog-header-button">Item Name</button>
+        <button onClick={() => this.changeSort('name')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'name' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Item Name</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('manufacturer')} className="usa-button-unstyled catalog-header-button">Manufacturer</button>
+        <button onClick={() => this.changeSort('manufacturer')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'manufacturer' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Manufacturer</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('sku')} className="usa-button-unstyled catalog-header-button">SKU</button>
+        <button onClick={() => this.changeSort('sku')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'sku' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>SKU</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('contract_unit_price')} className="usa-button-unstyled catalog-header-button">Contract Price</button>
+        <button onClick={() => this.changeSort('contract_unit_price')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'contract_unit_price' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Contract Price</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('top_level_category')} className="usa-button-unstyled catalog-header-button">Top Level</button>
+        <button onClick={() => this.changeSort('top_level_category')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'top_level_category' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Top Level</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('simple_category')} className="usa-button-unstyled catalog-header-button">Sub-Category</button>
+        <button onClick={() => this.changeSort('simple_category')} className={`usa-button-unstyled catalog-header-button${this.state.sort[0] === 'simple_category' ? ' sort-active' : ''} sort-${this.state.sort[1]}`}>Sub-Category</button>
       </th>
     </tr>
   )
