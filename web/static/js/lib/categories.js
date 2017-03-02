@@ -16,10 +16,12 @@ const peripheralsSubcategories = [
 ];
 
 const servicesSubcategories = [
-  'Security', 'Support', 'Design'
+  'Security', 'Support'
 ];
 
-const softwareSubcategories = ['Productivity'];
+const softwareSubcategories = [
+  'Productivity', 'Design'
+];
 
 const categories = {
   Components: componentSubcategories,
