@@ -5,6 +5,7 @@ import {
   expireAlerts as expireAlertsAction,
   fetchCart as fetchCartAction
 } from '../actions';
+import { scrollToTop } from '../lib/scroll';
 import {
   AccountContainer,
   AdminContainer,
@@ -54,6 +55,7 @@ export default function getRoutes(store) {
   const onChange = role => (nextState, replace, callback) => {
     expireAlerts(role)(nextState, replace, callback);
     fetchCart(role)(nextState, replace, callback);
+    scrollToTop();
   };
 
   return (<Route path="/" component={AppContainer} onEnter={fetchCart()} onChange={onChange()}>

@@ -5,6 +5,7 @@ import omit from 'lodash/fp/omit';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
+import { scrollToTop } from '../lib/scroll';
 
 export function fetchCart() {
   return (dispatch) => {
@@ -70,6 +71,7 @@ export function removeFromCart(id) {
     credentials: 'include'
   };
   const user = getUserData();
+  scrollToTop();
   return (dispatch) => {
     dispatch(requestRemoveFromCart(id));
     return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
