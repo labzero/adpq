@@ -4,7 +4,7 @@ import map from 'lodash/fp/map';
 import * as RemoteDataStates from '../../../constants/RemoteDataStates';
 import { sortBy } from '../../../lib/sorts';
 import AlertsContainer from '../../Alerts/AlertsContainer';
-
+import { catalogItemPath, adminCatalogItemPath } from '../../../lib/paths';
 
 export default class Catalog extends Component {
 
@@ -43,28 +43,28 @@ export default class Catalog extends Component {
   renderTableHeader = () => (
     <tr key="header">
       <th>
-        <button onClick={() => this.changeSort('clin')} className="usa-button-unstyled">CLIN</button>
+        <button onClick={() => this.changeSort('clin')} className="usa-button-unstyled catalog-header-button">CLIN</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('updated_at')} className="usa-button-unstyled">Date Added</button>
+        <button onClick={() => this.changeSort('updated_at')} className="usa-button-unstyled catalog-header-button">Date Added</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('name')} className="usa-button-unstyled">Item Name</button>
+        <button onClick={() => this.changeSort('name')} className="usa-button-unstyled catalog-header-button">Item Name</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('manufacturer')} className="usa-button-unstyled">Manufacturer</button>
+        <button onClick={() => this.changeSort('manufacturer')} className="usa-button-unstyled catalog-header-button">Manufacturer</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('sku')} className="usa-button-unstyled">SKU</button>
+        <button onClick={() => this.changeSort('sku')} className="usa-button-unstyled catalog-header-button">SKU</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('contract_unit_price')} className="usa-button-unstyled">Contract Price</button>
+        <button onClick={() => this.changeSort('contract_unit_price')} className="usa-button-unstyled catalog-header-button">Contract Price</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('top_level_category')} className="usa-button-unstyled">Top Level</button>
+        <button onClick={() => this.changeSort('top_level_category')} className="usa-button-unstyled catalog-header-button">Top Level</button>
       </th>
       <th>
-        <button onClick={() => this.changeSort('simple_category')} className="usa-button-unstyled">Sub-Category</button>
+        <button onClick={() => this.changeSort('simple_category')} className="usa-button-unstyled catalog-header-button">Sub-Category</button>
       </th>
     </tr>
   )
@@ -73,9 +73,9 @@ export default class Catalog extends Component {
     <tr key={item.id}>
       <td>{item.clin}</td>
       <td>{new Date(item.updated_at * 1000).toLocaleString()}</td>
-      <td><Link to={`/item/${item.id}`}>{item.name}</Link></td>
+      <td><Link to={catalogItemPath(item)}>{item.name}</Link></td>
       <td>{item.manufacturer}</td>
-      <td>{item.sku}</td>
+      <td><Link to={adminCatalogItemPath(item)}>{item.sku}</Link></td>
       <td>{item.contract_unit_price}</td>
       <td>{item.top_level_category}</td>
       <td>{item.simple_category}</td>
@@ -87,9 +87,18 @@ export default class Catalog extends Component {
       const data = this.sortedData(this.props.catalog.items);
       const tableRows = map(item => this.renderTableRow(item), data);
       return (
-        <div>
+        <div className="catalog">
+          <div className="usa-section">
+            <h2>Catalog</h2>
+          </div>
           <AlertsContainer />
-          <table>
+          <div className="catalog-count-section">
+            <h3 className="catalog-count">
+              {data.length} Item{data.length === 1 ? '' : 's'}
+            </h3>
+            <Link to="/admin/item/new" className="usa-button catalog-add-button">Add Item</Link>
+          </div>
+          <table className="usa-table-borderless">
             <thead>
               {this.renderTableHeader()}
             </thead>
