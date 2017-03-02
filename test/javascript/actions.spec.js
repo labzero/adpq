@@ -58,7 +58,8 @@ describe('Auth Actions', () => {
       const store = mockStore({auth: {remoteDataState: RemoteDataStates.NOT_REQUESTED}})
       const expectedActions = [
         { type: ActionTypes.LOGIN_REQUEST },
-        { type: ActionTypes.LOGIN_ERROR, error: 'something' }
+        { type: ActionTypes.LOGIN_ERROR, error: 'something' },
+        { type: ActionTypes.ALERT, alert: { type: ActionTypes.LOGIN_ERROR, error: 'something' }, willExpire: true }
       ]
       fetchMock.mock('/api/auth', 409, {method: "POST"})
 
@@ -66,6 +67,9 @@ describe('Auth Actions', () => {
         expect(fetchMock.called('/api/auth')).toBe(true)
         expect(store.getActions()[0]).toEqual(expectedActions[0])
         expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
+        expect(store.getActions()[2].type).toEqual(expectedActions[2].type)
+        expect(store.getActions()[2].alert.type).toEqual(expectedActions[2].alert.type)
+        expect(store.getActions()[2].willExpire).toEqual(expectedActions[2].willExpire)
         done();
       })
     })
