@@ -12,14 +12,10 @@ https://adpq.labzero.com/
 **_Note:_** You can create additional Requester accounts by logging in with any unique username and the password “user”. This may be helpful for cart & reporting testing.
 
 # Table of Contents
-* Introduction
 * Setup Instructions
 * Technical Approach
 * Playbook Adherence
 * Requirements List
-
-# Introduction
-The Lab Zero team’s approach to product development and software delivery is very close to the steps outlined in the U.S. Digital Services Playbook. In the abbreviated timeline for this assessment, our team engaged with target users to gain deeper understanding of their needs in order to produce and test designs as solutions. Collaboration between roles let the team choose best-of-breed designs that could be feasibly delivered within the timeline. Our engineers chose modern tools that supported our need to bring features together quickly and deliver them continually through the timeline with a high degree of quality. The team’s high level of rigor in engineering —gleaned from years of experience delivering mission-critical applications—results in code that’s easy to adapt to meet evolving business needs. 
 
 # Setup Instructions
 
@@ -55,6 +51,9 @@ The Lab Zero team’s approach to product development and software delivery is v
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 # Technical Approach
+
+## Introduction
+The Lab Zero team’s approach to product development and software delivery is very close to the steps outlined in the U.S. Digital Services Playbook. In the abbreviated timeline for this assessment, our team engaged with target users to gain a deeper understanding of their needs and to test solution ideas. Collaboration between roles let the team choose best-of-breed designs that could be feasibly delivered within the timeline. Our engineers chose modern tools that supported our need to bring features together quickly and deliver them continually through the timeline with a high degree of quality. The team’s high level of rigor in engineering—gleaned from years of experience delivering mission-critical applications—results in code that’s easy to adapt to meet evolving business needs. 
 
 ## Architectural Approach
 This web application consists of a modern React.js app (Single Page Application) that consumes a JSON API backend written in Elixir using the Phoenix framework backed by a Postgres database. We considered using Shopify or Spree but ultimately decided to build the prototype from scratch. This decision enabled us to demonstrate our ability to develop an easy-to-use application designed in light of careful and deliberate conversations with real users.
@@ -162,7 +161,7 @@ The table below also highlights key activities and artifacts relative to the Dig
 > Informed by our initial persona attributes, we found three individuals whose job activities aligned with or related to the Lead Purchasing Organization Administration and State Agency IT Requester roles. 
 * [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/01-Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), State of California Assembly Reprographics Manager
 * [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/02-Interview2.1RobertLee-StartupOfficeManager.pdf), Startup Office Manager
-* [Ned Holets]https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/04-Interview3.1NedHolets-CMSDeveloper.pdf), Lead Software Engineer who has worked on CMS projects
+* [Ned Holets](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/04-Interview3.1NedHolets-CMSDeveloper.pdf), Lead Software Engineer who has worked on CMS projects
 
 **d. Used at least a minimum of three (3) “user-centric design” techniques and/or tools**
 > Human-centered design is a core aspect of our process. You can find a richer explanation of our processes [here](TBD). Key examples listed below:
@@ -192,7 +191,7 @@ The table below also highlights key activities and artifacts relative to the Dig
 **i. Performed usability tests with people**
 > We showed functional prototypes to the following individuals facilitated by a “Think Aloud” qualitative user test.
 * [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/03-Interview2.2RobertLeeConceptTest.pdf)
-* {Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
+* [Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
 
 **j. Used an iterative approach, where feedback informed subsequent work or versions of the prototype**
 > We began by clarifying the business case and target outcomes without proposing solutions. This empowers each team member to bring their expertise and creativity into the solutions which are iteratively built and tested. Learnings from test are fed back into subsequent iterations.
