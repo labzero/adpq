@@ -42,7 +42,7 @@ class HeaderAdmin extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="/">Tech Shop Site</a>
+                  <a target="tech_shop_admin" href="/">Tech Shop Site</a>
                 </li>
                 <li>
                   <Link to={'logout'}>
