@@ -1,4 +1,9 @@
 defmodule Adpq.ViewHelpers do
+
+  @moduledoc """
+    utility methods for views
+  """
+
   def unix_timestamp(datetime) do
     datetime
     |> NaiveDateTime.to_erl
