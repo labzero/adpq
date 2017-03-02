@@ -56,6 +56,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 # Technical Approach
 
+## Architectural Approach
+This web application consists of a modern React.js app (Single Page Application) that consumes a JSON API backend written in Elixir using the Phoenix framework backed by a Postgres database. We considered using Shopify or Spree but ultimately decided to build the prototype from scratch. This decision enabled us to demonstrate our ability to develop an easy-to-use application designed in light of careful and deliberate conversations with real users.
+
 ## Development Process
 We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All 
 commits should adhere to the guidelines described in our [commit guide](https://github.com/labzero/guides/blob/master/process/commit_guide.md). 
@@ -64,85 +67,78 @@ is performed by other developers on the team. Upon final approval by the dev lea
 into develop.
 
 ## CI Process
-PR phase looks for success for all of these steps:
+The CI service checks all Pull Requests and looks for success for all of these steps:
 * Compilation and Docker container build
-* Credo (code quality/style analyser)
+* Credo (code quality/style analyzer)
 * Unit tests
+* eslint on javascript
 
 ## Continuous Delivery
+The delivery process relies upon automated movement of code and assets into the test environment triggered by commits to the develop branch. 
 * Commits to develop trigger deployment to our Test environment
-* Upon deployment post-deploy automated testing it performed
+* Upon deployment, post-deploy automated testing it performed
 
 ## Release Process
-Using GitFlow tooling, we create a release branch and tag. The tag is then used to create a new container image. A job 
-in Circle CI is used to deploy the tagged container to ECS in AWS.
-
-## Architectural Approach
-This web application will be built as a modern React.js app (Single Page Application) that consumes a JSON API backend 
-written in Elixir using the Phoenix framework and talking to a Postgres database. We considered using Shopify or Spree 
-but ultimately decided to build the prototype from scratch so that we could demonstrate our ability to write good custom
- software with usable user interfaces that was designed after speaking with real users.
- 
-![Cloud Architecture](docs/11-ADPQ-PrototypeA-Architecture.png)
+Using GitFlow tooling, we create a release branch and tag. The tag is then used to create a new container image. A job in CircleCI is used to deploy the tagged container to ECS in AWS.
 
 ## Infrastructure Approach
-This application will be built in a cloud-first manner on AWS, but will be deployed as a Docker container in order to 
-allow cloud portability. However, if AWS offers a managed service for something we need, we will prefer the managed 
-service to rolling our own infrastructure. I.e. Postgres via RDS instead of running our own Postgres servers in EC2. 
+We built the application in a cloud-first manner on AWS, but deployed it in a Docker container in order to allow cloud portability. However, if AWS offers a managed service for something we need, we prefer the managed service to rolling our own infrastructure, i.e. Postgres via RDS instead of running our own Postgres servers in EC2. 
 
-Our VPC and security blueprints will be maintained as CloudFormation templates and checked into Git.
+We maintain our VPC and security blueprints as CloudFormation templates checked into Git.
+ 
+![Cloud Architecture](docs/11-ADPQ-PrototypeA-Architecture.png)
 
 
 # Playbook Adherence
 
-Lab Zero’s existing product design and development approach aligns closely with the US Digital Services Playbook. Our prioritized [Prototype Design](https://github.com/labzero/adpq/projects/2) and [Prototype Dev](https://github.com/labzero/adpq/projects/1) backlogs within GitHub show how the activities in our iterative and collaborative process from discovery to delivery and deployment. We make reference within many Product Design cards to the Playbook activity, as well (noted as “PB”).
+Our prioritized [Prototype Design](https://github.com/labzero/adpq/projects/2) and [Prototype Dev](https://github.com/labzero/adpq/projects/1) backlogs within GitHub show how the activities in our iterative and collaborative process from discovery to delivery and deployment. We make reference within many Product Design cards to the Playbook activity, as well (noted as “PB”).
 
-In addition, below are key activities and artifacts relative to the Digital Service Plays:
+The table below also highlights key activities and artifacts relative to the Digital Service Plays:
 
 ## Play 1: Understand what people need
-* Drafted open-ended discovery interview scripts for key personas [Requester Interview Script](https://github.com/labzero/adpq/blob/develop/docs/interviews/00TemplateOpen-endedInterviewScriptforRequester.pdf), [Admin Interview Script](TBD)
-* Interviewed representative users, documented & shared learnings [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview2.1RobertLee-StartupOfficeManager.pdf), [Ned holets](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview3.1NedHolets-CMSDeveloper.pdf)
-* Utilize existing large scale quantitative eCommerce research through the Baymard Institute [Ecommerce Usability Guidelines](https://github.com/labzero/adpq/blob/develop/docs/research/RelevanteCommerceUsabilityGuidelines.pdf), [Shopping & Procurement Research](https://github.com/labzero/adpq/blob/develop/docs/research/ShoppingandProcurementResearch.pdf) 
-* Outline Full Persona List to note all roles likely involved in the full experience [Link](https://github.com/labzero/adpq/blob/develop/docs/personas/00FullPersonasList.pdf)
-* Focus on and define State Agency Requester as primary persona [Link](https://github.com/labzero/adpq/blob/develop/docs/personas/01StateAgencyRequesterPersona.pdf)
-* Focus on and define Lead Purchasing Org web admin as secondary persona [Link](https://github.com/labzero/adpq/blob/develop/docs/personas/02DataAdminPersona.pdf)
+* Drafted open-ended discovery interview scripts for key personas [Requester Interview Script](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/00-TemplateOpen-endedInterviewScriptforRequester.pdf), [Admin Interview Script](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/00-TemplateOpen-endedInterviewScriptforAdmin.pdf)
+* Interviewed representative users, documented & shared learnings [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/01-Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/02-Interview2.1RobertLee-StartupOfficeManager.pdf), [Ned holets](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/04-Interview3.1NedHolets-CMSDeveloper.pdf)
+* Utilize existing large scale quantitative eCommerce research through the Baymard Institute [Ecommerce Usability Guidelines](https://github.com/labzero/adpq/blob/develop/docs/02-Research/01-RelevanteCommerceUsabilityGuidelines.pdf), [Shopping & Procurement Research](https://github.com/labzero/adpq/blob/develop/docs/02-Research/02-ShoppingandProcurementResearch.pdf) 
+* Outline Full Persona List to note all roles likely involved in the full experience [Link](https://github.com/labzero/adpq/blob/develop/docs/04-UserPersonas/00-FullPersonasList.pdf)
+* Focus on and define State Agency Requester as primary persona [Link](https://github.com/labzero/adpq/blob/develop/docs/04-UserPersonas/01-StateAgencyRequesterPersona.pdf)
+* Focus on and define Lead Purchasing Org web admin as secondary persona [Link](https://github.com/labzero/adpq/blob/develop/docs/04-UserPersonas/02-DataAdminPersona.pdf)
 * Capture & prioritize needs as user stories [Link](https://github.com/labzero/adpq/projects/1)
-* Regularly test to validate problem/solution fit [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview2.2RobertLeeConceptTest.pdf), [Tracey Thompson](TBD)
+* Regularly test to validate problem/solution fit [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/03-Interview2.2RobertLeeConceptTest.pdf), [Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
 
 ## Play 2: Address the whole experience, from start to finish
-* Illustrated on- & off-line touch points and align team on key points of impact & focus
-* Stated project summary, goals, & metrics to ensure the effort meets needs [Product Speclet](https://github.com/labzero/adpq/blob/develop/docs/Product%20Speclet.pdf)
+* Illustrated on- & off-line touch points and align team on key points of impact & focus [Service Map](https://github.com/labzero/adpq/blob/develop/docs/05-JourneyMapping/01-ServiceMap.png)
+* Stated project summary, goals, & metrics to ensure the effort meets needs [Product Speclet](https://github.com/labzero/adpq/blob/develop/docs/01-ProductStrategy/03-ProductSpeclet.pdf)
 
 ## Play 3: Make it simple and intuitive
 * Consistently utilized US Web Design Standards
-* Followed accessibility best practices [Readme, G](https://github.com/labzero/adpq/blob/develop/README.md)
+* Followed accessibility best practices Section G of Requirements List
 * Leveraged login to provide users with a way to exit and return later to complete process
-* Improved readability by re-formatting and adjusting sample data [Data Spreadsheet](TBD)
+* Improved readability by re-formatting and adjusting sample data [Data Spreadsheet](https://github.com/labzero/adpq/blob/develop/docs/01-ProductStrategy/01-CAVPData.pdf)
 
 ## Play 4: Build the service using agile and iterative practices
 * Shipped a functioning MVP
-* Frequently ran usability tests to identify improvements [Interviews](https://github.com/labzero/adpq/tree/develop/docs/interviews)
-* Facilitated team alignment & communication through daily standups, [weekly demos/retros](https://github.com/labzero/adpq/tree/develop/docs/retrospective), & [Slack channel](https://github.com/labzero/adpq/blob/develop/docs/Collaboration%20work%20sample%20-%20Slack%20conversation.jpeg)
-* Kept the delivery team flat & focused [Kickoff deck](https://github.com/labzero/adpq/blob/develop/docs/Prototype%20A%20Kickoff%20deck.pdf)
+* Frequently ran usability tests to identify improvements [Interviews](https://github.com/labzero/adpq/tree/develop/docs/03-UserInterviews), [User Testing](https://github.com/labzero/adpq/tree/develop/docs/09-UserTesting)
+* Facilitated team alignment & communication through daily standups, [weekly demos/retros](https://github.com/labzero/adpq/tree/develop/docs/10-RetrospectiveNotes), & [Slack channel](https://github.com/labzero/adpq/blob/develop/docs/01-ProductStrategy/05-CollaborationWorkSample-SlackConversation.jpeg)
+* Kept the delivery team flat & focused [Kickoff deck](https://github.com/labzero/adpq/blob/develop/docs/01-ProductStrategy/00-KickoffDeck.pdf)
 * Drafted a prioritized features backlog and review with team [Link](https://github.com/labzero/adpq/projects/1)
 
 ## Play 6: Assign on leader and hold that person accountable
-* Assigned experienced Product Owner accountable for project [Readme, A](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section A
 
 ## Play 7: Bring in experienced teams
-* Assembled a team experienced building similar applications in a modern fashion [Readme, B](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section B
 
 ## Play 8: Choose a modern technology stack
-* Modern technology stack chosen [Readme, L](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section L
 
 ## Play 9: Deploy in a flexible hosting environment
-* Deployed in a flexible hosting environment [Readme, M](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section M
 
 ## Play 10: Automate testing and deployments
-* Testing & deploys automated [Readme, O](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section O
 
 ## Play 12: User data to drive 
-* Monitoring system performance [Readme, Q](https://github.com/labzero/adpq/blob/develop/README.md)
+* See Requirements List, Section Q
 
 ## Play 13: Default to open
 * Utilized open source 
@@ -164,19 +160,19 @@ In addition, below are key activities and artifacts relative to the Digital Serv
 
 **c. Understood what people needed, by including people in the prototype development and design process**
 > Informed by our initial persona attributes, we found three individuals whose job activities aligned with or related to the Lead Purchasing Organization Administration and State Agency IT Requester roles. 
-* [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), State of California Assembly Reprographics Manager
-* [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview2.1RobertLee-StartupOfficeManager.pdf), Startup Office Manager
-* [Ned Holets](https://github.com/labzero/adpq/blob/develop/docs/interviews/Interview3.1NedHolets-CMSDeveloper.pdf), Lead Software Engineer who has worked on CMS projects
+* [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/01-Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), State of California Assembly Reprographics Manager
+* [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/02-Interview2.1RobertLee-StartupOfficeManager.pdf), Startup Office Manager
+* [Ned Holets]https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/04-Interview3.1NedHolets-CMSDeveloper.pdf), Lead Software Engineer who has worked on CMS projects
 
 **d. Used at least a minimum of three (3) “user-centric design” techniques and/or tools**
-> Human-centered design is a core aspect of our process. You can find a richer explanation of our processes here. Key examples listed below:
+> Human-centered design is a core aspect of our process. You can find a richer explanation of our processes [here](TBD). Key examples listed below:
 * Customer Development activities
   * Stating and prioritizing learning goals (hypotheses)
   * Open-ended interviews with people who met our target personas to understand their needs and goals
 * In-person usability testing to validate solution ideas/hypotheses
   * Clickable prototypes to support usability testing
-  * ‘Think aloud’ qualitative user test of prototype
-  * Accessibility test
+  * ‘Think aloud’ qualitative user tests of prototype
+  * Accessibility testing
 * Leveraging existing usability research 
   * Baymard Institute, an ecommerce usability research firm whose methodology includes qualitative ‘Think aloud’ protocol and large scale eye-tracking study.
 
@@ -195,26 +191,27 @@ In addition, below are key activities and artifacts relative to the Digital Serv
 
 **i. Performed usability tests with people**
 > We showed functional prototypes to the following individuals facilitated by a “Think Aloud” qualitative user test.
-* Robert Lee
-* Tracey Thompson
+* [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/03-Interview2.2RobertLeeConceptTest.pdf)
+* {Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
 
 **j. Used an iterative approach, where feedback informed subsequent work or versions of the prototype**
 > We began by clarifying the business case and target outcomes without proposing solutions. This empowers each team member to bring their expertise and creativity into the solutions which are iteratively built and tested. Learnings from test are fed back into subsequent iterations.
 * Product Owner led goal-oriented kickoff and drafted a first version of the “Speclet” to align and hold the team accountable to high-level key outcomes and measurements. 
 * Key learnings from user interviews informed the project summary, goals, and measurements and allowed us to apply improvements to our designs and development.
 * Team story time for formal technical review of prioritized backlog. Development feedback assisted in clarifying prototype behavior and story decomposition.
-* Validated design concepts through clickable prototypes with people outside the team. User feedback informed backlog grooming (through prioritization) and design iterations. 
+* Validated design concepts through clickable prototypes with people outside the team. User feedback informed backlog grooming and design iterations. 
 * Presented design, development, and product ideas to the full team frequently to inform final deliverables through daily standups and conversations.
 * Utilized Scrum framework for frequent and agile inspection and adaptation
   * Product Owner managed a prioritized backlog of tasks for Design & Development
+  * Peers review and accept work
   * Daily standup
   * Weekly sprints: team performed demos and retrospectives
 
 **k. Created a prototype that works on multiple devices, and presents a responsive design**
 > Our prototype has been designed, developed and tested to work on desktop browsers, iOS and Android phones as well as screen readers.
 
-**l. Used at least five (5) modern and open-source technologies, regardless of architectural layer (frontend, backend, etc.)
->We utilized many modern open-source technologies:
+**l. Used at least five (5) modern and open-source technologies, regardless of architectural layer (frontend, backend, etc.)**
+> We utilized many modern open-source technologies:
 * Elixir
 * Phoenix Framework 
 * Ecto (data layer)
@@ -245,7 +242,7 @@ In addition, below are key activities and artifacts relative to the Digital Serv
 > We build Docker containers in our CI/CD process and deploy them to ECR/ECS in AWS.
 
 **s. Provided sufficient documentation to install and run their prototype on another machine**
-> Please see the SETUP.md file in root directory of this repository. All engineers used these steps to set up their development environments. 
+> Please see the Setup section in this document or the SETUP.md file in root directory of this repository. All engineers used these steps to set up their development environments. 
 
 **t. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge**
 > All systems used to create and run the prototype are open source and free of charge for use. Our prototype carries an MIT license as well.
