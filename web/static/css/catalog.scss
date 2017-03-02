@@ -1,0 +1,28 @@
+@import 'variables';
+
+.catalog-count-section {
+  @include clearfix;
+  border-bottom: 2px solid $color-gray-lighter;
+  padding-bottom: 2rem;
+}
+
+.catalog-count {
+  float: left;
+  line-height: 1;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.catalog-add-button {
+  float: right;
+  margin: 0;
+}
+
+.catalog-header-button {
+  color: inherit;
+  font-weight: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
