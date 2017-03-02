@@ -7,7 +7,7 @@
 }
 
 .logo-department {
-  font-size: $h6-font-size;
+  font-size: 1.1rem;
   letter-spacing: 1px;
   line-height: 1;
   text-transform: uppercase;
@@ -37,5 +37,11 @@
 
   .header .logo {
     margin: 2.5rem 0 2rem;
+  }
+}
+
+@include media($medium-screen) {
+  .logo-department {
+    font-size: $h6-font-size;
   }
 }
