@@ -20,5 +20,8 @@
       "jsx-a11y/no-access-key": 2,
       "jsx-a11y/href-no-hash": 2,
       "jsx-a11y/img-has-alt": 2   
+    },
+    "globals": {
+      "window": true
     }
 }
