@@ -94,6 +94,9 @@ export function removeFromCartError(error) {
   return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
 }
 
+export function fetchRequiredOrders(admin = false) {
+  return (admin ? fetchAdminOrdersIfNeeded() : fetchOrdersIfNeeded());
+}
 // order actions
 export function fetchOrdersIfNeeded() {
   return (dispatch, getState) => {
