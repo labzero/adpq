@@ -59,7 +59,6 @@ const mapStateToProps = (state, ownProps) => {
   }
   const headerMode = findHeaderMode(location);
   const footerMode = findFooterMode(location);
-
   return { location, section, headerMode, footerMode, ...ownProps };
 };
 

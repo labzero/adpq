@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchAdminOrdersIfNeeded());
   },
   cancelOrder: (order, admin) => {
-    dispatch(cancelOrder(order, admin))
+    dispatch(cancelOrder(order, admin));
   }
 });
 

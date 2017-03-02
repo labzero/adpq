@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Accordion from 'uswds/src/js/components/accordion';
 import navInit from 'uswds/src/js/components/navigation';
 import select from 'uswds/src/js/utils/select';
-import HeaderDefault from './HeaderDefault';
+import HeaderDefaultContainer from './HeaderDefaultContainer';
 import HeaderAdmin from './HeaderAdmin';
 import HeaderLogin from './HeaderLogin';
 
@@ -34,7 +34,7 @@ class Header extends Component {
     } else if (this.props.headerMode === 'login') {
       return (<HeaderLogin section={this.props.section} />);
     }
-    return (<HeaderDefault section={this.props.section} />);
+    return (<HeaderDefaultContainer section={this.props.section} />);
   }
 }
 

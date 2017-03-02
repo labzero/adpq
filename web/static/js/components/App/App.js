@@ -9,9 +9,8 @@ export default class App extends Component {
     section: PropTypes.string,
     children: PropTypes.node.isRequired,
     footerMode: PropTypes.string.isRequired,
-    headerMode: PropTypes.string.isRequired,
+    headerMode: PropTypes.string.isRequired
   }
-
 
   render() {
     const { headerMode, footerMode, section } = this.props;
