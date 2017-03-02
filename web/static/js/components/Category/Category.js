@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import concat from 'lodash/fp/concat';
 import CatalogItemContainer from '../CatalogItem/CatalogItemContainer';
+import Loading from '../Loading/Loading';
 import { applyFilters, applyRangeFilters } from '../../lib/filters';
 import { generateQuery } from '../../lib/query';
 import { shouldRender } from '../../lib/remote_data_states';
@@ -116,6 +117,6 @@ export default class Category extends Component {
         </div>
       );
     }
-    return <div>Loading..</div>;
+    return <Loading />;
   }
 }

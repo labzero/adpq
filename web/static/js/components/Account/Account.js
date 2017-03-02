@@ -9,10 +9,7 @@ export default class Account extends Component {
   render() {
     return (
       <div className="usa-grid account">
-        <div className="usa-section">
-          <h2>Account Orders</h2>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }

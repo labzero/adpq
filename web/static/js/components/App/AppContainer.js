@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => {
   const headerMode = findHeaderMode(location);
   const footerMode = findFooterMode(location);
 
-  return { section, headerMode, footerMode, ...ownProps };
+  return { location, section, headerMode, footerMode, ...ownProps };
 };
 
 export default connect(

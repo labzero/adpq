@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import currencyFormatter from 'currency-formatter';
 import CartItemContainer from '../CartItem/CartItemContainer';
+import Loading from '../Loading/Loading';
 import { shouldRender } from '../../lib/remote_data_states';
 
 export default class Cart extends Component {
@@ -48,6 +49,6 @@ export default class Cart extends Component {
         </div>
       );
     }
-    return <div>Loading..</div>;
+    return <Loading />;
   }
 }

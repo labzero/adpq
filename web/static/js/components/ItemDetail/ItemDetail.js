@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { shouldRender } from '../../lib/remote_data_states';
 import CatalogItemContainer from '../CatalogItem/CatalogItemContainer';
+import Loading from '../Loading/Loading';
 
 export default class ItemDetail extends React.Component {
 
@@ -34,6 +35,6 @@ export default class ItemDetail extends React.Component {
       }
       return <div>No such item</div>;
     }
-    return <div className="loading">Loading..</div>; // TODO replace with loading indicator component
+    return <Loading />;
   }
 }

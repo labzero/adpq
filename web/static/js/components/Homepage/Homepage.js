@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { shouldRender } from '../../lib/remote_data_states';
 import RecommendedItems from '../RecommendedItems/RecommendedItems';
+import Loading from '../Loading/Loading';
 
 export default class Homepage extends React.Component {
 
@@ -41,6 +42,6 @@ export default class Homepage extends React.Component {
         </div>
       );
     }
-    return <div className="loading">Loading..</div>;
+    return <Loading />;
   }
 }

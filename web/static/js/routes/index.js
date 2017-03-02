@@ -18,8 +18,10 @@ import {
   LoginContainer,
   Logout,
   OrderReportContainer,
+  OrderContainer,
   ThanksContainer
 } from '../components/index';
+
 import { getUserData } from '../lib/user';
 
 const hasRole = (user, role) => (role ? user.role === role : true);
@@ -62,12 +64,14 @@ export default function getRoutes(store) {
     <Route path="cart" component={CartContainer} onEnter={requireAuth()} />
     <Route path="orders" onEnter={requireAuth()}>
       <Route path="thanks" component={ThanksContainer} />
+      <Route path=":id" component={OrderContainer} onEnter={requireAuth()} />
     </Route>
     <Route path="login" component={LoginContainer} />
     <Route path="logout" component={Logout} />
     <Route path="admin" component={AdminContainer} onEnter={requireAuth('ADMIN')}>
       <IndexRoute component={AdminOrderReportContainer} />
       <Route path="catalog" component={CatalogContainer} />
+      <Route path="orders/:id" component={OrderContainer} />
     </Route>
   </Route>);
 }

@@ -39,3 +39,19 @@ h4 {
 .return-to-top {
   margin-top: 3em;
 }
+
+button.button-secondary-outline {
+  box-shadow: $button-stroke $color-secondary;
+  color: $color-secondary;
+  &:hover {
+    box-shadow: $button-stroke $color-secondary-dark;
+    color: $color-secondary-dark;
+  }
+  &:active {
+    box-shadow: $button-stroke $color-secondary-darkest;
+    color: $color-primary-darkest;
+  }
+  &:focus {
+    box-shadow: $button-stroke $color-secondary-darkest, $focus-shadow;
+  }
+}
