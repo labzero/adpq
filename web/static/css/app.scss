@@ -1,6 +1,16 @@
 @import 'variables';
 
+html, body, #index, .container {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
+  flex-grow: 1;
   padding-bottom: 20px;
 }
 
