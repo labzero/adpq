@@ -87,7 +87,7 @@ export default class Order extends Component {
 
             <div className="order-total">
               <h3>Order Total: {currencyFormatter.format(order.items.reduce((acc, orderItem) => acc + (orderItem.price * orderItem.quantity), 0) / 100, { code: 'USD' })}</h3>
-              <button onClick={() => cancelOrder(order, isAdmin)} className="usa-button-outline button-secondary-outline">Cancel</button>
+              {order.status !== 'CANCELLED' ? (<button onClick={() => cancelOrder(order, isAdmin)} className="usa-button-outline button-secondary-outline">Cancel</button>) : ''}
             </div>
 
           </div>
