@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import currencyFormatter from 'currency-formatter';
 import map from 'lodash/fp/map';
 import * as RemoteDataStates from '../../../constants/RemoteDataStates';
 import { sortBy } from '../../../lib/sorts';
@@ -76,7 +77,7 @@ export default class Catalog extends Component {
       <td><Link to={catalogItemPath(item)}>{item.name}</Link></td>
       <td>{item.manufacturer}</td>
       <td><Link to={adminCatalogItemPath(item)}>{item.sku}</Link></td>
-      <td>{item.contract_unit_price}</td>
+      <td>{currencyFormatter.format(item.contract_unit_price / 100, { code: 'USD' })}</td>
       <td>{item.top_level_category}</td>
       <td>{item.simple_category}</td>
     </tr>
