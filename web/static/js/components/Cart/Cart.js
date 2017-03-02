@@ -21,7 +21,8 @@ export default class Cart extends Component {
 
   placeOrder = (event) => {
     event.preventDefault();
-    return this.props.placeOrder().then(this.props.goToThanks);
+    return (this.props.cart.items.length) ?
+        this.props.placeOrder().then(this.props.goToThanks) : false;
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class Cart extends Component {
               <h4>
                 Total: {currencyFormatter.format(this.totalPrice() / 100, { code: 'USD' })}
               </h4>
-              <button>Place Order</button>
+              {items.length ? (<button>Place Order</button>) : ''}
             </form>
           </main>
 
