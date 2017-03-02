@@ -3,11 +3,12 @@ import currencyFormatter from 'currency-formatter';
 
 class OrderTable extends Component {
   static propTypes = {
-    orders: PropTypes.array.isRequired
+    orders: PropTypes.array.isRequired,
+    orderLink: PropTypes.func.isRequired
   };
 
   render() {
-    const { orders } = this.props;
+    const { orders, orderLink } = this.props;
 
     return (
       <div>
@@ -33,7 +34,7 @@ class OrderTable extends Component {
           <tbody>
             {orders.map(order => (
               <tr key={order.id}>
-                <td>{order.id}</td>
+                <td>{orderLink(order)}</td>
                 <td>{new Date(order.inserted_at * 1000).toLocaleDateString('en-us')}</td>
                 <td>{order.user_id}</td>
                 <td>{order.status}</td>
