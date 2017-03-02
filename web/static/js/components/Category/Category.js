@@ -18,6 +18,13 @@ export default class Category extends Component {
     sorts: PropTypes.array.isRequired
   };
 
+  state = {
+    toggleFiltersLink: {
+      text: 'Show Filters',
+      visibility: 'hidden'
+    }
+  }
+
   componentDidMount() {
     this.props.fetchCatalog();
   }
@@ -59,6 +66,14 @@ export default class Category extends Component {
     push(`/category/${category.name}${generateQuery(sorts, newFilters)}`);
   };
 
+  toggleFilterVisibility = (_event) => {
+    if (this.state.toggleFiltersLink.visibility === 'hidden') {
+      this.setState({ toggleFiltersLink: { text: 'Hide Filters', visibility: 'show' } });
+    } else {
+      this.setState({ toggleFiltersLink: { text: 'Show Filters', visibility: 'hidden' } });
+    }
+  };
+
   sortedAndFilteredData = () => {
     const items = this.props.catalog.items;
     const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters);
@@ -70,7 +85,6 @@ export default class Category extends Component {
         applyFilters(
           filters, items)));
   }
-
 
   renderFilterSection = (title, field) => {
     const { category } = this.props;
@@ -101,9 +115,16 @@ export default class Category extends Component {
           </div>
           <div className="usa-grid-full">
             <aside className="usa-width-one-fourth">
-              <div className="category-count">{items.length} item{items.length === 1 ? '' : 's'}</div>
-              {this.renderFilterSection('Categories', 'simple_category')}
-              {this.renderFilterSection('Brands', 'manufacturer')}
+              <div className="category-count">
+                {items.length} item{items.length === 1 ? '' : 's'}
+                <span className="category-show-filters">
+                  <a href="#show-filters" onClick={this.toggleFilterVisibility}>{this.state.toggleFiltersLink.text}</a>
+                </span>
+              </div>
+              <div className={`category-filter-sections category-filter-sections-${this.state.toggleFiltersLink.visibility}`}>
+                {this.renderFilterSection('Categories', 'simple_category')}
+                {this.renderFilterSection('Brands', 'manufacturer')}
+              </div>
             </aside>
             <main className="usa-width-three-fourths">
               <div className="category-sort-section">&nbsp;</div>
