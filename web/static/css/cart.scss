@@ -1,7 +1,11 @@
+@import 'utilities';
 @import 'variables';
 
 .cart-item {
   padding: 1.5em 0;
+  .item-image {
+    display: none;
+  }
 }
 
 .cart-checkout-form {
@@ -11,5 +15,13 @@
 
   button {
     margin-right: 0;
+  }
+}
+
+@include media($medium-screen) {
+  .cart-item {
+    .item-image {
+      display: block;
+    }
   }
 }
