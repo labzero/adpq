@@ -22,6 +22,10 @@ export default class Category extends Component {
     toggleFiltersLink: {
       text: 'Show Filters',
       visibility: 'hidden'
+    },
+    toggleDetailsLink: {
+      text: 'Hide Details',
+      visibility: 'show'
     }
   }
 
@@ -74,6 +78,14 @@ export default class Category extends Component {
     }
   };
 
+  toggleDetailVisibility = (_event) => {
+    if (this.state.toggleDetailsLink.visibility === 'hidden') {
+      this.setState({ toggleDetailsLink: { text: 'Hide Details', visibility: 'show' } });
+    } else {
+      this.setState({ toggleDetailsLink: { text: 'Show Details', visibility: 'hidden' } });
+    }
+  };
+
   sortedAndFilteredData = () => {
     const items = this.props.catalog.items;
     const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters);
@@ -117,7 +129,7 @@ export default class Category extends Component {
             <aside className="usa-width-one-fourth">
               <div className="category-count">
                 {items.length} item{items.length === 1 ? '' : 's'}
-                <span className="category-show-filters">
+                <span className="category-toggle-filters">
                   <a href="#show-filters" onClick={this.toggleFilterVisibility}>{this.state.toggleFiltersLink.text}</a>
                 </span>
               </div>
@@ -127,8 +139,10 @@ export default class Category extends Component {
               </div>
             </aside>
             <main className="usa-width-three-fourths">
-              <div className="category-sort-section">&nbsp;</div>
-              <ul className="usa-unstyled-list">
+              <div className="category-sort-section">
+                <div className="category-toggle-details"><a href="#show-details" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</a></div>
+              </div>
+              <ul className={`usa-unstyled-list category-item-details-${this.state.toggleDetailsLink.visibility}`}>
                 {items.map(item => <li className="category-item" key={item.id}><CatalogItemContainer item={item} link /></li>)}
               </ul>
             </main>
