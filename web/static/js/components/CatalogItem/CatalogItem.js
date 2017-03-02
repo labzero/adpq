@@ -27,11 +27,14 @@ class CatalogItem extends Component {
 
   addToCart = (event) => {
     event.preventDefault();
-    return this.props.addToCart(this.state.quantity).then(this.props.goToCart);
+    if (this.state.quantity) {
+      return this.props.addToCart(this.state.quantity).then(this.props.goToCart);
+    }
+    return undefined;
   }
 
   changeQuantity = (event) => {
-    this.setState({ quantity: Number(event.target.value) });
+    this.setState({ quantity: Number(event.target.value) || 0 });
   }
 
   render() {
@@ -57,9 +60,10 @@ class CatalogItem extends Component {
             {currencyFormatter.format(item.list_price / 100, { code: 'USD' })}
           </h4>
           <form onSubmit={this.addToCart}>
-            <select name="options" id="options" value={this.state.quantity} onChange={this.changeQuantity}>
-              <option value="1">Qty: 1</option>
-            </select>
+            <div className="usa-grid-full">
+              <label className="item-quantity-label" htmlFor={`category_item_${item.manufacturer}-${item.sku}_quantity`}>Qty:</label>
+              <input className="item-quantity" id={`category_item_${item.manufacturer}-${item.sku}_quantity`} value={this.state.quantity} onChange={this.changeQuantity} required />
+            </div>
             <button onClick={this.addToCart}>Add to Cart</button>
           </form>
         </div>

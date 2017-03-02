@@ -94,6 +94,40 @@ export function removeFromCartError(error) {
   return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
 }
 
+export function updateCartItem(id, data) {
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestUpdateCartItem(id, data));
+    return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(updateCartItemSuccess(json)))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(updateCartItemError(error))); // TODO flash message
+  };
+}
+
+export function requestUpdateCartItem(id, data) {
+  return { type: ActionTypes.UPDATE_CART_ITEM, id, data };
+}
+
+export function updateCartItemSuccess(json) {
+  return { type: ActionTypes.UPDATE_CART_ITEM_SUCCESS, data: json };
+}
+
+export function updateCartItemError(error) {
+  return { type: ActionTypes.UPDATE_CART_ITEM_ERROR, error };
+}
+
 // order actions
 export function fetchOrdersIfNeeded() {
   return (dispatch, getState) => {

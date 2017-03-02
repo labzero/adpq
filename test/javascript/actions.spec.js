@@ -182,6 +182,59 @@ describe('Auth Actions', () => {
     })
   })
 
+  describe('updateCartItem', () => {
+    let store, id, data, mockResponse
+
+    beforeEach(() => {
+      id = 1
+      data = {
+        quantity: 2
+      };
+      store = mockStore({})
+      fetchMock.mock('/api/user/1/cart_items', {}, {method: "GET"})
+      mockResponse = {id: 1, name: 'Computer', quantity: 2}
+    })
+
+    describe('success', () => {
+      let expectedActions;
+      beforeEach((done) => {
+        expectedActions = [
+          { type: ActionTypes.UPDATE_CART_ITEM, id, data },
+          { type: ActionTypes.UPDATE_CART_ITEM_SUCCESS, data: mockResponse },
+          { type: ActionTypes.REQUEST_CART }
+        ]
+        fetchMock.mock('/api/user/1/cart_items/1', mockResponse, {method: "PUT"})
+        store.dispatch(actions.updateCartItem(id, data)).then(done);
+      })
+
+      it('dispatches requestUpdateCartItem', () => {
+        expect(store.getActions()[0]).toEqual(expectedActions[0])
+      })
+
+      it('dispatches success', () => {
+        expect(store.getActions()[1]).toEqual(expectedActions[1])
+      })
+
+      it('dispatches fetchCart', () => {
+        expect(store.getActions()[2]).toEqual(expectedActions[2])
+      })
+    })
+
+    it('dispatches error', (done) => {
+      const expectedActions = [
+        { type: ActionTypes.UPDATE_CART_ITEM, id, data },
+        { type: ActionTypes.UPDATE_CART_ITEM_ERROR, error: 'something' }
+      ]
+
+      fetchMock.mock('/api/user/1/cart_items/1', 409, {method: "PUT"})
+      
+      store.dispatch(actions.updateCartItem(id, data)).then(() => {
+        expect(store.getActions()[1].type).toEqual(expectedActions[1].type)
+        done();
+      })
+    })
+  })
+
   describe('removeFromCart', () => {
     let id, mockResponse, store;
     
