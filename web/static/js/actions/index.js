@@ -380,6 +380,7 @@ export function createItem(item) {
       .then(() => dispatch(createItemSuccess()))
       .then(() => dispatch(alert(createItemSuccess())))
       .then(() => dispatch(fetchAdminCatalog()))
+      .then(() => dispatch(fetchCatalog()))
       .catch(error => dispatch(createItemError(error))); // TODO flash message
 }
 
@@ -411,6 +412,7 @@ export function updateItem(item) {
       .then(() => dispatch(updateItemSuccess()))
       .then(() => dispatch(alert(updateItemSuccess())))
       .then(() => dispatch(fetchAdminCatalog()))
+      .then(() => dispatch(fetchCatalog()))
       .catch(error => dispatch(updateItemError(error))); // TODO flash message
 }
 
