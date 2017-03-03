@@ -15,9 +15,13 @@ const peripheralsSubcategories = [
   'Headsets Microphones & Speakers', 'Keyboards and Mice', 'Mounting',
 ];
 
-const servicesSubcategories = ['Security', 'Support'];
+const servicesSubcategories = [
+  'Security', 'Support'
+];
 
-const softwareSubcategories = ['Design', 'Productivity'];
+const softwareSubcategories = [
+  'Productivity', 'Design'
+];
 
 const categories = {
   Components: componentSubcategories,
