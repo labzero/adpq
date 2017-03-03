@@ -33,4 +33,4 @@ config :adpq, Adpq.Endpoint,
 # Honeybadger
 config :honeybadger, environment_name: :production
 
-config :adpq, swagger_host: "https://adpq.labzero.com"
+config :adpq, swagger_host: "adpq.labzero.com"

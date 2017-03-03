@@ -80,4 +80,3 @@ export MIX_ENV="test"
 cd $HOME/$CIRCLE_PROJECT_REPONAME
 mkdir -p priv/repo/migrations
 mix do deps.get, deps.compile, compile
-mix phoenix.swagger.generate priv/swagger/swagger.json
