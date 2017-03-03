@@ -25,7 +25,7 @@ export default class ItemDetail extends React.Component {
         return (
           <div className="usa-grid item-detail">
             <div className="usa-section">
-              <h2>Product Detail</h2>
+              <h1>Product Detail</h1>
             </div>
             <CatalogItemContainer item={item} />
 

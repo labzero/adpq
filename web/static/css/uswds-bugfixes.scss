@@ -3,3 +3,11 @@
 .usa-width-one-third:nth-child(3n) {
   margin-right: 0;
 }
+
+.usa-button-unstyled {
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}

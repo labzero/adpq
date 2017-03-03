@@ -8,7 +8,7 @@ const RecommendedItems = ({ title, subtitle, items }) => (
   <div className="homepage-recommendations">
 
     <div className="usa-width-one-half homepage-recommendations-description">
-      <h4>{title}</h4>
+      <h3>{title}</h3>
       <p>{subtitle}</p>
     </div>
 

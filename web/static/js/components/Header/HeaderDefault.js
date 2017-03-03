@@ -19,7 +19,7 @@ export default class HeaderDefault extends Component {
               </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
+                <Link to="/" title="Home" aria-label="Home">Tech Shop</Link>
               </em>
             </div>
           </div>
@@ -35,40 +35,40 @@ export default class HeaderDefault extends Component {
                   <span>Hardware</span>
                 </button>
                 <ul id="side-nav-1" className="nav-submenu usa-nav-submenu usa-unstyled-list">
-                  <li><a href="/category/Laptops">Laptops</a>
+                  <li><Link to="/category/Laptops">Laptops</Link>
                     <ul>
-                      <li><a href="/category/Laptops?filter=simple_category:Ultralight">Ultralight</a></li>
-                      <li><a href="/category/Laptops?filter=simple_category:Standard">Standard</a></li>
-                      <li><a href="/category/Laptops?filter=simple_category:Performance">Performance</a></li>
-                      <li><a href="/category/Laptops?filter=simple_category:Workstation">Workstation</a></li>
+                      <li><Link to="/category/Laptops?filter=simple_category:Ultralight">Ultralight</Link></li>
+                      <li><Link to="/category/Laptops?filter=simple_category:Standard">Standard</Link></li>
+                      <li><Link to="/category/Laptops?filter=simple_category:Performance">Performance</Link></li>
+                      <li><Link to="/category/Laptops?filter=simple_category:Workstation">Workstation</Link></li>
                     </ul>
                   </li>
-                  <li><a href="/category/Desktops">Desktops</a>
+                  <li><Link to="/category/Desktops">Desktops</Link>
                     <ul>
-                      <li><a href="/category/Desktops?filter=simple_category:Thin Client">Thin Client</a></li>
-                      <li><a href="/category/Desktops?filter=simple_category:Standard">Standard</a></li>
-                      <li><a href="/category/Desktops?filter=simple_category:Performance">Performance</a></li>
-                      <li><a href="/category/Desktops?filter=simple_category:Workstation">Workstation</a></li>
-                      <li><a href="/category/Desktops?filter=simple_category:All-in-One">All-in-One</a></li>
+                      <li><Link to="/category/Desktops?filter=simple_category:Thin Client">Thin Client</Link></li>
+                      <li><Link to="/category/Desktops?filter=simple_category:Standard">Standard</Link></li>
+                      <li><Link to="/category/Desktops?filter=simple_category:Performance">Performance</Link></li>
+                      <li><Link to="/category/Desktops?filter=simple_category:Workstation">Workstation</Link></li>
+                      <li><Link to="/category/Desktops?filter=simple_category:All-in-One">All-in-One</Link></li>
                     </ul>
                   </li>
-                  <li><a href="/category/Peripherals">Peripherals</a>
+                  <li><Link to="/category/Peripherals">Peripherals</Link>
                     <ul>
-                      <li><a href="/category/Peripherals?filter=simple_category:Displays">Displays</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</a></li>
-                      <li><a href="/category/Peripherals?filter=simple_category:Mounting">Mounting</a></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Displays">Displays</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</Link></li>
+                      <li><Link to="/category/Peripherals?filter=simple_category:Mounting">Mounting</Link></li>
                     </ul>
                   </li>
-                  <li><a href="/category/Components">Components</a>
+                  <li><Link to="/category/Components">Components</Link>
                     <ul>
-                      <li><a href="/category/Components?filter=simple_category:Processors">Processors</a></li>
-                      <li><a href="/category/Components?filter=simple_category:Memory">Memory</a></li>
-                      <li><a href="/category/Components?filter=simple_category:Video Cards">Video Cards</a></li>
-                      <li><a href="/category/Components?filter=simple_category:Storage Devices">Storage Devices</a></li>
+                      <li><Link to="/category/Components?filter=simple_category:Processors">Processors</Link></li>
+                      <li><Link to="/category/Components?filter=simple_category:Memory">Memory</Link></li>
+                      <li><Link to="/category/Components?filter=simple_category:Video Cards">Video Cards</Link></li>
+                      <li><Link to="/category/Components?filter=simple_category:Storage Devices">Storage Devices</Link></li>
                     </ul>
                   </li>
                 </ul>
@@ -79,10 +79,10 @@ export default class HeaderDefault extends Component {
                 </button>
                 <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
                   <li>
-                    <a href="/category/Software?filter=simple_category:Design">Design</a>
+                    <Link to="/category/Software?filter=simple_category:Design">Design</Link>
                   </li>
                   <li>
-                    <a href="/category/Software?filter=simple_category:Productivity">Productivity</a>
+                    <Link to="/category/Software?filter=simple_category:Productivity">Productivity</Link>
                   </li>
                 </ul>
               </li>
@@ -92,7 +92,7 @@ export default class HeaderDefault extends Component {
                 </button>
                 <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
                   <li>
-                    <a href="/category/Services?filter=simple_category:Support">Support</a>
+                    <Link to="/category/Services?filter=simple_category:Support">Support</Link>
                   </li>
                 </ul>
               </li>
@@ -100,7 +100,7 @@ export default class HeaderDefault extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="/cart" className="header-cart-button" aria-label="Cart">
+                  <Link to="/cart" className="header-cart-button" aria-label="Cart">
                     <span>Cart</span> &nbsp;
                     {cartCount !== 0 ? (
                       <span
@@ -109,10 +109,10 @@ export default class HeaderDefault extends Component {
                       >
                         {cartCount}</span>
                       ) : ''}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/account">Account</a>
+                  <Link to="/account">Account</Link>
                 </li>
                 <li>
                   <Link to={'logout'}>

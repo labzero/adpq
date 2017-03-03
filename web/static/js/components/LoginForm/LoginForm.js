@@ -26,16 +26,20 @@ class LoginForm extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <div className="usa-section">
-        <h2>Sign in</h2>
+        <h1>Sign in</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Username</label>
-            <Field name="name" component="input" type="text" autoCorrect="off" autoCapitalize="off" />
+            <label htmlFor="login-form-name">Username</label>
+            <Field id="login-form-name" name="name" component="input" type="text" autoCorrect="off" autoCapitalize="off" required />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <Field name="password" component="input" type={this.state.passwordToggleLink.input} />
-            <div className="login-show-password"><a href="#show-password" onClick={this.togglePasswordVisibility}>{this.state.passwordToggleLink.text}</a></div>
+            <label htmlFor="login-form-password">Password</label>
+            <Field id="login-form-password" name="password" component="input" type={this.state.passwordToggleLink.input} required />
+            <div className="login-show-password">
+              <button className="usa-button-unstyled" onClick={this.togglePasswordVisibility} type="button">
+                {this.state.passwordToggleLink.text}
+              </button>
+            </div>
           </div>
           <button type="submit">Sign in</button>
 
