@@ -54,31 +54,24 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 # Technical Approach
 
 ## Introduction
-The Lab Zero team’s approach to product development and agile software delivery mirrors the U.S. Digital Services Playbook and is fully illustrated within the [Docs folder](https://github.com/labzero/adpq/tree/develop/docs) and the Playbook Adherence section below. Our team kicked off CDT discovery by interviewing target users to understand their needs and to test solution ideas. User feedback informed design iterations, user stories in the backlog, and prioritization during the sprint cycles. Collaboration enabled the team to optimize design iterations that could be feasibly delivered within the timeline. Our engineers chose modern tools that supported our need to bring features together quickly and deliver them continually with a high degree of quality. The team’s high level of rigor in engineering—gleaned from years of experience delivering mission-critical applications—results in code that is easy to adapt to meet evolving business needs for the State of California.
+The Lab Zero team’s approach to product development and agile software delivery mirrors the U.S. Digital Services Playbook as shown in the  [Playbook Adherence section below](#playbook-adherence) and fully illustrated within the [Docs folder in this repo](https://github.com/labzero/adpq/tree/develop/docs). Our team kicked off [design](https://github.com/labzero/adpq/blob/develop/Design-Process.pdf) by interviewing target users to understand their needs and to test solution ideas. User feedback informed design iterations, user stories in the backlog, and prioritization during the sprint cycles. Collaboration enabled the team to optimize design iterations that could be feasibly delivered within the timeline. Our engineers chose modern tools that supported our need to bring features together quickly and deliver them continually with a high degree of quality. The team’s high level of rigor in engineering—gleaned from years of experience delivering mission-critical applications—results in code that is easy to adapt to meet evolving business needs for the State of California.
 
 ## Architectural Approach
 This web application consists of a modern React.js app (Single Page Application) that consumes a JSON API backend written in Elixir using the Phoenix framework backed by a Postgres database. We considered using Shopify or Spree but ultimately decided to build the prototype from scratch. This decision enabled us to demonstrate our ability to develop an easy-to-use application designed in light of careful and deliberate conversations with real users.
 
-```
-React Components
-https://github.com/labzero/adpq/tree/master/web/static/js/components/Category
-https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem
-
-JS REST access
-https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js
-
-JS routes (defining client side URLs)
-https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js
-
-JSON serialization
-https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex
-
-Controller
-https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex
-
-Model
-https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex
-```
+1. React Components
+ * [https://github.com/labzero/adpq/tree/master/web/static/js/components/Category](https://github.com/labzero/adpq/tree/master/web/static/js/components/Category)
+ * [https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem](https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem)
+1. JS REST access
+ * [https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js](https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js)
+1. JS routes (defining client side URLs)
+ * [https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js](https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js)
+1. JSON serialization
+ * [https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex](https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex)
+1. Controller
+ * [https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex](https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex)
+1. Model
+ * [https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex](https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex)
 
 ## Development Process
 We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All 
@@ -258,7 +251,7 @@ The list below associates key activities and artifacts with the Digital Service 
 > Our use of a CI server drives automated tests and our deployment pipeline. All new pull requests are tested. We used CircleCI to automate our CI and CD automation. 
 
 ####P. Setup or used configuration management
-> We generate CloudFormation templates and build Docker containers, adhering to a https://12factor.net/ approach.
+> We generate CloudFormation templates and build Docker containers, adhering to a https://12factor.net/ approach. CloudFormation templates for staging and production environments can be found in the [docs/12-CloudFormation](docs/12-CloudFormation) directory.
 
 ####Q. Setup or used continuous monitoring
 > We setup Honeybadger.io for error reporting and Pingdom for uptime monitoring. 
