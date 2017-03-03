@@ -82,15 +82,15 @@ export default class ItemForm extends React.Component {
             </div>
             <div>
               <label className="usa-input-required" htmlFor="quantity_in_uom">Qty in Unit of Measure</label>
-              <Field name="quantity_in_uom" component="input" type="text" required />
+              <Field name="quantity_in_uom" component="input" type="text" required pattern="\d+" />
             </div>
             <div>
               <label className="usa-input-required" htmlFor="list_price">List Price/MSRP ($)</label>
-              <Field name="list_price" component="input" type="text" required />
+              <Field name="list_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
             </div>
             <div>
               <label className="usa-input-required" htmlFor="contract_unit_price">Contract Unit Price ($)</label>
-              <Field name="contract_unit_price" component="input" type="text" required />
+              <Field name="contract_unit_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
             </div>
           </fieldset>
 
