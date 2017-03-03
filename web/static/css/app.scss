@@ -75,6 +75,20 @@ button.button-secondary-outline {
   }
 }
 
+.sort-active {
+  position: relative;
+  &:after {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: url(/images/angle-arrow-down.svg) 3px 1px no-repeat;
+    background-size: 9px;
+    content: " ";
+  }
+}
+.sort-asc:after {
+  background-image: url(/images/angle-arrow-up.svg);
+}
 
 @media (min-width: $medium-screen) {
   .table-container {
@@ -82,5 +96,11 @@ button.button-secondary-outline {
     td, th {
       padding: 1.5rem;
     }
+  }
+  .sort-active:after {
+    width: 17px;
+    height: 17px;
+    background-position: 5px 3px;
+    background-size: 12px;
   }
 }
