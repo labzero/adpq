@@ -59,6 +59,27 @@ The Lab Zero team’s approach to product development and agile software deliver
 ## Architectural Approach
 This web application consists of a modern React.js app (Single Page Application) that consumes a JSON API backend written in Elixir using the Phoenix framework backed by a Postgres database. We considered using Shopify or Spree but ultimately decided to build the prototype from scratch. This decision enabled us to demonstrate our ability to develop an easy-to-use application designed in light of careful and deliberate conversations with real users.
 
+```
+React Components
+https://github.com/labzero/adpq/tree/master/web/static/js/components/Category
+https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem
+
+JS REST access
+https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js
+
+JS routes (defining client side URLs)
+https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js
+
+JSON serialization
+https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex
+
+Controller
+https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex
+
+Model
+https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex
+```
+
 ## Development Process
 We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All 
 commits should adhere to the guidelines described in our [commit guide](https://github.com/labzero/guides/blob/master/process/commit_guide.md). 
@@ -84,26 +105,6 @@ Using GitFlow tooling, we create a release branch and tag. The tag is then used 
 ## Infrastructure Approach
 We built the application in a cloud-first manner on AWS, but deployed it in a Docker container in order to allow cloud portability. However, if AWS offers a managed service for something we need, we prefer the managed service to rolling our own infrastructure, i.e. Postgres via RDS instead of running our own Postgres servers in EC2. 
 
-```
-Model
-https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex
-
-Controller
-https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex
-
-JSON serialization
-https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex
-
-JS routes (defining client side URLs)
-https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js
-
-JS REST access
-https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js
-
-React Components
-https://github.com/labzero/adpq/tree/master/web/static/js/components/Category
-https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem
-```
 We maintain our VPC and security blueprints as CloudFormation templates checked into Git.
 
 Database table definition/migrations
