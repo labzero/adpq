@@ -63,7 +63,7 @@ The following walkthrough is a quick-access guide to confirm how Lab Zero’s pr
 
 **Log in as a Lead Purchasing Org Admin**
 
-1. Visit http://adpq.labzero.com/ and sign in as an Admin
+1. Visit https://adpq.labzero.com/ and sign in as an Admin
 * Username: admin
 * Password: admin
 

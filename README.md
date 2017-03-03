@@ -198,7 +198,7 @@ The list below associates key activities and artifacts with the Digital Service 
 > Yes, we’ve used Github fully for peer-review and as our sole code repository.
 
 ####F. Used Swagger to document the RESTful API, and provided a link to the Swagger API
-> Yes, we've implemented Swagger, you can view it [here](http://adpq.labzero.com:88/swagger-ui)
+> Yes, we've implemented Swagger, you can view [the test UI](http://adpq.labzero.com:88/swagger-ui) or point your own ui to the [raw JSON describing the API](https://adpq.labzero.com/api/swagger_docs). When testing, you can authorize in the Swagger-UI by putting your username in the Authorization header. 
 
 ####G. Complied with Section 508 of the Americans with Disabilities Act and WCAG 2.0
 > Yes, we have used HTML and CSS in a manner that complies with the ADA and WCAG 2.0
