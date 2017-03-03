@@ -37,7 +37,7 @@ defmodule Adpq.Admin.CatalogItemController do
     description "Create a new catalog item"
     produces "application/json"
     tag "Admin CatalogItem"
-    parameter "body", :body, :object, "Body", required: true, schema: :CatalogItemBody
+    parameter "body", :body, :object, "Body", required: true, schema: Schema.ref(:CatalogItemBody)
     response 201, "Created", Schema.ref(:CatalogItem)
     response 422, "Unprocesseable"
   end
@@ -64,7 +64,7 @@ defmodule Adpq.Admin.CatalogItemController do
     tag "Admin CatalogItem"
     parameters do
       id :path, :integer, "ID", required: true, example: 235
-      body :body, :object, "Body", required: true, schema: :CatalogItemUpdate
+      body :body, :object, "Body", required: true, schema: Schema.ref(:CatalogItemUpdate)
     end
     response 200, "OK", Schema.ref(:CatalogItem)
     response 422, "Unprocesseable"
