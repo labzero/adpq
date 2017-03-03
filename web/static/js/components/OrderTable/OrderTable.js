@@ -21,28 +21,30 @@ class OrderTable extends Component {
             {currencyFormatter.format(orders.reduce((acc, order) => acc.concat(order.items), []).reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })} spent
           </div>
         </div>
-        <table className="table usa-table-borderless">
-          <thead>
-            <tr>
-              <th>Order #</th>
-              <th>Date</th>
-              <th>Requester</th>
-              <th>Status</th>
-              <th>$ Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map(order => (
-              <tr key={order.id}>
-                <td>{orderLink(order)}</td>
-                <td>{new Date(order.inserted_at * 1000).toLocaleDateString('en-us')}</td>
-                <td>{order.user_id}</td>
-                <td>{order.status}</td>
-                <td>{currencyFormatter.format(order.items.reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })}</td>
+        <div className="table-container">
+          <table className="usa-table-borderless">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Date</th>
+                <th>Requester</th>
+                <th>Status</th>
+                <th>$ Amount</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {orders.map(order => (
+                <tr key={order.id}>
+                  <td>{orderLink(order)}</td>
+                  <td>{new Date(order.inserted_at * 1000).toLocaleDateString('en-us')}</td>
+                  <td>{order.user_id}</td>
+                  <td>{order.status}</td>
+                  <td>{currencyFormatter.format(order.items.reduce((acc, item) => acc + (item.price * item.quantity), 0) / 100, { code: 'USD' })}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
