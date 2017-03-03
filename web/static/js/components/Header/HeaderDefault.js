@@ -35,40 +35,40 @@ export default class HeaderDefault extends Component {
                   <span>Hardware</span>
                 </button>
                 <ul id="side-nav-1" className="nav-submenu usa-nav-submenu usa-unstyled-list">
-                  <li><Link to="/category/Laptops">Laptops</Link>
+                  <li><a href="/category/Laptops">Laptops</a>
                     <ul>
-                      <li><Link to="/category/Laptops?filter=simple_category:Ultralight">Ultralight</Link></li>
-                      <li><Link to="/category/Laptops?filter=simple_category:Standard">Standard</Link></li>
-                      <li><Link to="/category/Laptops?filter=simple_category:Performance">Performance</Link></li>
-                      <li><Link to="/category/Laptops?filter=simple_category:Workstation">Workstation</Link></li>
+                      <li><a href="/category/Laptops?filter=simple_category:Ultralight">Ultralight</a></li>
+                      <li><a href="/category/Laptops?filter=simple_category:Standard">Standard</a></li>
+                      <li><a href="/category/Laptops?filter=simple_category:Performance">Performance</a></li>
+                      <li><a href="/category/Laptops?filter=simple_category:Workstation">Workstation</a></li>
                     </ul>
                   </li>
-                  <li><Link to="/category/Desktops">Desktops</Link>
+                  <li><a href="/category/Desktops">Desktops</a>
                     <ul>
-                      <li><Link to="/category/Desktops?filter=simple_category:Thin Client">Thin Client</Link></li>
-                      <li><Link to="/category/Desktops?filter=simple_category:Standard">Standard</Link></li>
-                      <li><Link to="/category/Desktops?filter=simple_category:Performance">Performance</Link></li>
-                      <li><Link to="/category/Desktops?filter=simple_category:Workstation">Workstation</Link></li>
-                      <li><Link to="/category/Desktops?filter=simple_category:All-in-One">All-in-One</Link></li>
+                      <li><a href="/category/Desktops?filter=simple_category:Thin Client">Thin Client</a></li>
+                      <li><a href="/category/Desktops?filter=simple_category:Standard">Standard</a></li>
+                      <li><a href="/category/Desktops?filter=simple_category:Performance">Performance</a></li>
+                      <li><a href="/category/Desktops?filter=simple_category:Workstation">Workstation</a></li>
+                      <li><a href="/category/Desktops?filter=simple_category:All-in-One">All-in-One</a></li>
                     </ul>
                   </li>
-                  <li><Link to="/category/Peripherals">Peripherals</Link>
+                  <li><a href="/category/Peripherals">Peripherals</a>
                     <ul>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Displays">Displays</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</Link></li>
-                      <li><Link to="/category/Peripherals?filter=simple_category:Mounting">Mounting</Link></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Displays">Displays</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</a></li>
+                      <li><a href="/category/Peripherals?filter=simple_category:Mounting">Mounting</a></li>
                     </ul>
                   </li>
-                  <li><Link to="/category/Components">Components</Link>
+                  <li><a href="/category/Components">Components</a>
                     <ul>
-                      <li><Link to="/category/Components?filter=simple_category:Processors">Processors</Link></li>
-                      <li><Link to="/category/Components?filter=simple_category:Memory">Memory</Link></li>
-                      <li><Link to="/category/Components?filter=simple_category:Video Cards">Video Cards</Link></li>
-                      <li><Link to="/category/Components?filter=simple_category:Storage Devices">Storage Devices</Link></li>
+                      <li><a href="/category/Components?filter=simple_category:Processors">Processors</a></li>
+                      <li><a href="/category/Components?filter=simple_category:Memory">Memory</a></li>
+                      <li><a href="/category/Components?filter=simple_category:Video Cards">Video Cards</a></li>
+                      <li><a href="/category/Components?filter=simple_category:Storage Devices">Storage Devices</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -79,10 +79,10 @@ export default class HeaderDefault extends Component {
                 </button>
                 <ul id="side-nav-2" className="nav-submenu usa-nav-submenu">
                   <li>
-                    <Link to="/category/Software?filter=simple_category:Design">Design</Link>
+                    <a href="/category/Software?filter=simple_category:Design">Design</a>
                   </li>
                   <li>
-                    <Link to="/category/Software?filter=simple_category:Productivity">Productivity</Link>
+                    <a href="/category/Software?filter=simple_category:Productivity">Productivity</a>
                   </li>
                 </ul>
               </li>
@@ -92,7 +92,7 @@ export default class HeaderDefault extends Component {
                 </button>
                 <ul id="side-nav-3" className="nav-submenu usa-nav-submenu">
                   <li>
-                    <Link to="/category/Services?filter=simple_category:Support">Support</Link>
+                    <a href="/category/Services?filter=simple_category:Support">Support</a>
                   </li>
                 </ul>
               </li>
