@@ -227,8 +227,8 @@ The list below associates key activities and artifacts with the Digital Service 
 
 ####N. Developed automated unit tests for their code
 > The Engineering Team delivered stories with working code and some level of automated testing. All tests are run in the continuous integration loop with each. 
-* Javascript we wrote Jest tests (link)
-* Elixir we wrote ExUnit tests (link)
+* Javascript we wrote [Jest tests](https://github.com/labzero/adpq/tree/master/test/javascript)
+* Elixir we wrote [ExUnit tests](https://github.com/labzero/adpq/tree/master/test/)
 
 ####O. Setup or used a continuous integration system to automate the running of tests and continuously deployed their code to their IaaS or PaaS provider
 > Our use of a CI server drives automated tests and our deployment pipeline. All new pull requests are tested. We used CircleCI to automate our CI and CD automation. 
