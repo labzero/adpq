@@ -1,4 +1,4 @@
-
+/* global document */
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import {
@@ -56,6 +56,8 @@ export default function getRoutes(store) {
     expireAlerts(role)(nextState, replace, callback);
     fetchCart(role)(nextState, replace, callback);
     scrollToTop();
+    document.querySelectorAll('.usa-accordion-button').forEach(button => button.setAttribute('aria-expanded', false));
+    document.querySelectorAll('.usa-nav-submenu').forEach(submenu => submenu.setAttribute('aria-hidden', true));
   };
 
   return (<Route path="/" component={AppContainer} onEnter={fetchCart()} onChange={onChange()}>

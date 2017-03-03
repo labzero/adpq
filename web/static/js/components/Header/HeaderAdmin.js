@@ -29,14 +29,14 @@ class HeaderAdmin extends Component {
             </button>
             <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
-                <a href={'/admin'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
+                <Link to={'/admin'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
                   <span>Orders</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href={'/admin/catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
+                <Link to={'/admin/catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
                   <span>Catalog</span>
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="usa-nav-secondary">
