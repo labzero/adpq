@@ -137,6 +137,12 @@ defmodule Adpq.CartItemController do
         title "Cart Item Quantity Update"
         description "New Quantity"
         property "quantity", :integer, "Quantity", required: true
+      end,
+      CartItems: swagger_schema do
+        title "CartItems"
+        description "A collection of CartItems"
+        type :array
+        items Schema.ref(:CartItem)
       end
     }
   end
