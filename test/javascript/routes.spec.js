@@ -23,8 +23,8 @@ describe("routes", () => {
   it("/item route without param is not defined", (cb) => {
     match(route("/item"), doesNotExist(cb))
   })
-  it("/item/:id route is defined", (cb) => {
-    match(route("/item/dell|a-345"), exists(cb))
+  it("/item/:manufacturer_sku route is defined", (cb) => {
+    match(route("/item/dell-a-345"), exists(cb))
   })
   it("/account route is defined", (cb) => {
     match(route("/account"), exists(cb))

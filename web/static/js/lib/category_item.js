@@ -4,4 +4,5 @@ export function singleCategory(category) {
   }
   return category;
 }
+
 export { singleCategory as default };

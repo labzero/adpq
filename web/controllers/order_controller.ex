@@ -53,7 +53,7 @@ defmodule Adpq.OrderController do
         # move cart items into order
         Enum.map(user.cart_items, fn ci -> Repo.insert!(OrderItem.from_cart_item(order, ci)) end)
         # reload and render
-        order = Repo.preload(order, [{:order_items, [:catalog_item]}])
+        order = Repo.preload(order, [{:order_items, [:catalog_item]}, :user])
         Repo.delete_all(from c in CartItem, where: c.user_id == ^user.id)
         conn
         |> put_status(:created)
@@ -131,6 +131,7 @@ defmodule Adpq.OrderController do
           name :string, "Item Name", required: true
           sku :string, "SKU / OEM part number", required: true
           manufacturer :string, "Manufacturer Name", required: true
+          inserted_at :string, "Created Date", required: true
         end
       end,
       Order: swagger_schema do

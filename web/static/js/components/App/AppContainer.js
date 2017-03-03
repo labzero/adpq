@@ -13,6 +13,12 @@ const sections = {
   ],
   Services: [
     'Services'
+  ],
+  Orders: [
+    '/admin'
+  ],
+  Catalog: [
+    '/admin/catalog'
   ]
 };
 
@@ -24,7 +30,7 @@ const findHeaderMode = (location) => {
   let mode = 'default';
   if (location.pathname === '/login') {
     mode = 'login';
-  } else if (location.pathname === '/admin') {
+  } else if (location.pathname.match(/^\/admin/)) {
     mode = 'admin';
   }
   return mode;
@@ -32,7 +38,7 @@ const findHeaderMode = (location) => {
 
 const findFooterMode = (location) => {
   let mode = 'less';
-  if (location.pathname === '/login' || location.pathname === '/admin') {
+  if (location.pathname === '/login' || location.pathname.match(/^\/admin/)) {
     mode = 'login';
   } else if (location.pathname === '/') {
     mode = 'more';
@@ -44,16 +50,16 @@ const mapStateToProps = (state, ownProps) => {
   const location = ownProps.location;
   let section;
   if (ownProps.params.id) {
-    // eslint-disable-next-line eqeqeq
-    const item = state.catalog.items.find(it => it.id == ownProps.params.id);
+    const item = state.catalog.items.find(it => `${it.id}` === ownProps.params.id);
     section = item && findSection(item.top_level_category);
   } else if (ownProps.params.name) {
     section = findSection(ownProps.params.name);
+  } else { // try to find sections by pathname
+    section = findSection(ownProps.location.pathname);
   }
   const headerMode = findHeaderMode(location);
   const footerMode = findFooterMode(location);
-
-  return { section, headerMode, footerMode, ...ownProps };
+  return { location, section, headerMode, footerMode, ...ownProps };
 };
 
 export default connect(

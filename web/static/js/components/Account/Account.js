@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const Account = () => <div>Account</div>;
+export default class Account extends Component {
 
-export default Account;
+  static propTypes = {
+    children: PropTypes.node.isRequired
+  }
+
+  render() {
+    return (
+      <div className="usa-grid account">
+        {this.props.children}
+      </div>
+    );
+  }
+}

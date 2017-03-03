@@ -26,7 +26,7 @@ defmodule Adpq.OrderQueries do
     |> order_by([users, orders], desc: orders.inserted_at)
     |> preload(
         [users, orders, order_items, catalog_items],
-        [orders: {orders, order_items: {order_items, catalog_item: catalog_items}}]
+        [orders: {orders, order_items: {order_items, catalog_item: catalog_items}, user: users}]
       )
   end
 

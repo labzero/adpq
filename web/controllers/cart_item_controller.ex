@@ -115,12 +115,14 @@ defmodule Adpq.CartItemController do
         description "Cart Item"
         properties do
           catalog_item_id :integer, "Catalog Item ID", required: true
+          manufacturer :string, "Manufacturer", required: true
+          sku :string, "SKU", required: true
+          top_level_category :string, "Top Level Category", required: true
+          simple_category :string, "Subcategory", required: true
           quantity :integer, "Quantity", required: true
           user_id :integer, "User ID", required: true
           name :string, "Name", required: true
           price :integer, "Price", required: true
-          manufacturer :string, "Manufacturer", required: true
-          sku :string, "SKU", required: true
         end
       end,
       CartItemBody: swagger_schema do
@@ -135,6 +137,12 @@ defmodule Adpq.CartItemController do
         title "Cart Item Quantity Update"
         description "New Quantity"
         property "quantity", :integer, "Quantity", required: true
+      end,
+      CartItems: swagger_schema do
+        title "CartItems"
+        description "A collection of CartItems"
+        type :array
+        items Schema.ref(:CartItem)
       end
     }
   end

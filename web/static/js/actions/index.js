@@ -1,9 +1,11 @@
 /* global fetch */
 import { browserHistory } from 'react-router';
 import includes from 'lodash/fp/includes';
+import omit from 'lodash/fp/omit';
 import * as ActionTypes from '../constants/ActionTypes';
 import * as RemoteDataStates from '../constants/RemoteDataStates';
 import { setUserData, deleteUserData, getUserData } from '../lib/user';
+import { scrollToTop } from '../lib/scroll';
 
 export function fetchCart() {
   return (dispatch) => {
@@ -69,6 +71,7 @@ export function removeFromCart(id) {
     credentials: 'include'
   };
   const user = getUserData();
+  scrollToTop();
   return (dispatch) => {
     dispatch(requestRemoveFromCart(id));
     return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
@@ -91,7 +94,54 @@ export function removeFromCartError(error) {
   return { type: ActionTypes.REMOVE_FROM_CART_ERROR, error };
 }
 
+export function updateCartItem(id, data) {
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+  const user = getUserData();
+  return (dispatch) => {
+    dispatch(requestUpdateCartItem(id, data));
+    return fetch(`/api/user/${user.id}/cart_items/${id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(updateCartItemSuccess(json)))
+      .then(() => dispatch(fetchCart()))
+      .catch(error => dispatch(updateCartItemError(error))); // TODO flash message
+  };
+}
+
+export function requestUpdateCartItem(id, data) {
+  return { type: ActionTypes.UPDATE_CART_ITEM, id, data };
+}
+
+export function updateCartItemSuccess(json) {
+  return { type: ActionTypes.UPDATE_CART_ITEM_SUCCESS, data: json };
+}
+
+export function updateCartItemError(error) {
+  return { type: ActionTypes.UPDATE_CART_ITEM_ERROR, error };
+}
+
 // order actions
+export function fetchRequiredOrders(admin = false) {
+  return (admin ? fetchAdminOrdersIfNeeded() : fetchOrdersIfNeeded());
+}
+
+export function fetchOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchOrders(getState())) {
+      return dispatch(fetchOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
 export function fetchOrders() {
   return (dispatch) => {
     dispatch(requestOrders());
@@ -179,7 +229,10 @@ const doLoginUser = (name, password, redirect) => {
         dispatch(loginSuccess(json));
         browserHistory.push(redirectOrDefault(redirect));
       })
-      .catch(error => dispatch(loginError(error)));
+      .catch((error) => {
+        dispatch(loginError(error));
+        dispatch(alert(loginError(error), true));
+      });
   };
 };
 
@@ -214,7 +267,8 @@ export function fetchCatalog() {
   return (dispatch) => {
     dispatch(requestCatalog());
     return fetch('/api/catalog_items', requestWithAuth({}))
-      .then(response => response.json()) // TODO check response.ok
+      .then(checkHttpStatus)
+      .then(response => response.json())
       .then(json => dispatch(fetchCatalogSuccess(json)))
       .catch(error => dispatch(fetchCatalogError(error))); // TODO flash message
   };
@@ -242,9 +296,176 @@ export function expireAlerts() {
   return { type: ActionTypes.EXPIRE_ALERTS };
 }
 
-// helpers
+// admin orders
+export function fetchAdminOrdersIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminOrders(getState())) {
+      return dispatch(fetchAdminOrders());
+    }
+    return Promise.resolve();
+  };
+}
+
+export function fetchAdminOrders() {
+  return (dispatch) => {
+    dispatch(requestAdminOrders());
+    return fetch('/api/admin/orders', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminOrdersSuccess(json)))
+      .catch(error => dispatch(fetchAdminOrdersError(error)));
+  };
+}
+
+export function requestAdminOrders() {
+  return { type: ActionTypes.REQUEST_ADMIN_ORDERS };
+}
+
+export function fetchAdminOrdersSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_SUCCESS, data: json };
+}
+
+export function fetchAdminOrdersError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_ORDERS_ERROR, data: error };
+}
+
+export function fetchAdminCatalogIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAdminCatalog(getState())) {
+      return dispatch(fetchAdminCatalog());
+    }
+    return Promise.resolve();
+  };
+}
+export function fetchAdminCatalog() {
+  return (dispatch) => {
+    dispatch(requestAdminCatalog());
+    return fetch('/api/admin/catalog_items', requestWithAuth({}))
+      .then(checkHttpStatus)
+      .then(response => response.json())
+      .then(json => dispatch(fetchAdminCatalogSuccess(json)))
+      .catch(error => dispatch(fetchAdminCatalogError(error)));
+  };
+}
+
+export function requestAdminCatalog() {
+  return { type: ActionTypes.REQUEST_ADMIN_CATALOG };
+}
+
+export function fetchAdminCatalogSuccess(json) {
+  return { type: ActionTypes.FETCH_ADMIN_CATALOG_SUCCESS, data: json };
+}
+
+export function fetchAdminCatalogError(error) {
+  return { type: ActionTypes.FETCH_ADMIN_CATALOG_ERROR, data: error };
+}
+
+export function createItem(item) {
+  const values = {
+    ...item,
+    list_price: item.list_price * 100,
+    contract_unit_price: item.contract_unit_price * 100
+  };
+  const request = {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(values)
+  };
+  return dispatch => fetch('/api/admin/catalog_items', requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(createItemSuccess()))
+      .then(() => dispatch(alert(createItemSuccess())))
+      .then(() => dispatch(fetchAdminCatalog()))
+      .catch(error => dispatch(createItemError(error))); // TODO flash message
+}
+
+export function createItemSuccess() {
+  return { type: ActionTypes.CREATE_ITEM_SUCCESS };
+}
+
+export function createItemError(error) {
+  return { type: ActionTypes.CREATE_ITEM_SUCCESS, data: error };
+}
+
+export function updateItem(item) {
+  const values = {
+    ...item,
+    list_price: item.list_price * 100,
+    contract_unit_price: item.contract_unit_price * 100
+  };
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(omit('id', values))
+  };
+  return dispatch => fetch(`/api/admin/catalog_items/${item.id}`, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(updateItemSuccess()))
+      .then(() => dispatch(alert(updateItemSuccess())))
+      .then(() => dispatch(fetchAdminCatalog()))
+      .catch(error => dispatch(updateItemError(error))); // TODO flash message
+}
+
+export function updateItemSuccess() {
+  return { type: ActionTypes.UPDATE_ITEM_SUCCESS };
+}
+
+export function updateItemError(error) {
+  return { type: ActionTypes.UPDATE_ITEM_ERROR, data: error };
+}
+
+export function cancelOrder(order, admin = false) {
+  const request = {
+    method: 'put',
+    credentials: 'include',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ status: 'CANCELLED' })
+  };
+  const url = admin ? `/api/admin/orders/${order.id}` : `/api/user/${getUserData().id}/orders/${order.id}`;
+  const refresh = admin ? fetchAdminOrders : fetchOrders;
+  return dispatch => fetch(url, requestWithAuth(request))
+      .then(checkHttpStatus)
+      .then(() => dispatch(cancelOrderSuccess(admin)))
+      .then(() => dispatch(alert(cancelOrderSuccess(admin))))
+      .then(() => dispatch(refresh()))
+      .catch(error => dispatch(cancelOrderError(admin, error))); // TODO flash message
+}
+
+export function cancelOrderSuccess(admin = false) {
+  const type = admin ? ActionTypes.ADMIN_CANCEL_ORDER_SUCCESS : ActionTypes.CANCEL_ORDER_SUCCESS;
+  return { type };
+}
+
+export function cancelOrderError(admin = false, error) {
+  const type = admin ? ActionTypes.ADMIN_CANCEL_ORDER_ERROR : ActionTypes.CANCEL_ORDER_ERROR;
+  return { type, error };
+}
+
+function shouldFetchAdminOrders(state) {
+  return shouldFetch(state.orderReport);
+}
+
+function shouldFetchAdminCatalog(state) {
+  return shouldFetch(state.adminCatalog);
+}
+
 function shouldFetchCatalog(state) {
   return shouldFetch(state.catalog);
+}
+
+function shouldFetchOrders(state) {
+  return shouldFetch(state.orderHistory);
 }
 
 function shouldFetchAuth(state) {

@@ -23,7 +23,7 @@ DIMMs 1600Mhz DDR3L, Windows 7 Pro (64-bit), integrated
 Intel HD Graphics, DVD +/- RW, 500GB SATA II 7200RPM,
 USB Optical Wheel Mouse, USB Keyboard, 90% Efficient
 Power Supply, 3-Year Next Business Day On-Site Warranty",EACH,1,"$1,315.86",$578.98,56%,Standard Desktop Hardware,Standard,Desktops
-,,,DELL,210-ACQM,Dell Precision T5810,"Four Core E5-1607 v3
+203c,,,DELL,210-ACQM,Dell Precision T5810,"Four Core E5-1607 v3
 (4C, 3.1GHz, 10M, 140W), 16GB DDR4 RDIMM 2133MHz,
 Windows 7 Po, SP1, 64-bit, NVIDIA® Quadro® K620 2GB (DP,
 DL-DVI-I) (1 DP to SL-DVI adapter), 16X DVD+/-RW Drive,
@@ -37,7 +37,7 @@ DIMMs 1600Mhz DDR4, Windows 7 Pro (64-bit), integrated
 Intel HD Graphics, DVD +/- RW, 500GB SATA II 7200RPM,
 USB Optical Wheel Mouse, USB Keyboard, 90% Efficient
 Power Supply, 3-Year Next Business Day On-Site Warranty",EACH,1,"$1,354.43",$595.95,56%,Power Desktop Hardware,Standard,Desktops
-,,,DELL,370-ACLY,Dell 8GB DDR3L Memory,"8GB (1x8GB), 1600MHz DDR3L Memory",EACH,1,$130.00,$88.40,32%,Upgrades,Memory,Components
+430b,,,DELL,370-ACLY,Dell 8GB DDR3L Memory,"8GB (1x8GB), 1600MHz DDR3L Memory",EACH,1,$130.00,$88.40,32%,Upgrades,Memory,Components
 1003c,,,DELL,490-BCYL,AMD Radeon R5 340X,2GB DP/DVI-I,EACH,1,$110.00,$74.80,32%,"Standard Desktop Options
 Upgrades",Video Cards,Components
 1005b,,,DELL,400-AIOY,"Dell 1TB 3.5"" HDD",3.5 1TB 7200rpm HDD,EACH,1,$130.00,$88.40,32%,"Standard Desktop Options
@@ -51,7 +51,7 @@ Upgrades",Storage Devices,Components
 Upgrades",Keyboards & Mice,Peripherals
 1009b,,,DELL,A7055994,Dell Performance Ergonomic Mouse,Performance Ergonomic mouse mx,EACH,1,$99.99,$67.99,32%,"Standard Desktop Options
 Upgrades",Keyboards & Mice,Peripherals
-,,,DELL,A6024088,Dell Wireless Mouse,Wireless mouse M525,EACH,1,$39.99,$27.19,32%,Upgrades,Keyboards & Mice,Peripherals
+1010c,,,DELL,A6024088,Dell Wireless Mouse,Wireless mouse M525,EACH,1,$39.99,$27.19,32%,Upgrades,Keyboards & Mice,Peripherals
 1012b,,,DELL,A5950984,Jabra UC Voice 150,UC Voice 150 USB Duo. Headband INL,EACH,1,$33.99,$23.11,32%,"Standard Desktop Options
 Upgrades",Headsets Microphones & Speakers,Peripherals
 1013a,,,DELL,313-7362,Dell AX210 Stereo Speakers,"AX210 USB Stereo Speakers WW, I/S/X DT C",EACH,1,$19.99,$13.59,32%,"Standard Desktop Options
@@ -90,7 +90,7 @@ Turbo, 12 MB",EACH,1,"$1,820.00","$1,237.60",32%,Workstation Options Upgrades,Pr
 1033b,,,DELL,370-ABUP,Dell 32GB 18666MHz DDR3 Memory,"32GB (4x8GB), 1866MHz DDR3 ECC RDIMM",EACH,1,"$1,040.00",$707.20,32%,Workstation Options Upgrades,Memory,Components
 1034b,,,DELL,490-BCCO,NVIDIA® Quadro® K4200 4GB,"2 DP DL-DVI-I, 1 DP to SL-
 DVI adapter",EACH,1,"$2,200.00","$1,496.00",32%,Workstation Options Upgrades,Video Cards,Components
-,,,DELL,400-AETZ,"2x900GB 2.5"" SAS HD","2x900GB 2.5inch, SAS (10.000 Rpm) Hard Drive",EACH,1,$729.00,$495.72,32%,Workstation Options Upgrades,Storage Devices,Components
+1035d,,,DELL,400-AETZ,"2x900GB 2.5"" SAS HD","2x900GB 2.5inch, SAS (10.000 Rpm) Hard Drive",EACH,1,$729.00,$495.72,32%,Workstation Options Upgrades,Storage Devices,Components
 1040b,,,DELL,400-AECP,"Dell 256 GB 2.5"" SSD","256GB 2.5inch, Serial ATA Solid State Drive",EACH,1,$477.00,$324.36,32%,Workstation Options Upgrades,Storage Devices,Components
 1041b,,,DELL,400-AECQ,"Dell 512GB 2.5"" SSD","512GB 2.5inch, Serial ATA Solid State Drive",EACH,1,$810.33,$551.02,32%,Workstation Options Upgrades,Storage Devices,Components
 1042b,,,DELL,540-BBHC,Intel® X540-T2 10GbE NIC,"Dual Port, Copper",EACH,1,$450.00,$306.00,32%,Workstation Options Upgrades,Networking,Components
@@ -113,7 +113,7 @@ DVI adapter",EACH,1,"$2,200.00","$1,496.00",32%,Workstation Options Upgrades,Vid
 1059a,,,DELL,575-BBHE,Dell OptiPlex Micro Stand,Dell OptiPlex Micro AIO Stand,EACH,1,$92.86,$63.14,32%,Micro Desktop Options,Displays,Peripherals
 1060a,,,DELL,575-BBHC,Opti Micro Mount,Opti Micro VESA Mount,EACH,1,$28.57,$19.43,32%,Micro Desktop Options,Mounting,Peripherals
 1061a,,,DELL,575-BBHF,Opti Micro Dual Mount,Opti Micro Dual VESA Mount,EACH,1,$35.71,$24.28,32%,Micro Desktop Options,Mounting,Peripherals
-,,,DELL,575-BBHH,Opti Micro Console,Opti Micro Console,EACH,1,$121.43,$82.57,32%,Micro Desktop Options,Mounting,Peripherals
+1062a,,,DELL,575-BBHH,Opti Micro Console,Opti Micro Console,EACH,1,$121.43,$82.57,32%,Micro Desktop Options,Mounting,Peripherals
 1064a,,,DELL,382-BBDP,DisplayPort Option,2nd Display Port (Only 7040 Micro),EACH,1,$13.00,$8.84,32%,Micro Desktop Options,Cables & Adapters,Peripherals
 1065,,,DELL,338-BHUU,Intel® CoreTM i7-6700T Processor,"Quad Core, 8MB, 8T,
 2.8GHz, 35W), 3040MFF",EACH,1,$340.00,$231.20,32%,"Micro Standard Desktop
@@ -158,7 +158,7 @@ Upgrades",Memory,Components
 1082,,,DELL,400-AIRW,"Dell 500GB 2.5"" HDD","2.5 inch 500GB 7200rpm OPAL 2.0 FIPS Self Encrypting Hard
 Disk Drive",EACH,1,$160.00,$108.80,32%,"Power Desktop Options
 Upgrades",Storage Devices,Components
-,,,DELL,490-BCQT,AMD R5 340X,"2GB DP/DVI, 5040 MINITOWER",EACH,1,$110.00,$74.80,32%,Upgrades,Video Cards,Components
+1083,,,DELL,490-BCQT,AMD R5 340X,"2GB DP/DVI, 5040 MINITOWER",EACH,1,$110.00,$74.80,32%,Upgrades,Video Cards,Components
 1085,,,DELL,325-BBQT,"Secure Cable Cover, SFF","Secure Cable Cover, SFF",EACH,1,$25.33,$17.22,32%,"Power Desktop Options
 Upgrades",Cables & Adapters,Peripherals
 1086,,,DELL,325-BBTM,"Secure Cable Cover, MT","Secure Cable Cover, MT",EACH,1,$28.57,$19.43,32%,"Power Desktop Options
@@ -175,13 +175,13 @@ BCTH",Dell 4K Touch ,4K TOUCH LCD,EACH,1,$685.00,$465.80,32%,All In One Options 
 1801a,,,VIEWSONIC,TD2220,"Viewsonic 22"" Touchscreen","22"" Touchscreen monitor",EACH,1,$445.00,$302.60,32%,Monitor Options Upgrades,Displays,Peripherals
 1802a,,,DELL,320-9704,"Dell 22"" Widescreen","P2213 22"" Widescreen Monitor",EACH,1,$219.99,$149.59,32%,Monitor Options Upgrades,Displays,Peripherals
 1803c,,,DELL,320-9794,"Dell 24"" Widescreen","P2414H 24"" Widescreen  Monitor",EACH,1,$299.99,$204.00,32%,Monitor Options Upgrades,Displays,Peripherals
-,,,DELL,"997-8533, 997-8536",Dell 4 Year Service,4 Year Basic Hardware Service with 4 Year NBD on-site,EACH,1,$188.00,$101.52,46%,Power Desktop Service O/U,Support,Services
+1804d,,,DELL,"997-8533, 997-8536",Dell 4 Year Service,4 Year Basic Hardware Service with 4 Year NBD on-site,EACH,1,$188.00,$101.52,46%,Power Desktop Service O/U,Support,Services
 2001b,,,DELL,"997-8538, 997-8533",5 Year Basic Hardware Service with NBD on-site,5 Year Basic Hardware Service with NBD on-site,EACH,1,$228.00,$123.12,46%,Power Desktop Service O/U,Support,Services
 2002b,,,DELL,984-0092,"Keep Your Hard Drive, 3 Years","Keep Your Hard Drive, 3 Years",EACH,1,$20.00,$10.80,46%,Standard Desktop Service O/U,Support,Services
 2003a,,,DELL,981-3953,"Keep Your Hard Drive, 4 Years","Keep Your Hard Drive, 4 Years",EACH,1,$25.00,$13.50,46%,Standard Desktop Service O/U,Support,Services
 2004a,,,DELL,980-7554,"Keep Your Hard Drive, 5 Years","Keep Your Hard Drive, 5 Years",EACH,1,$30.00,$16.20,46%,Standard Desktop Service O/U,Support,Services
 2005a,,,DELL,"983-7873, 986-4872",4 Year Warranty,Upgrade 4 Year Warranty Exchange Replacement,EACH,1,$39.00,$21.06,46%,Monitor Service O/U,Support,Services
-,,,DELL,"997-7166, 997-7163",4 Year Hardware Service,"4 Year Basic Hardware Service with 4 Year NBD Limited
+2006a,,,DELL,"997-7166, 997-7163",4 Year Hardware Service,"4 Year Basic Hardware Service with 4 Year NBD Limited
 Onsite Service After Remote Diagnosis",EACH,1,$372.00,$200.88,46%,Workstation Options Upgrades,Support,Services
 2008b,,,DELL,"997-7163, 997-7168",5 Year Hardware Service,"5 Year Basic Hardware Service with 5 Year NBD Limited
 Onsite Service After Remote Diagnosis",EACH,1,$472.00,$254.88,46%,Workstation Options Upgrades,Support,Services

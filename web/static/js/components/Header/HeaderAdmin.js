@@ -29,12 +29,12 @@ class HeaderAdmin extends Component {
             </button>
             <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
-                <Link to={'orders'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
+                <Link to={'/admin'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
                   <span>Orders</span>
                 </Link>
               </li>
               <li>
-                <Link to={'catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
+                <Link to={'/admin/catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
                   <span>Catalog</span>
                 </Link>
               </li>
@@ -42,7 +42,7 @@ class HeaderAdmin extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="/">Tech Shop Site</a>
+                  <a target="tech_shop_admin" href="/">Tech Shop Site</a>
                 </li>
                 <li>
                   <Link to={'logout'}>

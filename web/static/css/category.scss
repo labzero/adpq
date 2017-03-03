@@ -1,3 +1,4 @@
+@import 'utilities';
 @import 'variables';
 
 .category-count {
@@ -20,4 +21,37 @@
 
 .category-item {
   padding: 1.5em 0;
+}
+
+.category-filter-sections-hidden,
+.category-item-details-hidden ul {
+  display: none;
+}
+.category-toggle-details {
+  margin-top: 1rem;
+}
+
+.category-toggle-filters {
+  font-style: normal;
+  &:before {
+    content: " - ";
+    position: relative;
+  }
+}
+
+@include media($large-screen) {
+  .category-toggle-filters {
+    display: none;
+  }
+  .category-filter-sections-hidden {
+    display: block;
+  }
+  .category-toggle-details {
+    margin-top: 0;
+  }
+
+  .category-count,
+  .category-sort-section {
+    line-height: 4.4rem;
+  }
 }

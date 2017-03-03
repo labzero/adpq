@@ -3,7 +3,7 @@ import ItemDetail from './ItemDetail';
 import { fetchCatalogIfNeeded } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const item = state.catalog.items.find(it => `${it.id}` === ownProps.params.id);
+  const item = state.catalog.items.find(it => `${it.manufacturer}-${it.sku}` === ownProps.params.manufacturer_sku);
   return {
     item,
     catalog: state.catalog

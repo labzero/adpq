@@ -6,10 +6,10 @@ import Header from '../Header/Header';
 export default class App extends Component {
 
   static propTypes = {
-    headerMode: PropTypes.string.isRequired,
-    footerMode: PropTypes.string.isRequired,
     section: PropTypes.string,
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    footerMode: PropTypes.string.isRequired,
+    headerMode: PropTypes.string.isRequired
   }
 
   render() {

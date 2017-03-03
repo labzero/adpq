@@ -28,5 +28,6 @@ ADD . .
 # Run frontend build, compile, and digest assets
 RUN brunch build --production && \
     mix do compile, phoenix.digest
+RUN mix phoenix.swagger.generate priv/swagger/swagger.json
 
 CMD ["mix", "do", "ecto.migrate,", "phoenix.server"]

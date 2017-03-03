@@ -1,6 +1,16 @@
 @import 'variables';
 
+html, body, #index, .container {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
+  flex-grow: 1;
   padding-bottom: 20px;
 }
 
@@ -17,6 +27,15 @@ h2 {
 h4 {
   font-size: $lead-font-size;
   margin: 0;
+}
+
+.table-container {
+  font-size: 11px;
+  overflow-x: auto;
+  
+  td, th {
+    padding: 1rem 0.5rem;
+  }
 }
 
 .subsection {
@@ -38,4 +57,50 @@ h4 {
 
 .return-to-top {
   margin-top: 3em;
+}
+
+button.button-secondary-outline {
+  box-shadow: $button-stroke $color-secondary;
+  color: $color-secondary;
+  &:hover {
+    box-shadow: $button-stroke $color-secondary-dark;
+    color: $color-secondary-dark;
+  }
+  &:active {
+    box-shadow: $button-stroke $color-secondary-darkest;
+    color: $color-primary-darkest;
+  }
+  &:focus {
+    box-shadow: $button-stroke $color-secondary-darkest, $focus-shadow;
+  }
+}
+
+.sort-active {
+  position: relative;
+  &:after {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: url(/images/angle-arrow-down.svg) 3px 1px no-repeat;
+    background-size: 9px;
+    content: " ";
+  }
+}
+.sort-asc:after {
+  background-image: url(/images/angle-arrow-up.svg);
+}
+
+@media (min-width: $medium-screen) {
+  .table-container {
+    font-size: $base-font-size;
+    td, th {
+      padding: 1.5rem;
+    }
+  }
+  .sort-active:after {
+    width: 17px;
+    height: 17px;
+    background-position: 5px 3px;
+    background-size: 12px;
+  }
 }

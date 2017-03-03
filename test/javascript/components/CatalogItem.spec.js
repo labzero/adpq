@@ -8,6 +8,7 @@ const item = {
   manufacturer: 'DELL',
   sku: '210-AFXL',
   list_price: 10000,
+  contract_unit_price: 50000,
   image: '/images/products/everyday-computing-dell-desktop.jpg',
   description: "4GB 1DIMM 1600MHz DDR3L, Windows 7 Pro (32/64 bit), integrated Intel HD Graphics, DVD+/- RW, 500GB SATA 7200rpm, USB Optical Wheel Mouse, USB Keyboard, 3-Year Next Business Day On-Site Warranty",
 }
@@ -26,7 +27,7 @@ describe('CatalogItem', () => {
   it('renders item information', () => {
     const rendered = shallow(<CatalogItem {...props} />)
     expect(rendered.text()).toContain('DELL')
-    expect(rendered.text()).toContain('$100')
+    expect(rendered.text()).toContain('$500')
     expect(rendered.text()).toContain('4GB 1DIMM')
     expect(rendered.text()).not.toContain('DDR3L, Windows') // make sure we're splitting our description
   })

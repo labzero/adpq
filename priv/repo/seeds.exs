@@ -11,9 +11,7 @@
 # and so on) as they will fail if something goes wrong.
 
 defmodule Adpq.CatalogSeeds do
-  alias Adpq.{Repo, CatalogItem, User, CartItem, OrderItem, Order}
-  alias Adpq.CatalogItem
-  alias Adpq.User
+  alias Adpq.{Repo, CatalogItem, User, CartItem, CatalogItem, OrderItem, Order}
   import Ecto.Query
 
   def insertRows do
@@ -25,17 +23,10 @@ defmodule Adpq.CatalogSeeds do
   end
 
   def clean do
-    Adpq.Repo.delete_all(OrderItem)
-    Adpq.Repo.delete_all(Order)
-    Adpq.Repo.delete_all(CartItem)
-    Adpq.Repo.delete_all(CatalogItem)
-  end
-
-  defp dollarsToInt(dollars) do
-    dollars
-    |> String.replace("$", "")
-    |> String.replace(".", "")
-    |> String.replace(",", "")
+    Repo.delete_all(OrderItem)
+    Repo.delete_all(Order)
+    Repo.delete_all(CartItem)
+    Repo.delete_all(CatalogItem)
   end
 
   defp dollarsToInt(dollars) do
@@ -86,14 +77,13 @@ defmodule Adpq.CatalogSeeds do
       |> Repo.one
     case exists do
       %CatalogItem{} -> IO.puts("SKU #{sku} already exists. Skipping..")
-      _ -> row = Adpq.Repo.insert(CatalogItem.changeset(%CatalogItem{}, row))
+      _ -> row = Repo.insert(CatalogItem.changeset(%CatalogItem{}, row))
           inspect row
     end
   end
 end
 
 defmodule Adpq.UserSeeds do
-  alias Adpq.Repo
   alias Adpq.User
 
   def create_admin do

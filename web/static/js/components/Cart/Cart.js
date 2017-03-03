@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import currencyFormatter from 'currency-formatter';
 import CartItemContainer from '../CartItem/CartItemContainer';
+import Loading from '../Loading/Loading';
 import { shouldRender } from '../../lib/remote_data_states';
 
 export default class Cart extends Component {
@@ -13,11 +14,15 @@ export default class Cart extends Component {
     placeOrder: PropTypes.func.isRequired
   };
 
-  totalPrice = () => this.props.cart.items.reduce((acc, item) => acc + item.price, 0);
+  totalPrice = () => this.props.cart.items.reduce(
+    (acc, item) => acc + (item.price * item.quantity),
+    0
+  );
 
   placeOrder = (event) => {
     event.preventDefault();
-    return this.props.placeOrder().then(this.props.goToThanks);
+    return (this.props.cart.items.length) ?
+        this.props.placeOrder().then(this.props.goToThanks) : false;
   }
 
   render() {
@@ -37,7 +42,7 @@ export default class Cart extends Component {
               <h4>
                 Total: {currencyFormatter.format(this.totalPrice() / 100, { code: 'USD' })}
               </h4>
-              <button>Place Order</button>
+              {items.length ? (<button>Place Order</button>) : ''}
             </form>
           </main>
 
@@ -45,6 +50,6 @@ export default class Cart extends Component {
         </div>
       );
     }
-    return <div>Loading..</div>;
+    return <Loading />;
   }
 }

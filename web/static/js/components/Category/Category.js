@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import concat from 'lodash/fp/concat';
 import CatalogItemContainer from '../CatalogItem/CatalogItemContainer';
+import Loading from '../Loading/Loading';
 import { applyFilters, applyRangeFilters } from '../../lib/filters';
 import { generateQuery } from '../../lib/query';
 import { shouldRender } from '../../lib/remote_data_states';
@@ -16,6 +17,17 @@ export default class Category extends Component {
     rangeFilters: PropTypes.array.isRequired,
     sorts: PropTypes.array.isRequired
   };
+
+  state = {
+    toggleFiltersLink: {
+      text: 'Show Filters',
+      visibility: 'hidden'
+    },
+    toggleDetailsLink: {
+      text: 'Hide Details',
+      visibility: 'show'
+    }
+  }
 
   componentDidMount() {
     this.props.fetchCatalog();
@@ -58,6 +70,35 @@ export default class Category extends Component {
     push(`/category/${category.name}${generateQuery(sorts, newFilters)}`);
   };
 
+  changeSort = (event) => {
+    const { category, filters, push } = this.props;
+
+    const value = event.target.value;
+    const newSorts = [];
+    if (value) {
+      const parts = value.split(':');
+      newSorts.push(parts);
+    }
+
+    push(`/category/${category.name}${generateQuery(newSorts, filters)}`);
+  }
+
+  toggleFilterVisibility = (_event) => {
+    if (this.state.toggleFiltersLink.visibility === 'hidden') {
+      this.setState({ toggleFiltersLink: { text: 'Hide Filters', visibility: 'show' } });
+    } else {
+      this.setState({ toggleFiltersLink: { text: 'Show Filters', visibility: 'hidden' } });
+    }
+  };
+
+  toggleDetailVisibility = (_event) => {
+    if (this.state.toggleDetailsLink.visibility === 'hidden') {
+      this.setState({ toggleDetailsLink: { text: 'Hide Details', visibility: 'show' } });
+    } else {
+      this.setState({ toggleDetailsLink: { text: 'Show Details', visibility: 'hidden' } });
+    }
+  };
+
   sortedAndFilteredData = () => {
     const items = this.props.catalog.items;
     const filters = concat([['top_level_category', [this.props.category.name]]], this.props.filters);
@@ -69,7 +110,6 @@ export default class Category extends Component {
         applyFilters(
           filters, items)));
   }
-
 
   renderFilterSection = (title, field) => {
     const { category } = this.props;
@@ -89,8 +129,9 @@ export default class Category extends Component {
   }
 
   render() {
-    const category = this.props;
-    if (shouldRender(this.props.catalog.remoteDataState)) {
+    const { category, catalog, sorts } = this.props;
+
+    if (shouldRender(catalog.remoteDataState)) {
       const items = this.sortedAndFilteredData();
 
       return (
@@ -100,13 +141,40 @@ export default class Category extends Component {
           </div>
           <div className="usa-grid-full">
             <aside className="usa-width-one-fourth">
-              <div className="category-count">{items.length} item{items.length === 1 ? '' : 's'}</div>
-              {this.renderFilterSection('Categories', 'simple_category')}
-              {this.renderFilterSection('Brands', 'manufacturer')}
+              <div className="category-count">
+                {items.length} item{items.length === 1 ? '' : 's'}
+                <span className="category-toggle-filters">
+                  <a href="#show-filters" onClick={this.toggleFilterVisibility}>{this.state.toggleFiltersLink.text}</a>
+                </span>
+              </div>
+              <div className={`category-filter-sections category-filter-sections-${this.state.toggleFiltersLink.visibility}`}>
+                {this.renderFilterSection('Categories', 'simple_category')}
+                {this.renderFilterSection('Brands', 'manufacturer')}
+              </div>
             </aside>
             <main className="usa-width-three-fourths">
-              <div className="category-sort-section">&nbsp;</div>
-              <ul className="usa-unstyled-list">
+              <div className="category-sort-section usa-grid-full">
+                <div className="usa-width-seven-twelfths category-toggle-details">
+                  <a href="#show-details" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</a>
+                </div>
+                <div className="category-sort usa-width-five-twelfths usa-grid-full">
+                  <div className="usa-width-one-fourth category-sort-label">
+                    Sort by:
+                  </div>
+                  <div className="usa-width-three-fourths">
+                    <select onChange={this.changeSort} value={sorts.length ? `${sorts[0][0]}:${sorts[0][1]}` : undefined}>
+                      <option />
+                      <option value="contract_unit_price:asc">Price (lowest to highest)</option>
+                      <option value="contract_unit_price:desc">Price (highest to lowest)</option>
+                      <option value="manufacturer:asc">Manufacturer (A-Z)</option>
+                      <option value="manufacturer:desc">Manufacturer (Z-A)</option>
+                      <option value="simple_category:asc">Category (A-Z)</option>
+                      <option value="simple_category:desc">Category (Z-A)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <ul className={`usa-unstyled-list category-item-details-${this.state.toggleDetailsLink.visibility}`}>
                 {items.map(item => <li className="category-item" key={item.id}><CatalogItemContainer item={item} link /></li>)}
               </ul>
             </main>
@@ -116,6 +184,6 @@ export default class Category extends Component {
         </div>
       );
     }
-    return <div>Loading..</div>;
+    return <Loading />;
   }
 }

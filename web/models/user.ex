@@ -24,6 +24,7 @@ defmodule Adpq.User do
     struct
     |> cast(params, [:name, :password, :role, :department])
     |> validate_required([:name, :password, :role, :department])
+    |> unique_constraint(:name)
   end
 
   def find_or_create_by_name(%{"name" => name, "password" => _, "role" => _} = params) do
