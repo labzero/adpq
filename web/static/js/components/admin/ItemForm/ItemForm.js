@@ -18,15 +18,15 @@ export default class ItemForm extends React.Component {
     return (
       <div>
         <div className="usa-section">
-          <h2>
+          <h1>
             {heading}
-          </h2>
+          </h1>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="item-form-subheading-section">
-            <h3 className="item-form-subheading">
+            <h2 className="item-form-subheading">
               {subHeading}
-            </h3>
+            </h2>
             <div className="item-form-actions">
               <Link to="/admin/catalog" className="usa-button usa-button-outline">Cancel</Link>
               <button>Save</button>
@@ -35,16 +35,16 @@ export default class ItemForm extends React.Component {
           <fieldset className="item-form-fieldset">
             <legend className="subsection item-form-legend">Category</legend>
             <div>
-              <label className="usa-input-required" htmlFor="top_level_category">Top-Level</label>
-              <Field name="top_level_category" component="select" required>
+              <label className="usa-input-required" htmlFor="item-form-top_level_category">Top-Level</label>
+              <Field id="item-form-top_level_category" name="top_level_category" component="select" required>
                 <option />
                 {map(opt => (<option key={opt} value={opt}>{opt}</option>), categories)}
               </Field>
             </div>
 
             <div>
-              <label className="usa-input-required" htmlFor="simple_category">Subcategory</label>
-              <Field name="simple_category" component="select" required>
+              <label className="usa-input-required" htmlFor="item-form-simple_category">Subcategory</label>
+              <Field id="item-form-simple_category" name="simple_category" component="select" required>
                 <option />
                 {map(opt => (<option key={opt} value={opt}>{opt}</option>), subCategories)}
               </Field>
@@ -53,44 +53,44 @@ export default class ItemForm extends React.Component {
           <fieldset className="item-form-fieldset">
             <legend className="subsection item-form-legend">Item Information</legend>
             <div>
-              <label className="usa-input-required" htmlFor="name">Item Name</label>
-              <Field name="name" component="input" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-name">Item Name</label>
+              <Field id="item-form-name" name="name" component="input" type="text" required />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="description">Item Description</label>
-              <Field name="description" component="textarea" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-description">Item Description</label>
+              <Field id="item-form-description" name="description" component="textarea" type="text" required />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="sku">SKU</label>
-              <Field name="sku" component="input" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-sku">SKU</label>
+              <Field id="item-form-sku" name="sku" component="input" type="text" required />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="clin">CLIN</label>
-              <Field name="clin" component="input" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-clin">CLIN</label>
+              <Field id="item-form-clin" name="clin" component="input" type="text" required />
             </div>
             <div>
-              <label htmlFor="unspc">UNSPS C Code</label>
-              <Field name="unspc" component="input" type="text" />
+              <label htmlFor="item-form-unspc">UNSPS C Code</label>
+              <Field id="item-form-unspc" name="unspc" component="input" type="text" />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="manufacturer">Manufacturer (OEM)</label>
-              <Field name="manufacturer" component="input" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-manufacturer">Manufacturer (OEM)</label>
+              <Field id="item-form-manufacturer" name="manufacturer" component="input" type="text" required />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="unit_of_measure">Unit of Measure</label>
-              <Field name="unit_of_measure" component="input" type="text" required />
+              <label className="usa-input-required" htmlFor="item-form-unit_of_measure">Unit of Measure</label>
+              <Field id="item-form-unit_of_measure" name="unit_of_measure" component="input" type="text" required />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="quantity_in_uom">Qty in Unit of Measure</label>
-              <Field name="quantity_in_uom" component="input" type="text" required pattern="\d+" />
+              <label className="usa-input-required" htmlFor="item-form-quantity_in_uom">Qty in Unit of Measure</label>
+              <Field id="item-form-quantity_in_uom" name="quantity_in_uom" component="input" type="text" required pattern="\d+" />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="list_price">List Price/MSRP ($)</label>
-              <Field name="list_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
+              <label className="usa-input-required" htmlFor="item-form-list_price">List Price/MSRP ($)</label>
+              <Field id="item-form-list_price" name="list_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
             </div>
             <div>
-              <label className="usa-input-required" htmlFor="contract_unit_price">Contract Unit Price ($)</label>
-              <Field name="contract_unit_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
+              <label className="usa-input-required" htmlFor="item-form-contract_unit_price">Contract Unit Price ($)</label>
+              <Field id="item-form-contract_unit_price" name="contract_unit_price" component="input" type="text" required pattern="\d+\.?\d{0,2}" />
             </div>
           </fieldset>
 

@@ -27,19 +27,7 @@ describe('<Order />', () => {
 
   it('renders an order detail view', () => {
     const rendered = render(<Provider store={store}><Order { ...props }/></Provider>);
-    expect(rendered.html()).toContain('<h3>Order #1324</h3>');
-  })
-
-  it('should let admins sees sku links', () => {
-    const rendered = render (<Provider store={store}><Order { ...props }/></Provider>);
-    expect(rendered.html()).toContain('<a href=\"#edit-item\">39103</a>');
-    expect(rendered.html()).toContain('<a href=\"#edit-item\">439103</a>');
-  })
-
-  it('should not let requestor see sku link', () => {
-    props.isAdmin = false;
-    const rendered = render(<Provider store={store}><Order { ...props }/></Provider>);
-    expect(rendered.html()).not.toContain('<a href=\"#edit-item\">39103</a>');
+    expect(rendered.html()).toContain('Order #1324');
   })
 
 });

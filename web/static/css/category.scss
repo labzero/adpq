@@ -23,6 +23,13 @@
   padding: 1.5em 0;
 }
 
+.category-toggle-details,
+.category-toggle-filters {
+  button {
+    @include link;
+  }
+}
+
 .category-filter-sections-hidden,
 .category-item-details-hidden ul {
   display: none;
@@ -53,5 +60,9 @@
   .category-count,
   .category-sort-section {
     line-height: 4.4rem;
+  }
+
+  .category-sort-label {
+    margin: 0;
   }
 }

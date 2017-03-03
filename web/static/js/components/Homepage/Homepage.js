@@ -23,12 +23,12 @@ export default class Homepage extends React.Component {
         <div className="usa-grid homepage">
 
           <div className="usa-section">
-            <h2>Desktop or laptop?</h2>
+            <h1>Desktop or laptop?</h1>
             <p className="subheading">Options and pricing for every hardware need.</p>
           </div>
 
           <div>
-            <h3 className="subsection">Popular Configurations</h3>
+            <h2 className="subsection">Popular Configurations</h2>
 
             {this.props.recommendations && this.props.recommendations.length ?
               this.props.recommendations.map(recommendation => (

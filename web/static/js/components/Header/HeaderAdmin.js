@@ -17,7 +17,7 @@ class HeaderAdmin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/admin" title="Admin" aria-label="Home">Tech Shop Admin</a>
+                <Link accessKey="1" to="/admin" title="Admin" aria-label="Home">Tech Shop Admin</Link>
               </em>
             </div>
           </div>

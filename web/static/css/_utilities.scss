@@ -1,1 +1,13 @@
+@import 'node_modules/uswds/src/stylesheets/lib/bourbon';
+@import 'node_modules/uswds/src/stylesheets/core/variables';
 @import 'node_modules/uswds/src/stylesheets/core/utilities';
+
+@mixin link {
+  color: $color-primary;
+  text-decoration: underline;
+
+  &:hover,
+  &:active {
+    color: $color-primary-darker;
+  }
+}

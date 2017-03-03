@@ -17,7 +17,7 @@
       "react/require-default-props": "off",
       "react/prefer-stateless-function": "off",
       "react/forbid-prop-types": "off",
-      "jsx-a11y/no-access-key": 2,
+      "jsx-a11y/no-access-key": "off",
       "jsx-a11y/href-no-hash": 2,
       "jsx-a11y/img-has-alt": 2   
     },
