@@ -258,7 +258,7 @@ The list below associates key activities and artifacts with the Digital Service 
 > Our use of a CI server drives automated tests and our deployment pipeline. All new pull requests are tested. We used CircleCI to automate our CI and CD automation. 
 
 ####P. Setup or used configuration management
-> We generate CloudFormation templates and build Docker containers, adhering to a https://12factor.net/ approach.
+> We generate CloudFormation templates and build Docker containers, adhering to a https://12factor.net/ approach. CloudFormation templates for staging and production environments can be found in the [docs/12-CloudFormation](docs/12-CloudFormation) directory.
 
 ####Q. Setup or used continuous monitoring
 > We setup Honeybadger.io for error reporting and Pingdom for uptime monitoring. 
