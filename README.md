@@ -237,7 +237,6 @@ The list below associates key activities and artifacts with the Digital Service 
 * Docker
 * SASS
 * Javascript/ES6
-* REST
 
 ####M. Deployed the prototype on an Infrastructure as a Service (IaaS) or Platform as Service (PaaS) provider, and indicated which provider they used
 > Our prototype has been deployed to AWS as a Docker container running in ECS using RDS for it’s datastore. 
