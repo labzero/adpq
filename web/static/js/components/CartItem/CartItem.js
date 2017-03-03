@@ -39,12 +39,12 @@ class CartItem extends Component {
     const { item } = this.props;
     return (
       <div className="item usa-grid-full">
-        <div className="usa-width-one-third item-image">
+        <div className="usa-width-one-sixth item-image">
           <Link to={catalogItemPath(item)}>
             <img src={catalogItemImage(item)} alt={item.description} />
           </Link>
         </div>
-        <div className="usa-width-five-twelfths item-details">
+        <div className="usa-width-seven-twelfths item-details">
           <h4><Link to={catalogItemPath(item)}>{item.name}</Link></h4>
           <p><Link to={catalogItemPath(item)}>{item.manufacturer} SKU: {item.sku}</Link></p>
         </div>
