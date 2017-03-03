@@ -1,5 +1,5 @@
-# Prototype A URL
-https://adpq.labzero.com/
+# Prototype A: CDT Procurement demo
+The prototype is running at this url: https://adpq.labzero.com/
 
 **Administration Login**
 * User: admin
