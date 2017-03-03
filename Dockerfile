@@ -29,5 +29,7 @@ ADD . .
 RUN brunch build --production && \
     mix do compile, phoenix.digest
 RUN mix phoenix.swagger.generate priv/swagger/swagger.json
+RUN mkdir -p _build/prod/lib/adpq/priv/swagger/
+RUN cp priv/swagger/swagger.json _build/prod/lib/adpq/priv/swagger/swagger.json
 
 CMD ["mix", "do", "ecto.migrate,", "phoenix.server"]
