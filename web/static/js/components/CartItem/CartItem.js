@@ -52,13 +52,11 @@ class CartItem extends Component {
           <h4>
             {currencyFormatter.format(item.price / 100, { code: 'USD' })}
           </h4>
-          <form onSubmit={this.remove}>
-            <div className="usa-grid-full">
-              <label className="item-quantity-label" htmlFor={`category_item_${item.manufacturer}-${item.sku}_quantity`}>Qty:</label>
-              <input className="item-quantity" id={`category_item_${item.manufacturer}-${item.sku}_quantity`} value={this.state.quantity} onChange={this.changeQuantity} onBlur={this.updateQuantity} required />
-            </div>
-            <button className="usa-button-outline" onClick={this.remove}>Remove</button>
-          </form>
+          <div className="usa-grid-full">
+            <label className="item-quantity-label" htmlFor={`category_item_${item.manufacturer}-${item.sku}_quantity`}>Qty:</label>
+            <input className="item-quantity" id={`category_item_${item.manufacturer}-${item.sku}_quantity`} value={this.state.quantity} onChange={this.changeQuantity} onBlur={this.updateQuantity} required />
+          </div>
+          <button className="usa-button-outline" onClick={this.remove}>Remove</button>
         </div>
       </div>
     );
