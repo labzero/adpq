@@ -84,11 +84,6 @@ Using GitFlow tooling, we create a release branch and tag. The tag is then used 
 ## Infrastructure Approach
 We built the application in a cloud-first manner on AWS, but deployed it in a Docker container in order to allow cloud portability. However, if AWS offers a managed service for something we need, we prefer the managed service to rolling our own infrastructure, i.e. Postgres via RDS instead of running our own Postgres servers in EC2. 
 
-We maintain our VPC and security blueprints as CloudFormation templates checked into Git.
-
-Database table definition/migrations
-https://github.com/labzero/adpq/blob/master/priv/repo/migrations/20170217185137_create_catalog_item.exs
-
 ```
 Model
 https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex
@@ -109,7 +104,11 @@ React Components
 https://github.com/labzero/adpq/tree/master/web/static/js/components/Category
 https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem
 ```
- 
+We maintain our VPC and security blueprints as CloudFormation templates checked into Git.
+
+Database table definition/migrations
+https://github.com/labzero/adpq/blob/master/priv/repo/migrations/20170217185137_create_catalog_item.exs
+
 ![Cloud Architecture](docs/11-ADPQ-PrototypeA-Architecture.png)
 
 
