@@ -140,25 +140,25 @@ The list below associates key activities and artifacts with the Digital Service 
 * Drafted a prioritized features backlog and review with team [Link](https://github.com/labzero/adpq/projects/1)
 
 ## 6: Assign on leader and hold that person accountable
-* See Requirements List, Section A
+* See Requirements List, [Section A](#a-assigned-one-1-leader-and-gave-that-person-authority-and-responsibility-and-held-that-person-accountable-for-the-quality-of-the-prototype-submitted)
 
 ## 7: Bring in experienced teams
-* See Requirements List, Section B
+* See Requirements List, [Section B](#b-assembled-a-multidisciplinary-and-collaborative-team-that-includes-at-a-minimum-five-5-of-the-labor-categories-as-identified-in-attachment-b-pqvp-ds-ad-labor-category-descriptions)
 
 ## 8: Choose a modern technology stack
-* See Requirements List, Section L
+* See Requirements List, [Section L](#l-used-at-least-five-5-modern-and-open-source-technologies-regardless-of-architectural-layer-frontend-backend-etc)
 
 ## 9: Deploy in a flexible hosting environment
-* See Requirements List, Section M
+* See Requirements List, [Section M](#m-deployed-the-prototype-on-an-infrastructure-as-a-service-iaas-or-platform-as-service-paas-provider-and-indicated-which-provider-they-used)
 
 ## 10: Automate testing and deployments
-* See Requirements List, Section O
+* See Requirements List, [Section O](#o-setup-or-used-a-continuous-integration-system-to-automate-the-running-of-tests-and-continuously-deployed-their-code-to-their-iaas-or-paas-provider)
 
 ## 12: User data to drive 
-* See Requirements List, Section Q
+* See Requirements List, [Section Q](#q-setup-or-used-continuous-monitoring)
 
 ## 13: Default to open
-* Utilized open source 
+* Utilized open source [as documented in the Open Source Technology Audit](https://github.com/labzero/adpq/blob/develop/docs/Open%20Source%20Technology%20Audit.xlsx)
 
 # Requirements List
 
