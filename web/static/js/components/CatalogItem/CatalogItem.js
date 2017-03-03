@@ -41,9 +41,9 @@ class CatalogItem extends Component {
     const { item } = this.props;
     return (
       <div className="item usa-grid-full">
-        <div className="usa-width-one-third item-image">{this.maybeLink(<img src={catalogItemImage(item)} alt={item.description} />)}</div>
+        <div className="usa-width-one-third item-image">{this.maybeLink(<img src={catalogItemImage(item)} alt={item.name} />)}</div>
         <div className="usa-width-five-twelfths item-details">
-          <h4>{this.maybeLink(item.name)}</h4>
+          <h3>{this.maybeLink(item.name)}</h3>
           <p>{this.maybeLink(`${item.manufacturer} SKU: ${item.sku}`)}</p>
           <ul>
             {item.description.split(',').length ?

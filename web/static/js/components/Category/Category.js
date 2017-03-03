@@ -117,7 +117,7 @@ export default class Category extends Component {
 
     return (
       <div className="category-filter-section">
-        <h3 className="category-filter-section-heading">{title}</h3>
+        <h2 className="category-filter-section-heading">{title}</h2>
         <ul className="usa-fieldset-inputs usa-unstyled-list">
           {category.fields[field].map(value => (<li key={value}>
             <input id={`${field}_${value}`} type="checkbox" checked={filterValues.indexOf(value.toLowerCase()) !== -1} onChange={this.toggleFilter(field, value)} />
@@ -137,14 +137,14 @@ export default class Category extends Component {
       return (
         <div className="usa-grid">
           <div className="usa-section">
-            <h2>{category.name}</h2>
+            <h1>{category.name}</h1>
           </div>
           <div className="usa-grid-full">
             <aside className="usa-width-one-fourth">
               <div className="category-count">
                 {items.length} item{items.length === 1 ? '' : 's'}
                 <span className="category-toggle-filters">
-                  <a href="#show-filters" onClick={this.toggleFilterVisibility}>{this.state.toggleFiltersLink.text}</a>
+                  <button className="usa-button-unstyled" onClick={this.toggleFilterVisibility}>{this.state.toggleFiltersLink.text}</button>
                 </span>
               </div>
               <div className={`category-filter-sections category-filter-sections-${this.state.toggleFiltersLink.visibility}`}>
@@ -155,14 +155,14 @@ export default class Category extends Component {
             <main className="usa-width-three-fourths">
               <div className="category-sort-section usa-grid-full">
                 <div className="usa-width-seven-twelfths category-toggle-details">
-                  <a href="#show-details" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</a>
+                  <button className="usa-button-unstyled" onClick={this.toggleDetailVisibility}>{this.state.toggleDetailsLink.text}</button>
                 </div>
                 <div className="category-sort usa-width-five-twelfths usa-grid-full">
-                  <div className="usa-width-one-fourth category-sort-label">
+                  <label htmlFor="category-sort-select" className="usa-width-one-fourth category-sort-label">
                     Sort by:
-                  </div>
+                  </label>
                   <div className="usa-width-three-fourths">
-                    <select onChange={this.changeSort} value={sorts.length ? `${sorts[0][0]}:${sorts[0][1]}` : undefined}>
+                    <select id="category-sort-select" onChange={this.changeSort} value={sorts.length ? `${sorts[0][0]}:${sorts[0][1]}` : undefined}>
                       <option />
                       <option value="contract_unit_price:asc">Price (lowest to highest)</option>
                       <option value="contract_unit_price:desc">Price (highest to lowest)</option>

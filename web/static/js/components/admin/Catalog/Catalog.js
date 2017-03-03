@@ -90,7 +90,7 @@ export default class Catalog extends Component {
       return (
         <div className="catalog">
           <div className="usa-section">
-            <h2>Catalog</h2>
+            <h1>Catalog</h1>
           </div>
           <AlertsContainer />
           <div className="catalog-count-section">

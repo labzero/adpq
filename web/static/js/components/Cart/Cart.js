@@ -32,7 +32,7 @@ export default class Cart extends Component {
       return (
         <div className="usa-grid">
           <div className="usa-section">
-            <h2>Your Cart</h2>
+            <h1>Your Cart</h1>
           </div>
           <main className="usa-grid-full">
             <ul className="usa-unstyled-list">

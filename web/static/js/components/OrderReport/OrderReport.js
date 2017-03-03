@@ -25,7 +25,7 @@ export default class OrderReport extends Component {
     if (shouldRender(this.props.orderReport.remoteDataState)) {
       return (
         <div className="usa-section">
-          <h2>Account Orders</h2>
+          <h1>Account Orders</h1>
           <OrderChart orders={this.props.byCategoryDepartment} />
           <OrderTable orders={this.props.orderReport.items} orderLink={this.orderLink} />
         </div>

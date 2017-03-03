@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 class HeaderLogin extends Component {
   static propTypes = {
@@ -15,7 +16,7 @@ class HeaderLogin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
+                <Link to="/" title="Home" aria-label="Home">Tech Shop</Link>
               </em>
             </div>
           </div>

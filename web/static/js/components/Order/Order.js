@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import currencyFormatter from 'currency-formatter';
 import Loading from '../Loading/Loading';
-import { catalogItemPath } from '../../lib/paths';
+import { adminCatalogItemPath, catalogItemPath } from '../../lib/paths';
 import { shouldRender } from '../../lib/remote_data_states';
 import AlertsContainer from '../Alerts/AlertsContainer';
 
@@ -30,7 +30,7 @@ export default class Order extends Component {
       return (
         <div className="usa-grid order">
           <div className="usa-section">
-            <h2>Order Detail</h2>
+            <h1>Order Detail</h1>
             <AlertsContainer />
             <div className="order-details">
               <h3>Order #{order.id}</h3>
@@ -57,7 +57,7 @@ export default class Order extends Component {
             </div>
 
             <div className="order-items">
-              <h3 className="subsection">Order Items</h3>
+              <h2 className="subsection">Order Items</h2>
               <div className="table-container">
                 <table className="usa-table-borderless">
                   <thead>
@@ -75,7 +75,13 @@ export default class Order extends Component {
                         order.items.map(item => (
                           <tr key={`${order.id}-${item.id}`}>
                             <td><Link to={catalogItemPath(item)}>{item.name}</Link></td>
-                            {isAdmin ? <td><a href="#edit-item">{item.sku}</a></td> : <td>{item.sku}</td>}
+                            <td>
+                              {isAdmin ?
+                                <Link to={adminCatalogItemPath(item)}>{item.sku}</Link>
+                                :
+                                item.sku
+                              }
+                            </td>
                             <td>1006b</td>
                             <td className="order-column-amount">{item.quantity}</td>
                             <td className="order-column-amount">{currencyFormatter.format(item.price / 100, { code: 'USD' })}</td>
@@ -88,7 +94,7 @@ export default class Order extends Component {
             </div>
 
             <div className="order-total">
-              <h3>Order Total: {currencyFormatter.format(order.items.reduce((acc, orderItem) => acc + (orderItem.price * orderItem.quantity), 0) / 100, { code: 'USD' })}</h3>
+              <h4>Order Total: {currencyFormatter.format(order.items.reduce((acc, orderItem) => acc + (orderItem.price * orderItem.quantity), 0) / 100, { code: 'USD' })}</h4>
               {order.status !== 'CANCELLED' ? (<button onClick={() => cancelOrder(order, isAdmin)} className="usa-button-outline button-secondary-outline">Cancel</button>) : ''}
             </div>
 

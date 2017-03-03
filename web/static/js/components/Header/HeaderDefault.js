@@ -19,7 +19,7 @@ export default class HeaderDefault extends Component {
               </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/" title="Home" aria-label="Home">Tech Shop</a>
+                <Link to="/" title="Home" aria-label="Home">Tech Shop</Link>
               </em>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default class HeaderDefault extends Component {
             <div className="usa-nav-secondary">
               <ul className="nav-secondary-links usa-unstyled-list usa-nav-secondary-links">
                 <li>
-                  <a href="/cart" className="header-cart-button" aria-label="Cart">
+                  <Link to="/cart" className="header-cart-button" aria-label="Cart">
                     <span>Cart</span> &nbsp;
                     {cartCount !== 0 ? (
                       <span
@@ -109,10 +109,10 @@ export default class HeaderDefault extends Component {
                       >
                         {cartCount}</span>
                       ) : ''}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/account">Account</a>
+                  <Link to="/account">Account</Link>
                 </li>
                 <li>
                   <Link to={'logout'}>

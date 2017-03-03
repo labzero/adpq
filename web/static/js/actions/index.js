@@ -380,6 +380,7 @@ export function createItem(item) {
       .then(() => dispatch(createItemSuccess()))
       .then(() => dispatch(alert(createItemSuccess())))
       .then(() => dispatch(fetchAdminCatalog()))
+      .then(() => dispatch(fetchCatalog()))
       .catch(error => dispatch(createItemError(error))); // TODO flash message
 }
 
@@ -411,6 +412,7 @@ export function updateItem(item) {
       .then(() => dispatch(updateItemSuccess()))
       .then(() => dispatch(alert(updateItemSuccess())))
       .then(() => dispatch(fetchAdminCatalog()))
+      .then(() => dispatch(fetchCatalog()))
       .catch(error => dispatch(updateItemError(error))); // TODO flash message
 }
 
@@ -433,12 +435,13 @@ export function cancelOrder(order, admin = false) {
     body: JSON.stringify({ status: 'CANCELLED' })
   };
   const url = admin ? `/api/admin/orders/${order.id}` : `/api/user/${getUserData().id}/orders/${order.id}`;
-  const refresh = admin ? fetchAdminOrders : fetchOrders;
+  const maybeFetchAdminOrders = dispatch => () => admin && dispatch(fetchAdminOrders());
   return dispatch => fetch(url, requestWithAuth(request))
       .then(checkHttpStatus)
       .then(() => dispatch(cancelOrderSuccess(admin)))
       .then(() => dispatch(alert(cancelOrderSuccess(admin))))
-      .then(() => dispatch(refresh()))
+      .then(maybeFetchAdminOrders(dispatch))
+      .then(() => dispatch(fetchOrders()))
       .catch(error => dispatch(cancelOrderError(admin, error))); // TODO flash message
 }
 

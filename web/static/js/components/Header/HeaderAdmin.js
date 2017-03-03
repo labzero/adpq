@@ -17,7 +17,7 @@ class HeaderAdmin extends Component {
             </div>
             <div className="logo usa-logo" id="logo">
               <em className="logo-text usa-logo-text">
-                <a href="/admin" title="Admin" aria-label="Home">Tech Shop Admin</a>
+                <Link accessKey="1" to="/admin" title="Admin" aria-label="Home">Tech Shop Admin</Link>
               </em>
             </div>
           </div>
@@ -29,14 +29,14 @@ class HeaderAdmin extends Component {
             </button>
             <ul className="nav-primary usa-nav-primary usa-accordion">
               <li>
-                <Link to={'/admin'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
+                <a href={'/admin'} className={`usa-nav-link ${this.props.section === 'Orders' ? 'nav-link-current' : ''}`}>
                   <span>Orders</span>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to={'/admin/catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
+                <a href={'/admin/catalog'} className={`usa-nav-link ${this.props.section === 'Catalog' ? 'nav-link-current' : ''}`}>
                   <span>Catalog</span>
-                </Link>
+                </a>
               </li>
             </ul>
             <div className="usa-nav-secondary">

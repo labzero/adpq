@@ -27,7 +27,7 @@ export default class AdminOrderReport extends Component {
       return (
         <div className="usa-grid">
           <div className="usa-section">
-            <h2>Orders Report</h2>
+            <h1>Orders Report</h1>
             <AdminOrderChart orders={this.props.byCategoryDepartment} />
             <OrderTable orders={this.props.orderReport.items} orderLink={this.orderLink} />
           </div>

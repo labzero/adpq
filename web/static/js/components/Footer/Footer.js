@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 const Footer = ({ footerMode }) => {
   let nav;
@@ -9,56 +10,56 @@ const Footer = ({ footerMode }) => {
           <nav className="usa-footer-nav">
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Laptops">Laptops</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Laptops">Laptops</Link>
               </li>
-              <li><a href="/category/Laptops?filter=simple_category:Ultralight">Ultralight</a></li>
-              <li><a href="/category/Laptops?filter=simple_category:Standard">Standard</a></li>
-              <li><a href="/category/Laptops?filter=simple_category:Performance">Performance</a></li>
-              <li><a href="/category/Laptops?filter=simple_category:Workstation">Workstation</a></li>
+              <li><Link to="/category/Laptops?filter=simple_category:Ultralight">Ultralight</Link></li>
+              <li><Link to="/category/Laptops?filter=simple_category:Standard">Standard</Link></li>
+              <li><Link to="/category/Laptops?filter=simple_category:Performance">Performance</Link></li>
+              <li><Link to="/category/Laptops?filter=simple_category:Workstation">Workstation</Link></li>
             </ul>
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Desktops">Desktops</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Desktops">Desktops</Link>
               </li>
-              <li><a href="/category/Desktops?filter=simple_category:Thin Client">Thin Client</a></li>
-              <li><a href="/category/Desktops?filter=simple_category:Standard">Standard</a></li>
-              <li><a href="/category/Desktops?filter=simple_category:Performance">Performance</a></li>
-              <li><a href="/category/Desktops?filter=simple_category:Workstation">Workstation</a></li>
-              <li><a href="/category/Desktops?filter=simple_category:All-in-One">All-in-One</a></li>
+              <li><Link to="/category/Desktops?filter=simple_category:Thin Client">Thin Client</Link></li>
+              <li><Link to="/category/Desktops?filter=simple_category:Standard">Standard</Link></li>
+              <li><Link to="/category/Desktops?filter=simple_category:Performance">Performance</Link></li>
+              <li><Link to="/category/Desktops?filter=simple_category:Workstation">Workstation</Link></li>
+              <li><Link to="/category/Desktops?filter=simple_category:All-in-One">All-in-One</Link></li>
             </ul>
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Peripherals">Peripherals</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Peripherals">Peripherals</Link>
               </li>
-              <li><a href="/category/Peripherals?filter=simple_category:Displays">Displays</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</a></li>
-              <li><a href="/category/Peripherals?filter=simple_category:Mounting">Mounting</a></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Displays">Displays</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Headsets Microphones %26 Speakers">Headsets, Microphones, &amp; Speakers</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Keyboards %26 Mice">Keyboards &amp; Mice</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Cables %26 Adapters">Cables &amp; Adapters</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Cases %26 Bags">Cases &amp; Bags</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Docking Stations">Docking Stations</Link></li>
+              <li><Link to="/category/Peripherals?filter=simple_category:Mounting">Mounting</Link></li>
             </ul>
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Components">Components</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Components">Components</Link>
               </li>
-              <li><a href="/category/Components?filter=simple_category:Processors">Processors</a></li>
-              <li><a href="/category/Components?filter=simple_category:Memory">Memory</a></li>
-              <li><a href="/category/Components?filter=simple_category:Video Cards">Video Cards</a></li>
-              <li><a href="/category/Components?filter=simple_category:Storage Devices">Storage Devices</a></li>
+              <li><Link to="/category/Components?filter=simple_category:Processors">Processors</Link></li>
+              <li><Link to="/category/Components?filter=simple_category:Memory">Memory</Link></li>
+              <li><Link to="/category/Components?filter=simple_category:Video Cards">Video Cards</Link></li>
+              <li><Link to="/category/Components?filter=simple_category:Storage Devices">Storage Devices</Link></li>
             </ul>
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Software">Software</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Software">Software</Link>
               </li>
-              <li><a href="/category/Software?filter=simple_category:Design">Design</a></li>
-              <li><a href="/category/Software?filter=simple_category:Productivity">Productivity</a></li>
+              <li><Link to="/category/Software?filter=simple_category:Design">Design</Link></li>
+              <li><Link to="/category/Software?filter=simple_category:Productivity">Productivity</Link></li>
             </ul>
             <ul className="usa-unstyled-list usa-width-one-third usa-footer-primary-content">
               <li>
-                <a className="footer-primary-link usa-footer-primary-link" href="/category/Services">Services</a>
+                <Link className="footer-primary-link usa-footer-primary-link" to="/category/Services">Services</Link>
               </li>
-              <li><a href="/category/Services?filter=simple_category:Support">Support</a></li>
+              <li><Link to="/category/Services?filter=simple_category:Support">Support</Link></li>
             </ul>
           </nav>
         </div>
@@ -71,22 +72,22 @@ const Footer = ({ footerMode }) => {
           <nav className="usa-footer-nav">
             <ul className="usa-unstyled-list">
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Laptops">Laptops</a>
+                <Link className="usa-footer-primary-link" to="/category/Laptops">Laptops</Link>
               </li>
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Desktops">Desktops</a>
+                <Link className="usa-footer-primary-link" to="/category/Desktops">Desktops</Link>
               </li>
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Peripherals">Peripherals</a>
+                <Link className="usa-footer-primary-link" to="/category/Peripherals">Peripherals</Link>
               </li>
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Components">Components</a>
+                <Link className="usa-footer-primary-link" to="/category/Components">Components</Link>
               </li>
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Software">Software</a>
+                <Link className="usa-footer-primary-link" to="/category/Software">Software</Link>
               </li>
               <li className="usa-width-one-third">
-                <a className="usa-footer-primary-link" href="/category/Services">Services</a>
+                <Link className="usa-footer-primary-link" to="/category/Services">Services</Link>
               </li>
             </ul>
           </nav>
@@ -105,7 +106,7 @@ const Footer = ({ footerMode }) => {
             <h3 className="footer-heading usa-footer-slim-logo-heading">California Department of Technology</h3>
           </div>
           <div className="footer-contact-links usa-footer-contact-links usa-width-one-third">
-            <a href="mailto:cdt-help@state.ca.gov">Contact Us</a>
+            <Link to="mailto:cdt-help@state.ca.gov">Contact Us</Link>
           </div>
         </div>
       </div>
