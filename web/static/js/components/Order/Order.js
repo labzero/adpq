@@ -58,31 +58,33 @@ export default class Order extends Component {
 
             <div className="order-items">
               <h3 className="subsection">Order Items</h3>
-              <table className="table usa-table-borderless">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>SKU</th>
-                    <th>CLIN</th>
-                    <th className="order-column-amount">Qty</th>
-                    <th className="order-column-amount">Unit Cost</th>
-                    <th className="order-column-amount">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {order.items && order.items.length ?
-                      order.items.map(item => (
-                        <tr key={`${order.id}-${item.id}`}>
-                          <td><Link to={catalogItemPath(item)}>{item.name}</Link></td>
-                          {isAdmin ? <td><a href="#edit-item">{item.sku}</a></td> : <td>{item.sku}</td>}
-                          <td>1006b</td>
-                          <td className="order-column-amount">{item.quantity}</td>
-                          <td className="order-column-amount">{currencyFormatter.format(item.price / 100, { code: 'USD' })}</td>
-                          <td className="order-column-amount">{currencyFormatter.format((item.price * item.quantity) / 100, { code: 'USD' })}</td>
-                        </tr>
-                  )) : ''}
-                </tbody>
-              </table>
+              <div className="table-container">
+                <table className="usa-table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>SKU</th>
+                      <th>CLIN</th>
+                      <th className="order-column-amount">Qty</th>
+                      <th className="order-column-amount">Unit Cost</th>
+                      <th className="order-column-amount">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {order.items && order.items.length ?
+                        order.items.map(item => (
+                          <tr key={`${order.id}-${item.id}`}>
+                            <td><Link to={catalogItemPath(item)}>{item.name}</Link></td>
+                            {isAdmin ? <td><a href="#edit-item">{item.sku}</a></td> : <td>{item.sku}</td>}
+                            <td>1006b</td>
+                            <td className="order-column-amount">{item.quantity}</td>
+                            <td className="order-column-amount">{currencyFormatter.format(item.price / 100, { code: 'USD' })}</td>
+                            <td className="order-column-amount">{currencyFormatter.format((item.price * item.quantity) / 100, { code: 'USD' })}</td>
+                          </tr>
+                    )) : ''}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div className="order-total">
