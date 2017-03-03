@@ -24,10 +24,6 @@ test:
     - mkdir -p $CIRCLE_TEST_REPORTS/test
     - script/ci/tests.sh
 deployment:
-  brien:
-    branch: /.*?brien.*$/
-    commands:
-      - script/ci/deploy-prod.sh
   develop:
     branch: develop
     commands:
