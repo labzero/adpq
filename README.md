@@ -262,4 +262,4 @@ The list below associates key activities and artifacts with the Digital Service 
 > Please see the [Setup Instructions](#setup-instructions) section in this document. All engineers used these steps to set up their development environments. 
 
 ####T. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
-> All systems used to create and run the prototype are [open source and free of charge for use](docs/Open%20Source%20Technology%20Audit.xlsx). Our prototype carries an [MIT license](LICENSE.md) as well.
+> All systems used to create and run the prototype are [open source and free of charge for use](docs/Open%20Source%20Technology%20Audit.xlsx).
