@@ -59,26 +59,19 @@ The Lab Zero team’s approach to product development and agile software deliver
 ## Architectural Approach
 This web application consists of a modern React.js app (Single Page Application) that consumes a JSON API backend written in Elixir using the Phoenix framework backed by a Postgres database. We considered using Shopify or Spree but ultimately decided to build the prototype from scratch. This decision enabled us to demonstrate our ability to develop an easy-to-use application designed in light of careful and deliberate conversations with real users.
 
-```
-React Components
-https://github.com/labzero/adpq/tree/master/web/static/js/components/Category
-https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem
-
-JS REST access
-https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js
-
-JS routes (defining client side URLs)
-https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js
-
-JSON serialization
-https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex
-
-Controller
-https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex
-
-Model
-https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex
-```
+1. React Components
+ * [https://github.com/labzero/adpq/tree/master/web/static/js/components/Category](https://github.com/labzero/adpq/tree/master/web/static/js/components/Category)
+ * [https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem](https://github.com/labzero/adpq/tree/master/web/static/js/components/CatalogItem)
+1. JS REST access
+ * [https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js](https://github.com/labzero/adpq/blob/master/web/static/js/actions/index.js)
+1. JS routes (defining client side URLs)
+ * [https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js](https://github.com/labzero/adpq/blob/master/web/static/js/routes/index.js)
+1. JSON serialization
+ * [https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex](https://github.com/labzero/adpq/blob/master/web/views/catalog_item_view.ex)
+1. Controller
+ * [https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex](https://github.com/labzero/adpq/blob/master/web/controllers/catalog_item_controller.ex)
+1. Model
+ * [https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex](https://github.com/labzero/adpq/blob/master/web/models/catalog_item.ex)
 
 ## Development Process
 We use the GitFlow branching model and create feature branches off of the develop branch for all new changes. All 
