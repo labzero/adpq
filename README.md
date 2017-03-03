@@ -15,7 +15,7 @@ https://adpq.labzero.com/
 2. [Quick-access walkthrough](https://github.com/labzero/adpq/blob/develop/RFI-Walkthrough.md) to confirm how Lab Zero's prototype meets the functional requirements stated in Prototype A RFI.
 
 # Table of Contents
-* Setup Instructions
+* Setup Instructions [Setup Instructions](#setup-instructions)
 * Technical Approach
 * Playbook Adherence
 * Requirements List
