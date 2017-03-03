@@ -3,6 +3,6 @@ defmodule Adpq.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) =~ "ADPQ"
+    assert html_response(conn, 200) =~ "CDT Tech Shop"
   end
 end
