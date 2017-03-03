@@ -422,7 +422,7 @@ export function cancelOrder(order, admin = false) {
     },
     body: JSON.stringify({ status: 'CANCELLED' })
   };
-  const url = admin ? `/api/admin/orders/${order.id}` : `/api/orders/${order.id}`;
+  const url = admin ? `/api/admin/orders/${order.id}` : `/api/user/${getUserData().id}/orders/${order.id}`;
   const refresh = admin ? fetchAdminOrders : fetchOrders;
   return dispatch => fetch(url, requestWithAuth(request))
       .then(checkHttpStatus)
