@@ -145,10 +145,10 @@ The list below associates key activities and artifacts with the Digital Service 
 
 # Requirements List
 
-**a. Assigned one (1) leader and gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted**
+####A. Assigned one (1) leader and gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted
 > Aaron Cripps, Product Owner
 
-**b. Assembled a multidisciplinary and collaborative team that includes, at a minimum, five (5) of the labor categories as identified in Attachment B: PQVP DS-AD Labor Category Descriptions**
+####B. Assembled a multidisciplinary and collaborative team that includes, at a minimum, five (5) of the labor categories as identified in Attachment B: PQVP DS-AD Labor Category Descriptions
 > The majority of the team is based in the San Francisco Bay Area. One member is in Tucson AZ, one member in Little Rock AR. Our team collaborates using tools like Slack, Google Hangouts, Screen Hero, GoToMeeting, and Google Docs. 
 * Product Manager - Aaron Cripps
 * Technical Architect - Sasha Voynow, Matt Wilson
@@ -158,13 +158,13 @@ The list below associates key activities and artifacts with the Digital Service 
 * Backend Web Developer - Sasha Voynow
 * DevOps Engineer - Brien Wankel, Dave O’Dell
 
-**c. Understood what people needed, by including people in the prototype development and design process**
+####C. Understood what people needed, by including people in the prototype development and design process
 > Informed by our initial persona attributes, we found three individuals whose job activities aligned with or related to the Lead Purchasing Organization Administration and State Agency IT Requester roles. 
 * [Dennis Baker](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/01-Interview1.1DennisBaker-StateAssemblyReprographicsManager.pdf), State of California Assembly Reprographics Manager
 * [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/02-Interview2.1RobertLee-StartupOfficeManager.pdf), Startup Office Manager
 * [Ned Holets](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/04-Interview3.1NedHolets-CMSDeveloper.pdf), Lead Software Engineer who has worked on CMS projects
 
-**d. Used at least a minimum of three (3) “user-centric design” techniques and/or tools**
+####D. Used at least a minimum of three (3) “user-centric design” techniques and/or tools
 > Human-centered design is a core aspect of our process. We consider each idea to be a hypothesis which should be tested and proven. You can find a richer explanation of our findings [here](https://github.com/labzero/adpq/blob/develop/Design-Process.pdf). Key activity examples below:
 * Customer Development
   * Stating and prioritizing learning goals (hypotheses)
@@ -176,25 +176,25 @@ The list below associates key activities and artifacts with the Digital Service 
 * Leveraging existing usability research 
   * Baymard Institute, an ecommerce usability research firm who uses qualitative and quantitative research methods.
 
-**e. Used GitHub to document code commits**
+####E. Used GitHub to document code commits
 > Yes, we’ve used Github fully for peer-review and as our sole code repository.
 
-**f. Used Swagger to document the RESTful API, and provided a link to the Swagger API**
+####F. Used Swagger to document the RESTful API, and provided a link to the Swagger API
 > Yes, we've implemented Swagger, you can view it [here](http://adpq.labzero.com:88/swagger-ui)
 
-**g. Complied with Section 508 of the Americans with Disabilities Act and WCAG 2.0**
+####G. Complied with Section 508 of the Americans with Disabilities Act and WCAG 2.0
 > Yes, we have used HTML and CSS in a manner that complies with the ADA and WCAG 2.0
 
-**h. Created or used a design style guide and/or a pattern library**
+####H. Created or used a design style guide and/or a pattern library
 * Utilized the US Web Design Standards for user experience, visual design and responsive guidelines and patterns.
 * Leveraged the Baymard Institute’s research-based user interaction guidelines for eCommerce product lists, homepages and checkout.
 
-**i. Performed usability tests with people**
+####I. Performed usability tests with people
 > We showed functional prototypes to the following individuals facilitated by a “Think Aloud” qualitative user test.
 * [Robert Lee](https://github.com/labzero/adpq/blob/develop/docs/03-UserInterviews/03-Interview2.2RobertLeeConceptTest.pdf)
 * [Tracey Thompson](https://github.com/labzero/adpq/blob/develop/docs/09-UserTesting/03-Interview4.1TraceyThompsonUsabilityTest.pdf)
 
-**j. Used an iterative approach, where feedback informed subsequent work or versions of the prototype**
+####J. Used an iterative approach, where feedback informed subsequent work or versions of the prototype
 > We began by clarifying the business case and target outcomes without proposing solutions. This sets the stage for each activity to be oriented around learning and empowers each team member to bring their expertise and creativity into the solutions which are iteratively built and tested. Learnings from each activity are fed back into subsequent iterations, cross-functionally.
 * Product Owner led goal-oriented kickoff and drafted a first version of the “Speclet” to align and hold the team accountable to high-level key outcomes and measurements. 
 * [Explorations](https://github.com/labzero/adpq/tree/develop/docs) improve in fidelity based on our learning needs
@@ -208,10 +208,10 @@ The list below associates key activities and artifacts with the Digital Service 
   * Daily standup
   * [Sprints](https://github.com/labzero/adpq/tree/develop/docs/10-RetrospectiveNotes): team performed demos and retrospectives
 
-**k. Created a prototype that works on multiple devices, and presents a responsive design**
+####K. Created a prototype that works on multiple devices, and presents a responsive design
 > Our prototype has been designed, developed and tested to work on desktop browsers, iOS and Android phones.
 
-**l. Used at least five (5) modern and open-source technologies, regardless of architectural layer (frontend, backend, etc.)**
+####L. Used at least five (5) modern and open-source technologies, regardless of architectural layer (frontend, backend, etc.)
 > We utilized many modern open-source technologies:
 * Elixir
 * Phoenix Framework 
@@ -222,28 +222,28 @@ The list below associates key activities and artifacts with the Digital Service 
 * Javascript/ES6
 * REST
 
-**m. Deployed the prototype on an Infrastructure as a Service (IaaS) or Platform as Service (PaaS) provider, and indicated which provider they used**
+####M. Deployed the prototype on an Infrastructure as a Service (IaaS) or Platform as Service (PaaS) provider, and indicated which provider they used
 > Our prototype has been deployed to AWS as a Docker container running in ECS using RDS for it’s datastore. 
 
-**n. Developed automated unit tests for their code**
+####N. Developed automated unit tests for their code
 > The Engineering Team delivered stories with working code and some level of automated testing. All tests are run in the continuous integration loop with each. 
 * Javascript we wrote Jest tests (link)
 * Elixir we wrote ExUnit tests (link)
 
-**o. Setup or used a continuous integration system to automate the running of tests and continuously deployed their code to their IaaS or PaaS provider**
+####O. Setup or used a continuous integration system to automate the running of tests and continuously deployed their code to their IaaS or PaaS provider
 > Our use of a CI server drives automated tests and our deployment pipeline. All new pull requests are tested. We used CircleCI to automate our CI and CD automation. 
 
-**p. Setup or used configuration management**
+####P. Setup or used configuration management
 > We generate CloudFormation templates and build Docker containers, adhering to a https://12factor.net/ approach.
 
-**q. Setup or used continuous monitoring**
+####Q. Setup or used continuous monitoring
 > We setup Honeybadger.io for error reporting and Pingdom for uptime monitoring. 
 
-**r. Deployed their software in an open source container, such as Docker (i.e., utilized operating-system-level virtualization)**
+####R. Deployed their software in an open source container, such as Docker (i.e., utilized operating-system-level virtualization)
 > We build Docker containers in our CI/CD process and deploy them to ECR/ECS in AWS.
 
-**s. Provided sufficient documentation to install and run their prototype on another machine**
+####S. Provided sufficient documentation to install and run their prototype on another machine
 > Please see the Setup section in this document or the SETUP.md file in root directory of this repository. All engineers used these steps to set up their development environments. 
 
-**t. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge**
+####T. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
 > All systems used to create and run the prototype are [open source and free of charge for use](docs/Open%20Source%20Technology%20Audit.xlsx). Our prototype carries an [MIT license](LICENSE.md) as well.
