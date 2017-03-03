@@ -259,7 +259,7 @@ The list below associates key activities and artifacts with the Digital Service 
 > We build Docker containers in our CI/CD process and deploy them to ECR/ECS in AWS.
 
 ####S. Provided sufficient documentation to install and run their prototype on another machine
-> Please see the [Setup Instructions](#setup-instructions) section in this document or the SETUP.md file in root directory of this repository. All engineers used these steps to set up their development environments. 
+> Please see the [Setup Instructions](#setup-instructions) section in this document. All engineers used these steps to set up their development environments. 
 
 ####T. Prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
 > All systems used to create and run the prototype are [open source and free of charge for use](docs/Open%20Source%20Technology%20Audit.xlsx). Our prototype carries an [MIT license](LICENSE.md) as well.
