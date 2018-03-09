@@ -1,4 +1,4 @@
-defmodule Adpq.ChannelCase do
+defmodule AdpqWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -27,7 +27,7 @@ defmodule Adpq.ChannelCase do
 
 
       # The default endpoint for testing
-      @endpoint Adpq.Endpoint
+      @endpoint AdpqWeb.Endpoint
     end
   end
 

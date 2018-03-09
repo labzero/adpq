@@ -1,5 +1,5 @@
 defmodule Adpq.AuthControllerTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
 
   alias Adpq.{User}
 

@@ -1,4 +1,4 @@
 defmodule Adpq.AuthHelpersTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
 
 end

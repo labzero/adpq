@@ -1,4 +1,4 @@
-defmodule Adpq.ConnCase do
+defmodule AdpqWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,10 +25,10 @@ defmodule Adpq.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Adpq.Router.Helpers
+      import AdpqWeb.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Adpq.Endpoint
+      @endpoint AdpqWeb.Endpoint
     end
   end
 

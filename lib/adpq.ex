@@ -1,7 +1,7 @@
 defmodule Adpq do
   use Application
 
-  alias Adpq.Endpoint
+  alias AdpqWeb.Endpoint
   @moduledoc false
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -14,7 +14,7 @@ defmodule Adpq do
       # Start the Ecto repository
       supervisor(Adpq.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Adpq.Endpoint, []),
+      supervisor(AdpqWeb.Endpoint, []),
       # Start your own worker by calling: Adpq.Worker.start_link(arg1, arg2, arg3)
       # worker(Adpq.Worker, [arg1, arg2, arg3]),
     ]

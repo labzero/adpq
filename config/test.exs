@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :adpq, Adpq.Endpoint,
+config :adpq, AdpqWeb.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -24,6 +24,6 @@ report_path = case System.get_env("CIRCLE_TEST_REPORTS") do
 end
 
 # Honeybadger
-config :honeybadger, environment_name: :test
+#config :honeybadger, environment_name: :test
 
 config :junit_formatter, report_dir: "#{report_path}/test"

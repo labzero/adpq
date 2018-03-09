@@ -1,3 +1,3 @@
 defmodule Adpq.PageViewTest do
-  use Adpq.ConnCase, async: true
+  use AdpqWeb.ConnCase, async: true
 end

@@ -1,5 +1,5 @@
 defmodule Adpq.Admin.OrderControllerTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
   import Adpq.Factory
 
   setup %{conn: conn} do

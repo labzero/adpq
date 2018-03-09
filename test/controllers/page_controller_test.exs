@@ -1,5 +1,5 @@
 defmodule Adpq.PageControllerTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

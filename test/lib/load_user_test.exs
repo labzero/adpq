@@ -1,5 +1,5 @@
 defmodule Adpq.LoadUserTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
   alias Adpq.{Repo, User, LoadUser}
 
   setup %{conn: conn} do

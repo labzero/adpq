@@ -10,7 +10,7 @@ config :adpq,
   ecto_repos: [Adpq.Repo]
 
 # Configures the endpoint
-config :adpq, Adpq.Endpoint,
+config :adpq, AdpqWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "bkNRjLa0xbNDeph42U9DvTZJ+/fI+Xlnvq7GiyxxZ2HmXUtoWfx45F4bRgfH6qHF",
   render_errors: [view: Adpq.ErrorView, accepts: ~w(html json)],
@@ -23,10 +23,10 @@ config :logger, :console,
   metadata: [:request_id]
 
 # Honeybadger
-config :honeybadger,
-  api_key: System.get_env("HONEYBADGER_API_KEY"),
-  exclude_envs: [:test, :dev],
-  environment_name: :dev
+# config :honeybadger,
+#   api_key: System.get_env("HONEYBADGER_API_KEY"),
+#   exclude_envs: [:test, :dev],
+#   environment_name: :dev
 
 config :adpq, swagger_host: "localhost:4000"
 

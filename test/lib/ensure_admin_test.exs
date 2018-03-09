@@ -1,5 +1,5 @@
 defmodule Adpq.EnsureAdminTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
   alias Adpq.EnsureAdmin
 
   setup %{conn: conn} do

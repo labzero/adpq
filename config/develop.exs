@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :adpq, Adpq.Endpoint,
+config :adpq, AdpqWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   debug_errors: true,
   check_origin: false,
@@ -25,10 +25,10 @@ config :adpq, Adpq.Repo,
   hostname: "adpq-develop.cuhwr9egpxgb.us-west-1.rds.amazonaws.com",
   pool_size: 10
 
-config :adpq, Adpq.Endpoint,
+config :adpq, AdpqWeb.Endpoint,
   secret_key_base: "Y8xMqKI4RKA19P9K3CG4AnaYtf1eu8GqTmZyxMlluiyV12j/3Nki+WC83S9e3XVe"
 
 # Honeybadger
-config :honeybadger, environment_name: :staging
+#config :honeybadger, environment_name: :staging
 
 config :adpq, swagger_host: "staging.adpq.labzero.com"

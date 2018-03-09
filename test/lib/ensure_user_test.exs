@@ -1,5 +1,5 @@
 defmodule Adpq.EnsureUserTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
 
   alias Adpq.EnsureUser
 

@@ -1,5 +1,5 @@
 defmodule Adpq.CartItemControllerTest do
-  use Adpq.ConnCase
+  use AdpqWeb.ConnCase
   import Adpq.Factory
 
   alias Adpq.CartItem

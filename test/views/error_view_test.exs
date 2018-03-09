@@ -1,5 +1,5 @@
 defmodule Adpq.ErrorViewTest do
-  use Adpq.ConnCase, async: true
+  use AdpqWeb.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View

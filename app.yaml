@@ -1,0 +1,16 @@
+env: flex
+runtime: gs://elixir-runtime/elixir.yaml
+runtime_config:
+  release_app: adpq
+env_variables:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: IjpdBOc6jaq86h7u
+  POSTGRES_DATABASE: adpq_production
+  POSTGRES_SOCKET_PATH: /cloudsql/elixir-futzing:us-central1:elixir-futzing-db/.s.PGSQL.5432
+  PHOENIX_PORT: 8080
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 1
+  
+beta_settings:
+  cloud_sql_instances: elixir-futzing:us-central1:elixir-futzing-db
